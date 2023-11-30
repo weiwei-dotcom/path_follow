@@ -1,0 +1,27 @@
+[35m[1mScanning dependencies of target path_follow[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o[0m
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::path_callback(nav_msgs::msg::Path_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:11:63:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kmsg_path[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   11 | void CDCR::path_callback([01;35m[Kconst nav_msgs::msg::Path::SharedPtr msg_path[m[K)
+      |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[ 75%] [32m[1mLinking CXX executable path_follow[0m
+[100%] Built target path_follow
+-- Install configuration: ""
+-- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/lib/path_follow/path_follow
+-- Set runtime path of "/home/weiwei/Desktop/project/path_follow/install/path_follow/lib/path_follow/path_follow" to ""
+-- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/package_run_dependencies/path_follow
+-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/parent_prefix_path/path_follow
+-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/ament_prefix_path.sh
+-- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/path.sh
+-- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/path.dsv
+-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.bash
+-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.sh
+-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.zsh
+-- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.dsv
+-- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/package.dsv
+-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/packages/path_follow
+-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/cmake/path_followConfig.cmake
+-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/cmake/path_followConfig-version.cmake
+-- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/package.xml

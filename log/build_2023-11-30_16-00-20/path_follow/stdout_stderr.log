@@ -1,0 +1,46 @@
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)
+-- Found rclcpp_components: 2.4.3 (/opt/ros/foxy/share/rclcpp_components/cmake)
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: 
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/weiwei/Desktop/project/path_follow/build/path_follow
+[35m[1mScanning dependencies of target path_follow[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o[0m
+In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2[m[K,
+                 from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp:1[m[K:
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:10:1:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+   10 | [01;31m[KEigen[m[K::Matrix4d transform;
+      | [01;31m[K^~~~~[m[K
+In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2[m[K,
+                 from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:10:1:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+   10 | [01;31m[KEigen[m[K::Matrix4d transform;
+      | [01;31m[K^~~~~[m[K
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::path_callback(nav_msgs::msg::Path_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:11:63:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kmsg_path[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   11 | void CDCR::path_callback([01;35m[Kconst nav_msgs::msg::Path::SharedPtr msg_path[m[K)
+      |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+make[2]: *** [CMakeFiles/path_follow.dir/build.make:63：CMakeFiles/path_follow.dir/src/main.cpp.o] 错误 1
+make[2]: *** 正在等待未完成的任务....
+make[2]: *** [CMakeFiles/path_follow.dir/build.make:76：CMakeFiles/path_follow.dir/src/cdcr.cpp.o] 错误 1
+make[1]: *** [CMakeFiles/Makefile2:78：CMakeFiles/path_follow.dir/all] 错误 2
+make: *** [Makefile:141：all] 错误 2

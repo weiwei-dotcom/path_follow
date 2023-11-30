@@ -1,0 +1,30 @@
+[0.075s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+[0.101s] [35m[1mScanning dependencies of target path_follow[0m
+[0.127s] [ 25%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m
+[1.425s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::path_callback(nav_msgs::msg::Path_<std::allocator<void> >::SharedPtr)[m[K’:
+[1.425s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:11:63:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpath_msg[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[1.425s]    11 | void CDCR::path_callback([01;35m[Kconst nav_msgs::msg::Path::SharedPtr path_msg[m[K)
+[1.425s]       |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[3.501s] [ 50%] [32m[1mLinking CXX executable path_follow[0m
+[3.638s] [100%] Built target path_follow
+[3.649s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+[3.670s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/weiwei/Desktop/project/path_follow/build/path_follow
+[3.674s] -- Install configuration: ""
+[3.674s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/lib/path_follow/path_follow
+[3.675s] -- Set runtime path of "/home/weiwei/Desktop/project/path_follow/install/path_follow/lib/path_follow/path_follow" to ""
+[3.675s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/package_run_dependencies/path_follow
+[3.675s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/parent_prefix_path/path_follow
+[3.675s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/ament_prefix_path.sh
+[3.676s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/ament_prefix_path.dsv
+[3.676s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/path.sh
+[3.676s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/path.dsv
+[3.676s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.bash
+[3.676s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.sh
+[3.676s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.zsh
+[3.676s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.dsv
+[3.676s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/package.dsv
+[3.676s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/packages/path_follow
+[3.676s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/cmake/path_followConfig.cmake
+[3.676s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/cmake/path_followConfig-version.cmake
+[3.676s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/package.xml
+[3.677s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/weiwei/Desktop/project/path_follow/build/path_follow

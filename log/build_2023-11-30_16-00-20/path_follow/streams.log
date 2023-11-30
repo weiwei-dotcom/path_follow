@@ -1,0 +1,48 @@
+[0.086s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+[0.106s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.122s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.246s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.275s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.279s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.372s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.410s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.411s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.513s] -- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)
+[0.588s] -- Found rclcpp_components: 2.4.3 (/opt/ros/foxy/share/rclcpp_components/cmake)
+[0.629s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[0.672s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.673s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.673s] -- Configured cppcheck include dirs: 
+[0.673s] -- Configured cppcheck exclude dirs and/or files: 
+[0.673s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[0.673s] -- Configured cpplint exclude dirs and/or files: 
+[0.674s] -- Added test 'lint_cmake' to check CMake code style
+[0.675s] -- Added test 'uncrustify' to check C / C++ code style
+[0.675s] -- Configured uncrustify additional arguments: 
+[0.675s] -- Added test 'xmllint' to check XML markup files
+[0.677s] -- Configuring done
+[0.683s] -- Generating done
+[0.684s] -- Build files have been written to: /home/weiwei/Desktop/project/path_follow/build/path_follow
+[0.702s] [35m[1mScanning dependencies of target path_follow[0m
+[0.731s] [ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m
+[0.731s] [ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o[0m
+[1.635s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2[m[K,
+[1.635s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp:1[m[K:
+[1.635s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:10:1:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+[1.635s]    10 | [01;31m[KEigen[m[K::Matrix4d transform;
+[1.635s]       | [01;31m[K^~~~~[m[K
+[1.654s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2[m[K,
+[1.654s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[1.654s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:10:1:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+[1.654s]    10 | [01;31m[KEigen[m[K::Matrix4d transform;
+[1.654s]       | [01;31m[K^~~~~[m[K
+[2.248s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::path_callback(nav_msgs::msg::Path_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.248s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:11:63:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kmsg_path[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.249s]    11 | void CDCR::path_callback([01;35m[Kconst nav_msgs::msg::Path::SharedPtr msg_path[m[K)
+[2.249s]       |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[2.502s] make[2]: *** [CMakeFiles/path_follow.dir/build.make:63：CMakeFiles/path_follow.dir/src/main.cpp.o] 错误 1
+[2.502s] make[2]: *** 正在等待未完成的任务....
+[3.115s] make[2]: *** [CMakeFiles/path_follow.dir/build.make:76：CMakeFiles/path_follow.dir/src/cdcr.cpp.o] 错误 1
+[3.115s] make[1]: *** [CMakeFiles/Makefile2:78：CMakeFiles/path_follow.dir/all] 错误 2
+[3.116s] make: *** [Makefile:141：all] 错误 2
+[3.118s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16

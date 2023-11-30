@@ -1,0 +1,11 @@
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In constructor ‘[01m[KCDCR::CDCR()[m[K’:
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:6:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ksub_path[m[K’ was not declared in this scope
+    6 |     [01;31m[Ksub_path[m[K = this->create_subscription<nav_msgs::msg::Path>("path", 10, std::bind(&CDCR::path_callback, this, std::placeholders::_1));
+      |     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::path_callback(nav_msgs::msg::Path_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:11:63:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kmsg_path[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   11 | void CDCR::path_callback([01;35m[Kconst nav_msgs::msg::Path::SharedPtr msg_path[m[K)
+      |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+make[2]: *** [CMakeFiles/path_follow.dir/build.make:76：CMakeFiles/path_follow.dir/src/cdcr.cpp.o] 错误 1
+make[1]: *** [CMakeFiles/Makefile2:78：CMakeFiles/path_follow.dir/all] 错误 2
+make: *** [Makefile:141：all] 错误 2

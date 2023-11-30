@@ -1,0 +1,16 @@
+[0.080s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+[0.111s] [35m[1mScanning dependencies of target path_follow[0m
+[0.141s] [ 25%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o[0m
+[0.142s] [ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m
+[1.674s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In constructor ‘[01m[KCDCR::CDCR()[m[K’:
+[1.674s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:6:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ksub_path[m[K’ was not declared in this scope
+[1.674s]     6 |     [01;31m[Ksub_path[m[K = this->create_subscription<nav_msgs::msg::Path>("path", 10, std::bind(&CDCR::path_callback, this, std::placeholders::_1));
+[1.674s]       |     [01;31m[K^~~~~~~~[m[K
+[1.682s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::path_callback(nav_msgs::msg::Path_<std::allocator<void> >::SharedPtr)[m[K’:
+[1.682s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:11:63:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kmsg_path[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[1.682s]    11 | void CDCR::path_callback([01;35m[Kconst nav_msgs::msg::Path::SharedPtr msg_path[m[K)
+[1.682s]       |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[2.450s] make[2]: *** [CMakeFiles/path_follow.dir/build.make:76：CMakeFiles/path_follow.dir/src/cdcr.cpp.o] 错误 1
+[2.450s] make[1]: *** [CMakeFiles/Makefile2:78：CMakeFiles/path_follow.dir/all] 错误 2
+[2.450s] make: *** [Makefile:141：all] 错误 2
+[2.452s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16

@@ -18,6 +18,12 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(Sophus REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(rclcpp_components REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -29,5 +35,19 @@ if(BUILD_TESTING)
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+include_directories(${EIGEN3_INCLUDE_DIR} ${Sophus_DIR})
+
+add_executable(path_follow src/main.cpp src/cdcr.cpp src/joint.cpp)
+
+ament_target_dependencies(path_follow rclcpp nav_msgs rclcpp_components geometry_msgs std_msgs)
+
+target_link_libraries(path_follow ${EIGEN_LIBS})
+
+install(TARGETS
+  path_follow
+  DESTINATION
+  lib/${PROJECT_NAME}
+)
 
 ament_package()
