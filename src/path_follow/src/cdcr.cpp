@@ -34,7 +34,6 @@ CDCR::CDCR():Node("path_follow")
     };
     this->transform_base_to_world = Eigen::Matrix4d::Identity();
     this->transform_world_to_base = Eigen::Matrix4d::Identity();
-    path_sub = this->create_subscription<nav_msgs::msg::Path>("path", 10, std::bind(&CDCR::path_callback, this, std::placeholders::_1));
     return;
 }
 
