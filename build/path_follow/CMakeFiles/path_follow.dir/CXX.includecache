@@ -24,11 +24,19 @@ nav_msgs/msg/path.hpp
 iostream
 -
 
+/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.cpp
+joint.hpp
+/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp
+
 /home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp
 iostream
 -
 Eigen/Eigen
 -
+
+/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp
+cdcr.hpp
+/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp
 
 /opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__builder.hpp
 builtin_interfaces/msg/detail/duration__struct.hpp

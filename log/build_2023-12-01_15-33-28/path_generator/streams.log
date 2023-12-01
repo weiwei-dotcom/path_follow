@@ -1,0 +1,81 @@
+[0.083s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_generator': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/weiwei/Desktop/project/path_follow/src/path_generator -DCMAKE_INSTALL_PREFIX=/home/weiwei/Desktop/project/path_follow/install/path_generator
+[0.166s] -- The C compiler identification is GNU 9.4.0
+[0.234s] -- The CXX compiler identification is GNU 9.4.0
+[0.237s] -- Check for working C compiler: /usr/bin/cc
+[0.279s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.279s] -- Detecting C compiler ABI info
+[0.319s] -- Detecting C compiler ABI info - done
+[0.326s] -- Detecting C compile features
+[0.326s] -- Detecting C compile features - done
+[0.328s] -- Check for working CXX compiler: /usr/bin/c++
+[0.382s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.383s] -- Detecting CXX compiler ABI info
+[0.434s] -- Detecting CXX compiler ABI info - done
+[0.441s] -- Detecting CXX compile features
+[0.441s] -- Detecting CXX compile features - done
+[0.444s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.459s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.459s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.581s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.612s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.616s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.673s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[0.694s] -- Found FastRTPS: /opt/ros/foxy/include  
+[0.747s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.782s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.783s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.783s] -- Looking for pthread.h
+[0.830s] -- Looking for pthread.h - found
+[0.831s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.885s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[0.885s] -- Looking for pthread_create in pthreads
+[0.929s] -- Looking for pthread_create in pthreads - not found
+[0.929s] -- Looking for pthread_create in pthread
+[0.979s] -- Looking for pthread_create in pthread - found
+[0.980s] -- Found Threads: TRUE  
+[1.080s] -- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)
+[1.169s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[1.218s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.218s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.219s] -- Configured cppcheck include dirs: 
+[1.219s] -- Configured cppcheck exclude dirs and/or files: 
+[1.219s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.219s] -- Configured cpplint exclude dirs and/or files: 
+[1.219s] -- Added test 'lint_cmake' to check CMake code style
+[1.220s] -- Added test 'uncrustify' to check C / C++ code style
+[1.220s] -- Configured uncrustify additional arguments: 
+[1.220s] -- Added test 'xmllint' to check XML markup files
+[1.222s] -- Configuring done
+[1.228s] -- Generating done
+[1.229s] -- Build files have been written to: /home/weiwei/Desktop/project/path_follow/build/path_generator
+[1.236s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_generator' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/weiwei/Desktop/project/path_follow/src/path_generator -DCMAKE_INSTALL_PREFIX=/home/weiwei/Desktop/project/path_follow/install/path_generator
+[1.238s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_generator': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_generator -- -j16 -l16
+[1.265s] [35m[1mScanning dependencies of target path_generator[0m
+[1.292s] [ 66%] [32mBuilding CXX object CMakeFiles/path_generator.dir/src/main.cpp.o[0m
+[1.292s] [ 66%] [32mBuilding CXX object CMakeFiles/path_generator.dir/src/path_generator.cpp.o[0m
+[2.153s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_generator/src/path_generator.cpp:8:2:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+[2.153s]     8 | }[01;35m[K;[m[K
+[2.153s]       |  [01;35m[K^[m[K
+[3.163s] [100%] [32m[1mLinking CXX executable path_generator[0m
+[3.281s] [100%] Built target path_generator
+[3.290s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_generator' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_generator -- -j16 -l16
+[3.315s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_generator': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/weiwei/Desktop/project/path_follow/build/path_generator
+[3.321s] -- Install configuration: ""
+[3.321s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/lib/path_generator/path_generator
+[3.321s] -- Set runtime path of "/home/weiwei/Desktop/project/path_follow/install/path_generator/lib/path_generator/path_generator" to ""
+[3.321s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/ament_index/resource_index/package_run_dependencies/path_generator
+[3.321s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/ament_index/resource_index/parent_prefix_path/path_generator
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/environment/ament_prefix_path.sh
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/environment/ament_prefix_path.dsv
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/environment/path.sh
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/environment/path.dsv
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/local_setup.bash
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/local_setup.sh
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/local_setup.zsh
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/local_setup.dsv
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/package.dsv
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/ament_index/resource_index/packages/path_generator
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/cmake/path_generatorConfig.cmake
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/cmake/path_generatorConfig-version.cmake
+[3.322s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_generator/share/path_generator/package.xml
+[3.324s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_generator' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/weiwei/Desktop/project/path_follow/build/path_generator

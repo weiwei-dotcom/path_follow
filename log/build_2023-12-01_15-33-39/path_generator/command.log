@@ -1,0 +1,4 @@
+Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_generator': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_generator -- -j16 -l16
+Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_generator' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_generator -- -j16 -l16
+Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_generator': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/weiwei/Desktop/project/path_follow/build/path_generator
+Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_generator' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/weiwei/Desktop/project/path_follow/build/path_generator

@@ -1,0 +1,4 @@
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::path_callback(nav_msgs::msg::Path_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:38:63:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpath_msg[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   38 | void CDCR::path_callback([01;35m[Kconst nav_msgs::msg::Path::SharedPtr path_msg[m[K)
+      |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
