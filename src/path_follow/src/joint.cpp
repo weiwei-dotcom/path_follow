@@ -12,28 +12,3 @@ Joint::Joint(double length_rigid1,double length_rigid2,double length_continuum)
     return;
 }
 
-Eigen::Matrix4d Joint::getTransform()
-{
-    return this->transform;
-}
-
-double Joint::getLengthRigid1()
-{
-    return this->length_rigid1;
-}
-
-double Joint::getLengthRigid2()
-{
-    return this->length_rigid2;
-}
-
-double Joint::getLengthContinuum()
-{
-    return this->length_continuum;
-}
-
-double Joint::getLength()
-{
-    return this->length;
-}
-
