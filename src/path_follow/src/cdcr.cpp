@@ -3,7 +3,9 @@
 
 CDCR::CDCR():Node("path_follow")
 {
+    this->sample_interval = -1.0;
     this->joint_number = -1;
+    this->declare_parameter<std::double_t>("sample_interval", this->sample_interval);
     this->declare_parameter<std::int16_t>("joint_number", this->joint_number);
     if (joint_number == -1)
     {
@@ -12,7 +14,7 @@ CDCR::CDCR():Node("path_follow")
     }
     for (int i=0;i<joint_number;i++)
     {
-        this->transform_joint_to_base.push_back(Eigen::Matrix4d::Identity());
+        this->transform_joint_to_world.push_back(Eigen::Matrix4d::Identity());
     }
     for (int i=0;i<20;i++)
     {
@@ -20,7 +22,6 @@ CDCR::CDCR():Node("path_follow")
         this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_rigid2_length"), -1.0);
         this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_continuum_length"), -1.0);
     }
-    // Get the parameter of each joint;
     for (int i=0;i<joint_number;i++)
     {  
         Joint temp_joint(this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_rigid1_length")).as_double(),
@@ -28,18 +29,55 @@ CDCR::CDCR():Node("path_follow")
                          this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_continuum_length")).as_double());
         for (int j=i+1;j<joint_number;j++)
         {
-            this->transform_joint_to_base[j] = this->transform_joint_to_base[j]*temp_joint.getTransform();
+            this->transform_joint_to_world[j] = this->transform_joint_to_world[j]*temp_joint.transform;
         }
         this->joints.push_back(temp_joint);
     };
     this->transform_base_to_world = Eigen::Matrix4d::Identity();
     this->transform_world_to_base = Eigen::Matrix4d::Identity();
+    this->path_follow_nanotime_interval = -1.0;
+    this->declare_parameter("path_follow_nanotime_interval", this->path_follow_nanotime_interval);
+    std::cout << "here may cause error: 40" << std::endl;
+    auto time = this->create_wall_timer(std::chrono::nanoseconds(path_follow_nanotime_interval),
+                                        std::bind(&CDCR::path_follow_callback,this));
+    this->experience_type = -1;
+    this->declare_parameter("experience_type", this->experience_type);
     return;
 }
 
 void CDCR::path_follow_callback()
 {
+    // discrete the path
+    discretePath();
+    return;
+}
+
+void CDCR::discretePath()
+{
+    switch (this->experience_type)
+    {
+    // case 1 is using the conbination of line and circle;
+    case 1:
+        
+        break;
+
+    // default is using the B-spline;
+    default:
     
+        break;
+    }
+    return;
+}
+
+void CDCR::getCDCRPointsAndTangentVector()
+{
+    for (int i=0;i<this->joint_number;i++)
+    {
+        for (int j =0;j<joints[i].joint_points.size();j++)
+        {
+
+        }
+    }
     return;
 }
 

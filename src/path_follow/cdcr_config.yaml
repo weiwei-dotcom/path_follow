@@ -1,77 +1,80 @@
 joint_number: 8
-joint0_rigid1_length: 10.0
-joint0_rigid2_length: 10.0
-joint1_rigid1_length: 10.0
-joint1_rigid2_length: 10.0
-joint2_rigid1_length: 10.0
-joint2_rigid2_length: 10.0
-joint3_rigid1_length: 10.0
-joint3_rigid2_length: 10.0
-joint4_rigid1_length: 10.0
-joint4_rigid2_length: 10.0
-joint5_rigid1_length: 10.0
-joint5_rigid2_length: 10.0
-joint6_rigid1_length: 10.0
-joint6_rigid2_length: 10.0
-joint7_rigid1_length: 10.0
-joint7_rigid2_length: 10.0
-joint8_rigid1_length: 10.0
-joint8_rigid2_length: 10.0
-joint9_rigid1_length: 10.0
-joint9_rigid2_length: 10.0
-joint10_rigid1_length: 10.0
-joint10_rigid2_length: 10.0
-joint11_rigid1_length: 10.0
-joint11_rigid2_length: 10.0
-joint12_rigid1_length: 10.0
-joint12_rigid2_length: 10.0
-joint13_rigid1_length: 10.0
-joint13_rigid2_length: 10.0
-joint14_rigid1_length: 10.0
-joint14_rigid2_length: 10.0
-joint15_rigid1_length: 10.0
-joint15_rigid2_length: 10.0
-joint16_rigid1_length: 10.0
-joint16_rigid2_length: 10.0
-joint17_rigid1_length: 10.0
-joint17_rigid2_length: 10.0
-joint18_rigid1_length: 10.0
-joint18_rigid2_length: 10.0
-joint19_rigid1_length: 10.0
-joint19_rigid2_length: 10.0
+joint0_rigid1_length: 0.0
+joint0_rigid2_length: 0.0
+joint1_rigid1_length: 0.0
+joint1_rigid2_length: 0.0
+joint2_rigid1_length: 0.0
+joint2_rigid2_length: 0.0
+joint3_rigid1_length: 0.0
+joint3_rigid2_length: 0.0
+joint4_rigid1_length: 0.0
+joint4_rigid2_length: 0.0
+joint5_rigid1_length: 0.0
+joint5_rigid2_length: 0.0
+joint6_rigid1_length: 0.0
+joint6_rigid2_length: 0.0
+joint7_rigid1_length: 0.0
+joint7_rigid2_length: 0.0
+joint8_rigid1_length: 0.0
+joint8_rigid2_length: 0.0
+joint9_rigid1_length: 0.0
+joint9_rigid2_length: 0.0
+joint10_rigid1_length: 0.0
+joint10_rigid2_length: 0.0
+joint11_rigid1_length: 0.0
+joint11_rigid2_length: 0.0
+joint12_rigid1_length: 0.0
+joint12_rigid2_length: 0.0
+joint13_rigid1_length: 0.0
+joint13_rigid2_length: 0.0
+joint14_rigid1_length: 0.0
+joint14_rigid2_length: 0.0
+joint15_rigid1_length: 0.0
+joint15_rigid2_length: 0.0
+joint16_rigid1_length: 0.0
+joint16_rigid2_length: 0.0
+joint17_rigid1_length: 0.0
+joint17_rigid2_length: 0.0
+joint18_rigid1_length: 0.0
+joint18_rigid2_length: 0.0
+joint19_rigid1_length: 0.0
+joint19_rigid2_length: 0.0
 
-joint0_continuum_length: 30.0
-joint1_continuum_length: 30.0
-joint2_continuum_length: 30.0
-joint3_continuum_length: 30.0
-joint4_continuum_length: 30.0
-joint5_continuum_length: 30.0
-joint6_continuum_length: 30.0
-joint7_continuum_length: 30.0
-joint8_continuum_length: 30.0
-joint9_continuum_length: 30.0
-joint10_continuum_length: 30.0
-joint11_continuum_length: 30.0
-joint12_continuum_length: 30.0
-joint13_continuum_length: 30.0
-joint14_continuum_length: 30.0
-joint15_continuum_length: 30.0
-joint16_continuum_length: 30.0
-joint17_continuum_length: 30.0
-joint18_continuum_length: 30.0
-joint19_continuum_length: 30.0
+joint0_continuum_length: 80.0
+joint1_continuum_length: 80.0
+joint2_continuum_length: 80.0
+joint3_continuum_length: 80.0
+joint4_continuum_length: 80.0
+joint5_continuum_length: 80.0
+joint6_continuum_length: 80.0
+joint7_continuum_length: 80.0
+joint8_continuum_length: 80.0
+joint9_continuum_length: 80.0
+joint10_continuum_length: 80.0
+joint11_continuum_length: 80.0
+joint12_continuum_length: 80.0
+joint13_continuum_length: 80.0
+joint14_continuum_length: 80.0
+joint15_continuum_length: 80.0
+joint16_continuum_length: 80.0
+joint17_continuum_length: 80.0
+joint18_continuum_length: 80.0
+joint19_continuum_length: 80.0
 
-base_path_point_start_x: 0.0
-base_path_point_start_y: 0.0
-base_path_point_start_z: 0.0
-base_path_point_end_x: 0.0
-base_path_point_end_y: 1000.0
-base_path_point_end_z: 0.0
-norm_vector_circle1_x: 1.0
-norm_vector_circle1_y: 0.0
-norm_vector_circle1_z: 0.0
-radius1: 200
-norm_vector_circle1_x: 0.0
-norm_vector_circle1_y: 1.0
-norm_vector_circle1_z: 0.0
-radius2: 200
+path_follow_nanotime_interval: 500000000
+sample_interval: 1.0
+experience_type: 0
+# base_path_point_start_x: 0.0
+# base_path_point_start_y: 0.0
+# base_path_point_start_z: 0.0
+# base_path_point_end_x: 0.0
+# base_path_point_end_y: 1000.0
+# base_path_point_end_z: 0.0
+# norm_vector_circle1_x: 1.0
+# norm_vector_circle1_y: 0.0
+# norm_vector_circle1_z: 0.0
+# radius1: 200
+# norm_vector_circle2_x: 0.0
+# norm_vector_circle2_y: -1.0
+# norm_vector_circle2_z: 0.0
+# radius2: 200
