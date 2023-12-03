@@ -5,6 +5,7 @@
 #include "nav_msgs/msg/path.hpp"
 #include "uniform_bspline.hpp"
 #include "visualization_msgs/msg/marker_array.hpp"
+#include <cmath>
 #include <iostream>
 
 class CDCR:public rclcpp::Node
@@ -16,8 +17,22 @@ void getPathDeviationAndNextIndex(const int path_point_index_start,
                                   int& path_point_index_next_start);
 void getCDCRPointsAndTangentVector();
 void discretePath();
+void path_follow();
+void getCorrectStartPointID();
 
 private:
+double base_tolerance_deviation, base_tolerance_angle_deviation;
+Eigen::Vector3d base_path_point_end, base_path_point_start;
+Eigen::Vector3d base_end_point,base_start_point;
+Eigen::Vector3d base_z_axis,base_y_axis;
+bool flag_discretized;
+bool flag_end_tracking;
+int start_track_path_point_id;
+int track_path_point_id;
+double post_line_path_length;
+double arc_path_radius, arc_path_alpha, arc_path_theta;
+int correct_start_path_point_id, correct_end_path_point_id;
+
 int path_follow_nanotime_interval;
 double sample_interval;
 double length;
@@ -26,7 +41,7 @@ std::vector<double> max_deviations;
 std::vector<double> cdcr_point_deviation_values;
 // the element is the joint bone's points of each joint
 Eigen::MatrixXd cdcr_points, cdcr_point_tangent_vectors;
-Eigen::MatrixXd path_points;
+std::vector<Eigen::Vector3d> path_points;
 int joint_number;
 std::vector<Joint> joints;
 std::vector<Eigen::Matrix4d> transform_joint_to_world;
