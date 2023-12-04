@@ -133,7 +133,7 @@ void CDCR::fitCDCR()
         int target_point_id = closed_path_point_id+ceil(this->joints[joint_id].length/this->sample_interval);
         Eigen::Vector3d target_position = path_points[target_point_id];
         Eigen::Vector3d target_tangent_vec = (path_points[target_point_id+1]-path_points[target_point_id-1]).normalized();
-        
+        //TODO:
     }
     track_path_point_id++;
     return;
