@@ -11,7 +11,7 @@ std::vector<double> max_deviations;
 std::vector<double> current_deviations;
 std::vector<double> path_deviations;
 std::vector<std::vector<Eigen::Vector2d>> joint_variate_at_max_deviation;
-std::vector<Eigen::Matrix4d> joint_variate_at_max_deviation;
+std::vector<Eigen::Matrix4d> transform_at_max_deviation;
 Eigen::MatrixXd joint_points,joint_points_tangent_vectors;
 double length;
 double length_rigid1,length_rigid2,length_continuum;
