@@ -12,14 +12,20 @@ class CDCR:public rclcpp::Node
 {
 public:
 CDCR();
-void getPathDeviationAndNextIndex(const int path_point_index_start, 
-                                  const int cdcr_point_index, 
+void getPathDeviationAndNextIndex(const int& path_point_index_start, 
+                                  const int& cdcr_point_index, 
                                   int& path_point_index_next_start);
 void getCDCRPointsAndTangentVector();
 void discretePath();
 void path_follow();
 void getCorrectTravelPointID();
 void getBasePose();
+bool baseDeviationCorrectCheck(const int& path_point_id);
+bool baseDirectCorrectCheck(const int& path_point_id);
+bool remainPathLengthCheck(const int& path_point_id);
+double calVecProjValue(const Eigen::Vector3d& first_point, const Eigen::Vector3d& media_point, const Eigen::Vector3d& second_point);
+Eigen::Vector3d getMediaInterPoint(const Eigen::Vector3d& inter_point,const Eigen::Vector3d& line_end1,const Eigen::Vector3d& line_end2);
+void fitCDCR();
 
 private:
 rclcpp::TimerBase::SharedPtr timer;
@@ -47,7 +53,7 @@ Eigen::MatrixXd cdcr_points, cdcr_point_tangent_vectors;
 std::vector<Eigen::Vector3d> path_points;
 int joint_number;
 std::vector<Joint> joints;
-std::vector<Eigen::Matrix4d> transform_joint_to_world;
+std::vector<Eigen::Matrix4d> transform_joints_to_world, transform_world_to_joints;
 Eigen::Matrix4d transform_base_to_world, transform_world_to_base;
 int experience_type;
 void path_follow_callback();

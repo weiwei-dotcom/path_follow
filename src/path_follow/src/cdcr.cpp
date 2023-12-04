@@ -3,7 +3,7 @@
 
 CDCR::CDCR():Node("path_follow")
 {
-    this->flag_end_tracking = false;
+    this->flag_end_path_follow = false;
     this->flag_discretized = false;
     this->sample_interval = 1.0;
     this->joint_number = 8;
@@ -25,9 +25,8 @@ CDCR::CDCR():Node("path_follow")
     this->base_path_point_end(1)=this->get_parameter("base_path_point_end_y").as_double();
     this->declare_parameter<std::double_t>("base_path_point_end_z", 0.0);
     this->base_path_point_end(2)=this->get_parameter("base_path_point_end_z").as_double();
-    this->declare_parameter<std::double_t>("start_track_path_point_id", this->start_track_path_point_id);
+    this->declare_parameter<std::double_t>("start_track_path_point_id", 1);
     this->start_track_path_point_id=this->get_parameter("start_track_path_point_id").as_int();
-    //todo:
     this->declare_parameter<std::double_t>("base_start_point_x", 0.004);
     this->base_start_point(0)=this->get_parameter("base_start_point_x").as_double();
     this->declare_parameter<std::double_t>("base_start_point_y", 1.0);
@@ -80,34 +79,58 @@ CDCR::CDCR():Node("path_follow")
         this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_rigid2_length"), -1.0);
         this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_continuum_length"), -1.0);
     }
-    for (int i=0;i<joint_number;i++)
+    this->transform_base_to_world = Eigen::Matrix4d::Identity();
+    Eigen::Vector3d temp_x = this->base_y_axis.cross(this->base_z_axis);
+    this->transform_base_to_world.block(0,0,3,3) << temp_x,this->base_y_axis,this->base_z_axis;
+    this->transform_world_to_base = this->transform_base_to_world.inverse();
+    for (int i=0;i<this->joint_number;i++)
     {  
         Joint temp_joint(this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_rigid1_length")).as_double(),
                          this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_rigid2_length")).as_double(),
                          this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_continuum_length")).as_double());
-        for (int j=i+1;j<joint_number;j++)
+        this->transform_joints_to_world[i] = this->transform_base_to_world;
+        this->transform_world_to_joints[i] = this->transform_world_to_base;
+        for (int j=0;j<i;j++)
         {
-            this->transform_joint_to_world[j] = this->transform_joint_to_world[j]*temp_joint.transform;
+            this->transform_joints_to_world[i] = this->transform_joints_to_world[i]*this->joints[j].transform; 
+            this->transform_world_to_joints[i] = this->joints[j].transform.inverse()*this->transform_joints_to_world[i];
         }
         this->joints.push_back(temp_joint);
         this->length+=temp_joint.length;
     };
     this->base_tolerance_deviation = this->joints[0].length*base_tolerance_deviation_factor;
-    for (int i=0;i<joint_number;i++)
-    {
-        this->transform_joint_to_world.push_back(Eigen::Matrix4d::Identity());
-    }
-    this->transform_base_to_world = Eigen::Matrix4d::Identity();
-    this->transform_world_to_base = Eigen::Matrix4d::Identity();
 
     return;
 }
 
 void CDCR::path_follow_callback()
 {
-    //get base transform to world from the path point;
+    // get base transform of base to world from the path point;
     getBasePose();
-    //
+    if (this->flag_end_path_follow)
+    {
+        rclcpp::shutdown();
+        return;
+    }
+    // start to fit the cdcr robot;
+    fitCDCR();
+    if (this->flag_end_path_follow)
+    {
+        rclcpp::shutdown();
+        return;
+    }
+    return;
+}
+
+void CDCR::fitCDCR()
+{
+    int joint_id = 0;
+    this->transform_joints_to_world[0] = this->transform_base_to_world;
+    this->transform_world_to_joints[0] = this->transform_world_to_base.inverse();
+    for (joint_id; joint_id<joint_number; joint_id++)
+    {
+        
+    }
     return;
 }
 
@@ -120,7 +143,6 @@ void CDCR::discretePath()
     // case 1 is using the combination of line and circle;
     case 1:
     {
-
         int base_path_point_size = (int)ceil((base_path_point_end-base_path_point_start).norm()/this->sample_interval);
         for (int i=0;i<=base_path_point_size;i++)
         {
@@ -168,63 +190,27 @@ void CDCR::getCorrectTravelPointID()
     double path_deviation;
     for (int i=1;i<path_points.size()-1;i++)
     {
-        path_tangent_vec = (path_points[i+1]-path_points[i-1]).normalized();
-        if (acos(path_tangent_vec.dot(base_y_axis))/M_PI*180 > this->base_tolerance_angle_deviation)
+        if (i=path_points.size()-2)
         {
-            if (i=path_points.size()-2)
-            {
-                RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 179");
-                this->flag_end_path_follow=true;
-                return;
-            }
-            continue;
+            RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 173");
+            this->flag_end_path_follow=true;
+            return;
         }
-        path_deviation = (this->path_points[i].cross((this->base_start_point-this->base_end_point).normalized())).norm();
-        if (path_deviation > this->base_tolerance_deviation)
-        {
-            if (i=path_points.size()-2)
-            {
-                RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 190");
-                this->flag_end_path_follow=true;
-                return;
-            }
+        if (!baseDeviationCorrectCheck(i) || !baseDirectCorrectCheck(i))
             continue;
-        }
         correct_start_path_point_id = i;
         for (int j=i;j<path_points.size()-1;j++)
         {
-            path_tangent_vec = (path_points[j+1]-path_points[j-1]).normalized();
-            if (acos(path_tangent_vec.dot(base_y_axis))/M_PI*180 > this->base_tolerance_angle_deviation)
+            if (j=path_points.size()-2)
             {
-                if (j=path_points.size()-2)
-                {
-                    RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 204");
-                    this->flag_end_path_follow=true;
-                    return;
-                }
-                correct_end_path_point_id = j;
-                break;
+                RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 204");
+                this->flag_end_path_follow=true;
+                return;
             }
-            path_deviation = (this->path_points[j].cross((this->base_start_point-this->base_end_point).normalized())).norm();
-            if (path_deviation > this->base_tolerance_deviation)
+            if (!baseDirectCorrectCheck(j)
+                || !baseDeviationCorrectCheck(j)
+                || !remainPathLengthCheck(j))
             {
-                if (j=path_points.size()-2)
-                {
-                    RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 215");
-                    this->flag_end_path_follow=true;
-                    return;
-                }
-                correct_end_path_point_id = j;
-                break;
-            }
-            if (this->length*safe_path_length_factor > (path_points.size()-j)*sample_interval)
-            {
-                if (i=path_points.size()-2)
-                {
-                    RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 234");
-                    this->flag_end_path_follow=true;
-                    return;
-                }
                 correct_end_path_point_id = j;
                 break;
             }
@@ -245,10 +231,17 @@ void CDCR::path_follow()
     // discrete the path
     discretePath();
     if (flag_end_path_follow)
+    {
+        rclcpp::shutdown();
         return;
+    }
     getCorrectTravelPointID();
     if (flag_end_path_follow)
+    {
+        rclcpp::shutdown();
         return;
+    }
+    this->track_path_point_id = this->start_track_path_point_id;
     this->timer = this->create_wall_timer(std::chrono::nanoseconds(path_follow_nanotime_interval),
                                         std::bind(&CDCR::path_follow_callback,this));
     return;
@@ -256,11 +249,35 @@ void CDCR::path_follow()
 
 void CDCR::getBasePose()
 {
-    bool flag_base_tangent_vec_deviation = false;
-    bool flag_base_distance_deviation = false;
-    bool flag_remain_path_insufficient = false;
-    //TODO:
+    if (!baseDirectCorrectCheck(this->track_path_point_id))
+    {
+        this->flag_end_path_follow = true;
+        RCLCPP_ERROR(this->get_logger(), "Base Track Direct ERROR !!!");
+        return;   
+    }
+    if (!baseDeviationCorrectCheck(this->track_path_point_id))
+    {
+        this->flag_end_path_follow = true;
+        RCLCPP_ERROR(this->get_logger(), "Base Track Deviation ERROR !!!");
+        return;  
+    }
+    if(!remainPathLengthCheck(this->track_path_point_id))
+    {
+        this->flag_end_path_follow = true;
+        RCLCPP_ERROR(this->get_logger(), "Remain path length is not sufficient !!!");
+        return;
+    }
+    Eigen::Vector3d base_track_travel_point = getMediaInterPoint(path_points[this->track_path_point_id], this->base_end_point, this->base_start_point);
+    this->transform_base_to_world.block(0,3,3,1) = base_track_travel_point;
+    this->transform_world_to_base = this->transform_base_to_world.inverse();
     return;
+}
+
+Eigen::Vector3d CDCR::getMediaInterPoint(const Eigen::Vector3d& inter_point,const Eigen::Vector3d& line_end1,const Eigen::Vector3d& line_end2)
+{
+    double temp_proj_value=calVecProjValue(inter_point, line_end1,line_end2);
+    double temp_norm_value = (line_end1-line_end2).norm();
+    return (temp_proj_value/temp_norm_value * line_end2 + (temp_norm_value-temp_proj_value)/temp_norm_value*line_end1);
 }
 
 void CDCR::getCDCRPointsAndTangentVector()
@@ -277,8 +294,8 @@ void CDCR::getCDCRPointsAndTangentVector()
 
 // Calculate the deviation of with path, which the deviation is the distance 
 // between cdcr_point and the point of intersection of cdcr_point's norm plane and path
-void CDCR::getPathDeviationAndNextIndex(const int path_point_index_start, 
-                                        const int cdcr_point_index, 
+void CDCR::getPathDeviationAndNextIndex(const int& path_point_index_start, 
+                                        const int& cdcr_point_index, 
                                         int& path_point_index_next_start)
 {
     int temp_index = path_point_index_start;
@@ -327,4 +344,36 @@ void CDCR::getPathDeviationAndNextIndex(const int path_point_index_start,
         }
     }
     return;
+}
+
+bool CDCR::baseDeviationCorrectCheck(const int& path_point_id)
+{
+    double path_deviation = (this->path_points[path_point_id].cross((this->base_start_point-this->base_end_point).normalized())).norm();
+    double tempDotValue_1 = calVecProjValue(this->path_points[path_point_id], this->base_start_point, this->base_end_point);
+    double tempDotValue_2 = calVecProjValue(this->path_points[path_point_id], this->base_end_point, this->base_start_point);
+    if (tempDotValue_1 < 0 || tempDotValue_2 < 0 || path_deviation > this->base_tolerance_deviation) 
+    {
+        return false;
+    }
+    return true;
+}
+
+double CDCR::calVecProjValue(const Eigen::Vector3d& first_point, const Eigen::Vector3d& media_point, const Eigen::Vector3d& second_point)
+{
+    return (first_point-media_point).dot((second_point-media_point).normalized());
+}
+
+bool CDCR::baseDirectCorrectCheck(const int& path_point_id)
+{
+    Eigen::Vector3d path_tangent_vec = (path_points[path_point_id+1]-path_points[path_point_id-1]).normalized();
+    if (acos(path_tangent_vec.dot(base_y_axis))/M_PI*180 > this->base_tolerance_angle_deviation)
+        return false;
+    return true;
+}
+
+bool CDCR::remainPathLengthCheck(const int& path_point_id)
+{
+    if (this->length*this->safe_path_length_factor > (path_points.size()-path_point_id)*sample_interval)
+        return false;
+    return true;
 }

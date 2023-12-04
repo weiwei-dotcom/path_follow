@@ -82,10 +82,10 @@ base_end_point_x: -0.004
 base_end_point_y: 1001.0
 base_end_point_z: -0.004
 base_z_axis_x: 0.0
-base_z_axis_y: 0.0
-base_z_axis_z: 1.0
-base_y_axis_x: 0.0
-base_y_axis_y: 1.0
+base_z_axis_y: 1.0
+base_z_axis_z: 0.0
+base_y_axis_x: 1.0
+base_y_axis_y: 0.0
 base_y_axis_z: 0.0
 start_track_path_point_id: 1
 base_tolerance_deviation_factor: 0.08
