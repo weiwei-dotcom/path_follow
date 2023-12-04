@@ -18,15 +18,18 @@ void getPathDeviationAndNextIndex(const int path_point_index_start,
 void getCDCRPointsAndTangentVector();
 void discretePath();
 void path_follow();
-void getCorrectStartPointID();
+void getCorrectTravelPointID();
+void getBasePose();
 
 private:
+rclcpp::TimerBase::SharedPtr timer;
+double safe_path_length_factor;
 double base_tolerance_deviation, base_tolerance_angle_deviation;
 Eigen::Vector3d base_path_point_end, base_path_point_start;
 Eigen::Vector3d base_end_point,base_start_point;
 Eigen::Vector3d base_z_axis,base_y_axis;
 bool flag_discretized;
-bool flag_end_tracking;
+bool flag_end_path_follow;
 int start_track_path_point_id;
 int track_path_point_id;
 double post_line_path_length;

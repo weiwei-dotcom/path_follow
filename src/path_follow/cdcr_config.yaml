@@ -90,7 +90,9 @@ base_y_axis_z: 0.0
 start_track_path_point_id: 1
 base_tolerance_deviation_factor: 0.08
 base_tolerance_angle_deviation: 10
-// the end index at the path point list
+# this is the minimum value of remaining length over the length of the robot
+safe_path_length_factor: 1.5
+# the end index at the path point list
 
 # norm_vector_circle1_x: 1.0
 # norm_vector_circle1_y: 0.0

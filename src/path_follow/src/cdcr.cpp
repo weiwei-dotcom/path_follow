@@ -66,6 +66,8 @@ CDCR::CDCR():Node("path_follow")
     double base_tolerance_deviation_factor = this->get_parameter("base_tolerance_deviation_factor").as_double();
     this->declare_parameter<std::double_t>("base_tolerance_angle_deviation", 10);
     this->base_tolerance_angle_deviation=this->get_parameter("base_tolerance_angle_deviation").as_double();  
+    this->declare_parameter<std::double_t>("safe_path_length_factor", 10);
+    this->safe_path_length_factor=this->get_parameter("safe_path_length_factor").as_double();
 
     if (joint_number == -1)
     {
@@ -88,6 +90,7 @@ CDCR::CDCR():Node("path_follow")
             this->transform_joint_to_world[j] = this->transform_joint_to_world[j]*temp_joint.transform;
         }
         this->joints.push_back(temp_joint);
+        this->length+=temp_joint.length;
     };
     this->base_tolerance_deviation = this->joints[0].length*base_tolerance_deviation_factor;
     for (int i=0;i<joint_number;i++)
@@ -96,27 +99,15 @@ CDCR::CDCR():Node("path_follow")
     }
     this->transform_base_to_world = Eigen::Matrix4d::Identity();
     this->transform_world_to_base = Eigen::Matrix4d::Identity();
-    this->path_follow_nanotime_interval = -1.0;
-    std::cout << "here may cause error: 40" << std::endl;
-    auto time = this->create_wall_timer(std::chrono::nanoseconds(path_follow_nanotime_interval),
-                                        std::bind(&CDCR::path_follow_callback,this));
-    this->experience_type = -1;
-
 
     return;
 }
 
 void CDCR::path_follow_callback()
 {
-    // discrete the path
-    discretePath();
-    if (flag_end_tracking)
-        return;
-    getCorrectStartPointID();
-    if (flag_end_tracking)
-        return
-    path_follow();
-
+    //get base transform to world from the path point;
+    getBasePose();
+    //
     return;
 }
 
@@ -171,7 +162,7 @@ void CDCR::discretePath()
     return;
 }
 
-void CDCR::getCorrectStartPointID()
+void CDCR::getCorrectTravelPointID()
 {
     Eigen::Vector3d path_tangent_vec;
     double path_deviation;
@@ -183,7 +174,7 @@ void CDCR::getCorrectStartPointID()
             if (i=path_points.size()-2)
             {
                 RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 179");
-                this->flag_end_tracking=true;
+                this->flag_end_path_follow=true;
                 return;
             }
             continue;
@@ -194,7 +185,7 @@ void CDCR::getCorrectStartPointID()
             if (i=path_points.size()-2)
             {
                 RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 190");
-                this->flag_end_tracking=true;
+                this->flag_end_path_follow=true;
                 return;
             }
             continue;
@@ -205,44 +196,72 @@ void CDCR::getCorrectStartPointID()
             path_tangent_vec = (path_points[j+1]-path_points[j-1]).normalized();
             if (acos(path_tangent_vec.dot(base_y_axis))/M_PI*180 > this->base_tolerance_angle_deviation)
             {
-                if (i=path_points.size()-2)
+                if (j=path_points.size()-2)
                 {
                     RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 204");
-                    this->flag_end_tracking=true;
+                    this->flag_end_path_follow=true;
                     return;
                 }
-                continue;
+                correct_end_path_point_id = j;
+                break;
             }
-            path_deviation = (this->path_points[i].cross((this->base_start_point-this->base_end_point).normalized())).norm();
+            path_deviation = (this->path_points[j].cross((this->base_start_point-this->base_end_point).normalized())).norm();
             if (path_deviation > this->base_tolerance_deviation)
+            {
+                if (j=path_points.size()-2)
+                {
+                    RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 215");
+                    this->flag_end_path_follow=true;
+                    return;
+                }
+                correct_end_path_point_id = j;
+                break;
+            }
+            if (this->length*safe_path_length_factor > (path_points.size()-j)*sample_interval)
             {
                 if (i=path_points.size()-2)
                 {
-                    RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 215");
-                    this->flag_end_tracking=true;
+                    RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 234");
+                    this->flag_end_path_follow=true;
                     return;
                 }
-                continue;
+                correct_end_path_point_id = j;
+                break;
             }
-            correct_end_path_point_id = j;
-            RCLCPP_INFO(this->get_logger(), "the input start track index should be the range of (%d, %d)", correct_start_path_point_id, correct_end_path_point_id);
-            if (this->start_track_path_point_id < correct_start_path_point_id || 
-                this->start_track_path_point_id > correct_end_path_point_id)
-            {
-                RCLCPP_INFO(this->get_logger(), "Track Path Error");
-                this->flag_end_tracking = true;
-            }
-            return;
         }
+        RCLCPP_INFO(this->get_logger(),"the start track path point id should be the range (%d, %d)",correct_start_path_point_id,correct_end_path_point_id);
+        if (this->start_track_path_point_id < correct_start_path_point_id || 
+            this->start_track_path_point_id > correct_end_path_point_id)
+        {
+            RCLCPP_ERROR(this->get_logger(), "Track Path Error, track point wasn't in the travel range!!!");
+            this->flag_end_path_follow = true;
+        }
+        return;
     }
 }
 
 void CDCR::path_follow()
 {
-    
+    // discrete the path
+    discretePath();
+    if (flag_end_path_follow)
+        return;
+    getCorrectTravelPointID();
+    if (flag_end_path_follow)
+        return;
+    this->timer = this->create_wall_timer(std::chrono::nanoseconds(path_follow_nanotime_interval),
+                                        std::bind(&CDCR::path_follow_callback,this));
     return;
 }
 
+void CDCR::getBasePose()
+{
+    bool flag_base_tangent_vec_deviation = false;
+    bool flag_base_distance_deviation = false;
+    bool flag_remain_path_insufficient = false;
+    //TODO:
+    return;
+}
 
 void CDCR::getCDCRPointsAndTangentVector()
 {
