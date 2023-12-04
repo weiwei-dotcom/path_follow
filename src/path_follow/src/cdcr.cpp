@@ -5,11 +5,9 @@ CDCR::CDCR():Node("path_follow")
 {
     this->flag_end_path_follow = false;
     this->flag_discretized = false;
-    this->sample_interval = 1.0;
-    this->joint_number = 8;
-    this->declare_parameter<std::double_t>("sample_interval", this->sample_interval);
+    this->declare_parameter<std::double_t>("sample_interval", 1.0);
     this->sample_interval = this->get_parameter("sample_interval").as_double();
-    this->declare_parameter<std::int16_t>("joint_number", this->joint_number);
+    this->declare_parameter<std::int16_t>("joint_number", 8);
     this->joint_number = this->get_parameter("joint_number").as_int();
     this->declare_parameter<std::int16_t>("experience_type", this->experience_type);
     this->experience_type=this->get_parameter("experience_type").as_int();
@@ -67,6 +65,8 @@ CDCR::CDCR():Node("path_follow")
     this->base_tolerance_angle_deviation=this->get_parameter("base_tolerance_angle_deviation").as_double();  
     this->declare_parameter<std::double_t>("safe_path_length_factor", 10);
     this->safe_path_length_factor=this->get_parameter("safe_path_length_factor").as_double();
+    this->declare_parameter<std::double_t>("bone_sample_interval", 1.0);
+    this->bone_sample_interval=this->get_parameter("bone_sample_interval").as_double();
 
     if (joint_number == -1)
     {
@@ -127,10 +127,15 @@ void CDCR::fitCDCR()
     int joint_id = 0;
     this->transform_joints_to_world[0] = this->transform_base_to_world;
     this->transform_world_to_joints[0] = this->transform_world_to_base.inverse();
+    int closed_path_point_id = track_path_point_id;
     for (joint_id; joint_id<joint_number; joint_id++)
     {
+        int target_point_id = closed_path_point_id+ceil(this->joints[joint_id].length/this->sample_interval);
+        Eigen::Vector3d target_position = path_points[target_point_id];
+        Eigen::Vector3d target_tangent_vec = (path_points[target_point_id+1]-path_points[target_point_id-1]).normalized();
         
     }
+    track_path_point_id++;
     return;
 }
 

@@ -28,6 +28,7 @@ Eigen::Vector3d getMediaInterPoint(const Eigen::Vector3d& inter_point,const Eige
 void fitCDCR();
 
 private:
+double bone_sample_interval;
 rclcpp::TimerBase::SharedPtr timer;
 double safe_path_length_factor;
 double base_tolerance_deviation, base_tolerance_angle_deviation;

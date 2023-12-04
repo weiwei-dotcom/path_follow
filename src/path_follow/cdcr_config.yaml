@@ -63,6 +63,7 @@ joint19_continuum_length: 80.0
 
 path_follow_nanotime_interval: 500000000
 sample_interval: 1.0
+bone_sample_interval: 1.0
 experience_type: 1
 base_path_point_start_x: 0.0
 base_path_point_start_y: 0.0
