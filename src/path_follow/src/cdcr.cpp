@@ -63,8 +63,8 @@ CDCR::CDCR():Node("path_follow")
     double base_tolerance_deviation_factor = this->get_parameter("base_tolerance_deviation_factor").as_double();
     this->declare_parameter<std::double_t>("base_tolerance_angle_deviation", 10);
     this->base_tolerance_angle_deviation=this->get_parameter("base_tolerance_angle_deviation").as_double();  
-    this->declare_parameter<std::double_t>("safe_path_length_factor", 10);
-    this->safe_path_length_factor=this->get_parameter("safe_path_length_factor").as_double();
+    this->declare_parameter<std::double_t>("safe_path_length_redundance", 80);
+    this->safe_path_length_redundance=this->get_parameter("safe_path_length_redundance").as_double();
     this->declare_parameter<std::double_t>("bone_sample_interval", 1.0);
     this->bone_sample_interval=this->get_parameter("bone_sample_interval").as_double();
 
@@ -83,6 +83,7 @@ CDCR::CDCR():Node("path_follow")
     Eigen::Vector3d temp_x = this->base_y_axis.cross(this->base_z_axis);
     this->transform_base_to_world.block(0,0,3,3) << temp_x,this->base_y_axis,this->base_z_axis;
     this->transform_world_to_base = this->transform_base_to_world.inverse();
+    this->cdcr_point_size =0;
     for (int i=0;i<this->joint_number;i++)
     {  
         Joint temp_joint(this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_rigid1_length")).as_double(),
@@ -99,7 +100,8 @@ CDCR::CDCR():Node("path_follow")
         temp_joint.continuum_sample_point_size = ceil(temp_joint.length_continuum/this->bone_sample_interval);
         temp_joint.sample_point_size = temp_joint.continuum_sample_point_size+temp_joint.rigid1_sample_point_size+temp_joint.rigid2_sample_point_size;
         //TODO: 
-        temp_joint.sample_point_size=ceil(temp_joint.length/this->bone_sample_interval);
+        this->cdcr_point_size += temp_joint.sample_point_size;
+
         this->transform_joints_to_world[i] = this->transform_base_to_world;
         this->transform_world_to_joints[i] = this->transform_world_to_base;
         for (int j=0;j<i;j++)
@@ -110,6 +112,9 @@ CDCR::CDCR():Node("path_follow")
         this->joints.push_back(temp_joint);
         this->length+=temp_joint.length;
     };
+    this->cdcr_point_deviation.resize(this->cdcr_point_size,0);
+    this->cdcr_point_positions.resize(this->cdcr_point_size);
+    this->cdcr_point_tangent_vectors.resize(this->cdcr_point_size);
     this->base_tolerance_deviation = this->joints[0].length*base_tolerance_deviation_factor;
 
     return;
@@ -317,9 +322,9 @@ void CDCR::getPathDeviationAndNextIndex(const int& path_point_index_start,
                                         int& path_point_index_next_start)
 {
     int temp_index = path_point_index_start;
-    Eigen::Vector3d direction = this->cdcr_points.col(cdcr_point_index)-this->path_points[temp_index];
+    Eigen::Vector3d direction = this->cdcr_point_positions[cdcr_point_index]-this->path_points[temp_index];
     std::cout << "here may cause error of eigen vector" << std::endl;
-    double direction_value = this->cdcr_point_tangent_vectors.col(cdcr_point_index).dot(direction);
+    double direction_value = this->cdcr_point_tangent_vectors[cdcr_point_index].dot(direction);
     if (direction_value < 0)
     {
         temp_index -= 1;
@@ -327,14 +332,14 @@ void CDCR::getPathDeviationAndNextIndex(const int& path_point_index_start,
         {
             Eigen::Vector3d last_direction = direction;
             double last_direction_value = direction_value;
-            direction=this->cdcr_points.col(cdcr_point_index)-this->path_points[i];
-            direction_value = this->cdcr_point_tangent_vectors.col(cdcr_point_index).dot(direction);
+            direction=this->cdcr_point_positions[cdcr_point_index]-this->path_points[i];
+            direction_value = this->cdcr_point_tangent_vectors[cdcr_point_index].dot(direction);
             if (direction_value > 0)
             {
                 double temp_sum = direction_value + std::abs(last_direction_value);
                 Eigen::Vector3d interpolated_point = (temp_sum-direction_value)/temp_sum * this->path_points[i]
                                                     +(direction_value/temp_sum) * path_points[i+1];
-                this->cdcr_point_deviation_values[cdcr_point_index] = (interpolated_point-cdcr_points.col(cdcr_point_index)).norm();
+                this->cdcr_point_deviation[cdcr_point_index] = (interpolated_point-cdcr_point_positions[cdcr_point_index]).norm();
                 path_point_index_next_start = i+1;
                 return;
             }
@@ -348,14 +353,14 @@ void CDCR::getPathDeviationAndNextIndex(const int& path_point_index_start,
         {
             Eigen::Vector3d last_direction = direction;
             double last_direction_value = direction_value;
-            direction=this->cdcr_points.col(cdcr_point_index)-this->path_points[i];
-            direction_value = this->cdcr_point_tangent_vectors.col(cdcr_point_index).dot(direction);
+            direction=this->cdcr_point_positions[cdcr_point_index]-this->path_points[i];
+            direction_value = this->cdcr_point_tangent_vectors[cdcr_point_index].dot(direction);
             if (direction_value < 0)
             {
                 double temp_sum = last_direction_value + std::abs(direction_value);
                 Eigen::Vector3d interpolated_point = (temp_sum-last_direction_value)/temp_sum * this->path_points[i-1]
                                                     +(last_direction_value/temp_sum) * path_points[i];
-                this->cdcr_point_deviation_values[cdcr_point_index] = (interpolated_point-cdcr_points.col(cdcr_point_index)).norm();
+                this->cdcr_point_deviation[cdcr_point_index] = (interpolated_point-cdcr_point_positions[cdcr_point_index]).norm();
                 path_point_index_next_start = i;
                 return;
             }
@@ -391,7 +396,7 @@ bool CDCR::baseDirectCorrectCheck(const int& path_point_id)
 
 bool CDCR::remainPathLengthCheck(const int& path_point_id)
 {
-    if (this->length*this->safe_path_length_factor > (path_points.size()-path_point_id)*sample_interval)
+    if (this->length + this->safe_path_length_redundance > (path_points.size()-path_point_id)*sample_interval)
         return false;
     return true;
 }
