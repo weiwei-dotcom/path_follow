@@ -16,6 +16,8 @@ Eigen::MatrixXd joint_points,joint_points_tangent_vectors;
 double length;
 double length_rigid1,length_rigid2,length_continuum;
 Eigen::Matrix4d transform;
+int sample_point_size;
+int rigid1_sample_point_size, rigid2_sample_point_size, continuum_sample_point_size;
 
 private:
 };

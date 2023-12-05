@@ -88,6 +88,18 @@ CDCR::CDCR():Node("path_follow")
         Joint temp_joint(this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_rigid1_length")).as_double(),
                          this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_rigid2_length")).as_double(),
                          this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_continuum_length")).as_double());
+        if (temp_joint.length_rigid1 < 1e-4)
+            temp_joint.rigid1_sample_point_size = 0;
+        else
+            temp_joint.rigid1_sample_point_size = ceil(temp_joint.length_rigid1/this->bone_sample_interval);
+        if (temp_joint.length_rigid2 < 1e-4)
+            temp_joint.rigid2_sample_point_size = 0;
+        else
+            temp_joint.rigid2_sample_point_size = ceil(temp_joint.length_rigid2/this->bone_sample_interval);
+        temp_joint.continuum_sample_point_size = ceil(temp_joint.length_continuum/this->bone_sample_interval);
+        temp_joint.sample_point_size = temp_joint.continuum_sample_point_size+temp_joint.rigid1_sample_point_size+temp_joint.rigid2_sample_point_size;
+        //TODO: 
+        temp_joint.sample_point_size=ceil(temp_joint.length/this->bone_sample_interval);
         this->transform_joints_to_world[i] = this->transform_base_to_world;
         this->transform_world_to_joints[i] = this->transform_world_to_base;
         for (int j=0;j<i;j++)
@@ -130,10 +142,11 @@ void CDCR::fitCDCR()
     int closed_path_point_id = track_path_point_id;
     for (joint_id; joint_id<joint_number; joint_id++)
     {
-        int target_point_id = closed_path_point_id+ceil(this->joints[joint_id].length/this->sample_interval);
+        int target_point_id = closed_path_point_id+ceil(this->joints[joint_id].length/this->bone_sample_interval);
         Eigen::Vector3d target_position = path_points[target_point_id];
         Eigen::Vector3d target_tangent_vec = (path_points[target_point_id+1]-path_points[target_point_id-1]).normalized();
         //TODO:
+        
     }
     track_path_point_id++;
     return;
