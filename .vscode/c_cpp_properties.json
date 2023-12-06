@@ -9,8 +9,8 @@
                 "/opt/ros/foxy/include/**",
                 "/home/weiwei/Desktop/project/path_follow/src/path_follow/include/**",
                 "/usr/include/**",
-                "/opt/ros/foxy/include",
-                "/opt/ros/foxy/include"
+                "/opt/ros/foxy/include/**",
+                "${workspaceFolder}/build/path_follow_interface/rosidl_generator_cpp"
             ],
             "name": "ROS",
             "intelliSenseMode": "gcc-x64",

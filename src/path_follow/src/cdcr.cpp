@@ -59,8 +59,8 @@ CDCR::CDCR():Node("path_follow")
     this->base_y_axis(1)=this->get_parameter("base_y_axis_y").as_double();
     this->declare_parameter<std::double_t>("base_y_axis_z", 0.0);
     this->base_y_axis(2)=this->get_parameter("base_y_axis_z").as_double();
-    this->declare_parameter<std::double_t>("base_tolerance_deviation_factor", 0.08);
-    double base_tolerance_deviation_factor = this->get_parameter("base_tolerance_deviation_factor").as_double();
+    this->declare_parameter<std::double_t>("base_tolerance_deviation", 1);
+    double base_tolerance_deviation = this->get_parameter("base_tolerance_deviation").as_double();
     this->declare_parameter<std::double_t>("base_tolerance_angle_deviation", 10);
     this->base_tolerance_angle_deviation=this->get_parameter("base_tolerance_angle_deviation").as_double();  
     this->declare_parameter<std::double_t>("safe_path_length_redundance", 80);
@@ -83,7 +83,7 @@ CDCR::CDCR():Node("path_follow")
     Eigen::Vector3d temp_x = this->base_y_axis.cross(this->base_z_axis);
     this->transform_base_to_world.block(0,0,3,3) << temp_x,this->base_y_axis,this->base_z_axis;
     this->transform_world_to_base = this->transform_base_to_world.inverse();
-    this->cdcr_point_size =0;
+    int cdcr_point_size =0;
     for (int i=0;i<this->joint_number;i++)
     {  
         Joint temp_joint(this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_rigid1_length")).as_double(),
@@ -99,8 +99,7 @@ CDCR::CDCR():Node("path_follow")
             temp_joint.rigid2_sample_point_size = ceil(temp_joint.length_rigid2/this->bone_sample_interval);
         temp_joint.continuum_sample_point_size = ceil(temp_joint.length_continuum/this->bone_sample_interval);
         temp_joint.sample_point_size = temp_joint.continuum_sample_point_size+temp_joint.rigid1_sample_point_size+temp_joint.rigid2_sample_point_size;
-        //TODO: 
-        this->cdcr_point_size += temp_joint.sample_point_size;
+        cdcr_point_size += temp_joint.sample_point_size;
 
         this->transform_joints_to_world[i] = this->transform_base_to_world;
         this->transform_world_to_joints[i] = this->transform_world_to_base;
@@ -112,10 +111,9 @@ CDCR::CDCR():Node("path_follow")
         this->joints.push_back(temp_joint);
         this->length+=temp_joint.length;
     };
-    this->cdcr_point_deviation.resize(this->cdcr_point_size,0);
-    this->cdcr_point_positions.resize(this->cdcr_point_size);
-    this->cdcr_point_tangent_vectors.resize(this->cdcr_point_size);
-    this->base_tolerance_deviation = this->joints[0].length*base_tolerance_deviation_factor;
+    this->cdcr_point_deviation.resize(cdcr_point_size,0);
+    this->cdcr_point_positions.resize(cdcr_point_size);
+    this->cdcr_point_tangent_vectors.resize(cdcr_point_size);
 
     return;
 }
@@ -147,10 +145,11 @@ void CDCR::fitCDCR()
     int closed_path_point_id = track_path_point_id;
     for (joint_id; joint_id<joint_number; joint_id++)
     {
-        int target_point_id = closed_path_point_id+ceil(this->joints[joint_id].length/this->bone_sample_interval);
-        Eigen::Vector3d target_position = path_points[target_point_id];
-        Eigen::Vector3d target_tangent_vec = (path_points[target_point_id+1]-path_points[target_point_id-1]).normalized();
-        //TODO:
+        int target_path_point_id = closed_path_point_id+ceil(this->joints[joint_id].length/this->bone_sample_interval);
+        Eigen::Vector3d target_position = path_points[target_path_point_id];
+        Eigen::Vector3d target_tangent_vec = (path_points[target_path_point_id+1]-path_points[target_path_point_id-1]).normalized();
+        // TODO:
+        // transform the target_postion and tangent_vec to the frame of joint[joint_id]
         
     }
     track_path_point_id++;
@@ -196,6 +195,11 @@ void CDCR::discretePath()
             path_points.push_back(path_points.back() + vector_arc_end);
         }
         break;
+    }
+    // case 2 is using the constant curvature change rate path;
+    case 2:
+    {
+
     }
     // default is using the B-spline;
     default:

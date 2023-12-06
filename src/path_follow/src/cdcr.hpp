@@ -28,7 +28,6 @@ Eigen::Vector3d getMediaInterPoint(const Eigen::Vector3d& inter_point,const Eige
 void fitCDCR();
 
 private:
-int cdcr_point_size;
 double bone_sample_interval;
 rclcpp::TimerBase::SharedPtr timer;
 double safe_path_length_redundance;
@@ -46,11 +45,12 @@ int correct_start_path_point_id, correct_end_path_point_id;
 int path_follow_nanotime_interval;
 double sample_interval;
 double length;
-// TODO: Now we define the every cdcr_sample_point's tangent vector with direction vector of previous point point to next point.
+// TODO: Now we define the every cdcr point's tangent vector with direction vector of previous point point to next point.
 // Through observation we find that our maximum error is usually near the path shown in the figure below 
+// We should send the variate of joint and path point to another function package to calculate the deviation 
 std::vector<double> history_max_deviation;
-int max_deviation_cdcr_point_id;
 std::vector<double> cdcr_point_deviation;
+int max_deviation_cdcr_point_id;
 // the element is the joint bone's points of each joint
 std::vector<Eigen::Vector3d> cdcr_point_positions, cdcr_point_tangent_vectors;
 std::vector<Eigen::Vector3d> path_points;
