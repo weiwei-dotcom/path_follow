@@ -1,4 +1,4 @@
-joint_number: 8
+joint_number: 20
 joint0_rigid1_length: 0.0
 joint0_rigid2_length: 0.0
 joint1_rigid1_length: 0.0
@@ -69,18 +69,17 @@ base_path_point_start_x: 0.0
 base_path_point_start_y: 0.0
 base_path_point_start_z: 0.0
 base_path_point_end_x: 0.0
-base_path_point_end_y: 1000.0
+base_path_point_end_y: 2101.0
 base_path_point_end_z: 0.0
 arc_path_alpha: 0.0
-arc_path_theta: 90.0
-arc_path_radius: 200.0
-post_line_path_length: 1000.0
+arc_path_theta: 180
+post_line_path_length: 2100.0
 // the real base travel could use the init pose and end pose to confirm;
 base_start_point_x: 0.0
 base_start_point_y: 1.0
 base_start_point_z: 0.0
 base_end_point_x: 0.0
-base_end_point_y: 1001.0
+base_end_point_y: 1100.0
 base_end_point_z: 0.0
 base_z_axis_x: 0.0
 base_z_axis_y: 1.0
@@ -90,11 +89,13 @@ base_y_axis_y: 0.0
 base_y_axis_z: 0.0
 start_track_path_point_id: 1
 base_tolerance_deviation: 1
-base_tolerance_angle_deviation: 10
+base_tolerance_angle_deviation: 4
 # this is the minimum value of remaining length over the length of the robot
-safe_path_length_redundance: 80
+safe_path_length_redundance: 200
 start_curvature_radius: 600
 end_curvature_radius: 60
+min_arc_radius: 60
+max_arc_radius: 500
 # the end index at the path point list
 
 # norm_vector_circle1_x: 1.0

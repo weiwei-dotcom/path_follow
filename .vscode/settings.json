@@ -78,5 +78,6 @@
         "valarray": "cpp",
         "variant": "cpp",
         "bit": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "/home/weiwei/Desktop/project/path_follow/build/path_follow_interface/path_follow_interface__py"
 }

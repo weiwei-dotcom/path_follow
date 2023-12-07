@@ -3,6 +3,8 @@
 Joint::Joint(){}
 Joint::Joint(double length_rigid1,double length_rigid2,double length_continuum)
 {
+    this->alpha = 1e-4;
+    this->theta = 1e-4;
     this->length_rigid1 = length_rigid1;
     this->length_rigid2 = length_rigid2;
     this->length_continuum = length_continuum;
