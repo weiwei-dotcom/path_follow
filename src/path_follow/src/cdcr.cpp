@@ -3,6 +3,8 @@
 
 CDCR::CDCR():Node("path_follow")
 {
+    this->weight_direction=10;
+    this->weight_position=5;
     this->flag_end_path_follow = false;
     this->flag_discretized = false;
     this->flag_end_experience = false;
@@ -266,16 +268,34 @@ void CDCR::fitCDCR()
 {
     int joint_id = 0;
     this->transform_joints_to_world[0] = this->transform_base_to_world;
-    this->transform_world_to_joints[0] = this->transform_world_to_base.inverse();
+    this->transform_world_to_joints[0] = this->transform_world_to_base;
     int closed_path_point_id = track_path_point_id;
     for (joint_id; joint_id<joint_number; joint_id++)
     {
         int target_path_point_id = closed_path_point_id+ceil(this->joints[joint_id].length/this->bone_sample_interval);
-        Eigen::Vector3d target_position = path_points[target_path_point_id];
-        Eigen::Vector3d target_tangent_vec = (path_points[target_path_point_id+1]-path_points[target_path_point_id-1]).normalized();
+        Eigen::Vector4d target_position;
+        target_position << path_points[target_path_point_id],1.0;
+        Eigen::Vector3d target_tangent_vec=(path_points[target_path_point_id+1]-path_points[target_path_point_id-1]).normalized();
         // TODO:
         // transform the target_postion and tangent_vec to the frame of joint[joint_id]
-        
+        target_position = transform_world_to_joints[joint_id]*target_position;
+        target_tangent_vec = transform_world_to_joints[joint_id].block(0,0,3,3)*target_tangent_vec;
+        ceres::Problem fit_problem;
+        fit_problem.AddResidualBlock(
+            new ceres::AutoDiffCostFunction<fit_residual,1,1,1>(
+                new fit_residual(
+                    weight_position,
+                    weight_direction,
+                    joints[joint_id].length_rigid1,
+                    joints[joint_id].length_continuum,
+                    joints[joint_id].length_rigid2,
+                    target_position,
+                    target_tangent_vec
+                )
+            ),
+            NULL,
+            &joints[joint_id].alpha,&joints[joint_id].theta
+        )
     }
     track_path_point_id++;
     return;

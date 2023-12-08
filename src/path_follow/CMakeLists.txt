@@ -24,6 +24,7 @@ find_package(nav_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(rclcpp_components REQUIRED)
+find_package(Ceres REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -36,13 +37,13 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-include_directories(${EIGEN3_INCLUDE_DIR} ${Sophus_DIR})
+include_directories(${EIGEN3_INCLUDE_DIR} ${Sophus_DIR} ${CERES_INCLUDE_DIRS})
 
 add_executable(path_follow src/main.cpp src/cdcr.cpp src/joint.cpp)
 
 ament_target_dependencies(path_follow rclcpp nav_msgs rclcpp_components geometry_msgs std_msgs)
 
-target_link_libraries(path_follow ${EIGEN_LIBS})
+target_link_libraries(path_follow ${EIGEN_LIBS} ${CERES_LIBRARIES})
 
 install(TARGETS
   path_follow

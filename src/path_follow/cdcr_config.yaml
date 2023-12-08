@@ -96,6 +96,11 @@ start_curvature_radius: 600
 end_curvature_radius: 60
 min_arc_radius: 60
 max_arc_radius: 500
+# 位置误差权重
+weight_position: 1
+# 方向误差权重
+weight_direction: 5
+
 # the end index at the path point list
 
 # norm_vector_circle1_x: 1.0

@@ -6,6 +6,7 @@
 #include "uniform_bspline.hpp"
 #include "visualization_msgs/msg/marker_array.hpp"
 #include <cmath>
+#include <ceres/ceres.h>
 #include <iostream>
 
 class CDCR:public rclcpp::Node
@@ -28,10 +29,119 @@ Eigen::Vector3d getMediaInterPoint(const Eigen::Vector3d& inter_point,const Eige
 void fitCDCR();
 void path_follow();
 void visualization();
-struct fit_residual
+struct x_residual{
+    x_residual(double weight_postion,
+                double length_continuum,
+                double length_rigid2,
+                double x):
+                     length_continuum_(length_continuum),
+                     length_rigid2_(length_rigid2),
+                     x_(x),
+                     weight_position_(weight_position) {}
+    template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
+        residual[0] = weight_position_*(pow(length_continuum_/theta*(1-cos(theta))*cos(alpha)+length_rigid2_*sin(theta)*cos(alpha)-position_(0),2));
+        return true;
+    }
+private: 
+    const double weight_position_,weight_direction_;
+    const double length_rigid1_,length_continuum_,length_rigid2_;
+    const double x_; 
+};
+//todo:
+struct angle_residual{
+    fit_residual(double weight_postion,
+                 double weight_direction,
+                 double length_rigid1,
+                 double length_continuum,
+                 double length_rigid2,
+                 Eigen::Vector3d position,
+                 Eigen::Vector3d tangent_vector):
+                     length_rigid1_(length_rigid1), 
+                     length_continuum_(length_continuum),
+                     length_rigid2_(length_rigid2),
+                     position_(position),
+                     tangent_vector_(tangent_vector),
+                     weight_position_(weight_postion),
+                     weight_direction_(weight_direction){}
+    template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
+        residual[0] = weight_position_*(pow(length_continuum_/theta*(1-cos(theta))*cos(alpha)+length_rigid2_*sin(theta)*cos(alpha)-position_(0),2)
+                                       +pow(length_continuum_/theta*(1-cos(theta))*sin(alpha)+length_rigid2_*sin(theta)*sin(alpha)-position_(1),2)
+                                       +pow(length_continuum_/theta*sin(theta)+length_rigid1_+length_rigid2_*cos(theta)-position_(2), 2))
+                      +weight_direction_*pow(acos(sin(theta)*cos(alpha)*tangent_vector_(0)
+                                                  +sin(theta)*sin(alpha)*tangent_vector_(1)
+                                                  +cos(theta)*tangent_vector_(2)),2);
+        return true;
+    }
+private: 
+    const double weight_position_,weight_direction_;
+    const double length_rigid1_,length_continuum_,length_rigid2_;
+    const Eigen::Vector3d position_,tangent_vector_; 
+};
+struct angle_residual{
+    fit_residual(double weight_postion,
+                 double weight_direction,
+                 double length_rigid1,
+                 double length_continuum,
+                 double length_rigid2,
+                 Eigen::Vector3d position,
+                 Eigen::Vector3d tangent_vector):
+                     length_rigid1_(length_rigid1), 
+                     length_continuum_(length_continuum),
+                     length_rigid2_(length_rigid2),
+                     position_(position),
+                     tangent_vector_(tangent_vector),
+                     weight_position_(weight_postion),
+                     weight_direction_(weight_direction){}
+    template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
+        residual[0] = weight_position_*(pow(length_continuum_/theta*(1-cos(theta))*cos(alpha)+length_rigid2_*sin(theta)*cos(alpha)-position_(0),2)
+                                       +pow(length_continuum_/theta*(1-cos(theta))*sin(alpha)+length_rigid2_*sin(theta)*sin(alpha)-position_(1),2)
+                                       +pow(length_continuum_/theta*sin(theta)+length_rigid1_+length_rigid2_*cos(theta)-position_(2), 2))
+                      +weight_direction_*pow(acos(sin(theta)*cos(alpha)*tangent_vector_(0)
+                                                  +sin(theta)*sin(alpha)*tangent_vector_(1)
+                                                  +cos(theta)*tangent_vector_(2)),2);
+        return true;
+    }
+private: 
+    const double weight_position_,weight_direction_;
+    const double length_rigid1_,length_continuum_,length_rigid2_;
+    const Eigen::Vector3d position_,tangent_vector_; 
+};
+struct angle_residual{
+    fit_residual(double weight_postion,
+                 double weight_direction,
+                 double length_rigid1,
+                 double length_continuum,
+                 double length_rigid2,
+                 Eigen::Vector3d position,
+                 Eigen::Vector3d tangent_vector):
+                     length_rigid1_(length_rigid1), 
+                     length_continuum_(length_continuum),
+                     length_rigid2_(length_rigid2),
+                     position_(position),
+                     tangent_vector_(tangent_vector),
+                     weight_position_(weight_postion),
+                     weight_direction_(weight_direction){}
+    template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
+        residual[0] = weight_position_*(pow(length_continuum_/theta*(1-cos(theta))*cos(alpha)+length_rigid2_*sin(theta)*cos(alpha)-position_(0),2)
+                                       +pow(length_continuum_/theta*(1-cos(theta))*sin(alpha)+length_rigid2_*sin(theta)*sin(alpha)-position_(1),2)
+                                       +pow(length_continuum_/theta*sin(theta)+length_rigid1_+length_rigid2_*cos(theta)-position_(2), 2))
+                      +weight_direction_*pow(acos(sin(theta)*cos(alpha)*tangent_vector_(0)
+                                                  +sin(theta)*sin(alpha)*tangent_vector_(1)
+                                                  +cos(theta)*tangent_vector_(2)),2);
+        return true;
+    }
+private: 
+    const double weight_position_,weight_direction_;
+    const double length_rigid1_,length_continuum_,length_rigid2_;
+    const Eigen::Vector3d position_,tangent_vector_; 
+};
 //TODO:
 
 private:
+ceres::Problem fit_problem;
+ceres::Solver::Options option;
+ceres::Solver::Summary summary;
+double weight_position,weight_direction;
 double bone_sample_interval;
 rclcpp::TimerBase::SharedPtr timer;
 double safe_path_length_redundance;
