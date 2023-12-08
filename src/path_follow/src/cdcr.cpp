@@ -72,6 +72,10 @@ CDCR::CDCR():Node("path_follow")
     this->safe_path_length_redundance=this->get_parameter("safe_path_length_redundance").as_double();
     this->declare_parameter<std::double_t>("bone_sample_interval", 1.0);
     this->bone_sample_interval=this->get_parameter("bone_sample_interval").as_double();
+    this->declare_parameter<std::double_t>("weight_direction", 1.0);
+    this->weight_direction=this->get_parameter("weight_direction").as_double();
+    this->declare_parameter<std::double_t>("weight_position", 1.0);
+    this->weight_position=this->get_parameter("weight_position").as_double();
 
     if (joint_number == -1)
     {
@@ -282,20 +286,19 @@ void CDCR::fitCDCR()
         target_tangent_vec = transform_world_to_joints[joint_id].block(0,0,3,3)*target_tangent_vec;
         ceres::Problem fit_problem;
         fit_problem.AddResidualBlock(
-            new ceres::AutoDiffCostFunction<fit_residual,1,1,1>(
-                new fit_residual(
+            new ceres::AutoDiffCostFunction<x_residual,1,1>(
+                new x_residual(
                     weight_position,
-                    weight_direction,
-                    joints[joint_id].length_rigid1,
                     joints[joint_id].length_continuum,
                     joints[joint_id].length_rigid2,
-                    target_position,
-                    target_tangent_vec
+                    target_position.x()
                 )
             ),
             NULL,
             &joints[joint_id].alpha,&joints[joint_id].theta
-        )
+        );
+        ceres::Solver::Options option;
+        //TODO:
     }
     track_path_point_id++;
     return;
