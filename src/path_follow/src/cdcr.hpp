@@ -30,7 +30,7 @@ void fitCDCR();
 void path_follow();
 void visualization();
 struct x_residual{
-    x_residual(double weight_postion,
+    x_residual(double weight_position,
                 double length_continuum,
                 double length_rigid2,
                 double x):
@@ -39,12 +39,12 @@ struct x_residual{
                      x_(x),
                      weight_position_(weight_position) {}
     template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
-        residual[0] = weight_position_*(pow(length_continuum_/theta*(1-cos(theta))*cos(alpha)+length_rigid2_*sin(theta)*cos(alpha)-position_(0),2));
+        residual[0] = weight_position_*(pow(length_continuum_/theta*(1-cos(theta))*cos(alpha)+length_rigid2_*sin(theta)*cos(alpha)-x_,2));
         return true;
     }
 private: 
-    const double weight_position_,weight_direction_;
-    const double length_rigid1_,length_continuum_,length_rigid2_;
+    const double weight_position_;
+    const double length_continuum_,length_rigid2_;
     const double x_; 
 };
 //todo:
