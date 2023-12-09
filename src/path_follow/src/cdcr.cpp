@@ -305,8 +305,8 @@ void CDCR::path_follow()
         temp_t_spend += t_spend;
         fit_times++;
         get_cdcr_sample_points();
-        // TODO:
         visualization();
+        // TODO:
         cal_deviation_get_max_deviation_path_point_id();
     }
     this->time_spend.push_back(temp_t_spend/(double)fit_times);
@@ -462,7 +462,6 @@ void CDCR::fitCDCR()
         Eigen::Vector4d target_position;
         target_position << path_points[target_path_point_id],1.0;
         Eigen::Vector3d target_tangent_vec=(path_points[target_path_point_id+1]-path_points[target_path_point_id-1]).normalized();
-        // TODO:
         // transform the target_postion and tangent_vec to the frame of joint[joint_id]
         target_position = transform_world_to_joints[joint_id]*target_position;
         target_tangent_vec = transform_world_to_joints[joint_id].block(0,0,3,3)*target_tangent_vec;

@@ -146,11 +146,6 @@ double sample_interval;
 double length;
 // Min radius of arc exprience
 double min_arc_radius, max_arc_radius; 
-// The times of follow the whole path
-
-// TODO: Now we define the every path point's tangent vector with direction vector of previous point point to next point.
-// Through observation we find that our maximum error is usually near the path shown in the figure below 
-// We should send the variate of joint and path point to another function package to calculate the deviation 
 
 // Every element is the max deviation of one path follow process
 std::vector<double> max_deviation;
