@@ -164,6 +164,9 @@ CDCR::CDCR():Node("path_follow")
         this->joints.push_back(temp_joint);
         this->length+=temp_joint.length;
     };
+    this->base_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("base_visualization",10);
+    this->cdcr_plat_visualization_pub=this->create_publisher<visualization_msgs::msg::MarkerArray>("cdcr_plat_visualization",10);
+    this->cdcr_point_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("cdcr_point_visualization",10);
     return;
 }
 
@@ -207,7 +210,7 @@ void CDCR::discretePath()
     // case 2 is using the constant curvature change rate path;
     case 2:
     {
-
+        break;
     }
     // default is using the B-spline;
     default:
@@ -405,11 +408,38 @@ void CDCR::visualization()
         cdcr_plat_model.pose.position.x = this->cdcr_points[cdcr_segment_point_id[i]].x();
         cdcr_plat_model.pose.position.y = this->cdcr_points[cdcr_segment_point_id[i]].y();
         cdcr_plat_model.pose.position.z = this->cdcr_points[cdcr_segment_point_id[i]].z();
-        
-        cdcr_plat_model.pose.orientation.x = 
+        cdcr_plat_model.color.r = this->cdcr_plat_color_r;
+        cdcr_plat_model.color.g = this->cdcr_plat_color_g;
+        cdcr_plat_model.color.b = this->cdcr_plat_color_b;
+        cdcr_plat_model.color.a = this->cdcr_plat_color_a;
+        cdcr_plat_model.scale.x = this->cdcr_plat_size_x;
+        cdcr_plat_model.scale.y = this->cdcr_plat_size_y;
+        cdcr_plat_model.scale.z = this->cdcr_plat_size_z;
+        if (i==cdcr_segment_point_id.size()-1)
+        {
+            Eigen::Matrix4d tempT = this->transform_joints_to_world[i-1] * this->joints[i-1].transform;
+            Eigen::Quaterniond tempQ(tempT);
+            cdcr_plat_model.pose.orientation.x = tempQ.x();
+            cdcr_plat_model.pose.orientation.y = tempQ.y();
+            cdcr_plat_model.pose.orientation.z = tempQ.z();
+            cdcr_plat_model.pose.orientation.w = tempQ.w();
+        }
+        else
+        {
+            Eigen::Quaterniond tempQ(this->transform_joints_to_world[i]);
+            cdcr_plat_model.pose.orientation.x = tempQ.x();
+            cdcr_plat_model.pose.orientation.y = tempQ.y();
+            cdcr_plat_model.pose.orientation.z = tempQ.z();
+            cdcr_plat_model.pose.orientation.w = tempQ.w();
+        }
+        cdcr_plats_visual_msg.markers.push_back(cdcr_plat_model); 
     }
+    this->base_visualization_pub->publish(base_visual_msg);
+    this->cdcr_plat_visualization_pub->publish(cdcr_plats_visual_msg);
+    this->cdcr_point_visualization_pub->publish(cdcr_points_visual_msg);
     return;
 }
+
 Eigen::Vector3d CDCR::get_inter_point(const int& ratio_id, const int& total_id, const Eigen::Vector3d& start_point, const Eigen::Vector3d& end_point)
 {
     return start_point+(end_point-start_point)*(double)ratio_id/(double)total_id;
@@ -564,7 +594,7 @@ void CDCR::getCDCRPointsAndTangentVector()
     {
         for (int j =0;j<joints[i].joint_points.size();j++)
         {
-
+            // TODO:
         }
     }
     return;
@@ -576,51 +606,7 @@ void CDCR::getPathDeviationAndNextIndex(const int& path_point_index_start,
                                         const int& cdcr_point_index, 
                                         int& path_point_index_next_start)
 {
-    int temp_index = path_point_index_start;
-    Eigen::Vector3d direction = this->cdcr_points[cdcr_point_index]-this->path_points[temp_index];
-    std::cout << "here may cause error of eigen vector" << std::endl;
-    double direction_value = this->cdcr_point_tangent_vectors[cdcr_point_index].dot(direction);
-    if (direction_value < 0)
-    {
-        temp_index -= 1;
-        for (int i=temp_index; i>=0; i--)
-        {
-            Eigen::Vector3d last_direction = direction;
-            double last_direction_value = direction_value;
-            direction=this->cdcr_point_positions[cdcr_point_index]-this->path_points[i];
-            direction_value = this->cdcr_point_tangent_vectors[cdcr_point_index].dot(direction);
-            if (direction_value > 0)
-            {
-                double temp_sum = direction_value + std::abs(last_direction_value);
-                Eigen::Vector3d interpolated_point = (temp_sum-direction_value)/temp_sum * this->path_points[i]
-                                                    +(direction_value/temp_sum) * path_points[i+1];
-                this->cdcr_point_deviation[cdcr_point_index] = (interpolated_point-cdcr_point_positions[cdcr_point_index]).norm();
-                path_point_index_next_start = i+1;
-                return;
-            }
-        }
-    }
-    else
-    {
-        temp_index += 1;
-        int path_points_size = this->path_points.size();
-        for (int i=temp_index; i<=path_points_size; i++)
-        {
-            Eigen::Vector3d last_direction = direction;
-            double last_direction_value = direction_value;
-            direction=this->cdcr_point_positions[cdcr_point_index]-this->path_points[i];
-            direction_value = this->cdcr_point_tangent_vectors[cdcr_point_index].dot(direction);
-            if (direction_value < 0)
-            {
-                double temp_sum = last_direction_value + std::abs(direction_value);
-                Eigen::Vector3d interpolated_point = (temp_sum-last_direction_value)/temp_sum * this->path_points[i-1]
-                                                    +(last_direction_value/temp_sum) * path_points[i];
-                this->cdcr_point_deviation[cdcr_point_index] = (interpolated_point-cdcr_point_positions[cdcr_point_index]).norm();
-                path_point_index_next_start = i;
-                return;
-            }
-        }
-    }
+    // TODO:
     return;
 }
 

@@ -21,6 +21,7 @@ find_package(rclcpp REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(Sophus REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(rclcpp_components REQUIRED)
@@ -41,7 +42,7 @@ include_directories(${EIGEN3_INCLUDE_DIR} ${Sophus_DIR} ${CERES_INCLUDE_DIRS})
 
 add_executable(path_follow src/main.cpp src/cdcr.cpp src/joint.cpp)
 
-ament_target_dependencies(path_follow rclcpp nav_msgs rclcpp_components geometry_msgs std_msgs)
+ament_target_dependencies(path_follow rclcpp nav_msgs rclcpp_components geometry_msgs std_msgs visualization_msgs)
 
 target_link_libraries(path_follow ${EIGEN_LIBS} ${CERES_LIBRARIES})
 
