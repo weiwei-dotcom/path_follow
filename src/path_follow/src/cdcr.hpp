@@ -121,7 +121,7 @@ double base_box_size_x,base_box_size_y,base_box_size_z;
 double cdcr_point_size_x,cdcr_point_size_y,cdcr_point_size_z;
 double cdcr_plat_size_x,cdcr_plat_size_y,cdcr_plat_size_z;
 rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr cdcr_point_visualization_pub;
-rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr cdcr_base_visualization_pub;
+rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr base_visualization_pub;
 rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr cdcr_plat_visualization_pub;
 vector<int> cdcr_segment_point_id;
 int fit_end_path_point_id;
