@@ -77,7 +77,8 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "*.ipp": "cpp"
     },
     "cmake.sourceDirectory": "/home/weiwei/Desktop/project/path_follow/build/path_follow_interface/path_follow_interface__py"
 }

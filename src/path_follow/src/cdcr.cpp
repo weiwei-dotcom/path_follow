@@ -74,8 +74,52 @@ CDCR::CDCR():Node("path_follow")
     this->bone_sample_interval=this->get_parameter("bone_sample_interval").as_double();
     this->declare_parameter<std::double_t>("weight_direction", 1.0);
     this->weight_direction=this->get_parameter("weight_direction").as_double();
-    this->declare_parameter<std::double_t>("weight_position", 1.0);
+    this->declare_parameter<std::double_t>("weight_position", 5.0);
     this->weight_position=this->get_parameter("weight_position").as_double();
+    this->declare_parameter<std::double_t>("base_box_size_x", 300.0);
+    this->base_box_size_x=this->get_parameter("base_box_size_x").as_double();
+    this->declare_parameter<std::double_t>("base_box_size_y", 300.0);
+    this->base_box_size_y=this->get_parameter("base_box_size_y").as_double();
+    this->declare_parameter<std::double_t>("base_box_size_z", 500.0);
+    this->base_box_size_z=this->get_parameter("base_box_size_z").as_double();   
+    this->declare_parameter<std::float_t>("base_box_color_r", 0.1);
+    this->base_box_color_r=this->get_parameter("base_box_color_r").as_double();   
+    this->declare_parameter<std::float_t>("base_box_color_g", 0.1);
+    this->base_box_color_g=this->get_parameter("base_box_color_g").as_double();   
+    this->declare_parameter<std::float_t>("base_box_color_b", 0.1);
+    this->base_box_color_b=this->get_parameter("base_box_color_b").as_double();   
+    this->declare_parameter<std::float_t>("base_box_color_a", 1.0);
+    this->base_box_color_a=this->get_parameter("base_box_color_a").as_double();  
+
+    this->declare_parameter<std::double_t>("cdcr_point_size_x", 8);
+    this->cdcr_point_size_x = this->get_parameter("cdcr_point_size_x").as_double();
+    this->declare_parameter<std::double_t>("cdcr_point_size_y", 8);
+    this->cdcr_point_size_y = this->get_parameter("cdcr_point_size_y").as_double();
+    this->declare_parameter<std::double_t>("cdcr_point_size_z", 8);
+    this->cdcr_point_size_z = this->get_parameter("cdcr_point_size_z").as_double();
+    this->declare_parameter<std::float_t>("cdcr_point_color_r", 0.0);
+    this->cdcr_point_color_r = this->get_parameter("cdcr_point_color_r").as_double();
+    this->declare_parameter<std::float_t>("cdcr_point_color_g", 0.0);
+    this->cdcr_point_color_g = this->get_parameter("cdcr_point_color_g").as_double();
+    this->declare_parameter<std::float_t>("cdcr_point_color_b", 1.0);
+    this->cdcr_point_color_b = this->get_parameter("cdcr_point_color_b").as_double();
+    this->declare_parameter<std::float_t>("cdcr_point_color_a", 1.0);
+    this->cdcr_point_color_a = this->get_parameter("cdcr_point_color_a").as_double();
+
+    this->declare_parameter<std::double_t>("cdcr_plat_size_x", 90.0);
+    this->cdcr_plat_size_x = this->get_parameter("cdcr_plat_size_x").as_double();
+    this->declare_parameter<std::double_t>("cdcr_plat_size_y", 90.0);
+    this->cdcr_plat_size_y = this->get_parameter("cdcr_plat_size_y").as_double();
+    this->declare_parameter<std::double_t>("cdcr_plat_size_z", 8.0);
+    this->cdcr_plat_size_z = this->get_parameter("cdcr_plat_size_z").as_double();
+    this->declare_parameter<std::double_t>("cdcr_plat_color_r", 0.9);
+    this->cdcr_plat_color_r= this->get_parameter("cdcr_plat_color_r").as_double();
+    this->declare_parameter<std::double_t>("cdcr_plat_color_g", 0.2);
+    this->cdcr_plat_color_g = this->get_parameter("cdcr_plat_color_g").as_double();
+    this->declare_parameter<std::double_t>("cdcr_plat_color_b", 0.0);
+    this->cdcr_plat_color_b = this->get_parameter("cdcr_plat_color_b").as_double();
+    this->declare_parameter<std::double_t>("cdcr_plat_color_a", 1.0);
+    this->cdcr_plat_color_a = this->get_parameter("cdcr_plat_color_a").as_double();
 
     if (joint_number == -1)
     {
@@ -120,10 +164,6 @@ CDCR::CDCR():Node("path_follow")
         this->joints.push_back(temp_joint);
         this->length+=temp_joint.length;
     };
-    this->cdcr_point_deviation.resize(cdcr_point_size,0);
-    this->cdcr_point_positions.resize(cdcr_point_size);
-    this->cdcr_point_tangent_vectors.resize(cdcr_point_size);
-
     return;
 }
 
@@ -272,8 +312,9 @@ void CDCR::path_follow()
 void CDCR::get_cdcr_sample_points()
 {
     this->cdcr_points.resize(0);
-    this->cdcr_segment_start_id.resize(0);
-    this->cdcr_segment_start_id.push_back(0);
+    this->cdcr_points.push_back(this->transform_base_to_world.block(0,3,3,1));
+    this->cdcr_segment_point_id.resize(0);
+    this->cdcr_segment_point_id.push_back(0);
     for (int i=0;i<joint_number;i++)
     {
         Eigen::Vector3d rigid1_end_point = transform_joints_to_world[i].block(0,3,3,1) + transform_joints_to_world[i].block(0,0,3,3)*Eigen::Vector3d(0,0,joints[i].length_rigid1);
@@ -305,7 +346,67 @@ void CDCR::get_cdcr_sample_points()
             temp_point=get_inter_point(j,rigid2_point_num,rigid2_start_point,rigid2_end_point);
             this->cdcr_points.push_back(temp_point);
         }
-        this->cdcr_segment_start_id.push_back(cdcr_points.size()-1);
+        this->cdcr_segment_point_id.push_back(cdcr_points.size()-1);
+    }
+    return;
+}
+void CDCR::visualization()
+{
+    // visualize the base box;
+    std_msgs::msg::Header temp_header;
+    temp_header.frame_id = "world";
+    temp_header.stamp = this->now();
+    visualization_msgs::msg::Marker base_visual_msg;
+    base_visual_msg.header = temp_header;
+    base_visual_msg.type = visualization_msgs::msg::Marker::Type::CUBE;
+    base_visual_msg.color.r = this->base_box_color_r;
+    base_visual_msg.color.b = this->base_box_color_g;
+    base_visual_msg.color.g = this->base_box_color_b;
+    base_visual_msg.color.a = this->base_box_color_a;
+    base_visual_msg.scale.x = base_box_size_x;
+    base_visual_msg.scale.y = base_box_size_y;
+    base_visual_msg.scale.z = base_box_size_z;
+    Eigen::Vector3d base_box_center_position=cdcr_points[0] - this->transform_base_to_world.block(0,2,3,1)*base_box_size_z/2;
+    base_visual_msg.pose.position.x = base_box_center_position.x();
+    base_visual_msg.pose.position.y = base_box_center_position.y();
+    base_visual_msg.pose.position.z = base_box_center_position.z();
+    Eigen::Quaterniond base_box_quaternion(this->transform_base_to_world);
+    base_visual_msg.pose.orientation.x = base_box_quaternion.x();
+    base_visual_msg.pose.orientation.y = base_box_quaternion.y();
+    base_visual_msg.pose.orientation.z = base_box_quaternion.z();
+    base_visual_msg.pose.orientation.w = base_box_quaternion.w();
+    // visualize the every cdcr point;
+    visualization_msgs::msg::Marker cdcr_points_visual_msg;
+    cdcr_points_visual_msg.header = temp_header;
+    cdcr_points_visual_msg.type = visualization_msgs::msg::Marker::SPHERE_LIST;
+    cdcr_points_visual_msg.color.r = this->cdcr_point_color_r;
+    cdcr_points_visual_msg.color.g = this->cdcr_point_color_g;
+    cdcr_points_visual_msg.color.b = this->cdcr_point_color_b;
+    cdcr_points_visual_msg.color.a = this->cdcr_point_color_a;
+    cdcr_points_visual_msg.scale.x = this->cdcr_point_size_x;
+    cdcr_points_visual_msg.scale.y = this->cdcr_point_size_y;
+    cdcr_points_visual_msg.scale.z = this->cdcr_point_size_z;
+    cdcr_points_visual_msg.pose.orientation.w = 1.0;
+    for (int i=0;i<this->cdcr_points.size();i++)
+    {
+        geometry_msgs::msg::Point temp_point;
+        temp_point.x = this->cdcr_points[i].x();
+        temp_point.y = this->cdcr_points[i].y();
+        temp_point.z = this->cdcr_points[i].z();
+        cdcr_points_visual_msg.points.push_back(temp_point);
+    }
+    // visualize the cdcr plat;
+    visualization_msgs::msg::MarkerArray cdcr_plats_visual_msg;
+    for (int i=0;i<this->cdcr_segment_point_id.size();i++)
+    {
+        visualization_msgs::msg::Marker cdcr_plat_model;
+        cdcr_plat_model.header = temp_header;
+        cdcr_plat_model.type =visualization_msgs::msg::Marker::CYLINDER;
+        cdcr_plat_model.pose.position.x = this->cdcr_points[cdcr_segment_point_id[i]].x();
+        cdcr_plat_model.pose.position.y = this->cdcr_points[cdcr_segment_point_id[i]].y();
+        cdcr_plat_model.pose.position.z = this->cdcr_points[cdcr_segment_point_id[i]].z();
+        
+        cdcr_plat_model.pose.orientation.x = 
     }
     return;
 }
@@ -441,11 +542,6 @@ void CDCR::find_closed_path_point(const int& start_path_point_id,const Eigen::Ve
     return;
 }
 
-void CDCR::visualization()
-{
-
-    return;
-}
 
 void CDCR::getBasePose()
 {

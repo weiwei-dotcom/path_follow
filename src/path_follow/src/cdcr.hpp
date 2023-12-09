@@ -6,6 +6,8 @@
 #include "uniform_bspline.hpp"
 #include "visualization_msgs/msg/marker_array.hpp"
 #include <cmath>
+#include <visualization_msgs/msg/marker_array.hpp>
+#include <visualization_msgs/msg/marker.hpp>
 #include <ceres/ceres.h>
 #include <iostream>
 
@@ -112,7 +114,12 @@ void cal_deviation_get_max_deviation_path_point_id();
 void get_cdcr_sample_points();
 void find_closed_path_point(const int& start_path_point_id,const Eigen::Vector3d& joint_end_position, int& segment_start_path_point_id);
 private:
-vector<int> cdcr_segment_start_id;
+float base_box_color_r,base_box_color_g,base_box_color_b,base_box_color_a;
+double base_box_size_x,base_box_size_y,base_box_size_z;
+rclcpp::Publisher<visualization_msgs::msg::MarkerArray> cdcr_point_pub;
+rclcpp::Publisher<visualization_msgs::msg::Marker> cdcr_base_pub;
+rclcpp::Publisher<visualization_msgs::msg::MarkerArray> cdcr_plat_pub;
+vector<int> cdcr_point_segment_id;
 int fit_end_path_point_id;
 int start_track_path_point_id;
 double weight_position,weight_direction;
