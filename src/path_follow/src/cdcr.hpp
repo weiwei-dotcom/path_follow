@@ -107,7 +107,14 @@ private:
     const double length_rigid1_,length_continuum_,length_rigid2_;
     const Eigen::Vector3d tangent_vector_; 
 };
+Eigen::Vector3d get_inter_point(const int& ratio_id, const int& total_id, const Eigen::Vector3d& start_point, const Eigen::Vector3d& end_point);
+void cal_deviation_get_max_deviation_path_point_id();
+void get_cdcr_sample_points();
+void find_closed_path_point(const int& start_path_point_id,const Eigen::Vector3d& joint_end_position, int& segment_start_path_point_id);
 private:
+vector<int> cdcr_segment_start_id;
+int fit_end_path_point_id;
+int start_track_path_point_id;
 double weight_position,weight_direction;
 double bone_sample_interval;
 rclcpp::TimerBase::SharedPtr timer;
@@ -119,7 +126,6 @@ Eigen::Vector3d base_z_axis,base_y_axis;
 bool flag_discretized;
 bool flag_end_experience;
 bool flag_end_path_follow;
-int start_track_path_point_id;
 int track_path_point_id;
 double post_line_path_length;
 double arc_path_radius, arc_path_alpha, arc_path_theta;
@@ -137,17 +143,12 @@ double min_arc_radius, max_arc_radius;
 
 // Every element is the max deviation of one path follow process
 std::vector<double> max_deviation;
-// path point index of max deviation with cdcr robot at one path follow
+// path point index of max deviation with cdcr robot at one path follow process
 std::vector<int> max_deviation_path_point_id;
 // average time of one path follow process
 std::vector<double> time_spend;
-// The distribution of the deviation at each cdcr point on one track process
-std::vector<double> cdcr_point_deviation;
-// // The max deviation cdcr point id of cdcr point on one track process
-// int max_deviation_cdcr_point_id;
-
 // joint bone's points of each joint
-std::vector<Eigen::Vector3d> cdcr_point_positions, cdcr_point_tangent_vectors;
+std::vector<Eigen::Vector3d> cdcr_points;
 std::vector<Eigen::Vector3d> path_points;
 int joint_number;
 std::vector<Joint> joints;

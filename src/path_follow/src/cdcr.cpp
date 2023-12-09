@@ -110,12 +110,12 @@ CDCR::CDCR():Node("path_follow")
         temp_joint.sample_point_size = temp_joint.continuum_sample_point_size+temp_joint.rigid1_sample_point_size+temp_joint.rigid2_sample_point_size;
         cdcr_point_size += temp_joint.sample_point_size;
 
-        this->transform_joints_to_world[i] = this->transform_base_to_world;
-        this->transform_world_to_joints[i] = this->transform_world_to_base;
+        this->transform_joints_to_world.push_back(this->transform_base_to_world);
+        this->transform_world_to_joints.push_back(this->transform_world_to_base);
         for (int j=0;j<i;j++)
         {
-            this->transform_joints_to_world[i] = this->transform_joints_to_world[i]*this->joints[j].transform; 
-            this->transform_world_to_joints[i] = this->joints[j].transform.inverse()*this->transform_joints_to_world[i];
+            this->transform_joints_to_world[i] = this->transform_joints_to_world[i]*this->joints[j].transform;
+            this->transform_world_to_joints[i] = this->joints[j].transform.inverse()*this->transform_world_to_joints[i];
         }
         this->joints.push_back(temp_joint);
         this->length+=temp_joint.length;
@@ -192,8 +192,8 @@ void CDCR::path_follow_exeperience()
             rclcpp::shutdown();
             return;
         }
-        this->track_path_point_id = this->start_track_path_point_id;
-        
+        this->start_track_path_point_id;
+        path_follow();
     }
     return;    
 }
@@ -261,22 +261,73 @@ void CDCR::path_follow()
         double t_spend = t_end.seconds()-t_start.seconds();
         temp_t_spend += t_spend;
         fit_times++;
-        // 
+        get_cdcr_sample_points();
+        // TODO:
         visualization();
+        cal_deviation_get_max_deviation_path_point_id();
     }
     this->time_spend.push_back(temp_t_spend/(double)fit_times);
     return;
 }
+void CDCR::get_cdcr_sample_points()
+{
+    this->cdcr_points.resize(0);
+    this->cdcr_segment_start_id.resize(0);
+    this->cdcr_segment_start_id.push_back(0);
+    for (int i=0;i<joint_number;i++)
+    {
+        Eigen::Vector3d rigid1_end_point = transform_joints_to_world[i].block(0,3,3,1) + transform_joints_to_world[i].block(0,0,3,3)*Eigen::Vector3d(0,0,joints[i].length_rigid1);
+        Eigen::Vector3d rigid1_start_point = transform_joints_to_world[i].block(0,3,3,1);
+        Eigen::Vector3d temp_point;
+        int rigid1_point_num = ceil(joints[i].length_rigid1/this->bone_sample_interval);
+        for (int j=1;j<=rigid1_point_num;j++)
+        {
+            temp_point = get_inter_point(j,rigid1_point_num,rigid1_start_point,rigid1_end_point);
+            cdcr_points.push_back(temp_point);
+        }
+        Eigen::Matrix4d temp_transform_continuum_world = transform_joints_to_world[i];
+        temp_transform_continuum_world.block(0,3,3,1) = rigid1_end_point;
+        int continuum_point_num = ceil(joints[i].length_continuum/this->bone_sample_interval);
+        for (int j=1;j<=continuum_point_num;j++)
+        {
+            temp_point = temp_transform_continuum_world*Eigen::Vector3d(this->joints[i].length_continuum/this->joints[i].theta*(1-cos((double)j/(double)continuum_point_num*this->joints[i].theta))*cos(this->joints[i].alpha),
+                                                                        this->joints[i].length_continuum/this->joints[i].theta*(1-cos((double)j/(double)continuum_point_num*this->joints[i].theta))*sin(this->joints[i].alpha),
+                                                                        this->joints[i].length_continuum/this->joints[i].theta*sin((double)j/(double)continuum_point_num*this->joints[i].theta));
+            this->cdcr_points.push_back(temp_point);
+        }
+        int rigid2_point_num = ceil(this->joints[i].length_rigid2/this->bone_sample_interval);
+        Eigen::Vector3d rigid2_end_point = (this->transform_joints_to_world[i]*this->joints[i].transform.col(3)).block(0,0,3,1);
+        Eigen::Vector3d rigid2_start_point = temp_transform_continuum_world*Eigen::Vector3d(this->joints[i].length_continuum/this->joints[i].theta*(1-cos(this->joints[i].theta))*cos(this->joints[i].alpha),
+                                                                                            this->joints[i].length_continuum/this->joints[i].theta*(1-cos(this->joints[i].theta))*sin(this->joints[i].alpha),
+                                                                                            this->joints[i].length_continuum/this->joints[i].theta*sin(this->joints[i].theta));
+        for (int j=1;j<=rigid2_point_num;j++)
+        {
+            temp_point=get_inter_point(j,rigid2_point_num,rigid2_start_point,rigid2_end_point);
+            this->cdcr_points.push_back(temp_point);
+        }
+        this->cdcr_segment_start_id.push_back(cdcr_points.size()-1);
+    }
+    return;
+}
+Eigen::Vector3d CDCR::get_inter_point(const int& ratio_id, const int& total_id, const Eigen::Vector3d& start_point, const Eigen::Vector3d& end_point)
+{
+    return start_point+(end_point-start_point)*(double)ratio_id/(double)total_id;
+}
+void CDCR::cal_deviation_get_max_deviation_path_point_id()
+{
+    //TODO:
 
+    return;
+}
 void CDCR::fitCDCR()
 {
     int joint_id = 0;
     this->transform_joints_to_world[0] = this->transform_base_to_world;
     this->transform_world_to_joints[0] = this->transform_world_to_base;
-    int closed_path_point_id = track_path_point_id;
+    int segment_start_path_point_id = track_path_point_id;
     for (joint_id; joint_id<joint_number; joint_id++)
     {
-        int target_path_point_id = closed_path_point_id+ceil(this->joints[joint_id].length/this->bone_sample_interval);
+        int target_path_point_id = segment_start_path_point_id+ceil(this->joints[joint_id].length/this->bone_sample_interval);
         Eigen::Vector4d target_position;
         target_position << path_points[target_path_point_id],1.0;
         Eigen::Vector3d target_tangent_vec=(path_points[target_path_point_id+1]-path_points[target_path_point_id-1]).normalized();
@@ -303,7 +354,8 @@ void CDCR::fitCDCR()
                     weight_position,
                     joints[joint_id].length_continuum,
                     joints[joint_id].length_rigid2,
-                    target_position.y())
+                    target_position.y()
+                )
             ),
             NULL,
             &joints[joint_id].alpha,&joints[joint_id].theta    
@@ -315,7 +367,8 @@ void CDCR::fitCDCR()
                     joints[joint_id].length_continuum,
                     joints[joint_id].length_rigid1,
                     joints[joint_id].length_rigid2,
-                    target_position.z())
+                    target_position.z()
+                )
             ),
             NULL,
             &joints[joint_id].alpha,&joints[joint_id].theta    
@@ -345,11 +398,46 @@ void CDCR::fitCDCR()
         option.logging_type=ceres::PER_MINIMIZER_ITERATION;
         ceres::Solver::Summary summary;
         ceres::Solve(option, &fit_problem, &summary);
-        transform_joints_to_world[joint_id+1] = transform_joints_to_world[joint_id] * joints[joint_id].getTransform();
-        Eigen::Vector3d joint_end_position = 
-        closed_path_point_id = find_closed_path_point(closed_path_point_id,joint_end_position);
+        if (joint_id<joint_number-1)
+        {
+            transform_joints_to_world[joint_id+1] = transform_joints_to_world[joint_id] * joints[joint_id].getTransform();
+            transform_world_to_joints[joint_id+1] = joints[joint_id].transform.inverse()*transform_world_to_joints[joint_id];            
+        }
+        Eigen::Vector3d joint_end_position = joints[joint_id].transform.block(0,3,3,1);
+        find_closed_path_point(target_path_point_id,joint_end_position,segment_start_path_point_id);
     }
+    this->fit_end_path_point_id =segment_start_path_point_id;
     track_path_point_id++;
+    return;
+}
+
+void CDCR::find_closed_path_point(const int& start_path_point_id,const Eigen::Vector3d& joint_end_position, int& segment_start_path_point_id)
+{
+    int temp_path_point_id = start_path_point_id;
+    Eigen::Vector3d temp_path_tangent_vec=this->path_points[temp_path_point_id+1]-this->path_points[temp_path_point_id-1];
+    Eigen::Vector3d temp_direction=joint_end_position-path_points[temp_path_point_id];
+    double temp_dot_value = temp_path_tangent_vec.dot(temp_direction);
+    if (temp_dot_value > 0)
+    {   
+        do
+        {
+            temp_path_point_id++;
+            Eigen::Vector3d temp_path_tangent_vec=this->path_points[temp_path_point_id+1]-this->path_points[temp_path_point_id-1];
+            Eigen::Vector3d temp_direction=joint_end_position-path_points[temp_path_point_id];
+            temp_dot_value = temp_path_tangent_vec.dot(temp_direction);
+        }while(temp_dot_value<0||temp_path_point_id<path_points.size());        
+    }
+    else 
+    {
+        do
+        {
+            temp_path_point_id--;
+            Eigen::Vector3d temp_path_tangent_vec=this->path_points[temp_path_point_id+1]-this->path_points[temp_path_point_id-1];
+            Eigen::Vector3d temp_direction=joint_end_position-path_points[temp_path_point_id];
+            temp_dot_value = temp_path_tangent_vec.dot(temp_direction);
+        }while(temp_dot_value>0 || temp_path_point_id>0);     
+    }
+    segment_start_path_point_id = temp_path_point_id;
     return;
 }
 
@@ -393,7 +481,7 @@ void CDCR::getPathDeviationAndNextIndex(const int& path_point_index_start,
                                         int& path_point_index_next_start)
 {
     int temp_index = path_point_index_start;
-    Eigen::Vector3d direction = this->cdcr_point_positions[cdcr_point_index]-this->path_points[temp_index];
+    Eigen::Vector3d direction = this->cdcr_points[cdcr_point_index]-this->path_points[temp_index];
     std::cout << "here may cause error of eigen vector" << std::endl;
     double direction_value = this->cdcr_point_tangent_vectors[cdcr_point_index].dot(direction);
     if (direction_value < 0)
