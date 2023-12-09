@@ -14,3 +14,9 @@ Joint::Joint(double length_rigid1,double length_rigid2,double length_continuum)
     return;
 }
 
+Eigen::Matrix4d getTransform()
+{
+    this->transform = 
+    return this->transform;
+}
+

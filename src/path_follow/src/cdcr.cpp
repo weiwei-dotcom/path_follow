@@ -297,8 +297,57 @@ void CDCR::fitCDCR()
             NULL,
             &joints[joint_id].alpha,&joints[joint_id].theta
         );
+        fit_problem.AddResidualBlock(
+            new ceres::AutoDiffCostFunction<y_residual,1,1>(
+                new y_residual(
+                    weight_position,
+                    joints[joint_id].length_continuum,
+                    joints[joint_id].length_rigid2,
+                    target_position.y())
+            ),
+            NULL,
+            &joints[joint_id].alpha,&joints[joint_id].theta    
+        );
+        fit_problem.AddResidualBlock(
+            new ceres::AutoDiffCostFunction<z_residual,1,1>(
+                new z_residual(
+                    weight_position,
+                    joints[joint_id].length_continuum,
+                    joints[joint_id].length_rigid1,
+                    joints[joint_id].length_rigid2,
+                    target_position.z())
+            ),
+            NULL,
+            &joints[joint_id].alpha,&joints[joint_id].theta    
+        );
+        fit_problem.AddResidualBlock(
+            new ceres::AutoDiffCostFunction<angle_residual,1,1>(
+                new angle_residual(
+                    weight_direction,
+                    joints[joint_id].length_rigid1,
+                    joints[joint_id].length_continuum,
+                    joints[joint_id].length_rigid2,
+                    target_tangent_vec
+                )
+            ),
+            NULL,
+            &joints[joint_id].alpha,&joints[joint_id].theta
+        );
+        fit_problem.SetParameterLowerBound(&joints[joint_id].alpha, 0, -M_PI_2);
+        fit_problem.SetParameterLowerBound(&joints[joint_id].theta, 0, 1e-4);
+        fit_problem.SetParameterUpperBound(&joints[joint_id].alpha, 0, M_PI/2);
+        fit_problem.SetParameterUpperBound(&joints[joint_id].theta, 0, M_PI_2);
         ceres::Solver::Options option;
-        //TODO:
+        option.max_num_iterations=50;
+        option.minimizer_progress_to_stdout = true;
+        option.linear_solver_type=ceres::DENSE_QR;
+        option.trust_region_strategy_type=ceres::DOGLEG;
+        option.logging_type=ceres::PER_MINIMIZER_ITERATION;
+        ceres::Solver::Summary summary;
+        ceres::Solve(option, &fit_problem, &summary);
+        transform_joints_to_world[joint_id+1] = transform_joints_to_world[joint_id] * joints[joint_id].getTransform();
+        Eigen::Vector3d joint_end_position = 
+        closed_path_point_id = find_closed_path_point(closed_path_point_id,joint_end_position);
     }
     track_path_point_id++;
     return;

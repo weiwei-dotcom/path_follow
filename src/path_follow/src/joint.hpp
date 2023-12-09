@@ -19,6 +19,6 @@ Eigen::Matrix4d transform;
 int sample_point_size;
 int rigid1_sample_point_size, rigid2_sample_point_size, continuum_sample_point_size;
 double last_alpha,alpha,last_theta,theta;
-
+Eigen::Matrix4d getTransform();
 private:
 };
