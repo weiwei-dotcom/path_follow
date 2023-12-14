@@ -114,12 +114,12 @@ path_follow: /opt/ros/foxy/lib/libnav_msgs__rosidl_typesupport_c.so
 path_follow: /opt/ros/foxy/lib/libnav_msgs__rosidl_typesupport_introspection_cpp.so
 path_follow: /opt/ros/foxy/lib/libnav_msgs__rosidl_typesupport_cpp.so
 path_follow: /opt/ros/foxy/lib/libcomponent_manager.so
+path_follow: /opt/ros/foxy/lib/libvisualization_msgs__rosidl_typesupport_introspection_c.so
+path_follow: /opt/ros/foxy/lib/libvisualization_msgs__rosidl_typesupport_c.so
+path_follow: /opt/ros/foxy/lib/libvisualization_msgs__rosidl_typesupport_introspection_cpp.so
+path_follow: /opt/ros/foxy/lib/libvisualization_msgs__rosidl_typesupport_cpp.so
+path_follow: /usr/local/lib/libceres.a
 path_follow: /opt/ros/foxy/lib/libnav_msgs__rosidl_generator_c.so
-path_follow: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_introspection_c.so
-path_follow: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_generator_c.so
-path_follow: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_c.so
-path_follow: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_introspection_cpp.so
-path_follow: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
 path_follow: /opt/ros/foxy/lib/librclcpp.so
 path_follow: /opt/ros/foxy/lib/liblibstatistics_collector.so
 path_follow: /opt/ros/foxy/lib/liblibstatistics_collector_test_msgs__rosidl_typesupport_introspection_c.so
@@ -127,11 +127,6 @@ path_follow: /opt/ros/foxy/lib/liblibstatistics_collector_test_msgs__rosidl_gene
 path_follow: /opt/ros/foxy/lib/liblibstatistics_collector_test_msgs__rosidl_typesupport_c.so
 path_follow: /opt/ros/foxy/lib/liblibstatistics_collector_test_msgs__rosidl_typesupport_introspection_cpp.so
 path_follow: /opt/ros/foxy/lib/liblibstatistics_collector_test_msgs__rosidl_typesupport_cpp.so
-path_follow: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_introspection_c.so
-path_follow: /opt/ros/foxy/lib/libstd_msgs__rosidl_generator_c.so
-path_follow: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_c.so
-path_follow: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_introspection_cpp.so
-path_follow: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_cpp.so
 path_follow: /opt/ros/foxy/lib/librcl.so
 path_follow: /opt/ros/foxy/lib/librmw_implementation.so
 path_follow: /opt/ros/foxy/lib/librmw.so
@@ -163,6 +158,17 @@ path_follow: /opt/ros/foxy/lib/librcl_interfaces__rosidl_generator_c.so
 path_follow: /opt/ros/foxy/lib/librcl_interfaces__rosidl_typesupport_c.so
 path_follow: /opt/ros/foxy/lib/librcl_interfaces__rosidl_typesupport_introspection_cpp.so
 path_follow: /opt/ros/foxy/lib/librcl_interfaces__rosidl_typesupport_cpp.so
+path_follow: /opt/ros/foxy/lib/libvisualization_msgs__rosidl_generator_c.so
+path_follow: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_introspection_c.so
+path_follow: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_generator_c.so
+path_follow: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_c.so
+path_follow: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_introspection_cpp.so
+path_follow: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
+path_follow: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_introspection_c.so
+path_follow: /opt/ros/foxy/lib/libstd_msgs__rosidl_generator_c.so
+path_follow: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_c.so
+path_follow: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_introspection_cpp.so
+path_follow: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_cpp.so
 path_follow: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so
 path_follow: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_generator_c.so
 path_follow: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
@@ -175,6 +181,18 @@ path_follow: /opt/ros/foxy/lib/librosidl_typesupport_c.so
 path_follow: /opt/ros/foxy/lib/librcpputils.so
 path_follow: /opt/ros/foxy/lib/librosidl_runtime_c.so
 path_follow: /opt/ros/foxy/lib/librcutils.so
+path_follow: /usr/lib/x86_64-linux-gnu/libglog.so
+path_follow: /usr/lib/x86_64-linux-gnu/libgflags.so.2.2.2
+path_follow: /usr/lib/x86_64-linux-gnu/libspqr.so
+path_follow: /usr/lib/x86_64-linux-gnu/libcholmod.so
+path_follow: /usr/lib/x86_64-linux-gnu/libamd.so
+path_follow: /usr/lib/x86_64-linux-gnu/libcamd.so
+path_follow: /usr/lib/x86_64-linux-gnu/libccolamd.so
+path_follow: /usr/lib/x86_64-linux-gnu/libcolamd.so
+path_follow: /usr/lib/x86_64-linux-gnu/libsuitesparseconfig.so
+path_follow: /usr/lib/x86_64-linux-gnu/libtbb.so.2
+path_follow: /usr/lib/x86_64-linux-gnu/liblapack.so
+path_follow: /usr/lib/x86_64-linux-gnu/libblas.so
 path_follow: CMakeFiles/path_follow.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/weiwei/Desktop/project/path_follow/build/path_follow/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable path_follow"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/path_follow.dir/link.txt --verbose=$(VERBOSE)

@@ -1,0 +1,318 @@
+[0.088s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+[0.128s] [35m[1mScanning dependencies of target path_follow[0m
+[0.158s] [ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o[0m
+[0.159s] [ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m
+[1.790s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp:1[m[K:
+[1.790s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::x_residual::x_residual(double, double, double, double)[m[K’:
+[1.790s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:51:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::x_residual::x_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.790s]    51 |     const double [01;35m[Kx_[m[K;
+[1.790s]       |                  [01;35m[K^~[m[K
+[1.790s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:49:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::x_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.790s]    49 |     const double [01;35m[Kweight_position_[m[K;
+[1.790s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.790s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:36:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.790s]    36 |     [01;35m[Kx_residual[m[K(double weight_position,
+[1.790s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.790s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In member function ‘[01m[Kbool CDCR::x_residual::operator()(const T*, const T*, T*) const[m[K’:
+[1.790s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:68:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.790s]    45 |         residual[0] = weight_position_*(length_continuum_/theta*(1-[01;31m[Kcmath[m[K::cos(theta))*cmath::cos(alpha)+length_rigid2_*cmath::sin(theta)*cmath::cos(alpha)-x_);
+[1.790s]       |                                                                    [01;31m[K^~~~~[m[K
+[1.790s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:87:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.790s]    45 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*[01;31m[Kcmath[m[K::cos(alpha)+length_rigid2_*cmath::sin(theta)*cmath::cos(alpha)-x_);
+[1.790s]       |                                                                                       [01;31m[K^~~~~[m[K
+[1.790s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:120:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.790s]    45 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*cmath::cos(alpha)+length_rigid2_*[01;31m[Kcmath[m[K::sin(theta)*cmath::cos(alpha)-x_);
+[1.790s]       |                                                                                                                        [01;31m[K^~~~~[m[K
+[1.790s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:138:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.790s]    45 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*cmath::cos(alpha)+length_rigid2_*cmath::sin(theta)*[01;31m[Kcmath[m[K::cos(alpha)-x_);
+[1.790s]       |                                                                                                                                          [01;31m[K^~~~~[m[K
+[1.790s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::y_residual::y_residual(double, double, double, double)[m[K’:
+[1.790s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:69:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::y_residual::y_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.791s]    69 |     const double [01;35m[Ky_[m[K;
+[1.791s]       |                  [01;35m[K^~[m[K
+[1.791s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:67:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::y_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.791s]    67 |     const double [01;35m[Kweight_position_[m[K;
+[1.791s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.791s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:54:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.791s]    54 |     [01;35m[Ky_residual[m[K(double weight_position,
+[1.791s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.791s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In member function ‘[01m[Kbool CDCR::y_residual::operator()(const T*, const T*, T*) const[m[K’:
+[1.791s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:68:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.791s]    63 |         residual[0] = weight_position_*(length_continuum_/theta*(1-[01;31m[Kcmath[m[K::cos(theta))*cmath::sin(alpha)+length_rigid2_*cmath::sin(theta)*cmath::sin(alpha)-y_);
+[1.791s]       |                                                                    [01;31m[K^~~~~[m[K
+[1.791s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:87:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.791s]    63 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*[01;31m[Kcmath[m[K::sin(alpha)+length_rigid2_*cmath::sin(theta)*cmath::sin(alpha)-y_);
+[1.791s]       |                                                                                       [01;31m[K^~~~~[m[K
+[1.791s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:120:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.791s]    63 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*cmath::sin(alpha)+length_rigid2_*[01;31m[Kcmath[m[K::sin(theta)*cmath::sin(alpha)-y_);
+[1.791s]       |                                                                                                                        [01;31m[K^~~~~[m[K
+[1.791s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:138:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.791s]    63 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*cmath::sin(alpha)+length_rigid2_*cmath::sin(theta)*[01;31m[Kcmath[m[K::sin(alpha)-y_);
+[1.791s]       |                                                                                                                                          [01;31m[K^~~~~[m[K
+[1.791s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::z_residual::z_residual(double, double, double, double, double)[m[K’:
+[1.791s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:88:51:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::z_residual::length_rigid1_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.791s]    88 |     const double length_continuum_,length_rigid2_,[01;35m[Klength_rigid1_[m[K;
+[1.791s]       |                                                   [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.791s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:88:36:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::z_residual::length_rigid2_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.791s]    88 |     const double length_continuum_,[01;35m[Klength_rigid2_[m[K,length_rigid1_;
+[1.791s]       |                                    [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.791s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:72:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.791s]    72 |     [01;35m[Kz_residual[m[K(double weight_position,
+[1.792s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.792s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:89:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::z_residual::z_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.792s]    89 |     const double [01;35m[Kz_[m[K;
+[1.792s]       |                  [01;35m[K^~[m[K
+[1.792s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:87:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::z_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.792s]    87 |     const double [01;35m[Kweight_position_[m[K;
+[1.792s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.792s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:72:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.792s]    72 |     [01;35m[Kz_residual[m[K(double weight_position,
+[1.792s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.792s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In member function ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const[m[K’:
+[1.792s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:83:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.792s]    83 |         residual[0] = weight_position_*(length_continuum_/theta*[01;31m[Kcmath[m[K::sin(theta)+length_rigid1_+length_rigid2_*cmath::cos(theta)-z_);
+[1.792s]       |                                                                 [01;31m[K^~~~~[m[K
+[1.792s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:83:113:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.792s]    83 |         residual[0] = weight_position_*(length_continuum_/theta*cmath::sin(theta)+length_rigid1_+length_rigid2_*[01;31m[Kcmath[m[K::cos(theta)-z_);
+[1.792s]       |                                                                                                                 [01;31m[K^~~~~[m[K
+[1.792s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::angle_residual::angle_residual(double, double, double, double, Eigen::Vector3d)[m[K’:
+[1.792s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:111:27:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::angle_residual::tangent_vector_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.792s]   111 |     const Eigen::Vector3d [01;35m[Ktangent_vector_[m[K;
+[1.792s]       |                           [01;35m[K^~~~~~~~~~~~~~~[m[K
+[1.792s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:109:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::angle_residual::weight_direction_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.792s]   109 |     const double [01;35m[Kweight_direction_[m[K;
+[1.792s]       |                  [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[1.792s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:92:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.793s]    92 |     [01;35m[Kangle_residual[m[K(double weight_direction,
+[1.793s]       |     [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.793s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In member function ‘[01m[Kbool CDCR::angle_residual::operator()(const T*, const T*, T*) const[m[K’:
+[1.793s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:103:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.793s]   103 |         residual[0] = weight_direction_*[01;31m[Kcmath[m[K::acos(sin(theta)*cmath::cos(alpha)*tangent_vector_(0)
+[1.793s]       |                                         [01;31m[K^~~~~[m[K
+[1.793s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:103:64:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.793s]   103 |         residual[0] = weight_direction_*cmath::acos(sin(theta)*[01;31m[Kcmath[m[K::cos(alpha)*tangent_vector_(0)
+[1.793s]       |                                                                [01;31m[K^~~~~[m[K
+[1.793s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:104:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.793s]   104 |                                                 +[01;31m[Kcmath[m[K::sin(theta)*cmath::sin(alpha)*tangent_vector_(1)
+[1.793s]       |                                                  [01;31m[K^~~~~[m[K
+[1.793s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:104:68:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.793s]   104 |                                                 +cmath::sin(theta)*[01;31m[Kcmath[m[K::sin(alpha)*tangent_vector_(1)
+[1.793s]       |                                                                    [01;31m[K^~~~~[m[K
+[1.793s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:105:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.793s]   105 |                                                 +[01;31m[Kcmath[m[K::cos(theta)*tangent_vector_(2));
+[1.793s]       |                                                  [01;31m[K^~~~~[m[K
+[1.793s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::x_residual::x_residual(double, double, double, double)[m[K’:
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:51:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::x_residual::x_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.794s]    51 |     const double [01;35m[Kx_[m[K;
+[1.794s]       |                  [01;35m[K^~[m[K
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:49:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::x_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.794s]    49 |     const double [01;35m[Kweight_position_[m[K;
+[1.794s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:36:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.794s]    36 |     [01;35m[Kx_residual[m[K(double weight_position,
+[1.794s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In member function ‘[01m[Kbool CDCR::x_residual::operator()(const T*, const T*, T*) const[m[K’:
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:68:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.794s]    45 |         residual[0] = weight_position_*(length_continuum_/theta*(1-[01;31m[Kcmath[m[K::cos(theta))*cmath::cos(alpha)+length_rigid2_*cmath::sin(theta)*cmath::cos(alpha)-x_);
+[1.794s]       |                                                                    [01;31m[K^~~~~[m[K
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:87:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.794s]    45 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*[01;31m[Kcmath[m[K::cos(alpha)+length_rigid2_*cmath::sin(theta)*cmath::cos(alpha)-x_);
+[1.794s]       |                                                                                       [01;31m[K^~~~~[m[K
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:120:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.794s]    45 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*cmath::cos(alpha)+length_rigid2_*[01;31m[Kcmath[m[K::sin(theta)*cmath::cos(alpha)-x_);
+[1.794s]       |                                                                                                                        [01;31m[K^~~~~[m[K
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:138:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.794s]    45 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*cmath::cos(alpha)+length_rigid2_*cmath::sin(theta)*[01;31m[Kcmath[m[K::cos(alpha)-x_);
+[1.794s]       |                                                                                                                                          [01;31m[K^~~~~[m[K
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::y_residual::y_residual(double, double, double, double)[m[K’:
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:69:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::y_residual::y_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.794s]    69 |     const double [01;35m[Ky_[m[K;
+[1.794s]       |                  [01;35m[K^~[m[K
+[1.794s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:67:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::y_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.794s]    67 |     const double [01;35m[Kweight_position_[m[K;
+[1.794s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:54:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.795s]    54 |     [01;35m[Ky_residual[m[K(double weight_position,
+[1.795s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In member function ‘[01m[Kbool CDCR::y_residual::operator()(const T*, const T*, T*) const[m[K’:
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:68:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.795s]    63 |         residual[0] = weight_position_*(length_continuum_/theta*(1-[01;31m[Kcmath[m[K::cos(theta))*cmath::sin(alpha)+length_rigid2_*cmath::sin(theta)*cmath::sin(alpha)-y_);
+[1.795s]       |                                                                    [01;31m[K^~~~~[m[K
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:87:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.795s]    63 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*[01;31m[Kcmath[m[K::sin(alpha)+length_rigid2_*cmath::sin(theta)*cmath::sin(alpha)-y_);
+[1.795s]       |                                                                                       [01;31m[K^~~~~[m[K
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:120:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.795s]    63 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*cmath::sin(alpha)+length_rigid2_*[01;31m[Kcmath[m[K::sin(theta)*cmath::sin(alpha)-y_);
+[1.795s]       |                                                                                                                        [01;31m[K^~~~~[m[K
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:138:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.795s]    63 |         residual[0] = weight_position_*(length_continuum_/theta*(1-cmath::cos(theta))*cmath::sin(alpha)+length_rigid2_*cmath::sin(theta)*[01;31m[Kcmath[m[K::sin(alpha)-y_);
+[1.795s]       |                                                                                                                                          [01;31m[K^~~~~[m[K
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::z_residual::z_residual(double, double, double, double, double)[m[K’:
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:88:51:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::z_residual::length_rigid1_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.795s]    88 |     const double length_continuum_,length_rigid2_,[01;35m[Klength_rigid1_[m[K;
+[1.795s]       |                                                   [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:88:36:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::z_residual::length_rigid2_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.795s]    88 |     const double length_continuum_,[01;35m[Klength_rigid2_[m[K,length_rigid1_;
+[1.795s]       |                                    [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:72:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.795s]    72 |     [01;35m[Kz_residual[m[K(double weight_position,
+[1.795s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:89:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::z_residual::z_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.795s]    89 |     const double [01;35m[Kz_[m[K;
+[1.795s]       |                  [01;35m[K^~[m[K
+[1.795s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:87:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::z_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.796s]    87 |     const double [01;35m[Kweight_position_[m[K;
+[1.796s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.796s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:72:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.796s]    72 |     [01;35m[Kz_residual[m[K(double weight_position,
+[1.796s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.796s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In member function ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const[m[K’:
+[1.796s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:83:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.796s]    83 |         residual[0] = weight_position_*(length_continuum_/theta*[01;31m[Kcmath[m[K::sin(theta)+length_rigid1_+length_rigid2_*cmath::cos(theta)-z_);
+[1.796s]       |                                                                 [01;31m[K^~~~~[m[K
+[1.796s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:83:113:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.796s]    83 |         residual[0] = weight_position_*(length_continuum_/theta*cmath::sin(theta)+length_rigid1_+length_rigid2_*[01;31m[Kcmath[m[K::cos(theta)-z_);
+[1.796s]       |                                                                                                                 [01;31m[K^~~~~[m[K
+[1.796s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::angle_residual::angle_residual(double, double, double, double, Eigen::Vector3d)[m[K’:
+[1.796s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:111:27:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::angle_residual::tangent_vector_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.796s]   111 |     const Eigen::Vector3d [01;35m[Ktangent_vector_[m[K;
+[1.796s]       |                           [01;35m[K^~~~~~~~~~~~~~~[m[K
+[1.796s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:109:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::angle_residual::weight_direction_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.796s]   109 |     const double [01;35m[Kweight_direction_[m[K;
+[1.796s]       |                  [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[1.796s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:92:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.796s]    92 |     [01;35m[Kangle_residual[m[K(double weight_direction,
+[1.796s]       |     [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.796s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In member function ‘[01m[Kbool CDCR::angle_residual::operator()(const T*, const T*, T*) const[m[K’:
+[1.796s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:103:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.796s]   103 |         residual[0] = weight_direction_*[01;31m[Kcmath[m[K::acos(sin(theta)*cmath::cos(alpha)*tangent_vector_(0)
+[1.796s]       |                                         [01;31m[K^~~~~[m[K
+[1.796s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:103:64:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.796s]   103 |         residual[0] = weight_direction_*cmath::acos(sin(theta)*[01;31m[Kcmath[m[K::cos(alpha)*tangent_vector_(0)
+[1.796s]       |                                                                [01;31m[K^~~~~[m[K
+[1.797s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:104:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.797s]   104 |                                                 +[01;31m[Kcmath[m[K::sin(theta)*cmath::sin(alpha)*tangent_vector_(1)
+[1.797s]       |                                                  [01;31m[K^~~~~[m[K
+[1.797s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:104:68:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.797s]   104 |                                                 +cmath::sin(theta)*[01;31m[Kcmath[m[K::sin(alpha)*tangent_vector_(1)
+[1.797s]       |                                                                    [01;31m[K^~~~~[m[K
+[1.797s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:105:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmath[m[K’ has not been declared
+[1.797s]   105 |                                                 +[01;31m[Kcmath[m[K::cos(theta)*tangent_vector_(2));
+[1.797s]       |                                                  [01;31m[K^~~~~[m[K
+[1.840s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In constructor ‘[01m[KCDCR::CDCR()[m[K’:
+[1.840s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:68:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbase_tolerance_deviation[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[1.840s]    68 |     double [01;35m[Kbase_tolerance_deviation[m[K = this->get_parameter("base_tolerance_deviation").as_double();
+[1.840s]       |            [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[1.891s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::path_follow_exeperience()[m[K’:
+[1.891s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:239:15:[m[K [01;35m[Kwarning: [m[Kstatement has no effect [[01;35m[K-Wunused-value[m[K]
+[1.891s]   239 |         [01;35m[Kthis->start_track_path_point_id[m[K;
+[1.891s]       |         [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[1.891s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::getCorrectTravelPointID()[m[K’:
+[1.891s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:250:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[1.891s]   250 |     for (int i=1;[01;35m[Ki<path_points.size()-1[m[K;i++)
+[1.891s]       |                  [01;35m[K~^~~~~~~~~~~~~~~~~~~~~[m[K
+[1.891s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:252:14:[m[K [01;35m[Kwarning: [m[Ksuggest parentheses around assignment used as truth value [[01;35m[K-Wparentheses[m[K]
+[1.891s]   252 |         if ([01;35m[Ki=path_points.size()-2[m[K)
+[1.891s]       |             [01;35m[K~^~~~~~~~~~~~~~~~~~~~~[m[K
+[1.891s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:266:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[1.891s]   266 |         for (int j=i;[01;35m[Kj<path_points.size()-1[m[K;j++)
+[1.891s]       |                      [01;35m[K~^~~~~~~~~~~~~~~~~~~~~[m[K
+[1.892s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:268:18:[m[K [01;35m[Kwarning: [m[Ksuggest parentheses around assignment used as truth value [[01;35m[K-Wparentheses[m[K]
+[1.892s]   268 |             if ([01;35m[Kj=path_points.size()-2[m[K)
+[1.892s]       |                 [01;35m[K~^~~~~~~~~~~~~~~~~~~~~[m[K
+[1.892s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:248:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kpath_deviation[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[1.892s]   248 |     double [01;35m[Kpath_deviation[m[K;
+[1.892s]       |            [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.983s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::visualization()[m[K’:
+[1.983s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:403:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[1.983s]   403 |     for (int i=0;[01;35m[Ki<this->cdcr_points.size()[m[K;i++)
+[1.983s]       |                  [01;35m[K~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[1.983s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:413:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[1.983s]   413 |     for (int i=0;[01;35m[Ki<this->cdcr_segment_point_id.size()[m[K;i++)
+[1.983s]       |                  [01;35m[K~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[1.983s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:428:14:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[1.983s]   428 |         if ([01;35m[Ki==cdcr_segment_point_id.size()-1[m[K)
+[1.983s]       |             [01;35m[K~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.017s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::fitCDCR()[m[K’:
+[2.017s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:475:10:[m[K [01;35m[Kwarning: [m[Kstatement has no effect [[01;35m[K-Wunused-value[m[K]
+[2.017s]   475 |     for ([01;35m[Kjoint_id[m[K; joint_id<joint_number; joint_id++)
+[2.017s]       |          [01;35m[K^~~~~~~~[m[K
+[2.040s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::find_closed_path_point(const int&, const Vector3d&, int&)[m[K’:
+[2.040s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:574:52:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.041s]   574 |         }while(temp_dot_value<0||[01;35m[Ktemp_path_point_id<path_points.size()[m[K);
+[2.041s]       |                                  [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+[2.041s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::getPathDeviationAndNextIndex(const int&, const int&, int&)[m[K’:
+[2.041s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:620:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpath_point_index_start[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.041s]   620 | void CDCR::getPathDeviationAndNextIndex([01;35m[Kconst int& path_point_index_start[m[K,
+[2.041s]       |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.041s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:621:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcdcr_point_index[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.041s]   621 |                                         [01;35m[Kconst int& cdcr_point_index[m[K,
+[2.041s]       |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~[m[K
+[2.041s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:622:46:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpath_point_index_next_start[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.041s]   622 |                                         [01;35m[Kint& path_point_index_next_start[m[K)
+[2.041s]       |                                         [01;35m[K~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.105s] make[2]: *** [CMakeFiles/path_follow.dir/build.make:63：CMakeFiles/path_follow.dir/src/main.cpp.o] 错误 1
+[2.105s] make[2]: *** 正在等待未完成的任务....
+[3.093s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.093s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = double][m[K’:
+[3.093s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = double; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.093s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.093s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.093s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:208:55:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.093s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.094s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:83:58:[m[K [01;31m[Kerror: [m[Kinvalid operands of types ‘[01m[Kconst double[m[K’ and ‘[01m[Kconst double* const[m[K’ to binary ‘[01m[Koperator/[m[K’
+[3.094s]    83 |         residual[0] = weight_position_*([01;31m[Klength_continuum_/theta[m[K*cmath::sin(theta)+length_rigid1_+length_rigid2_*cmath::cos(theta)-z_);
+[3.094s]       |                                         [01;31m[K~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.094s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::y_residual::operator()(const T*, const T*, T*) const [with T = double][m[K’:
+[3.094s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::y_residual; T = double; int ...Indices = {0, 1}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.094s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::y_residual; T = double][m[K’
+[3.094s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::y_residual; T = double][m[K’
+[3.094s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:208:55:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::y_residual; int kNumResiduals = 1; int ...Ns = {1, 1}][m[K’
+[3.094s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.094s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:58:[m[K [01;31m[Kerror: [m[Kinvalid operands of types ‘[01m[Kconst double[m[K’ and ‘[01m[Kconst double* const[m[K’ to binary ‘[01m[Koperator/[m[K’
+[3.094s]    63 |         residual[0] = weight_position_*([01;31m[Klength_continuum_/theta[m[K*(1-cmath::cos(theta))*cmath::sin(alpha)+length_rigid2_*cmath::sin(theta)*cmath::sin(alpha)-y_);
+[3.094s]       |                                         [01;31m[K~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.094s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::x_residual::operator()(const T*, const T*, T*) const [with T = double][m[K’:
+[3.094s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::x_residual; T = double; int ...Indices = {0, 1}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.094s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::x_residual; T = double][m[K’
+[3.094s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::x_residual; T = double][m[K’
+[3.094s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:208:55:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::x_residual; int kNumResiduals = 1; int ...Ns = {1, 1}][m[K’
+[3.095s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.095s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:58:[m[K [01;31m[Kerror: [m[Kinvalid operands of types ‘[01m[Kconst double[m[K’ and ‘[01m[Kconst double* const[m[K’ to binary ‘[01m[Koperator/[m[K’
+[3.095s]    45 |         residual[0] = weight_position_*([01;31m[Klength_continuum_/theta[m[K*(1-cmath::cos(theta))*cmath::cos(alpha)+length_rigid2_*cmath::sin(theta)*cmath::cos(alpha)-x_);
+[3.095s]       |                                         [01;31m[K~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.097s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = ceres::Jet<double, 1>][m[K’:
+[3.097s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = ceres::Jet<double, 1>; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.097s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.097s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.097s] [01m[K/usr/local/include/ceres/internal/autodiff.h:349:39:[m[K   required from ‘[01m[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.097s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.097s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.098s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:83:58:[m[K [01;31m[Kerror: [m[Kinvalid operands of types ‘[01m[Kconst double[m[K’ and ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’ to binary ‘[01m[Koperator/[m[K’
+[3.098s]    83 |         residual[0] = weight_position_*([01;31m[Klength_continuum_/theta[m[K*cmath::sin(theta)+length_rigid1_+length_rigid2_*cmath::cos(theta)-z_);
+[3.098s]       |                                         [01;31m[K~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.098s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::y_residual::operator()(const T*, const T*, T*) const [with T = ceres::Jet<double, 2>][m[K’:
+[3.098s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::y_residual; T = ceres::Jet<double, 2>; int ...Indices = {0, 1}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.098s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::y_residual; T = ceres::Jet<double, 2>][m[K’
+[3.098s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::y_residual; T = ceres::Jet<double, 2>][m[K’
+[3.098s] [01m[K/usr/local/include/ceres/internal/autodiff.h:349:39:[m[K   required from ‘[01m[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::y_residual; T = double][m[K’
+[3.098s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::y_residual; int kNumResiduals = 1; int ...Ns = {1, 1}][m[K’
+[3.098s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.098s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:58:[m[K [01;31m[Kerror: [m[Kinvalid operands of types ‘[01m[Kconst double[m[K’ and ‘[01m[Kconst ceres::Jet<double, 2>* const[m[K’ to binary ‘[01m[Koperator/[m[K’
+[3.098s]    63 |         residual[0] = weight_position_*([01;31m[Klength_continuum_/theta[m[K*(1-cmath::cos(theta))*cmath::sin(alpha)+length_rigid2_*cmath::sin(theta)*cmath::sin(alpha)-y_);
+[3.098s]       |                                         [01;31m[K~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.098s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::x_residual::operator()(const T*, const T*, T*) const [with T = ceres::Jet<double, 2>][m[K’:
+[3.098s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::x_residual; T = ceres::Jet<double, 2>; int ...Indices = {0, 1}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.098s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::x_residual; T = ceres::Jet<double, 2>][m[K’
+[3.098s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::x_residual; T = ceres::Jet<double, 2>][m[K’
+[3.099s] [01m[K/usr/local/include/ceres/internal/autodiff.h:349:39:[m[K   required from ‘[01m[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::x_residual; T = double][m[K’
+[3.099s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::x_residual; int kNumResiduals = 1; int ...Ns = {1, 1}][m[K’
+[3.099s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.099s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:58:[m[K [01;31m[Kerror: [m[Kinvalid operands of types ‘[01m[Kconst double[m[K’ and ‘[01m[Kconst ceres::Jet<double, 2>* const[m[K’ to binary ‘[01m[Koperator/[m[K’
+[3.099s]    45 |         residual[0] = weight_position_*([01;31m[Klength_continuum_/theta[m[K*(1-cmath::cos(theta))*cmath::cos(alpha)+length_rigid2_*cmath::sin(theta)*cmath::cos(alpha)-x_);
+[3.099s]       |                                         [01;31m[K~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.285s] make[2]: *** [CMakeFiles/path_follow.dir/build.make:76：CMakeFiles/path_follow.dir/src/cdcr.cpp.o] 错误 1
+[3.286s] make[1]: *** [CMakeFiles/Makefile2:78：CMakeFiles/path_follow.dir/all] 错误 2
+[3.286s] make: *** [Makefile:141：all] 错误 2
+[3.287s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16

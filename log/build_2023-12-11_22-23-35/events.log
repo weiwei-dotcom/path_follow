@@ -1,0 +1,524 @@
+[0.000000] (-) TimerEvent: {}
+[0.000258] (-) JobUnselected: {'identifier': 'path_follow_interface'}
+[0.000304] (path_follow) JobQueued: {'identifier': 'path_follow', 'dependencies': OrderedDict()}
+[0.000317] (path_follow) JobStarted: {'identifier': 'path_follow'}
+[0.072475] (path_follow) JobProgress: {'identifier': 'path_follow', 'progress': 'cmake'}
+[0.073336] (path_follow) JobProgress: {'identifier': 'path_follow', 'progress': 'build'}
+[0.073374] (path_follow) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/weiwei/Desktop/project/path_follow/build/path_follow', '--', '-j16', '-l16'], 'cwd': '/home/weiwei/Desktop/project/path_follow/build/path_follow', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'zh_CN:en_US:en'), ('USER', 'weiwei'), ('LC_TIME', 'zh_CN.UTF-8'), ('SSH_AGENT_PID', '1546'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('QT4_IM_MODULE', 'fcitx'), ('HOME', '/home/weiwei'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('CONDA_SHLVL', '0'), ('TERM_PROGRAM_VERSION', '1.85.0'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('MANAGERPID', '1344'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3546'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('GTK_IM_MODULE', 'fcitx'), ('LOGNAME', 'weiwei'), ('JOURNAL_STREAM', '8:45310'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'weiwei'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/home/weiwei/.local/bin:/opt/ros/foxy/bin:/home/weiwei/Desktop/thirdParty/anaconda3/condabin:/home/weiwei/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/bin:/home/weiwei/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/hello-world:@/tmp/.ICE-unix/1592,unix/hello-world:/tmp/.ICE-unix/1592'), ('INVOCATION_ID', 'c576e9eac1c041b3aced87868ecbc990'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'zh_CN.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=fcitx'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-94a09a19c3.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/weiwei/Desktop/thirdParty/anaconda3/bin/python'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('CLASSPATH', '.:/home/weiwei/Desktop/application/jdk1.8.0_381/lib:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/lib'), ('QT_IM_MODULE', 'fcitx'), ('JAVA_HOME', '/home/weiwei/Desktop/application/jdk1.8.0_381'), ('PWD', '/home/weiwei/Desktop/project/path_follow/build/path_follow'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/weiwei/Desktop/thirdParty/anaconda3/bin/conda'), ('CLUTTER_IM_MODULE', 'fcitx'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.099782] (-) TimerEvent: {}
+[0.101170] (path_follow) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target path_follow\x1b[0m\n'}
+[0.130384] (path_follow) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o\x1b[0m\n'}
+[0.130575] (path_follow) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o\x1b[0m\n'}
+[0.199898] (-) TimerEvent: {}
+[0.300179] (-) TimerEvent: {}
+[0.400447] (-) TimerEvent: {}
+[0.500732] (-) TimerEvent: {}
+[0.601005] (-) TimerEvent: {}
+[0.701307] (-) TimerEvent: {}
+[0.801580] (-) TimerEvent: {}
+[0.901838] (-) TimerEvent: {}
+[1.002141] (-) TimerEvent: {}
+[1.102401] (-) TimerEvent: {}
+[1.202660] (-) TimerEvent: {}
+[1.302904] (-) TimerEvent: {}
+[1.403268] (-) TimerEvent: {}
+[1.503584] (-) TimerEvent: {}
+[1.603850] (-) TimerEvent: {}
+[1.704182] (-) TimerEvent: {}
+[1.787319] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[1.787596] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::x_residual::x_residual(double, double, double, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.787667] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:51:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::x_residual::x_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.787706] (path_follow) StderrLine: {'line': b'   51 |     const double \x1b[01;35m\x1b[Kx_\x1b[m\x1b[K;\n'}
+[1.787740] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[1.787777] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:49:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::x_residual::weight_position_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.787811] (path_follow) StderrLine: {'line': b'   49 |     const double \x1b[01;35m\x1b[Kweight_position_\x1b[m\x1b[K;\n'}
+[1.787842] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.787874] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:36:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.787907] (path_follow) StderrLine: {'line': b'   36 |     \x1b[01;35m\x1b[Kx_residual\x1b[m\x1b[K(double weight_position,\n'}
+[1.787940] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.787971] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::y_residual::y_residual(double, double, double, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.788004] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:69:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::y_residual::y_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.788036] (path_follow) StderrLine: {'line': b'   69 |     const double \x1b[01;35m\x1b[Ky_\x1b[m\x1b[K;\n'}
+[1.788067] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[1.788099] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:67:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::y_residual::weight_position_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.788131] (path_follow) StderrLine: {'line': b'   67 |     const double \x1b[01;35m\x1b[Kweight_position_\x1b[m\x1b[K;\n'}
+[1.788163] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.788194] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:54:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.788226] (path_follow) StderrLine: {'line': b'   54 |     \x1b[01;35m\x1b[Ky_residual\x1b[m\x1b[K(double weight_position,\n'}
+[1.788257] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.788288] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::z_residual::z_residual(double, double, double, double, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.788320] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:88:51:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::z_residual::length_rigid1_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.788352] (path_follow) StderrLine: {'line': b'   88 |     const double length_continuum_,length_rigid2_,\x1b[01;35m\x1b[Klength_rigid1_\x1b[m\x1b[K;\n'}
+[1.788384] (path_follow) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.788416] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:88:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::z_residual::length_rigid2_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.788450] (path_follow) StderrLine: {'line': b'   88 |     const double length_continuum_,\x1b[01;35m\x1b[Klength_rigid2_\x1b[m\x1b[K,length_rigid1_;\n'}
+[1.788482] (path_follow) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.788514] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:72:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.788549] (path_follow) StderrLine: {'line': b'   72 |     \x1b[01;35m\x1b[Kz_residual\x1b[m\x1b[K(double weight_position,\n'}
+[1.788581] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.788613] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:89:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::z_residual::z_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.788645] (path_follow) StderrLine: {'line': b'   89 |     const double \x1b[01;35m\x1b[Kz_\x1b[m\x1b[K;\n'}
+[1.788682] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[1.788720] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:87:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::z_residual::weight_position_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.788755] (path_follow) StderrLine: {'line': b'   87 |     const double \x1b[01;35m\x1b[Kweight_position_\x1b[m\x1b[K;\n'}
+[1.788790] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.788827] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:72:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.788859] (path_follow) StderrLine: {'line': b'   72 |     \x1b[01;35m\x1b[Kz_residual\x1b[m\x1b[K(double weight_position,\n'}
+[1.788892] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.788923] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::angle_residual::angle_residual(double, double, double, double, Eigen::Vector3d)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.788955] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:111:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::angle_residual::tangent_vector_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.788987] (path_follow) StderrLine: {'line': b'  111 |     const Eigen::Vector3d \x1b[01;35m\x1b[Ktangent_vector_\x1b[m\x1b[K;\n'}
+[1.789019] (path_follow) StderrLine: {'line': b'      |                           \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.789050] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:109:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::angle_residual::weight_direction_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.789082] (path_follow) StderrLine: {'line': b'  109 |     const double \x1b[01;35m\x1b[Kweight_direction_\x1b[m\x1b[K;\n'}
+[1.789114] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.789147] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:92:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.789179] (path_follow) StderrLine: {'line': b'   92 |     \x1b[01;35m\x1b[Kangle_residual\x1b[m\x1b[K(double weight_direction,\n'}
+[1.789211] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.804325] (-) TimerEvent: {}
+[1.824566] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[1.832692] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::x_residual::x_residual(double, double, double, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.832791] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:51:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::x_residual::x_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.832848] (path_follow) StderrLine: {'line': b'   51 |     const double \x1b[01;35m\x1b[Kx_\x1b[m\x1b[K;\n'}
+[1.832885] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[1.832923] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:49:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::x_residual::weight_position_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.832969] (path_follow) StderrLine: {'line': b'   49 |     const double \x1b[01;35m\x1b[Kweight_position_\x1b[m\x1b[K;\n'}
+[1.833009] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.833041] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:36:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.833074] (path_follow) StderrLine: {'line': b'   36 |     \x1b[01;35m\x1b[Kx_residual\x1b[m\x1b[K(double weight_position,\n'}
+[1.833116] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.833149] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::y_residual::y_residual(double, double, double, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.833183] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:69:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::y_residual::y_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.833224] (path_follow) StderrLine: {'line': b'   69 |     const double \x1b[01;35m\x1b[Ky_\x1b[m\x1b[K;\n'}
+[1.833257] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[1.833289] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:67:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::y_residual::weight_position_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.833322] (path_follow) StderrLine: {'line': b'   67 |     const double \x1b[01;35m\x1b[Kweight_position_\x1b[m\x1b[K;\n'}
+[1.833354] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.833386] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:54:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.833420] (path_follow) StderrLine: {'line': b'   54 |     \x1b[01;35m\x1b[Ky_residual\x1b[m\x1b[K(double weight_position,\n'}
+[1.833451] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.833483] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::z_residual::z_residual(double, double, double, double, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.833517] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:88:51:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::z_residual::length_rigid1_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.833552] (path_follow) StderrLine: {'line': b'   88 |     const double length_continuum_,length_rigid2_,\x1b[01;35m\x1b[Klength_rigid1_\x1b[m\x1b[K;\n'}
+[1.833584] (path_follow) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.833615] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:88:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::z_residual::length_rigid2_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.833647] (path_follow) StderrLine: {'line': b'   88 |     const double length_continuum_,\x1b[01;35m\x1b[Klength_rigid2_\x1b[m\x1b[K,length_rigid1_;\n'}
+[1.833678] (path_follow) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.833709] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:72:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.833742] (path_follow) StderrLine: {'line': b'   72 |     \x1b[01;35m\x1b[Kz_residual\x1b[m\x1b[K(double weight_position,\n'}
+[1.833773] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.833804] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:89:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::z_residual::z_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.833836] (path_follow) StderrLine: {'line': b'   89 |     const double \x1b[01;35m\x1b[Kz_\x1b[m\x1b[K;\n'}
+[1.833868] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[1.833899] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:87:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::z_residual::weight_position_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.833930] (path_follow) StderrLine: {'line': b'   87 |     const double \x1b[01;35m\x1b[Kweight_position_\x1b[m\x1b[K;\n'}
+[1.833962] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.833993] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:72:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.834026] (path_follow) StderrLine: {'line': b'   72 |     \x1b[01;35m\x1b[Kz_residual\x1b[m\x1b[K(double weight_position,\n'}
+[1.834057] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.834088] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::angle_residual::angle_residual(double, double, double, double, Eigen::Vector3d)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.834125] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:111:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::angle_residual::tangent_vector_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.834159] (path_follow) StderrLine: {'line': b'  111 |     const Eigen::Vector3d \x1b[01;35m\x1b[Ktangent_vector_\x1b[m\x1b[K;\n'}
+[1.834220] (path_follow) StderrLine: {'line': b'      |                           \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.834263] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:109:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::angle_residual::weight_direction_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.834316] (path_follow) StderrLine: {'line': b'  109 |     const double \x1b[01;35m\x1b[Kweight_direction_\x1b[m\x1b[K;\n'}
+[1.834356] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.834389] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:92:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[1.834421] (path_follow) StderrLine: {'line': b'   92 |     \x1b[01;35m\x1b[Kangle_residual\x1b[m\x1b[K(double weight_direction,\n'}
+[1.834452] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.868969] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::CDCR()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.869112] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:68:12:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kbase_tolerance_deviation\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[1.869158] (path_follow) StderrLine: {'line': b'   68 |     double \x1b[01;35m\x1b[Kbase_tolerance_deviation\x1b[m\x1b[K = this->get_parameter("base_tolerance_deviation").as_double();\n'}
+[1.869194] (path_follow) StderrLine: {'line': b'      |            \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.904487] (-) TimerEvent: {}
+[1.918888] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::path_follow_exeperience()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.919045] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:239:15:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kstatement has no effect [\x1b[01;35m\x1b[K-Wunused-value\x1b[m\x1b[K]\n'}
+[1.919092] (path_follow) StderrLine: {'line': b'  239 |         \x1b[01;35m\x1b[Kthis->start_track_path_point_id\x1b[m\x1b[K;\n'}
+[1.919127] (path_follow) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.919161] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::getCorrectTravelPointID()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.919194] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:250:19:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[1.919234] (path_follow) StderrLine: {'line': b'  250 |     for (int i=1;\x1b[01;35m\x1b[Ki<path_points.size()-1\x1b[m\x1b[K;i++)\n'}
+[1.919267] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.919299] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:252:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ksuggest parentheses around assignment used as truth value [\x1b[01;35m\x1b[K-Wparentheses\x1b[m\x1b[K]\n'}
+[1.919332] (path_follow) StderrLine: {'line': b'  252 |         if (\x1b[01;35m\x1b[Ki=path_points.size()-2\x1b[m\x1b[K)\n'}
+[1.919482] (path_follow) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.919518] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:266:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[1.919553] (path_follow) StderrLine: {'line': b'  266 |         for (int j=i;\x1b[01;35m\x1b[Kj<path_points.size()-1\x1b[m\x1b[K;j++)\n'}
+[1.919586] (path_follow) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.919617] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:268:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ksuggest parentheses around assignment used as truth value [\x1b[01;35m\x1b[K-Wparentheses\x1b[m\x1b[K]\n'}
+[1.919649] (path_follow) StderrLine: {'line': b'  268 |             if (\x1b[01;35m\x1b[Kj=path_points.size()-2\x1b[m\x1b[K)\n'}
+[1.919681] (path_follow) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.920146] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:248:12:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kpath_deviation\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[1.920181] (path_follow) StderrLine: {'line': b'  248 |     double \x1b[01;35m\x1b[Kpath_deviation\x1b[m\x1b[K;\n'}
+[1.920213] (path_follow) StderrLine: {'line': b'      |            \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.000307] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::visualization()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.000477] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:403:19:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[2.000530] (path_follow) StderrLine: {'line': b'  403 |     for (int i=0;\x1b[01;35m\x1b[Ki<this->cdcr_points.size()\x1b[m\x1b[K;i++)\n'}
+[2.000566] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.000601] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:413:19:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[2.000638] (path_follow) StderrLine: {'line': b'  413 |     for (int i=0;\x1b[01;35m\x1b[Ki<this->cdcr_segment_point_id.size()\x1b[m\x1b[K;i++)\n'}
+[2.000674] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.000708] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:428:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[2.000742] (path_follow) StderrLine: {'line': b'  428 |         if (\x1b[01;35m\x1b[Ki==cdcr_segment_point_id.size()-1\x1b[m\x1b[K)\n'}
+[2.000774] (path_follow) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.004603] (-) TimerEvent: {}
+[2.027015] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::fitCDCR()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.027190] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:475:10:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kstatement has no effect [\x1b[01;35m\x1b[K-Wunused-value\x1b[m\x1b[K]\n'}
+[2.027239] (path_follow) StderrLine: {'line': b'  475 |     for (\x1b[01;35m\x1b[Kjoint_id\x1b[m\x1b[K; joint_id<joint_number; joint_id++)\n'}
+[2.027275] (path_follow) StderrLine: {'line': b'      |          \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.047292] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::find_closed_path_point(const int&, const Vector3d&, int&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.047436] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:574:52:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[2.047483] (path_follow) StderrLine: {'line': b'  574 |         }while(temp_dot_value<0||\x1b[01;35m\x1b[Ktemp_path_point_id<path_points.size()\x1b[m\x1b[K);\n'}
+[2.047519] (path_follow) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.047970] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::getPathDeviationAndNextIndex(const int&, const int&, int&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.048040] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:620:52:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kpath_point_index_start\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.048088] (path_follow) StderrLine: {'line': b'  620 | void CDCR::getPathDeviationAndNextIndex(\x1b[01;35m\x1b[Kconst int& path_point_index_start\x1b[m\x1b[K,\n'}
+[2.048123] (path_follow) StderrLine: {'line': b'      |                                         \x1b[01;35m\x1b[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.048156] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:621:52:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcdcr_point_index\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.048189] (path_follow) StderrLine: {'line': b'  621 |                                         \x1b[01;35m\x1b[Kconst int& cdcr_point_index\x1b[m\x1b[K,\n'}
+[2.048222] (path_follow) StderrLine: {'line': b'      |                                         \x1b[01;35m\x1b[K~~~~~~~~~~~^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.048257] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:622:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kpath_point_index_next_start\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.048290] (path_follow) StderrLine: {'line': b'  622 |                                         \x1b[01;35m\x1b[Kint& path_point_index_next_start\x1b[m\x1b[K)\n'}
+[2.048322] (path_follow) StderrLine: {'line': b'      |                                         \x1b[01;35m\x1b[K~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.104721] (-) TimerEvent: {}
+[2.204981] (-) TimerEvent: {}
+[2.305235] (-) TimerEvent: {}
+[2.405473] (-) TimerEvent: {}
+[2.505742] (-) TimerEvent: {}
+[2.606049] (-) TimerEvent: {}
+[2.706362] (-) TimerEvent: {}
+[2.806684] (-) TimerEvent: {}
+[2.906986] (-) TimerEvent: {}
+[3.007288] (-) TimerEvent: {}
+[3.107612] (-) TimerEvent: {}
+[3.128365] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.129620] (path_follow) StderrLine: {'line': b'/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kbool CDCR::y_residual::operator()(const T*, const T*, T*) const [with T = ceres::Jet<double, 2>]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.129692] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::y_residual; T = ceres::Jet<double, 2>; int ...Indices = {0, 1}; std::false_type = std::integral_constant<bool, false>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.129750] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::y_residual; T = ceres::Jet<double, 2>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.129788] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::y_residual; T = ceres::Jet<double, 2>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.129834] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/internal/autodiff.h:349:39:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::y_residual; T = double]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.129879] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::y_residual; int kNumResiduals = 1; int ...Ns = {1, 1}]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.129917] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:\x1b[m\x1b[K   required from here\n'}
+[3.129956] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:70:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno match for \xe2\x80\x98\x1b[01m\x1b[Koperator-\x1b[m\x1b[K\xe2\x80\x99 (operand types are \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kceres::Jet<double, 2>\x1b[m\x1b[K\xe2\x80\x99)\n'}
+[3.129992] (path_follow) StderrLine: {'line': b'   63 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;31m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);\n'}
+[3.130028] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;31m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.130061] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/9/bits/stl_algobase.h:67\x1b[m\x1b[K,\n'}
+[3.130095] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/memory:62\x1b[m\x1b[K,\n'}
+[3.130130] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:144\x1b[m\x1b[K,\n'}
+[3.130164] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1\x1b[m\x1b[K,\n'}
+[3.130198] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.130232] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:415:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _IteratorL, class _IteratorR> constexpr decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.130267] (path_follow) StderrLine: {'line': b'  415 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const reverse_iterator<_IteratorL>& __x,\n'}
+[3.130301] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.130336] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:415:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.130369] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.130403] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::reverse_iterator<_Iterator>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.130440] (path_follow) StderrLine: {'line': b'   63 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);\n'}
+[3.130475] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.130509] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/9/bits/stl_algobase.h:67\x1b[m\x1b[K,\n'}
+[3.130544] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/memory:62\x1b[m\x1b[K,\n'}
+[3.130578] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:144\x1b[m\x1b[K,\n'}
+[3.130612] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1\x1b[m\x1b[K,\n'}
+[3.130646] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.130680] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:1209:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _IteratorL, class _IteratorR> constexpr decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.130715] (path_follow) StderrLine: {'line': b' 1209 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const move_iterator<_IteratorL>& __x,\n'}
+[3.130749] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.130783] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:1209:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.130816] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.130852] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::move_iterator<_IteratorL>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.130890] (path_follow) StderrLine: {'line': b'   63 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);\n'}
+[3.130925] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.130959] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/9/vector:68\x1b[m\x1b[K,\n'}
+[3.130994] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/functional:62\x1b[m\x1b[K,\n'}
+[3.131030] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/pstl/glue_algorithm_defs.h:13\x1b[m\x1b[K,\n'}
+[3.131068] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/algorithm:71\x1b[m\x1b[K,\n'}
+[3.131103] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:18\x1b[m\x1b[K,\n'}
+[3.131136] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[3.131169] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[3.131202] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[3.131234] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1\x1b[m\x1b[K,\n'}
+[3.131267] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.131299] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_bvector.h:214:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kstd::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.131336] (path_follow) StderrLine: {'line': b'  214 |   \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)\n'}
+[3.131369] (path_follow) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.131402] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_bvector.h:214:39:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst std::_Bit_iterator_base&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.131446] (path_follow) StderrLine: {'line': b'  214 |   operator-(\x1b[01;36m\x1b[Kconst _Bit_iterator_base& __x\x1b[m\x1b[K, const _Bit_iterator_base& __y)\n'}
+[3.131478] (path_follow) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[3.131510] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Core:96\x1b[m\x1b[K,\n'}
+[3.131543] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Dense:1\x1b[m\x1b[K,\n'}
+[3.131576] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Eigen:1\x1b[m\x1b[K,\n'}
+[3.131609] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2\x1b[m\x1b[K,\n'}
+[3.131644] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2\x1b[m\x1b[K,\n'}
+[3.131677] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.131709] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:361:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.131743] (path_follow) StderrLine: {'line': b'  361 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const complex<_Tp>& __x, const complex<_Tp>& __y)\n'}
+[3.131777] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.131809] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:361:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.131843] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.131876] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.131910] (path_follow) StderrLine: {'line': b'   63 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);\n'}
+[3.131943] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.131977] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Core:96\x1b[m\x1b[K,\n'}
+[3.132010] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Dense:1\x1b[m\x1b[K,\n'}
+[3.132043] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Eigen:1\x1b[m\x1b[K,\n'}
+[3.132078] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2\x1b[m\x1b[K,\n'}
+[3.132113] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2\x1b[m\x1b[K,\n'}
+[3.132147] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.132182] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:370:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.132216] (path_follow) StderrLine: {'line': b'  370 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const complex<_Tp>& __x, const _Tp& __y)\n'}
+[3.132252] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.132285] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:370:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.132319] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.132354] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.132388] (path_follow) StderrLine: {'line': b'   63 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);\n'}
+[3.132422] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.132456] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Core:96\x1b[m\x1b[K,\n'}
+[3.132489] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Dense:1\x1b[m\x1b[K,\n'}
+[3.132523] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Eigen:1\x1b[m\x1b[K,\n'}
+[3.132557] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2\x1b[m\x1b[K,\n'}
+[3.132590] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2\x1b[m\x1b[K,\n'}
+[3.132624] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.132656] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:379:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.132702] (path_follow) StderrLine: {'line': b'  379 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const _Tp& __x, const complex<_Tp>& __y)\n'}
+[3.132742] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.132776] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:379:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.132811] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.132847] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kceres::Jet<double, 2>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.132880] (path_follow) StderrLine: {'line': b'   63 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);\n'}
+[3.132913] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.132946] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Core:96\x1b[m\x1b[K,\n'}
+[3.132979] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Dense:1\x1b[m\x1b[K,\n'}
+[3.133013] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Eigen:1\x1b[m\x1b[K,\n'}
+[3.133047] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2\x1b[m\x1b[K,\n'}
+[3.133081] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2\x1b[m\x1b[K,\n'}
+[3.133114] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.133148] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:456:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.133182] (path_follow) StderrLine: {'line': b'  456 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const complex<_Tp>& __x)\n'}
+[3.133214] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.133247] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:456:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.133280] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.133315] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.133347] (path_follow) StderrLine: {'line': b'   63 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);\n'}
+[3.133379] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.133411] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/ceres/internal/autodiff.h:152\x1b[m\x1b[K,\n'}
+[3.133443] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:130\x1b[m\x1b[K,\n'}
+[3.133476] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/ceres.h:37\x1b[m\x1b[K,\n'}
+[3.133508] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11\x1b[m\x1b[K,\n'}
+[3.133541] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.133575] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:307:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, int N> ceres::Jet<T, N> ceres::operator-(const ceres::Jet<T, N>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.133608] (path_follow) StderrLine: {'line': b'  307 | inline Jet<T, N> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const Jet<T, N>& f) {\n'}
+[3.133641] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.133673] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:307:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.133706] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.133738] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst ceres::Jet<T, N>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.133771] (path_follow) StderrLine: {'line': b'   63 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);\n'}
+[3.133805] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.133837] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/ceres/internal/autodiff.h:152\x1b[m\x1b[K,\n'}
+[3.133871] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:130\x1b[m\x1b[K,\n'}
+[3.133903] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/ceres.h:37\x1b[m\x1b[K,\n'}
+[3.133935] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11\x1b[m\x1b[K,\n'}
+[3.133966] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.133998] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:331:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, int N> ceres::Jet<T, N> ceres::operator-(const ceres::Jet<T, N>&, const ceres::Jet<T, N>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.134031] (path_follow) StderrLine: {'line': b'  331 | inline Jet<T, N> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const Jet<T, N>& f, const Jet<T, N>& g) {\n'}
+[3.134063] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.134095] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:331:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.134127] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.134159] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst ceres::Jet<T, N>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.134192] (path_follow) StderrLine: {'line': b'   63 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);\n'}
+[3.134226] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.134258] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/ceres/internal/autodiff.h:152\x1b[m\x1b[K,\n'}
+[3.134290] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:130\x1b[m\x1b[K,\n'}
+[3.134321] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/ceres.h:37\x1b[m\x1b[K,\n'}
+[3.134354] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11\x1b[m\x1b[K,\n'}
+[3.134387] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.134420] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:337:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, int N> ceres::Jet<T, N> ceres::operator-(const ceres::Jet<T, N>&, T)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.134453] (path_follow) StderrLine: {'line': b'  337 | inline Jet<T, N> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const Jet<T, N>& f, T s) {\n'}
+[3.134488] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.134520] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:337:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.134558] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.134590] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst ceres::Jet<T, N>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.134623] (path_follow) StderrLine: {'line': b'   63 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);\n'}
+[3.134657] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.134688] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/ceres/internal/autodiff.h:152\x1b[m\x1b[K,\n'}
+[3.134719] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:130\x1b[m\x1b[K,\n'}
+[3.134750] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/ceres.h:37\x1b[m\x1b[K,\n'}
+[3.134782] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11\x1b[m\x1b[K,\n'}
+[3.134813] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.134845] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:343:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, int N> ceres::Jet<T, N> ceres::operator-(T, const ceres::Jet<T, N>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.134879] (path_follow) StderrLine: {'line': b'  343 | inline Jet<T, N> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(T s, const Jet<T, N>& f) {\n'}
+[3.134931] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.134965] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:343:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.135000] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.135034] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  deduced conflicting types for parameter \xe2\x80\x98\x1b[01m\x1b[KT\x1b[m\x1b[K\xe2\x80\x99 (\xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99)\n'}
+[3.135068] (path_follow) StderrLine: {'line': b'   63 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);\n'}
+[3.135102] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.135134] (path_follow) StderrLine: {'line': b'/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kbool CDCR::x_residual::operator()(const T*, const T*, T*) const [with T = ceres::Jet<double, 2>]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.135167] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::x_residual; T = ceres::Jet<double, 2>; int ...Indices = {0, 1}; std::false_type = std::integral_constant<bool, false>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.135206] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::x_residual; T = ceres::Jet<double, 2>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.135241] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::x_residual; T = ceres::Jet<double, 2>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.135275] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/internal/autodiff.h:349:39:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1, 1>; Functor = CDCR::x_residual; T = double]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.135309] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::x_residual; int kNumResiduals = 1; int ...Ns = {1, 1}]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.135343] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:\x1b[m\x1b[K   required from here\n'}
+[3.135376] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:70:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno match for \xe2\x80\x98\x1b[01m\x1b[Koperator-\x1b[m\x1b[K\xe2\x80\x99 (operand types are \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kceres::Jet<double, 2>\x1b[m\x1b[K\xe2\x80\x99)\n'}
+[3.135414] (path_follow) StderrLine: {'line': b'   45 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;31m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);\n'}
+[3.135447] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;31m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.135481] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/9/bits/stl_algobase.h:67\x1b[m\x1b[K,\n'}
+[3.135529] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/memory:62\x1b[m\x1b[K,\n'}
+[3.135562] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:144\x1b[m\x1b[K,\n'}
+[3.135596] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1\x1b[m\x1b[K,\n'}
+[3.135630] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.135662] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:415:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _IteratorL, class _IteratorR> constexpr decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.135698] (path_follow) StderrLine: {'line': b'  415 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const reverse_iterator<_IteratorL>& __x,\n'}
+[3.135731] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.135763] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:415:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.135796] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.135829] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::reverse_iterator<_Iterator>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.135862] (path_follow) StderrLine: {'line': b'   45 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);\n'}
+[3.135895] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.135928] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/9/bits/stl_algobase.h:67\x1b[m\x1b[K,\n'}
+[3.135961] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/memory:62\x1b[m\x1b[K,\n'}
+[3.135994] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:144\x1b[m\x1b[K,\n'}
+[3.136026] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1\x1b[m\x1b[K,\n'}
+[3.136059] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.136092] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:1209:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _IteratorL, class _IteratorR> constexpr decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.136128] (path_follow) StderrLine: {'line': b' 1209 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const move_iterator<_IteratorL>& __x,\n'}
+[3.136161] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.136193] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:1209:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.136226] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.136258] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::move_iterator<_IteratorL>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.136291] (path_follow) StderrLine: {'line': b'   45 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);\n'}
+[3.136324] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.136357] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/9/vector:68\x1b[m\x1b[K,\n'}
+[3.136390] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/functional:62\x1b[m\x1b[K,\n'}
+[3.136422] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/pstl/glue_algorithm_defs.h:13\x1b[m\x1b[K,\n'}
+[3.136455] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/algorithm:71\x1b[m\x1b[K,\n'}
+[3.136488] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:18\x1b[m\x1b[K,\n'}
+[3.136520] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[3.136555] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[3.136587] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[3.136621] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1\x1b[m\x1b[K,\n'}
+[3.136656] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.136695] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_bvector.h:214:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kstd::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.136746] (path_follow) StderrLine: {'line': b'  214 |   \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)\n'}
+[3.136781] (path_follow) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.136818] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_bvector.h:214:39:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst std::_Bit_iterator_base&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.136853] (path_follow) StderrLine: {'line': b'  214 |   operator-(\x1b[01;36m\x1b[Kconst _Bit_iterator_base& __x\x1b[m\x1b[K, const _Bit_iterator_base& __y)\n'}
+[3.136885] (path_follow) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[3.136920] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Core:96\x1b[m\x1b[K,\n'}
+[3.136953] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Dense:1\x1b[m\x1b[K,\n'}
+[3.136985] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Eigen:1\x1b[m\x1b[K,\n'}
+[3.137016] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2\x1b[m\x1b[K,\n'}
+[3.137049] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2\x1b[m\x1b[K,\n'}
+[3.137080] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.137113] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:361:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.137145] (path_follow) StderrLine: {'line': b'  361 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const complex<_Tp>& __x, const complex<_Tp>& __y)\n'}
+[3.137177] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.137209] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:361:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.137242] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.137274] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.137306] (path_follow) StderrLine: {'line': b'   45 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);\n'}
+[3.137338] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.137369] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Core:96\x1b[m\x1b[K,\n'}
+[3.137401] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Dense:1\x1b[m\x1b[K,\n'}
+[3.137433] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Eigen:1\x1b[m\x1b[K,\n'}
+[3.137465] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2\x1b[m\x1b[K,\n'}
+[3.137497] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2\x1b[m\x1b[K,\n'}
+[3.137528] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.137559] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:370:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.137592] (path_follow) StderrLine: {'line': b'  370 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const complex<_Tp>& __x, const _Tp& __y)\n'}
+[3.137623] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.137656] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:370:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.137688] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.137720] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.137752] (path_follow) StderrLine: {'line': b'   45 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);\n'}
+[3.137784] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.137817] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Core:96\x1b[m\x1b[K,\n'}
+[3.137850] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Dense:1\x1b[m\x1b[K,\n'}
+[3.137884] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Eigen:1\x1b[m\x1b[K,\n'}
+[3.137919] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2\x1b[m\x1b[K,\n'}
+[3.137951] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2\x1b[m\x1b[K,\n'}
+[3.137983] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.138015] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:379:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.138047] (path_follow) StderrLine: {'line': b'  379 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const _Tp& __x, const complex<_Tp>& __y)\n'}
+[3.138078] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.138109] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:379:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.138141] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.138172] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kceres::Jet<double, 2>\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.138205] (path_follow) StderrLine: {'line': b'   45 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);\n'}
+[3.138237] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.138269] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Core:96\x1b[m\x1b[K,\n'}
+[3.138301] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Dense:1\x1b[m\x1b[K,\n'}
+[3.138335] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/eigen3/Eigen/Eigen:1\x1b[m\x1b[K,\n'}
+[3.138366] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2\x1b[m\x1b[K,\n'}
+[3.138398] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2\x1b[m\x1b[K,\n'}
+[3.138430] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.138462] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:456:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.138494] (path_follow) StderrLine: {'line': b'  456 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const complex<_Tp>& __x)\n'}
+[3.138526] (path_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.138557] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/complex:456:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.138589] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.138620] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst std::complex<_Tp>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.138652] (path_follow) StderrLine: {'line': b'   45 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);\n'}
+[3.138685] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.138717] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/ceres/internal/autodiff.h:152\x1b[m\x1b[K,\n'}
+[3.138749] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:130\x1b[m\x1b[K,\n'}
+[3.138781] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/ceres.h:37\x1b[m\x1b[K,\n'}
+[3.138812] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11\x1b[m\x1b[K,\n'}
+[3.138843] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.138874] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:307:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, int N> ceres::Jet<T, N> ceres::operator-(const ceres::Jet<T, N>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.138907] (path_follow) StderrLine: {'line': b'  307 | inline Jet<T, N> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const Jet<T, N>& f) {\n'}
+[3.138939] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.138971] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:307:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.139006] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.139038] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst ceres::Jet<T, N>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.139072] (path_follow) StderrLine: {'line': b'   45 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);\n'}
+[3.139104] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.139136] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/ceres/internal/autodiff.h:152\x1b[m\x1b[K,\n'}
+[3.139167] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:130\x1b[m\x1b[K,\n'}
+[3.139199] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/ceres.h:37\x1b[m\x1b[K,\n'}
+[3.139231] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11\x1b[m\x1b[K,\n'}
+[3.139262] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.139295] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:331:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, int N> ceres::Jet<T, N> ceres::operator-(const ceres::Jet<T, N>&, const ceres::Jet<T, N>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.139327] (path_follow) StderrLine: {'line': b'  331 | inline Jet<T, N> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const Jet<T, N>& f, const Jet<T, N>& g) {\n'}
+[3.139359] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.139391] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:331:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.139422] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.139454] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst ceres::Jet<T, N>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.139486] (path_follow) StderrLine: {'line': b'   45 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);\n'}
+[3.139518] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.139550] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/ceres/internal/autodiff.h:152\x1b[m\x1b[K,\n'}
+[3.139582] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:130\x1b[m\x1b[K,\n'}
+[3.139614] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/ceres.h:37\x1b[m\x1b[K,\n'}
+[3.139645] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11\x1b[m\x1b[K,\n'}
+[3.139677] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.139709] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:337:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, int N> ceres::Jet<T, N> ceres::operator-(const ceres::Jet<T, N>&, T)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.139743] (path_follow) StderrLine: {'line': b'  337 | inline Jet<T, N> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const Jet<T, N>& f, T s) {\n'}
+[3.139776] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.139808] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:337:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.139840] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.139870] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  mismatched types \xe2\x80\x98\x1b[01m\x1b[Kconst ceres::Jet<T, N>\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.139902] (path_follow) StderrLine: {'line': b'   45 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);\n'}
+[3.139934] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.139967] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/local/include/ceres/internal/autodiff.h:152\x1b[m\x1b[K,\n'}
+[3.140000] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/autodiff_cost_function.h:130\x1b[m\x1b[K,\n'}
+[3.140033] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/ceres/ceres.h:37\x1b[m\x1b[K,\n'}
+[3.140065] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11\x1b[m\x1b[K,\n'}
+[3.140096] (path_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.140128] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:343:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class T, int N> ceres::Jet<T, N> ceres::operator-(T, const ceres::Jet<T, N>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.140162] (path_follow) StderrLine: {'line': b'  343 | inline Jet<T, N> \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(T s, const Jet<T, N>& f) {\n'}
+[3.140193] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.140225] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/ceres/jet.h:343:18:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.140258] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[3.140289] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:45:70:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  deduced conflicting types for parameter \xe2\x80\x98\x1b[01m\x1b[KT\x1b[m\x1b[K\xe2\x80\x99 (\xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kdouble\x1b[m\x1b[K\xe2\x80\x99)\n'}
+[3.140322] (path_follow) StderrLine: {'line': b'   45 |         residual[0] = weight_position_*(length_continuum_/theta[0]*\x1b[01;36m\x1b[K(1-cos(theta[0]))\x1b[m\x1b[K*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);\n'}
+[3.140354] (path_follow) StderrLine: {'line': b'      |                                                                    \x1b[01;36m\x1b[K~~^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.207762] (-) TimerEvent: {}
+[3.308061] (-) TimerEvent: {}
+[3.408379] (-) TimerEvent: {}
+[3.416366] (path_follow) StderrLine: {'line': b'make[2]: *** [CMakeFiles/path_follow.dir/build.make:76\xef\xbc\x9aCMakeFiles/path_follow.dir/src/cdcr.cpp.o] \xe9\x94\x99\xe8\xaf\xaf 1\n'}
+[3.416624] (path_follow) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:78\xef\xbc\x9aCMakeFiles/path_follow.dir/all] \xe9\x94\x99\xe8\xaf\xaf 2\n'}
+[3.416897] (path_follow) StderrLine: {'line': b'make: *** [Makefile:141\xef\xbc\x9aall] \xe9\x94\x99\xe8\xaf\xaf 2\n'}
+[3.418446] (path_follow) CommandEnded: {'returncode': 2}
+[3.508528] (-) TimerEvent: {}
+[3.528615] (path_follow) JobEnded: {'identifier': 'path_follow', 'rc': 2}
+[3.539102] (-) EventReactorShutdown: {}

@@ -11,6 +11,7 @@
 #include <ceres/ceres.h>
 #include <iostream>
 
+
 class CDCR:public rclcpp::Node
 {
 public:
@@ -29,7 +30,7 @@ bool remainPathLengthCheck(const int& path_point_id);
 double calVecProjValue(const Eigen::Vector3d& first_point, const Eigen::Vector3d& media_point, const Eigen::Vector3d& second_point);
 Eigen::Vector3d getMediaInterPoint(const Eigen::Vector3d& inter_point,const Eigen::Vector3d& line_end1,const Eigen::Vector3d& line_end2);
 void fitCDCR();
-void path_follow();
+void path_follow(std::vector<double>& time_spend, double& max_deviation);
 void visualization();
 struct x_residual{
     x_residual(double weight_position,
@@ -41,7 +42,7 @@ struct x_residual{
                      x_(x),
                      weight_position_(weight_position) {}
     template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
-        residual[0] = weight_position_*(length_continuum_/theta*(1-cos(theta))*cos(alpha)+length_rigid2_*sin(theta)*cos(alpha)-x_);
+        residual[0] = weight_position_*(length_continuum_/theta[0]*(1.0-cos(theta[0]))*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);
         return true;
     }
 private: 
@@ -59,7 +60,7 @@ struct y_residual{
                      y_(y),
                      weight_position_(weight_position) {}
     template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
-        residual[0] = weight_position_*(length_continuum_/theta*(1-cos(theta))*sin(alpha)+length_rigid2_*sin(theta)*sin(alpha)-y_);
+        residual[0] = weight_position_*(length_continuum_/theta[0]*(1.0-cos(theta[0]))*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);
         return true;
     }
 private: 
@@ -78,8 +79,8 @@ struct z_residual{
                      length_rigid2_(length_rigid2),
                      z_(z),
                      weight_position_(weight_position) {}
-    template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
-        residual[0] = weight_position_*(length_continuum_/theta*sin(theta)+length_rigid1_+length_rigid2_*cos(theta)-z_);
+    template <typename T> bool operator()(const T* const theta, T* residual) const {
+        residual[0] = weight_position_*(length_continuum_/theta[0]*sin(theta[0])+length_rigid1_+length_rigid2_*cos(theta[0])-z_);
         return true;
     }
 private: 
@@ -99,9 +100,9 @@ struct angle_residual{
                      tangent_vector_(tangent_vector),
                      weight_direction_(weight_direction){}
     template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
-        residual[0] = weight_direction_*acos(sin(theta)*cos(alpha)*tangent_vector_(0)
-                                                +sin(theta)*sin(alpha)*tangent_vector_(1)
-                                                +cos(theta)*tangent_vector_(2));
+        residual[0] = weight_direction_*acos(sin(theta[0])*cos(alpha[0])*tangent_vector_(0)
+                                                +sin(theta[0])*sin(alpha[0])*tangent_vector_(1)
+                                                +cos(theta[0])*tangent_vector_(2));
         return true;
     }
 private: 
@@ -110,7 +111,7 @@ private:
     const Eigen::Vector3d tangent_vector_; 
 };
 Eigen::Vector3d get_inter_point(const int& ratio_id, const int& total_id, const Eigen::Vector3d& start_point, const Eigen::Vector3d& end_point);
-void cal_deviation_get_max_deviation_path_point_id();
+void cal_deviation_get_max_deviation_path_point_id(double& max_deviation, int& max_deviation_path_point_ids);
 void get_cdcr_sample_points();
 void find_closed_path_point(const int& start_path_point_id,const Eigen::Vector3d& joint_end_position, int& segment_start_path_point_id);
 private:
@@ -146,13 +147,6 @@ double sample_interval;
 double length;
 // Min radius of arc exprience
 double min_arc_radius, max_arc_radius; 
-
-// Every element is the max deviation of one path follow process
-std::vector<double> max_deviation;
-// path point index of max deviation with cdcr robot at one path follow process
-std::vector<int> max_deviation_path_point_id;
-// average time of one path follow process
-std::vector<double> time_spend;
 // joint bone's points of each joint
 std::vector<Eigen::Vector3d> cdcr_points;
 std::vector<Eigen::Vector3d> path_points;

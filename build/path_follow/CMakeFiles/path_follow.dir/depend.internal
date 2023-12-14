@@ -5,6 +5,7 @@ CMakeFiles/path_follow.dir/src/cdcr.cpp.o
  /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp
  /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp
  /home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp
+ /home/weiwei/Desktop/project/path_follow/src/path_follow/src/uniform_bspline.hpp
  /opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__builder.hpp
  /opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__struct.hpp
  /opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__traits.hpp
@@ -17,9 +18,14 @@ CMakeFiles/path_follow.dir/src/cdcr.cpp.o
  /opt/ros/foxy/include/builtin_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
  /opt/ros/foxy/include/builtin_interfaces/msg/time.hpp
  /opt/ros/foxy/include/geometry_msgs/msg/detail/point__struct.hpp
+ /opt/ros/foxy/include/geometry_msgs/msg/detail/point__traits.hpp
  /opt/ros/foxy/include/geometry_msgs/msg/detail/pose__struct.hpp
+ /opt/ros/foxy/include/geometry_msgs/msg/detail/pose__traits.hpp
  /opt/ros/foxy/include/geometry_msgs/msg/detail/pose_stamped__struct.hpp
  /opt/ros/foxy/include/geometry_msgs/msg/detail/quaternion__struct.hpp
+ /opt/ros/foxy/include/geometry_msgs/msg/detail/quaternion__traits.hpp
+ /opt/ros/foxy/include/geometry_msgs/msg/detail/vector3__struct.hpp
+ /opt/ros/foxy/include/geometry_msgs/msg/detail/vector3__traits.hpp
  /opt/ros/foxy/include/libstatistics_collector/collector/collector.hpp
  /opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp
  /opt/ros/foxy/include/libstatistics_collector/collector/metric_details_interface.hpp
@@ -305,12 +311,25 @@ CMakeFiles/path_follow.dir/src/cdcr.cpp.o
  /opt/ros/foxy/include/statistics_msgs/msg/detail/statistic_data_point__struct.hpp
  /opt/ros/foxy/include/statistics_msgs/msg/metrics_message.hpp
  /opt/ros/foxy/include/statistics_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+ /opt/ros/foxy/include/std_msgs/msg/detail/color_rgba__struct.hpp
+ /opt/ros/foxy/include/std_msgs/msg/detail/color_rgba__traits.hpp
  /opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp
  /opt/ros/foxy/include/std_msgs/msg/detail/header__traits.hpp
  /opt/ros/foxy/include/tracetools/config.h
  /opt/ros/foxy/include/tracetools/tracetools.h
  /opt/ros/foxy/include/tracetools/utils.hpp
  /opt/ros/foxy/include/tracetools/visibility_control.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker__builder.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker__struct.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker__traits.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker__type_support.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker_array__builder.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker_array__struct.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker_array__traits.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker_array__type_support.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/marker.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/marker_array.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
  /usr/local/include/eigen3/Eigen/Cholesky
  /usr/local/include/eigen3/Eigen/Core
  /usr/local/include/eigen3/Eigen/Dense
@@ -872,6 +891,7 @@ CMakeFiles/path_follow.dir/src/main.cpp.o
  /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp
  /home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp
  /home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp
+ /home/weiwei/Desktop/project/path_follow/src/path_follow/src/uniform_bspline.hpp
  /opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__builder.hpp
  /opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__struct.hpp
  /opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__traits.hpp
@@ -884,9 +904,14 @@ CMakeFiles/path_follow.dir/src/main.cpp.o
  /opt/ros/foxy/include/builtin_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
  /opt/ros/foxy/include/builtin_interfaces/msg/time.hpp
  /opt/ros/foxy/include/geometry_msgs/msg/detail/point__struct.hpp
+ /opt/ros/foxy/include/geometry_msgs/msg/detail/point__traits.hpp
  /opt/ros/foxy/include/geometry_msgs/msg/detail/pose__struct.hpp
+ /opt/ros/foxy/include/geometry_msgs/msg/detail/pose__traits.hpp
  /opt/ros/foxy/include/geometry_msgs/msg/detail/pose_stamped__struct.hpp
  /opt/ros/foxy/include/geometry_msgs/msg/detail/quaternion__struct.hpp
+ /opt/ros/foxy/include/geometry_msgs/msg/detail/quaternion__traits.hpp
+ /opt/ros/foxy/include/geometry_msgs/msg/detail/vector3__struct.hpp
+ /opt/ros/foxy/include/geometry_msgs/msg/detail/vector3__traits.hpp
  /opt/ros/foxy/include/libstatistics_collector/collector/collector.hpp
  /opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp
  /opt/ros/foxy/include/libstatistics_collector/collector/metric_details_interface.hpp
@@ -1172,12 +1197,25 @@ CMakeFiles/path_follow.dir/src/main.cpp.o
  /opt/ros/foxy/include/statistics_msgs/msg/detail/statistic_data_point__struct.hpp
  /opt/ros/foxy/include/statistics_msgs/msg/metrics_message.hpp
  /opt/ros/foxy/include/statistics_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+ /opt/ros/foxy/include/std_msgs/msg/detail/color_rgba__struct.hpp
+ /opt/ros/foxy/include/std_msgs/msg/detail/color_rgba__traits.hpp
  /opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp
  /opt/ros/foxy/include/std_msgs/msg/detail/header__traits.hpp
  /opt/ros/foxy/include/tracetools/config.h
  /opt/ros/foxy/include/tracetools/tracetools.h
  /opt/ros/foxy/include/tracetools/utils.hpp
  /opt/ros/foxy/include/tracetools/visibility_control.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker__builder.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker__struct.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker__traits.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker__type_support.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker_array__builder.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker_array__struct.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker_array__traits.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/detail/marker_array__type_support.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/marker.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/marker_array.hpp
+ /opt/ros/foxy/include/visualization_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
  /usr/local/include/eigen3/Eigen/Cholesky
  /usr/local/include/eigen3/Eigen/Core
  /usr/local/include/eigen3/Eigen/Dense

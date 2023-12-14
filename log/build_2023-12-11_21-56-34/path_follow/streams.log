@@ -1,0 +1,699 @@
+[0.084s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+[0.121s] [35m[1mScanning dependencies of target path_follow[0m
+[0.151s] [ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o[0m
+[0.151s] [ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m
+[1.908s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp:1[m[K:
+[1.909s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::x_residual::x_residual(double, double, double, double)[m[K’:
+[1.909s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:50:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::x_residual::x_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.909s]    50 |     const double [01;35m[Kx_[m[K;
+[1.909s]       |                  [01;35m[K^~[m[K
+[1.909s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:48:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::x_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.909s]    48 |     const double [01;35m[Kweight_position_[m[K;
+[1.909s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.909s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:35:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.909s]    35 |     [01;35m[Kx_residual[m[K(double weight_position,
+[1.909s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.909s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::y_residual::y_residual(double, double, double, double)[m[K’:
+[1.909s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:68:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::y_residual::y_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.909s]    68 |     const double [01;35m[Ky_[m[K;
+[1.909s]       |                  [01;35m[K^~[m[K
+[1.909s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:66:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::y_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.909s]    66 |     const double [01;35m[Kweight_position_[m[K;
+[1.909s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.909s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:53:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.909s]    53 |     [01;35m[Ky_residual[m[K(double weight_position,
+[1.909s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.909s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::z_residual::z_residual(double, double, double, double, double)[m[K’:
+[1.910s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:87:51:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::z_residual::length_rigid1_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.910s]    87 |     const double length_continuum_,length_rigid2_,[01;35m[Klength_rigid1_[m[K;
+[1.910s]       |                                                   [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.910s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:87:36:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::z_residual::length_rigid2_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.910s]    87 |     const double length_continuum_,[01;35m[Klength_rigid2_[m[K,length_rigid1_;
+[1.910s]       |                                    [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.910s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:71:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.910s]    71 |     [01;35m[Kz_residual[m[K(double weight_position,
+[1.910s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.910s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:88:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::z_residual::z_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.910s]    88 |     const double [01;35m[Kz_[m[K;
+[1.910s]       |                  [01;35m[K^~[m[K
+[1.910s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:86:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::z_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.910s]    86 |     const double [01;35m[Kweight_position_[m[K;
+[1.910s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.910s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:71:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.910s]    71 |     [01;35m[Kz_residual[m[K(double weight_position,
+[1.910s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.910s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::angle_residual::angle_residual(double, double, double, double, Eigen::Vector3d)[m[K’:
+[1.910s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:110:27:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::angle_residual::tangent_vector_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.910s]   110 |     const Eigen::Vector3d [01;35m[Ktangent_vector_[m[K;
+[1.910s]       |                           [01;35m[K^~~~~~~~~~~~~~~[m[K
+[1.910s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:108:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::angle_residual::weight_direction_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.910s]   108 |     const double [01;35m[Kweight_direction_[m[K;
+[1.910s]       |                  [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[1.910s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:91:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.910s]    91 |     [01;35m[Kangle_residual[m[K(double weight_direction,
+[1.910s]       |     [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.963s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[1.963s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::x_residual::x_residual(double, double, double, double)[m[K’:
+[1.963s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:50:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::x_residual::x_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.963s]    50 |     const double [01;35m[Kx_[m[K;
+[1.963s]       |                  [01;35m[K^~[m[K
+[1.963s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:48:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::x_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.963s]    48 |     const double [01;35m[Kweight_position_[m[K;
+[1.964s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.964s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:35:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.964s]    35 |     [01;35m[Kx_residual[m[K(double weight_position,
+[1.964s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.964s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::y_residual::y_residual(double, double, double, double)[m[K’:
+[1.964s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:68:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::y_residual::y_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.964s]    68 |     const double [01;35m[Ky_[m[K;
+[1.964s]       |                  [01;35m[K^~[m[K
+[1.964s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:66:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::y_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.964s]    66 |     const double [01;35m[Kweight_position_[m[K;
+[1.964s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.964s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:53:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.964s]    53 |     [01;35m[Ky_residual[m[K(double weight_position,
+[1.964s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.964s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::z_residual::z_residual(double, double, double, double, double)[m[K’:
+[1.964s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:87:51:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::z_residual::length_rigid1_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.964s]    87 |     const double length_continuum_,length_rigid2_,[01;35m[Klength_rigid1_[m[K;
+[1.964s]       |                                                   [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.964s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:87:36:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::z_residual::length_rigid2_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.964s]    87 |     const double length_continuum_,[01;35m[Klength_rigid2_[m[K,length_rigid1_;
+[1.964s]       |                                    [01;35m[K^~~~~~~~~~~~~~[m[K
+[1.964s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:71:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.964s]    71 |     [01;35m[Kz_residual[m[K(double weight_position,
+[1.964s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.964s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:88:18:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::z_residual::z_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.964s]    88 |     const double [01;35m[Kz_[m[K;
+[1.964s]       |                  [01;35m[K^~[m[K
+[1.964s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:86:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::z_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.965s]    86 |     const double [01;35m[Kweight_position_[m[K;
+[1.965s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[1.965s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:71:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.965s]    71 |     [01;35m[Kz_residual[m[K(double weight_position,
+[1.965s]       |     [01;35m[K^~~~~~~~~~[m[K
+[1.965s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::angle_residual::angle_residual(double, double, double, double, Eigen::Vector3d)[m[K’:
+[1.965s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:110:27:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::angle_residual::tangent_vector_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[1.965s]   110 |     const Eigen::Vector3d [01;35m[Ktangent_vector_[m[K;
+[1.965s]       |                           [01;35m[K^~~~~~~~~~~~~~~[m[K
+[1.965s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:108:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::angle_residual::weight_direction_[m[K’ [[01;35m[K-Wreorder[m[K]
+[1.965s]   108 |     const double [01;35m[Kweight_direction_[m[K;
+[1.965s]       |                  [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[1.965s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:91:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[1.965s]    91 |     [01;35m[Kangle_residual[m[K(double weight_direction,
+[1.965s]       |     [01;35m[K^~~~~~~~~~~~~~[m[K
+[2.013s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In constructor ‘[01m[KCDCR::CDCR()[m[K’:
+[2.013s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:68:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbase_tolerance_deviation[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[2.013s]    68 |     double [01;35m[Kbase_tolerance_deviation[m[K = this->get_parameter("base_tolerance_deviation").as_double();
+[2.013s]       |            [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.069s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::path_follow_exeperience()[m[K’:
+[2.069s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:239:15:[m[K [01;35m[Kwarning: [m[Kstatement has no effect [[01;35m[K-Wunused-value[m[K]
+[2.069s]   239 |         [01;35m[Kthis->start_track_path_point_id[m[K;
+[2.069s]       |         [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.069s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::getCorrectTravelPointID()[m[K’:
+[2.069s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:250:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.070s]   250 |     for (int i=1;[01;35m[Ki<path_points.size()-1[m[K;i++)
+[2.070s]       |                  [01;35m[K~^~~~~~~~~~~~~~~~~~~~~[m[K
+[2.070s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:252:14:[m[K [01;35m[Kwarning: [m[Ksuggest parentheses around assignment used as truth value [[01;35m[K-Wparentheses[m[K]
+[2.070s]   252 |         if ([01;35m[Ki=path_points.size()-2[m[K)
+[2.070s]       |             [01;35m[K~^~~~~~~~~~~~~~~~~~~~~[m[K
+[2.070s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:266:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.070s]   266 |         for (int j=i;[01;35m[Kj<path_points.size()-1[m[K;j++)
+[2.070s]       |                      [01;35m[K~^~~~~~~~~~~~~~~~~~~~~[m[K
+[2.070s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:268:18:[m[K [01;35m[Kwarning: [m[Ksuggest parentheses around assignment used as truth value [[01;35m[K-Wparentheses[m[K]
+[2.070s]   268 |             if ([01;35m[Kj=path_points.size()-2[m[K)
+[2.070s]       |                 [01;35m[K~^~~~~~~~~~~~~~~~~~~~~[m[K
+[2.071s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:248:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kpath_deviation[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[2.071s]   248 |     double [01;35m[Kpath_deviation[m[K;
+[2.071s]       |            [01;35m[K^~~~~~~~~~~~~~[m[K
+[2.160s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::visualization()[m[K’:
+[2.160s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:403:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.160s]   403 |     for (int i=0;[01;35m[Ki<this->cdcr_points.size()[m[K;i++)
+[2.160s]       |                  [01;35m[K~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.160s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:413:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.160s]   413 |     for (int i=0;[01;35m[Ki<this->cdcr_segment_point_id.size()[m[K;i++)
+[2.160s]       |                  [01;35m[K~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.160s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:428:14:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.160s]   428 |         if ([01;35m[Ki==cdcr_segment_point_id.size()-1[m[K)
+[2.160s]       |             [01;35m[K~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.184s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::fitCDCR()[m[K’:
+[2.184s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:475:10:[m[K [01;35m[Kwarning: [m[Kstatement has no effect [[01;35m[K-Wunused-value[m[K]
+[2.184s]   475 |     for ([01;35m[Kjoint_id[m[K; joint_id<joint_number; joint_id++)
+[2.184s]       |          [01;35m[K^~~~~~~~[m[K
+[2.203s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::find_closed_path_point(const int&, const Vector3d&, int&)[m[K’:
+[2.203s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:574:52:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.203s]   574 |         }while(temp_dot_value<0||[01;35m[Ktemp_path_point_id<path_points.size()[m[K);
+[2.204s]       |                                  [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+[2.204s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::getPathDeviationAndNextIndex(const int&, const int&, int&)[m[K’:
+[2.204s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:620:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpath_point_index_start[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.204s]   620 | void CDCR::getPathDeviationAndNextIndex([01;35m[Kconst int& path_point_index_start[m[K,
+[2.204s]       |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.204s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:621:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcdcr_point_index[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.204s]   621 |                                         [01;35m[Kconst int& cdcr_point_index[m[K,
+[2.204s]       |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~[m[K
+[2.204s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:622:46:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpath_point_index_next_start[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.204s]   622 |                                         [01;35m[Kint& path_point_index_next_start[m[K)
+[2.204s]       |                                         [01;35m[K~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.289s] In file included from [01m[K/usr/local/include/ceres/internal/autodiff.h:151[m[K,
+[3.289s]                  from [01m[K/usr/local/include/ceres/autodiff_cost_function.h:130[m[K,
+[3.289s]                  from [01m[K/usr/local/include/ceres/ceres.h:37[m[K,
+[3.289s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11[m[K,
+[3.289s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.289s] /usr/local/include/ceres/internal/variadic_evaluate.h: In instantiation of ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::angle_residual; T = double; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’:
+[3.289s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::angle_residual; T = double][m[K’
+[3.289s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::angle_residual; T = double][m[K’
+[3.289s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:208:55:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::angle_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.289s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.289s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;31m[Kerror: [m[Kno match for call to ‘[01m[K(const CDCR::angle_residual) (const double* const&, double*&)[m[K’
+[3.289s]    55 |   return [01;31m[Kfunctor(input[Indices]..., output)[m[K;
+[3.289s]       |          [01;31m[K~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.289s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.289s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:101:32:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T> bool CDCR::angle_residual::operator()(const T*, const T*, T*) const[m[K’
+[3.289s]   101 |     template <typename T> bool [01;36m[Koperator[m[K()(const T* const alpha, const T* const theta, T* residual) const {
+[3.289s]       |                                [01;36m[K^~~~~~~~[m[K
+[3.289s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:101:32:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.289s] In file included from [01m[K/usr/local/include/ceres/internal/autodiff.h:151[m[K,
+[3.289s]                  from [01m[K/usr/local/include/ceres/autodiff_cost_function.h:130[m[K,
+[3.289s]                  from [01m[K/usr/local/include/ceres/ceres.h:37[m[K,
+[3.289s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11[m[K,
+[3.289s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.290s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 2 provided
+[3.290s]    55 |   return [01;36m[Kfunctor(input[Indices]..., output)[m[K;
+[3.290s]       |          [01;36m[K~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.302s] /usr/local/include/ceres/internal/variadic_evaluate.h: In instantiation of ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::y_residual; T = double; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’:
+[3.302s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::y_residual; T = double][m[K’
+[3.302s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::y_residual; T = double][m[K’
+[3.302s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:208:55:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::y_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.302s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.303s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;31m[Kerror: [m[Kno match for call to ‘[01m[K(const CDCR::y_residual) (const double* const&, double*&)[m[K’
+[3.303s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.303s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:61:32:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T> bool CDCR::y_residual::operator()(const T*, const T*, T*) const[m[K’
+[3.303s]    61 |     template <typename T> bool [01;36m[Koperator[m[K()(const T* const alpha, const T* const theta, T* residual) const {
+[3.303s]       |                                [01;36m[K^~~~~~~~[m[K
+[3.303s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:61:32:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.303s] In file included from [01m[K/usr/local/include/ceres/internal/autodiff.h:151[m[K,
+[3.303s]                  from [01m[K/usr/local/include/ceres/autodiff_cost_function.h:130[m[K,
+[3.303s]                  from [01m[K/usr/local/include/ceres/ceres.h:37[m[K,
+[3.303s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11[m[K,
+[3.303s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.303s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 2 provided
+[3.303s]    55 |   return [01;36m[Kfunctor(input[Indices]..., output)[m[K;
+[3.303s]       |          [01;36m[K~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.303s] /usr/local/include/ceres/internal/variadic_evaluate.h: In instantiation of ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::x_residual; T = double; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’:
+[3.303s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::x_residual; T = double][m[K’
+[3.303s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::x_residual; T = double][m[K’
+[3.303s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:208:55:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::x_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.303s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.303s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;31m[Kerror: [m[Kno match for call to ‘[01m[K(const CDCR::x_residual) (const double* const&, double*&)[m[K’
+[3.303s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.303s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:43:32:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T> bool CDCR::x_residual::operator()(const T*, const T*, T*) const[m[K’
+[3.303s]    43 |     template <typename T> bool [01;36m[Koperator[m[K()(const T* const alpha, const T* const theta, T* residual) const {
+[3.304s]       |                                [01;36m[K^~~~~~~~[m[K
+[3.304s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:43:32:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.304s] In file included from [01m[K/usr/local/include/ceres/internal/autodiff.h:151[m[K,
+[3.304s]                  from [01m[K/usr/local/include/ceres/autodiff_cost_function.h:130[m[K,
+[3.304s]                  from [01m[K/usr/local/include/ceres/ceres.h:37[m[K,
+[3.304s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11[m[K,
+[3.304s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.305s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 2 provided
+[3.305s]    55 |   return [01;36m[Kfunctor(input[Indices]..., output)[m[K;
+[3.305s]       |          [01;36m[K~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.305s] /usr/local/include/ceres/internal/variadic_evaluate.h: In instantiation of ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::angle_residual; T = ceres::Jet<double, 1>; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’:
+[3.305s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::angle_residual; T = ceres::Jet<double, 1>][m[K’
+[3.305s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::angle_residual; T = ceres::Jet<double, 1>][m[K’
+[3.305s] [01m[K/usr/local/include/ceres/internal/autodiff.h:349:39:[m[K   required from ‘[01m[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::angle_residual; T = double][m[K’
+[3.305s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::angle_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.305s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.305s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;31m[Kerror: [m[Kno match for call to ‘[01m[K(const CDCR::angle_residual) (const ceres::Jet<double, 1>* const&, ceres::Jet<double, 1>*&)[m[K’
+[3.305s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.305s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:101:32:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T> bool CDCR::angle_residual::operator()(const T*, const T*, T*) const[m[K’
+[3.305s]   101 |     template <typename T> bool [01;36m[Koperator[m[K()(const T* const alpha, const T* const theta, T* residual) const {
+[3.305s]       |                                [01;36m[K^~~~~~~~[m[K
+[3.305s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:101:32:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.305s] In file included from [01m[K/usr/local/include/ceres/internal/autodiff.h:151[m[K,
+[3.305s]                  from [01m[K/usr/local/include/ceres/autodiff_cost_function.h:130[m[K,
+[3.305s]                  from [01m[K/usr/local/include/ceres/ceres.h:37[m[K,
+[3.305s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11[m[K,
+[3.305s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.305s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 2 provided
+[3.305s]    55 |   return [01;36m[Kfunctor(input[Indices]..., output)[m[K;
+[3.305s]       |          [01;36m[K~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.305s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.305s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = double][m[K’:
+[3.306s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = double; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.306s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.306s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.306s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:208:55:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.306s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.306s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:58:[m[K [01;31m[Kerror: [m[Kinvalid operands of types ‘[01m[Kconst double[m[K’ and ‘[01m[Kconst double* const[m[K’ to binary ‘[01m[Koperator/[m[K’
+[3.306s]    82 |         residual[0] = weight_position_*([01;31m[Klength_continuum_/theta[m[K*sin(theta)+length_rigid1_+length_rigid2_*cos(theta)-z_);
+[3.306s]       |                                         [01;31m[K~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.306s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:68:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Ksin(const double* const&)[m[K’
+[3.306s]    82 |         residual[0] = weight_position_*(length_continuum_/theta*[01;31m[Ksin(theta)[m[K+length_rigid1_+length_rigid2_*cos(theta)-z_);
+[3.306s]       |                                                                 [01;31m[K~~~^~~~~~~[m[K
+[3.306s] In file included from [01m[K/usr/include/features.h:461[m[K,
+[3.306s]                  from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h:39[m[K,
+[3.306s]                  from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h:528[m[K,
+[3.306s]                  from [01m[K/usr/include/c++/9/csignal:41[m[K,
+[3.306s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:143[m[K,
+[3.306s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.306s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.306s] [01m[K/usr/include/x86_64-linux-gnu/bits/mathcalls.h:64:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kdouble sin(double)[m[K’
+[3.306s]    64 | [01;36m[K__MATHCALL_VEC[m[K (sin,, (_Mdouble_ __x));
+[3.306s]       | [01;36m[K^~~~~~~~~~~~~~[m[K
+[3.306s] In file included from [01m[K/usr/include/c++/9/cmath:45[m[K,
+[3.306s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/moving_average_statistics/types.hpp:18[m[K,
+[3.306s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp:24[m[K,
+[3.306s]                  from [01m[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:23[m[K,
+[3.306s]                  from [01m[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50[m[K,
+[3.307s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25[m[K,
+[3.307s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.307s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.307s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.307s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.307s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.307s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.307s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.307s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.307s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.307s] [01m[K/usr/include/x86_64-linux-gnu/bits/mathcalls.h:64:1:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst double* const[m[K’ to ‘[01m[Kdouble[m[K’
+[3.307s]    64 | [01;36m[K_[m[K_MATHCALL_VEC (sin,, (_Mdouble_ __x));
+[3.307s]       | [01;36m[K^[m[K
+[3.307s] In file included from [01m[K/usr/local/include/eigen3/Eigen/Core:96[m[K,
+[3.307s]                  from [01m[K/usr/local/include/eigen3/Eigen/Dense:1[m[K,
+[3.308s]                  from [01m[K/usr/local/include/eigen3/Eigen/Eigen:1[m[K,
+[3.308s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2[m[K,
+[3.308s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2[m[K,
+[3.308s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.308s] [01m[K/usr/include/c++/9/complex:852:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> std::complex<_Tp> std::sin(const std::complex<_Tp>&)[m[K’
+[3.308s]   852 |     [01;36m[Ksin[m[K(const complex<_Tp>& __z) { return __complex_sin(__z.__rep()); }
+[3.308s]       |     [01;36m[K^~~[m[K
+[3.308s] [01m[K/usr/include/c++/9/complex:852:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.308s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.308s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:68:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst std::complex<_Tp>[m[K’ and ‘[01m[Kconst double* const[m[K’
+[3.308s]    82 |         residual[0] = weight_position_*(length_continuum_/theta*[01;36m[Ksin(theta)[m[K+length_rigid1_+length_rigid2_*cos(theta)-z_);
+[3.308s]       |                                                                 [01;36m[K~~~^~~~~~~[m[K
+[3.308s] In file included from [01m[K/opt/ros/foxy/include/libstatistics_collector/moving_average_statistics/types.hpp:18[m[K,
+[3.308s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp:24[m[K,
+[3.308s]                  from [01m[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:23[m[K,
+[3.308s]                  from [01m[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50[m[K,
+[3.308s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25[m[K,
+[3.308s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.308s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.308s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.308s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.308s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.308s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.308s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.308s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.308s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.309s] [01m[K/usr/include/c++/9/cmath:437:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> constexpr typename __gnu_cxx::__enable_if<std::__is_integer<_Tp>::__value, double>::__type std::sin(_Tp)[m[K’
+[3.309s]   437 |     [01;36m[Ksin[m[K(_Tp __x)
+[3.309s]       |     [01;36m[K^~~[m[K
+[3.309s] [01m[K/usr/include/c++/9/cmath:437:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.309s] /usr/include/c++/9/cmath: In substitution of ‘[01m[Ktemplate<class _Tp> constexpr typename __gnu_cxx::__enable_if<std::__is_integer<_Tp>::__value, double>::__type std::sin(_Tp) [with _Tp = const double*][m[K’:
+[3.309s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:68:[m[K   required from ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = double][m[K’
+[3.309s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = double; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.309s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.309s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.309s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:208:55:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.309s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.309s] [01m[K/usr/include/c++/9/cmath:437:5:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[K__type[m[K’ in ‘[01m[Kstruct __gnu_cxx::__enable_if<false, double>[m[K’
+[3.309s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = double][m[K’:
+[3.309s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = double; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.309s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.309s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.309s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:208:55:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.309s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.309s] [01m[K/usr/include/c++/9/cmath:429:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr long double std::sin(long double)[m[K’
+[3.309s]   429 |   [01;36m[Ksin[m[K(long double __x)
+[3.309s]       |   [01;36m[K^~~[m[K
+[3.309s] [01m[K/usr/include/c++/9/cmath:429:19:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst double* const[m[K’ to ‘[01m[Klong double[m[K’
+[3.309s]   429 |   sin([01;36m[Klong double __x[m[K)
+[3.309s]       |       [01;36m[K~~~~~~~~~~~~^~~[m[K
+[3.309s] [01m[K/usr/include/c++/9/cmath:425:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr float std::sin(float)[m[K’
+[3.309s]   425 |   [01;36m[Ksin[m[K(float __x)
+[3.309s]       |   [01;36m[K^~~[m[K
+[3.309s] [01m[K/usr/include/c++/9/cmath:425:13:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst double* const[m[K’ to ‘[01m[Kfloat[m[K’
+[3.309s]   425 |   sin([01;36m[Kfloat __x[m[K)
+[3.310s]       |       [01;36m[K~~~~~~^~~[m[K
+[3.310s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.310s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:109:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kcos(const double* const&)[m[K’
+[3.310s]    82 |         residual[0] = weight_position_*(length_continuum_/theta*sin(theta)+length_rigid1_+length_rigid2_*[01;31m[Kcos(theta)[m[K-z_);
+[3.310s]       |                                                                                                          [01;31m[K~~~^~~~~~~[m[K
+[3.310s] In file included from [01m[K/usr/include/features.h:461[m[K,
+[3.310s]                  from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h:39[m[K,
+[3.310s]                  from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h:528[m[K,
+[3.310s]                  from [01m[K/usr/include/c++/9/csignal:41[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:143[m[K,
+[3.310s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.310s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.310s] [01m[K/usr/include/x86_64-linux-gnu/bits/mathcalls.h:62:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kdouble cos(double)[m[K’
+[3.310s]    62 | [01;36m[K__MATHCALL_VEC[m[K (cos,, (_Mdouble_ __x));
+[3.310s]       | [01;36m[K^~~~~~~~~~~~~~[m[K
+[3.310s] In file included from [01m[K/usr/include/c++/9/cmath:45[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/moving_average_statistics/types.hpp:18[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp:24[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:23[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.310s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.310s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.311s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.311s] [01m[K/usr/include/x86_64-linux-gnu/bits/mathcalls.h:62:1:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst double* const[m[K’ to ‘[01m[Kdouble[m[K’
+[3.311s]    62 | [01;36m[K_[m[K_MATHCALL_VEC (cos,, (_Mdouble_ __x));
+[3.311s]       | [01;36m[K^[m[K
+[3.311s] In file included from [01m[K/usr/local/include/eigen3/Eigen/Core:96[m[K,
+[3.311s]                  from [01m[K/usr/local/include/eigen3/Eigen/Dense:1[m[K,
+[3.311s]                  from [01m[K/usr/local/include/eigen3/Eigen/Eigen:1[m[K,
+[3.311s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2[m[K,
+[3.311s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2[m[K,
+[3.311s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.311s] [01m[K/usr/include/c++/9/complex:734:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> std::complex<_Tp> std::cos(const std::complex<_Tp>&)[m[K’
+[3.311s]   734 |     [01;36m[Kcos[m[K(const complex<_Tp>& __z) { return __complex_cos(__z.__rep()); }
+[3.311s]       |     [01;36m[K^~~[m[K
+[3.311s] [01m[K/usr/include/c++/9/complex:734:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.311s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.311s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:109:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst std::complex<_Tp>[m[K’ and ‘[01m[Kconst double* const[m[K’
+[3.311s]    82 |         residual[0] = weight_position_*(length_continuum_/theta*sin(theta)+length_rigid1_+length_rigid2_*[01;36m[Kcos(theta)[m[K-z_);
+[3.311s]       |                                                                                                          [01;36m[K~~~^~~~~~~[m[K
+[3.311s] In file included from [01m[K/opt/ros/foxy/include/libstatistics_collector/moving_average_statistics/types.hpp:18[m[K,
+[3.311s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp:24[m[K,
+[3.311s]                  from [01m[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:23[m[K,
+[3.311s]                  from [01m[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50[m[K,
+[3.311s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25[m[K,
+[3.311s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.311s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.311s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.311s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.311s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.311s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.311s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.312s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.312s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.312s] [01m[K/usr/include/c++/9/cmath:196:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> constexpr typename __gnu_cxx::__enable_if<std::__is_integer<_Tp>::__value, double>::__type std::cos(_Tp)[m[K’
+[3.312s]   196 |     [01;36m[Kcos[m[K(_Tp __x)
+[3.312s]       |     [01;36m[K^~~[m[K
+[3.312s] [01m[K/usr/include/c++/9/cmath:196:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.312s] /usr/include/c++/9/cmath: In substitution of ‘[01m[Ktemplate<class _Tp> constexpr typename __gnu_cxx::__enable_if<std::__is_integer<_Tp>::__value, double>::__type std::cos(_Tp) [with _Tp = const double*][m[K’:
+[3.312s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:109:[m[K   required from ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = double][m[K’
+[3.312s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = double; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.312s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.312s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.312s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:208:55:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.312s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.312s] [01m[K/usr/include/c++/9/cmath:196:5:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[K__type[m[K’ in ‘[01m[Kstruct __gnu_cxx::__enable_if<false, double>[m[K’
+[3.312s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = double][m[K’:
+[3.312s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = double; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.312s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.312s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.312s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:208:55:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.312s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.312s] [01m[K/usr/include/c++/9/cmath:188:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr long double std::cos(long double)[m[K’
+[3.312s]   188 |   [01;36m[Kcos[m[K(long double __x)
+[3.312s]       |   [01;36m[K^~~[m[K
+[3.312s] [01m[K/usr/include/c++/9/cmath:188:19:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst double* const[m[K’ to ‘[01m[Klong double[m[K’
+[3.312s]   188 |   cos([01;36m[Klong double __x[m[K)
+[3.312s]       |       [01;36m[K~~~~~~~~~~~~^~~[m[K
+[3.312s] [01m[K/usr/include/c++/9/cmath:184:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr float std::cos(float)[m[K’
+[3.312s]   184 |   [01;36m[Kcos[m[K(float __x)
+[3.313s]       |   [01;36m[K^~~[m[K
+[3.313s] [01m[K/usr/include/c++/9/cmath:184:13:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst double* const[m[K’ to ‘[01m[Kfloat[m[K’
+[3.313s]   184 |   cos([01;36m[Kfloat __x[m[K)
+[3.313s]       |       [01;36m[K~~~~~~^~~[m[K
+[3.313s] In file included from [01m[K/usr/local/include/ceres/internal/autodiff.h:151[m[K,
+[3.313s]                  from [01m[K/usr/local/include/ceres/autodiff_cost_function.h:130[m[K,
+[3.313s]                  from [01m[K/usr/local/include/ceres/ceres.h:37[m[K,
+[3.313s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11[m[K,
+[3.313s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.313s] /usr/local/include/ceres/internal/variadic_evaluate.h: In instantiation of ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::y_residual; T = ceres::Jet<double, 1>; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’:
+[3.313s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::y_residual; T = ceres::Jet<double, 1>][m[K’
+[3.313s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::y_residual; T = ceres::Jet<double, 1>][m[K’
+[3.313s] [01m[K/usr/local/include/ceres/internal/autodiff.h:349:39:[m[K   required from ‘[01m[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::y_residual; T = double][m[K’
+[3.313s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::y_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.313s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.313s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;31m[Kerror: [m[Kno match for call to ‘[01m[K(const CDCR::y_residual) (const ceres::Jet<double, 1>* const&, ceres::Jet<double, 1>*&)[m[K’
+[3.313s]    55 |   return [01;31m[Kfunctor(input[Indices]..., output)[m[K;
+[3.313s]       |          [01;31m[K~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.313s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.313s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:61:32:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T> bool CDCR::y_residual::operator()(const T*, const T*, T*) const[m[K’
+[3.313s]    61 |     template <typename T> bool [01;36m[Koperator[m[K()(const T* const alpha, const T* const theta, T* residual) const {
+[3.313s]       |                                [01;36m[K^~~~~~~~[m[K
+[3.313s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:61:32:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.313s] In file included from [01m[K/usr/local/include/ceres/internal/autodiff.h:151[m[K,
+[3.313s]                  from [01m[K/usr/local/include/ceres/autodiff_cost_function.h:130[m[K,
+[3.313s]                  from [01m[K/usr/local/include/ceres/ceres.h:37[m[K,
+[3.313s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11[m[K,
+[3.313s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.314s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 2 provided
+[3.314s]    55 |   return [01;36m[Kfunctor(input[Indices]..., output)[m[K;
+[3.314s]       |          [01;36m[K~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.314s] /usr/local/include/ceres/internal/variadic_evaluate.h: In instantiation of ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::x_residual; T = ceres::Jet<double, 1>; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’:
+[3.314s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::x_residual; T = ceres::Jet<double, 1>][m[K’
+[3.314s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::x_residual; T = ceres::Jet<double, 1>][m[K’
+[3.314s] [01m[K/usr/local/include/ceres/internal/autodiff.h:349:39:[m[K   required from ‘[01m[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::x_residual; T = double][m[K’
+[3.314s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::x_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.314s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.314s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;31m[Kerror: [m[Kno match for call to ‘[01m[K(const CDCR::x_residual) (const ceres::Jet<double, 1>* const&, ceres::Jet<double, 1>*&)[m[K’
+[3.314s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.314s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:43:32:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T> bool CDCR::x_residual::operator()(const T*, const T*, T*) const[m[K’
+[3.314s]    43 |     template <typename T> bool [01;36m[Koperator[m[K()(const T* const alpha, const T* const theta, T* residual) const {
+[3.314s]       |                                [01;36m[K^~~~~~~~[m[K
+[3.314s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:43:32:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.314s] In file included from [01m[K/usr/local/include/ceres/internal/autodiff.h:151[m[K,
+[3.314s]                  from [01m[K/usr/local/include/ceres/autodiff_cost_function.h:130[m[K,
+[3.314s]                  from [01m[K/usr/local/include/ceres/ceres.h:37[m[K,
+[3.314s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11[m[K,
+[3.314s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.314s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 2 provided
+[3.314s]    55 |   return [01;36m[Kfunctor(input[Indices]..., output)[m[K;
+[3.314s]       |          [01;36m[K~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.314s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.314s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = ceres::Jet<double, 1>][m[K’:
+[3.314s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = ceres::Jet<double, 1>; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.315s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.315s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.315s] [01m[K/usr/local/include/ceres/internal/autodiff.h:349:39:[m[K   required from ‘[01m[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.315s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.315s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.315s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:58:[m[K [01;31m[Kerror: [m[Kinvalid operands of types ‘[01m[Kconst double[m[K’ and ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’ to binary ‘[01m[Koperator/[m[K’
+[3.315s]    82 |         residual[0] = weight_position_*([01;31m[Klength_continuum_/theta[m[K*sin(theta)+length_rigid1_+length_rigid2_*cos(theta)-z_);
+[3.315s]       |                                         [01;31m[K~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.315s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:68:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Ksin(const ceres::Jet<double, 1>* const&)[m[K’
+[3.315s]    82 |         residual[0] = weight_position_*(length_continuum_/theta*[01;31m[Ksin(theta)[m[K+length_rigid1_+length_rigid2_*cos(theta)-z_);
+[3.315s]       |                                                                 [01;31m[K~~~^~~~~~~[m[K
+[3.315s] In file included from [01m[K/usr/include/features.h:461[m[K,
+[3.315s]                  from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h:39[m[K,
+[3.315s]                  from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h:528[m[K,
+[3.315s]                  from [01m[K/usr/include/c++/9/csignal:41[m[K,
+[3.315s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:143[m[K,
+[3.315s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.315s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.315s] [01m[K/usr/include/x86_64-linux-gnu/bits/mathcalls.h:64:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kdouble sin(double)[m[K’
+[3.315s]    64 | [01;36m[K__MATHCALL_VEC[m[K (sin,, (_Mdouble_ __x));
+[3.315s]       | [01;36m[K^~~~~~~~~~~~~~[m[K
+[3.315s] In file included from [01m[K/usr/include/c++/9/cmath:45[m[K,
+[3.315s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/moving_average_statistics/types.hpp:18[m[K,
+[3.315s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp:24[m[K,
+[3.315s]                  from [01m[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:23[m[K,
+[3.315s]                  from [01m[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50[m[K,
+[3.316s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25[m[K,
+[3.316s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.316s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.316s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.316s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.316s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.316s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.316s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.316s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.316s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.316s] [01m[K/usr/include/x86_64-linux-gnu/bits/mathcalls.h:64:1:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’ to ‘[01m[Kdouble[m[K’
+[3.316s]    64 | [01;36m[K_[m[K_MATHCALL_VEC (sin,, (_Mdouble_ __x));
+[3.316s]       | [01;36m[K^[m[K
+[3.316s] In file included from [01m[K/usr/local/include/eigen3/Eigen/Core:96[m[K,
+[3.316s]                  from [01m[K/usr/local/include/eigen3/Eigen/Dense:1[m[K,
+[3.316s]                  from [01m[K/usr/local/include/eigen3/Eigen/Eigen:1[m[K,
+[3.316s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2[m[K,
+[3.316s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2[m[K,
+[3.316s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.316s] [01m[K/usr/include/c++/9/complex:852:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> std::complex<_Tp> std::sin(const std::complex<_Tp>&)[m[K’
+[3.316s]   852 |     [01;36m[Ksin[m[K(const complex<_Tp>& __z) { return __complex_sin(__z.__rep()); }
+[3.316s]       |     [01;36m[K^~~[m[K
+[3.316s] [01m[K/usr/include/c++/9/complex:852:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.316s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.316s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:68:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst std::complex<_Tp>[m[K’ and ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’
+[3.316s]    82 |         residual[0] = weight_position_*(length_continuum_/theta*[01;36m[Ksin(theta)[m[K+length_rigid1_+length_rigid2_*cos(theta)-z_);
+[3.316s]       |                                                                 [01;36m[K~~~^~~~~~~[m[K
+[3.316s] In file included from [01m[K/opt/ros/foxy/include/libstatistics_collector/moving_average_statistics/types.hpp:18[m[K,
+[3.317s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp:24[m[K,
+[3.317s]                  from [01m[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:23[m[K,
+[3.317s]                  from [01m[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50[m[K,
+[3.317s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25[m[K,
+[3.317s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.317s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.317s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.317s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.317s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.317s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.317s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.317s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.317s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.317s] [01m[K/usr/include/c++/9/cmath:437:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> constexpr typename __gnu_cxx::__enable_if<std::__is_integer<_Tp>::__value, double>::__type std::sin(_Tp)[m[K’
+[3.317s]   437 |     [01;36m[Ksin[m[K(_Tp __x)
+[3.317s]       |     [01;36m[K^~~[m[K
+[3.317s] [01m[K/usr/include/c++/9/cmath:437:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.317s] /usr/include/c++/9/cmath: In substitution of ‘[01m[Ktemplate<class _Tp> constexpr typename __gnu_cxx::__enable_if<std::__is_integer<_Tp>::__value, double>::__type std::sin(_Tp) [with _Tp = const ceres::Jet<double, 1>*][m[K’:
+[3.317s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:68:[m[K   required from ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = ceres::Jet<double, 1>][m[K’
+[3.317s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = ceres::Jet<double, 1>; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.317s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.317s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.317s] [01m[K/usr/local/include/ceres/internal/autodiff.h:349:39:[m[K   required from ‘[01m[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.317s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.317s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.317s] [01m[K/usr/include/c++/9/cmath:437:5:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[K__type[m[K’ in ‘[01m[Kstruct __gnu_cxx::__enable_if<false, double>[m[K’
+[3.317s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = ceres::Jet<double, 1>][m[K’:
+[3.317s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = ceres::Jet<double, 1>; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.318s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.318s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.318s] [01m[K/usr/local/include/ceres/internal/autodiff.h:349:39:[m[K   required from ‘[01m[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.318s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.318s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.318s] [01m[K/usr/include/c++/9/cmath:429:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr long double std::sin(long double)[m[K’
+[3.318s]   429 |   [01;36m[Ksin[m[K(long double __x)
+[3.318s]       |   [01;36m[K^~~[m[K
+[3.318s] [01m[K/usr/include/c++/9/cmath:429:19:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’ to ‘[01m[Klong double[m[K’
+[3.318s]   429 |   sin([01;36m[Klong double __x[m[K)
+[3.318s]       |       [01;36m[K~~~~~~~~~~~~^~~[m[K
+[3.318s] [01m[K/usr/include/c++/9/cmath:425:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr float std::sin(float)[m[K’
+[3.318s]   425 |   [01;36m[Ksin[m[K(float __x)
+[3.318s]       |   [01;36m[K^~~[m[K
+[3.318s] [01m[K/usr/include/c++/9/cmath:425:13:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’ to ‘[01m[Kfloat[m[K’
+[3.318s]   425 |   sin([01;36m[Kfloat __x[m[K)
+[3.318s]       |       [01;36m[K~~~~~~^~~[m[K
+[3.318s] In file included from [01m[K/usr/local/include/ceres/internal/autodiff.h:152[m[K,
+[3.318s]                  from [01m[K/usr/local/include/ceres/autodiff_cost_function.h:130[m[K,
+[3.318s]                  from [01m[K/usr/local/include/ceres/ceres.h:37[m[K,
+[3.318s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11[m[K,
+[3.318s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.318s] [01m[K/usr/local/include/ceres/jet.h:624:18:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T, int N> ceres::Jet<T, N> ceres::sin(const ceres::Jet<T, N>&)[m[K’
+[3.318s]   624 | inline Jet<T, N> [01;36m[Ksin[m[K(const Jet<T, N>& f) {
+[3.318s]       |                  [01;36m[K^~~[m[K
+[3.318s] [01m[K/usr/local/include/ceres/jet.h:624:18:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.318s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.318s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:68:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst ceres::Jet<T, N>[m[K’ and ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’
+[3.318s]    82 |         residual[0] = weight_position_*(length_continuum_/theta*[01;36m[Ksin(theta)[m[K+length_rigid1_+length_rigid2_*cos(theta)-z_);
+[3.319s]       |                                                                 [01;36m[K~~~^~~~~~~[m[K
+[3.319s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:109:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kcos(const ceres::Jet<double, 1>* const&)[m[K’
+[3.319s]    82 |         residual[0] = weight_position_*(length_continuum_/theta*sin(theta)+length_rigid1_+length_rigid2_*[01;31m[Kcos(theta)[m[K-z_);
+[3.319s]       |                                                                                                          [01;31m[K~~~^~~~~~~[m[K
+[3.319s] In file included from [01m[K/usr/include/features.h:461[m[K,
+[3.319s]                  from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h:39[m[K,
+[3.319s]                  from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h:528[m[K,
+[3.319s]                  from [01m[K/usr/include/c++/9/csignal:41[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:143[m[K,
+[3.319s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.319s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.319s] [01m[K/usr/include/x86_64-linux-gnu/bits/mathcalls.h:62:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kdouble cos(double)[m[K’
+[3.319s]    62 | [01;36m[K__MATHCALL_VEC[m[K (cos,, (_Mdouble_ __x));
+[3.319s]       | [01;36m[K^~~~~~~~~~~~~~[m[K
+[3.319s] In file included from [01m[K/usr/include/c++/9/cmath:45[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/moving_average_statistics/types.hpp:18[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp:24[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:23[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.319s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.319s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.319s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.320s] [01m[K/usr/include/x86_64-linux-gnu/bits/mathcalls.h:62:1:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’ to ‘[01m[Kdouble[m[K’
+[3.320s]    62 | [01;36m[K_[m[K_MATHCALL_VEC (cos,, (_Mdouble_ __x));
+[3.320s]       | [01;36m[K^[m[K
+[3.320s] In file included from [01m[K/usr/local/include/eigen3/Eigen/Core:96[m[K,
+[3.320s]                  from [01m[K/usr/local/include/eigen3/Eigen/Dense:1[m[K,
+[3.320s]                  from [01m[K/usr/local/include/eigen3/Eigen/Eigen:1[m[K,
+[3.320s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp:2[m[K,
+[3.320s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:2[m[K,
+[3.320s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.320s] [01m[K/usr/include/c++/9/complex:734:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> std::complex<_Tp> std::cos(const std::complex<_Tp>&)[m[K’
+[3.320s]   734 |     [01;36m[Kcos[m[K(const complex<_Tp>& __z) { return __complex_cos(__z.__rep()); }
+[3.320s]       |     [01;36m[K^~~[m[K
+[3.320s] [01m[K/usr/include/c++/9/complex:734:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.320s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.320s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:109:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst std::complex<_Tp>[m[K’ and ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’
+[3.320s]    82 |         residual[0] = weight_position_*(length_continuum_/theta*sin(theta)+length_rigid1_+length_rigid2_*[01;36m[Kcos(theta)[m[K-z_);
+[3.320s]       |                                                                                                          [01;36m[K~~~^~~~~~~[m[K
+[3.320s] In file included from [01m[K/opt/ros/foxy/include/libstatistics_collector/moving_average_statistics/types.hpp:18[m[K,
+[3.320s]                  from [01m[K/opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp:24[m[K,
+[3.320s]                  from [01m[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:23[m[K,
+[3.320s]                  from [01m[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50[m[K,
+[3.320s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25[m[K,
+[3.320s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[3.320s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[3.320s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[3.320s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[3.320s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.320s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.320s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.321s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:1[m[K,
+[3.321s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.321s] [01m[K/usr/include/c++/9/cmath:196:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> constexpr typename __gnu_cxx::__enable_if<std::__is_integer<_Tp>::__value, double>::__type std::cos(_Tp)[m[K’
+[3.321s]   196 |     [01;36m[Kcos[m[K(_Tp __x)
+[3.321s]       |     [01;36m[K^~~[m[K
+[3.321s] [01m[K/usr/include/c++/9/cmath:196:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.321s] /usr/include/c++/9/cmath: In substitution of ‘[01m[Ktemplate<class _Tp> constexpr typename __gnu_cxx::__enable_if<std::__is_integer<_Tp>::__value, double>::__type std::cos(_Tp) [with _Tp = const ceres::Jet<double, 1>*][m[K’:
+[3.321s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:109:[m[K   required from ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = ceres::Jet<double, 1>][m[K’
+[3.321s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = ceres::Jet<double, 1>; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.321s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.321s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.321s] [01m[K/usr/local/include/ceres/internal/autodiff.h:349:39:[m[K   required from ‘[01m[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.321s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.321s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.321s] [01m[K/usr/include/c++/9/cmath:196:5:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[K__type[m[K’ in ‘[01m[Kstruct __gnu_cxx::__enable_if<false, double>[m[K’
+[3.321s] /home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp: In instantiation of ‘[01m[Kbool CDCR::z_residual::operator()(const T*, T*) const [with T = ceres::Jet<double, 1>][m[K’:
+[3.321s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:55:17:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, std::false_type, std::integer_sequence<int, Indices ...>) [with Functor = CDCR::z_residual; T = ceres::Jet<double, 1>; int ...Indices = {0}; std::false_type = std::integral_constant<bool, false>][m[K’
+[3.321s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:77:30:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluateImpl(const Functor&, const T* const*, T*, const void*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.321s] [01m[K/usr/local/include/ceres/internal/variadic_evaluate.h:106:45:[m[K   required from ‘[01m[Kbool ceres::internal::VariadicEvaluate(const Functor&, const T* const*, T*) [with ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = ceres::Jet<double, 1>][m[K’
+[3.321s] [01m[K/usr/local/include/ceres/internal/autodiff.h:349:39:[m[K   required from ‘[01m[Kbool ceres::internal::AutoDifferentiate(const Functor&, const T* const*, int, T*, T**) [with int kNumResiduals = 1; ParameterDims = ceres::internal::ParameterDims<false, 1>; Functor = CDCR::z_residual; T = double][m[K’
+[3.321s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:211:69:[m[K   required from ‘[01m[Kbool ceres::AutoDiffCostFunction<CostFunctor, kNumResiduals, Ns>::Evaluate(const double* const*, double*, double**) const [with CostFunctor = CDCR::z_residual; int kNumResiduals = 1; int ...Ns = {1}][m[K’
+[3.321s] [01m[K/usr/local/include/ceres/autodiff_cost_function.h:201:8:[m[K   required from here
+[3.321s] [01m[K/usr/include/c++/9/cmath:188:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr long double std::cos(long double)[m[K’
+[3.321s]   188 |   [01;36m[Kcos[m[K(long double __x)
+[3.321s]       |   [01;36m[K^~~[m[K
+[3.322s] [01m[K/usr/include/c++/9/cmath:188:19:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’ to ‘[01m[Klong double[m[K’
+[3.322s]   188 |   cos([01;36m[Klong double __x[m[K)
+[3.322s]       |       [01;36m[K~~~~~~~~~~~~^~~[m[K
+[3.322s] [01m[K/usr/include/c++/9/cmath:184:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr float std::cos(float)[m[K’
+[3.322s]   184 |   [01;36m[Kcos[m[K(float __x)
+[3.322s]       |   [01;36m[K^~~[m[K
+[3.322s] [01m[K/usr/include/c++/9/cmath:184:13:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’ to ‘[01m[Kfloat[m[K’
+[3.322s]   184 |   cos([01;36m[Kfloat __x[m[K)
+[3.322s]       |       [01;36m[K~~~~~~^~~[m[K
+[3.322s] In file included from [01m[K/usr/local/include/ceres/internal/autodiff.h:152[m[K,
+[3.322s]                  from [01m[K/usr/local/include/ceres/autodiff_cost_function.h:130[m[K,
+[3.322s]                  from [01m[K/usr/local/include/ceres/ceres.h:37[m[K,
+[3.322s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:11[m[K,
+[3.322s]                  from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.322s] [01m[K/usr/local/include/ceres/jet.h:611:18:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T, int N> ceres::Jet<T, N> ceres::cos(const ceres::Jet<T, N>&)[m[K’
+[3.322s]   611 | inline Jet<T, N> [01;36m[Kcos[m[K(const Jet<T, N>& f) {
+[3.322s]       |                  [01;36m[K^~~[m[K
+[3.322s] [01m[K/usr/local/include/ceres/jet.h:611:18:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.322s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[3.322s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:109:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst ceres::Jet<T, N>[m[K’ and ‘[01m[Kconst ceres::Jet<double, 1>* const[m[K’
+[3.322s]    82 |         residual[0] = weight_position_*(length_continuum_/theta*sin(theta)+length_rigid1_+length_rigid2_*[01;36m[Kcos(theta)[m[K-z_);
+[3.322s]       |                                                                                                          [01;36m[K~~~^~~~~~~[m[K
+[3.488s] make[2]: *** [CMakeFiles/path_follow.dir/build.make:76：CMakeFiles/path_follow.dir/src/cdcr.cpp.o] 错误 1
+[3.488s] make[1]: *** [CMakeFiles/Makefile2:78：CMakeFiles/path_follow.dir/all] 错误 2
+[3.489s] make: *** [Makefile:141：all] 错误 2
+[3.490s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
