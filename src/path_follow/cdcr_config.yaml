@@ -110,9 +110,9 @@ cdcr_point_size_z: 8
 cdcr_plat_size_x: 90
 cdcr_plat_size_y: 90
 cdcr_plat_size_z: 8
-base_box_color_r: 0.5
-base_box_color_g: 0.5
-base_box_color_b: 0.8
+base_box_color_r: 0.1
+base_box_color_g: 0.05
+base_box_color_b: 0.05
 base_box_color_a: 1.0
 cdcr_point_color_r: 0.0
 cdcr_point_color_g: 0.0
@@ -122,6 +122,11 @@ cdcr_plat_color_r: 0.9
 cdcr_plat_color_g: 0.2
 cdcr_plat_color_b: 0.0
 cdcr_plat_color_a: 1.0
+
+deviation_marker_scale_x: 4
+deviation_marker_scale_y: 8
+deviation_marker_scale_z: 8
+deviation_marker_zoom_factor: 5
 
 # the end index at the path point list
 

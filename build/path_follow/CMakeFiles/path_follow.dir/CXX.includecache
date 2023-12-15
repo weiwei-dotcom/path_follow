@@ -27,8 +27,6 @@ visualization_msgs/msg/marker_array.hpp
 /home/weiwei/Desktop/project/path_follow/src/path_follow/src/visualization_msgs/msg/marker_array.hpp
 cmath
 -
-visualization_msgs/msg/marker_array.hpp
--
 visualization_msgs/msg/marker.hpp
 -
 ceres/ceres.h
@@ -41,10 +39,6 @@ iostream
 -
 Eigen/Eigen
 -
-
-/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp
-cdcr.hpp
-/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp
 
 /home/weiwei/Desktop/project/path_follow/src/path_follow/src/uniform_bspline.hpp
 Eigen/Eigen

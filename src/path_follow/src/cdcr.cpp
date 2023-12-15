@@ -8,11 +8,19 @@ CDCR::CDCR():Node("path_follow")
     this->flag_end_path_follow = false;
     this->flag_discretized = false;
     this->flag_end_experience = false;
+    this->declare_parameter<std::double_t>("deviation_marker_zoom_factor", 5.0);
+    this->deviation_marker_zoom_factor = this->get_parameter("deviation_marker_zoom_factor").as_double();
+    this->declare_parameter<std::double_t>("deviation_marker_scale_x", 4.0);
+    this->deviation_marker_scale_x = this->get_parameter("deviation_marker_scale_x").as_double();
+    this->declare_parameter<std::double_t>("deviation_marker_scale_y", 8.0);
+    this->deviation_marker_scale_y = this->get_parameter("deviation_marker_scale_y").as_double();
+    this->declare_parameter<std::double_t>("deviation_marker_scale_z", 8.0);
+    this->deviation_marker_scale_z = this->get_parameter("deviation_marker_scale_z").as_double();
     this->declare_parameter<std::double_t>("sample_interval", 1.0);
     this->sample_interval = this->get_parameter("sample_interval").as_double();
     this->declare_parameter<std::int16_t>("joint_number", 8);
     this->joint_number = this->get_parameter("joint_number").as_int();
-    this->declare_parameter<std::int16_t>("experience_type", this->experience_type);
+    this->declare_parameter<std::int16_t>("experience_type",1);
     this->experience_type=this->get_parameter("experience_type").as_int();
     this->declare_parameter<std::double_t>("base_path_point_start_x", 0.0);
     this->base_path_point_start(0)=this->get_parameter("base_path_point_start_x").as_double();
@@ -26,7 +34,7 @@ CDCR::CDCR():Node("path_follow")
     this->base_path_point_end(1)=this->get_parameter("base_path_point_end_y").as_double();
     this->declare_parameter<std::double_t>("base_path_point_end_z", 0.0);
     this->base_path_point_end(2)=this->get_parameter("base_path_point_end_z").as_double();
-    this->declare_parameter<std::double_t>("start_track_path_point_id", 1);
+    this->declare_parameter<std::int64_t>("start_track_path_point_id", 1);
     this->start_track_path_point_id=this->get_parameter("start_track_path_point_id").as_int();
     this->declare_parameter<std::double_t>("base_start_point_x", 0.004);
     this->base_start_point(0)=this->get_parameter("base_start_point_x").as_double();
@@ -41,7 +49,7 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::double_t>("base_end_point_z", -0.004);
     this->base_end_point(2)=this->get_parameter("base_end_point_z").as_double();
     this->declare_parameter<std::int64_t>("path_follow_nanotime_interval", this->path_follow_nanotime_interval);
-    this->path_follow_nanotime_interval=this->get_parameter("path_follow_nanotime_interval").as_double();
+    this->path_follow_nanotime_interval=this->get_parameter("path_follow_nanotime_interval").as_int();
     this->declare_parameter<std::double_t>("arc_path_alpha", this->arc_path_alpha);
     this->arc_path_alpha=this->get_parameter("arc_path_alpha").as_double();
     this->declare_parameter<std::double_t>("min_arc_radius", this->min_arc_radius);
@@ -84,9 +92,9 @@ CDCR::CDCR():Node("path_follow")
     this->base_box_size_z=this->get_parameter("base_box_size_z").as_double();   
     this->declare_parameter<std::float_t>("base_box_color_r", 0.1);
     this->base_box_color_r=this->get_parameter("base_box_color_r").as_double();   
-    this->declare_parameter<std::float_t>("base_box_color_g", 0.1);
+    this->declare_parameter<std::float_t>("base_box_color_g", 0.05);
     this->base_box_color_g=this->get_parameter("base_box_color_g").as_double();   
-    this->declare_parameter<std::float_t>("base_box_color_b", 0.1);
+    this->declare_parameter<std::float_t>("base_box_color_b", 0.05);
     this->base_box_color_b=this->get_parameter("base_box_color_b").as_double();   
     this->declare_parameter<std::float_t>("base_box_color_a", 1.0);
     this->base_box_color_a=this->get_parameter("base_box_color_a").as_double();  
@@ -120,7 +128,6 @@ CDCR::CDCR():Node("path_follow")
     this->cdcr_plat_color_b = this->get_parameter("cdcr_plat_color_b").as_double();
     this->declare_parameter<std::double_t>("cdcr_plat_color_a", 1.0);
     this->cdcr_plat_color_a = this->get_parameter("cdcr_plat_color_a").as_double();
-
     if (joint_number == -1)
     {
         std::cout << "joint_number haven't initialized" <<std::endl;
@@ -138,7 +145,7 @@ CDCR::CDCR():Node("path_follow")
     this->transform_world_to_base = this->transform_base_to_world.inverse();
     int cdcr_point_size =0;
     for (int i=0;i<this->joint_number;i++)
-    {  
+    {
         Joint temp_joint(this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_rigid1_length")).as_double(),
                          this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_rigid2_length")).as_double(),
                          this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_continuum_length")).as_double());
@@ -167,6 +174,7 @@ CDCR::CDCR():Node("path_follow")
     this->base_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("base_visualization",10);
     this->cdcr_plat_visualization_pub=this->create_publisher<visualization_msgs::msg::MarkerArray>("cdcr_plat_visualization",10);
     this->cdcr_point_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("cdcr_point_visualization",10);
+    this->deviation_marker_pub = this->create_publisher<visualization_msgs::msg::MarkerArray>("deviation_markers", 5);
     return;
 }
 
@@ -231,6 +239,9 @@ void CDCR::path_follow_exeperience()
     {
         // discrete the path
         discretePath();
+        //debug
+        std::cout << "this->path_points.size(): " << this->path_points.size() <<std::endl;
+        visualizationPath();
         getCorrectTravelPointID();
         if (flag_end_experience)
         {
@@ -244,7 +255,30 @@ void CDCR::path_follow_exeperience()
         experience_arc_radiuses.push_back(this->arc_path_radius);
         experience_deviations.push_back(follow_max_deviation);
     }
-    return;    
+    return;
+}
+
+void CDCR::visualizationPath()
+{
+    visualization_marker path;
+    path.type = visualization_marker::LINE_LIST;
+    path.header.stamp = this->now();
+    path.header.frame_id = "world";
+    path.action = visualization_marker::ADD;
+    path.
+    return;
+}
+
+void CDCR::visualizationCDCR()
+{
+
+    return;
+}
+
+void CDCR::visualizationDeviations() 
+{
+
+    return;
 }
 
 void CDCR::getCorrectTravelPointID()
@@ -318,17 +352,61 @@ void CDCR::path_follow(std::vector<double>& time_spends, double& max_deviation)
         // calculate the deviation, record the max deviation and it's path point id
         // TODO:
         // fit_max_deviations.push_back()
-        double max_deviation = 0.0;
-        int max_deviation_path_point_id = 0;
-        cal_deviation_get_max_deviation_path_point_id(max_deviation,max_deviation_path_point_id);
+        double temp_max_deviation = 0.0;
+        int temp_max_deviation_path_point_id = 0;
+        cal_deviation_get_max_deviation_path_point_id(temp_max_deviation,temp_max_deviation_path_point_id);
+        // it's better to show the max deviation vector at the corrorsponding point.
         max_deviations.push_back(max_deviation);
-        max_deviation_path_point_ids.push_back(max_deviation_path_point_id);
+        max_deviation_path_point_ids.push_back(temp_max_deviation_path_point_id);
     }
-    // TODO:
+    show_max_deviations(max_deviations,max_deviation_path_point_ids);
     // follow_max_deviations.push_back();
     time_spends.push_back(temp_t_spend/(double)fit_times);
     max_deviation = *(std::max_element(max_deviations.begin(),max_deviations.end()));
-    
+    return;
+}
+void CDCR::show_max_deviations(const std::vector<double>& max_deviations, const std::vector<int>& max_deviation_path_point_ids)
+{
+    int max_deviations_size = max_deviations.size();
+    Eigen::Vector3d x_axis = Eigen::Vector3d(1.0,0.0,0.0);
+    visualization_msgs::msg::MarkerArray deviation_markers;
+    for (int i=0;i<max_deviations_size;i++)
+    {
+        Eigen::Vector3d temp_vec = (this->path_points[max_deviation_path_point_ids[i+1]]
+                                    -this->path_points[max_deviation_path_point_ids[i-1]]).normalized();
+        Eigen::Vector3d direct_vec = temp_vec.cross(x_axis);
+        Eigen::Vector3d temp_position = this->path_points[max_deviation_path_point_ids[i]];
+        visualization_msgs::msg::Marker temp_marker;
+        temp_marker.header.frame_id = "world";
+        temp_marker.type = visualization_msgs::msg::Marker::ARROW;
+        temp_marker.action = visualization_msgs::msg::Marker::ADD;
+        temp_marker.scale.x = this->deviation_marker_scale_x;
+        temp_marker.scale.y = this->deviation_marker_scale_y;
+        temp_marker.scale.z = this->deviation_marker_scale_z;
+        temp_marker.action = visualization_msgs::msg::Marker::ADD;
+        temp_marker.pose.position.x = temp_position.x();
+        temp_marker.pose.position.y = temp_position.y();
+        temp_marker.pose.position.z = temp_position.z();
+        temp_marker.pose.orientation.x = 0;
+        temp_marker.pose.orientation.y = 0;
+        temp_marker.pose.orientation.z = 0;
+        temp_marker.pose.orientation.w = 1;
+        temp_marker.color.r = 1;
+        temp_marker.color.b = 0;
+        temp_marker.color.g = 0;
+        temp_marker.color.a = 1;
+        geometry_msgs::msg::Point temp_start_point,temp_end_point;
+        temp_start_point.x = 0;
+        temp_start_point.x = 0;
+        temp_start_point.x = 0;
+        temp_end_point.x = direct_vec.x() * max_deviations[i] * this->deviation_marker_zoom_factor;
+        temp_end_point.y = direct_vec.y() * max_deviations[i] * this->deviation_marker_zoom_factor;
+        temp_end_point.z = direct_vec.z() * max_deviations[i] * this->deviation_marker_zoom_factor;
+        temp_marker.points.push_back(temp_start_point);
+        temp_marker.points.push_back(temp_end_point);
+        deviation_markers.markers.push_back(temp_marker);
+    }
+    deviation_marker_pub->publish(deviation_markers);
     return;
 }
 void CDCR::get_cdcr_sample_points()
@@ -412,6 +490,9 @@ void CDCR::visualization()
     cdcr_points_visual_msg.scale.y = this->cdcr_point_size_y;
     cdcr_points_visual_msg.scale.z = this->cdcr_point_size_z;
     cdcr_points_visual_msg.pose.orientation.w = 1.0;
+    cdcr_points_visual_msg.pose.orientation.x = 0.0;
+    cdcr_points_visual_msg.pose.orientation.y = 0.0;
+    cdcr_points_visual_msg.pose.orientation.z = 0.0;
     for (int i=0;i<this->cdcr_points.size();i++)
     {
         geometry_msgs::msg::Point temp_point;

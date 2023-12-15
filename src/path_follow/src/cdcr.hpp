@@ -6,7 +6,6 @@
 #include "uniform_bspline.hpp"
 #include "visualization_msgs/msg/marker_array.hpp"
 #include <cmath>
-#include <visualization_msgs/msg/marker_array.hpp>
 #include <visualization_msgs/msg/marker.hpp>
 #include <ceres/ceres.h>
 #include <iostream>
@@ -15,6 +14,8 @@
 class CDCR:public rclcpp::Node
 {
 public:
+typedef visualization_msgs::msg::Marker visualization_marker;
+typedef visualization_msgs::msg::MarkerArray visualization_marker_array;
 CDCR();
 void getPathDeviationAndNextIndex(const int& path_point_index_start, 
                                   const int& cdcr_point_index, 
@@ -32,6 +33,7 @@ Eigen::Vector3d getMediaInterPoint(const Eigen::Vector3d& inter_point,const Eige
 void fitCDCR();
 void path_follow(std::vector<double>& time_spend, double& max_deviation);
 void visualization();
+void show_max_deviations(const std::vector<double>& max_deviations, const std::vector<int>& max_deviation_path_point_ids);
 struct x_residual{
     x_residual(double weight_position,
                 double length_continuum,
@@ -114,7 +116,13 @@ Eigen::Vector3d get_inter_point(const int& ratio_id, const int& total_id, const 
 void cal_deviation_get_max_deviation_path_point_id(double& max_deviation, int& max_deviation_path_point_ids);
 void get_cdcr_sample_points();
 void find_closed_path_point(const int& start_path_point_id,const Eigen::Vector3d& joint_end_position, int& segment_start_path_point_id);
+void visualizationPath();
+void visualizationCDCR();
+void visualizationDeviations();
 private:
+rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr deviation_marker_pub;
+double deviation_marker_scale_x,deviation_marker_scale_y,deviation_marker_scale_z;
+double deviation_marker_zoom_factor;
 float base_box_color_r,base_box_color_g,base_box_color_b,base_box_color_a;
 float cdcr_point_color_r,cdcr_point_color_g,cdcr_point_color_b,cdcr_point_color_a;
 float cdcr_plat_color_r,cdcr_plat_color_g,cdcr_plat_color_b,cdcr_plat_color_a;
