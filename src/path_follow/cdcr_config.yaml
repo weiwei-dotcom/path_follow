@@ -72,14 +72,14 @@ base_path_point_end_x: 0.0
 base_path_point_end_y: 2101.0
 base_path_point_end_z: 0.0
 arc_path_alpha: 0.0
-arc_path_theta: 180
+arc_path_theta: 180.0
 post_line_path_length: 2100.0
-// the real base travel could use the init pose and end pose to confirm;
+# the real base travel could use the init pose and end pose to confirm;
 base_start_point_x: 0.0
 base_start_point_y: 1.0
 base_start_point_z: 0.0
 base_end_point_x: 0.0
-base_end_point_y: 1100.0
+base_end_point_y: 2100.0
 base_end_point_z: 0.0
 base_z_axis_x: 0.0
 base_z_axis_y: 1.0
@@ -88,28 +88,26 @@ base_y_axis_x: 1.0
 base_y_axis_y: 0.0
 base_y_axis_z: 0.0
 start_track_path_point_id: 1
-base_tolerance_deviation: 1
-base_tolerance_angle_deviation: 4
+base_tolerance_deviation: 1.0
+base_tolerance_angle_deviation: 4.0
 # this is the minimum value of remaining length over the length of the robot
-safe_path_length_redundance: 200
-start_curvature_radius: 600
-end_curvature_radius: 60
-min_arc_radius: 60
-max_arc_radius: 500
+safe_path_length_redundance: 200.0
+min_arc_radius: 60.0
+max_arc_radius: 500.0
 # 位置误差权重
-weight_position: 1
+weight_position: 1.0
 # 方向误差权重
-weight_direction: 5
+weight_direction: 5.0
 # the size of base box model for visualization
-base_box_size_x: 300
-base_box_size_y: 300
-base_box_size_z: 500
-cdcr_point_size_x: 8
-cdcr_point_size_y: 8
-cdcr_point_size_z: 8
-cdcr_plat_size_x: 90
-cdcr_plat_size_y: 90
-cdcr_plat_size_z: 8
+base_box_size_x: 300.0
+base_box_size_y: 300.0
+base_box_size_z: 500.0
+cdcr_point_size_x: 8.0
+cdcr_point_size_y: 8.0
+cdcr_point_size_z: 8.0
+cdcr_plat_size_x: 90.0
+cdcr_plat_size_y: 90.0
+cdcr_plat_size_z: 8.0
 base_box_color_r: 0.1
 base_box_color_g: 0.05
 base_box_color_b: 0.05
@@ -123,10 +121,16 @@ cdcr_plat_color_g: 0.2
 cdcr_plat_color_b: 0.0
 cdcr_plat_color_a: 1.0
 
-deviation_marker_scale_x: 4
-deviation_marker_scale_y: 8
-deviation_marker_scale_z: 8
-deviation_marker_zoom_factor: 5
+path_point_scale: 1.0
+path_point_color_r: 1.0
+path_point_color_g: 0.0
+path_point_color_b: 0.0
+path_point_color_a: 1.0
+
+deviation_marker_scale_x: 4.0
+deviation_marker_scale_y: 8.0
+deviation_marker_scale_z: 8.0
+deviation_marker_zoom_factor: 5.0
 
 # the end index at the path point list
 

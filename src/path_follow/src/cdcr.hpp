@@ -9,6 +9,7 @@
 #include <visualization_msgs/msg/marker.hpp>
 #include <ceres/ceres.h>
 #include <iostream>
+#include <stdlib.h>
 
 
 class CDCR:public rclcpp::Node
@@ -129,6 +130,9 @@ float cdcr_plat_color_r,cdcr_plat_color_g,cdcr_plat_color_b,cdcr_plat_color_a;
 double base_box_size_x,base_box_size_y,base_box_size_z;
 double cdcr_point_size_x,cdcr_point_size_y,cdcr_point_size_z;
 double cdcr_plat_size_x,cdcr_plat_size_y,cdcr_plat_size_z;
+double path_point_color_r,path_point_color_g,path_point_color_b,path_point_color_a;
+double path_point_scale;
+rclcpp::Publisher<visualization_marker>::SharedPtr path_point_markers_pub;
 rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr cdcr_point_visualization_pub;
 rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr base_visualization_pub;
 rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr cdcr_plat_visualization_pub;

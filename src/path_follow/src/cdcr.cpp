@@ -10,6 +10,17 @@ CDCR::CDCR():Node("path_follow")
     this->flag_end_experience = false;
     this->declare_parameter<std::double_t>("deviation_marker_zoom_factor", 5.0);
     this->deviation_marker_zoom_factor = this->get_parameter("deviation_marker_zoom_factor").as_double();
+    this->declare_parameter<std::double_t>("path_point_scale", 1.0);
+    this->path_point_scale = this->get_parameter("path_point_scale").as_double();
+    this->declare_parameter<std::double_t>("path_point_color_r", 1.0);
+    this->path_point_color_r = this->get_parameter("path_point_color_r").as_double();
+    this->declare_parameter<std::double_t>("path_point_color_g", 0.0);
+    this->path_point_color_g = this->get_parameter("path_point_color_g").as_double();
+    this->declare_parameter<std::double_t>("path_point_color_b", 0.0);
+    this->path_point_color_b = this->get_parameter("path_point_color_b").as_double();
+    this->declare_parameter<std::double_t>("path_point_color_a", 1.0);
+    this->path_point_color_a = this->get_parameter("path_point_color_a").as_double();
+    
     this->declare_parameter<std::double_t>("deviation_marker_scale_x", 4.0);
     this->deviation_marker_scale_x = this->get_parameter("deviation_marker_scale_x").as_double();
     this->declare_parameter<std::double_t>("deviation_marker_scale_y", 8.0);
@@ -30,8 +41,13 @@ CDCR::CDCR():Node("path_follow")
     this->base_path_point_start(2)=this->get_parameter("base_path_point_start_z").as_double();
     this->declare_parameter<std::double_t>("base_path_point_end_x", 0.0);
     this->base_path_point_end(0)=this->get_parameter("base_path_point_end_x").as_double();
-    this->declare_parameter<std::double_t>("base_path_point_end_y", 1000.0);
+    this->declare_parameter<std::double_t>("base_path_point_end_y", 2100.0);
     this->base_path_point_end(1)=this->get_parameter("base_path_point_end_y").as_double();
+
+    //debug
+    std::cout << "base_path_point_end_y"<<this->base_path_point_end(1) << std::endl;
+    RCLCPP_INFO(this->get_logger(), " base_path_point_end_y: %f", this->base_path_point_end(1));
+
     this->declare_parameter<std::double_t>("base_path_point_end_z", 0.0);
     this->base_path_point_end(2)=this->get_parameter("base_path_point_end_z").as_double();
     this->declare_parameter<std::int64_t>("start_track_path_point_id", 1);
@@ -50,15 +66,17 @@ CDCR::CDCR():Node("path_follow")
     this->base_end_point(2)=this->get_parameter("base_end_point_z").as_double();
     this->declare_parameter<std::int64_t>("path_follow_nanotime_interval", this->path_follow_nanotime_interval);
     this->path_follow_nanotime_interval=this->get_parameter("path_follow_nanotime_interval").as_int();
-    this->declare_parameter<std::double_t>("arc_path_alpha", this->arc_path_alpha);
+    this->declare_parameter<std::double_t>("arc_path_alpha", 0.0);
     this->arc_path_alpha=this->get_parameter("arc_path_alpha").as_double();
-    this->declare_parameter<std::double_t>("min_arc_radius", this->min_arc_radius);
+    this->declare_parameter<std::double_t>("arc_path_theta", 180.0);
+    this->arc_path_theta=this->get_parameter("arc_path_theta").as_double();
+    this->declare_parameter<std::double_t>("min_arc_radius", 60.0);
     this->min_arc_radius=this->get_parameter("min_arc_radius").as_double();
-    this->declare_parameter<std::double_t>("max_arc_radius", this->max_arc_radius);
+    this->declare_parameter<std::double_t>("max_arc_radius", 500.0);
     this->max_arc_radius=this->get_parameter("max_arc_radius").as_double();
-    this->declare_parameter<std::double_t>("arc_path_radius", this->arc_path_radius);
+    this->declare_parameter<std::double_t>("arc_path_radius", 60.0);
     this->arc_path_radius=this->get_parameter("arc_path_radius").as_double();
-    this->declare_parameter<std::double_t>("post_line_path_length", this->post_line_path_length);
+    this->declare_parameter<std::double_t>("post_line_path_length", 2100.0);
     this->post_line_path_length=this->get_parameter("post_line_path_length").as_double();
     this->declare_parameter<std::double_t>("base_z_axis_x", 0.0);
     this->base_z_axis(0)=this->get_parameter("base_z_axis_x").as_double();
@@ -80,9 +98,9 @@ CDCR::CDCR():Node("path_follow")
     this->safe_path_length_redundance=this->get_parameter("safe_path_length_redundance").as_double();
     this->declare_parameter<std::double_t>("bone_sample_interval", 1.0);
     this->bone_sample_interval=this->get_parameter("bone_sample_interval").as_double();
-    this->declare_parameter<std::double_t>("weight_direction", 1.0);
+    this->declare_parameter<std::double_t>("weight_direction", 5.0);
     this->weight_direction=this->get_parameter("weight_direction").as_double();
-    this->declare_parameter<std::double_t>("weight_position", 5.0);
+    this->declare_parameter<std::double_t>("weight_position", 1.0);
     this->weight_position=this->get_parameter("weight_position").as_double();
     this->declare_parameter<std::double_t>("base_box_size_x", 300.0);
     this->base_box_size_x=this->get_parameter("base_box_size_x").as_double();
@@ -99,11 +117,11 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::float_t>("base_box_color_a", 1.0);
     this->base_box_color_a=this->get_parameter("base_box_color_a").as_double();  
 
-    this->declare_parameter<std::double_t>("cdcr_point_size_x", 8);
+    this->declare_parameter<std::double_t>("cdcr_point_size_x", 8.0);
     this->cdcr_point_size_x = this->get_parameter("cdcr_point_size_x").as_double();
-    this->declare_parameter<std::double_t>("cdcr_point_size_y", 8);
+    this->declare_parameter<std::double_t>("cdcr_point_size_y", 8.0);
     this->cdcr_point_size_y = this->get_parameter("cdcr_point_size_y").as_double();
-    this->declare_parameter<std::double_t>("cdcr_point_size_z", 8);
+    this->declare_parameter<std::double_t>("cdcr_point_size_z", 8.0);
     this->cdcr_point_size_z = this->get_parameter("cdcr_point_size_z").as_double();
     this->declare_parameter<std::float_t>("cdcr_point_color_r", 0.0);
     this->cdcr_point_color_r = this->get_parameter("cdcr_point_color_r").as_double();
@@ -175,6 +193,8 @@ CDCR::CDCR():Node("path_follow")
     this->cdcr_plat_visualization_pub=this->create_publisher<visualization_msgs::msg::MarkerArray>("cdcr_plat_visualization",10);
     this->cdcr_point_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("cdcr_point_visualization",10);
     this->deviation_marker_pub = this->create_publisher<visualization_msgs::msg::MarkerArray>("deviation_markers", 5);
+    this->path_point_markers_pub = this->create_publisher<visualization_marker>("path_point_markers", 5);
+    std::cout << "init finished !!!" << std::endl;
     return;
 }
 
@@ -186,16 +206,24 @@ void CDCR::discretePath()
     // case 1 is using the combination of line and circle;
     case 1:
     {
-        int base_path_point_size = (int)ceil((base_path_point_end-base_path_point_start).norm()/this->sample_interval);
+        //debug
+        this->base_path_point_end(1)=this->get_parameter("base_path_point_end_y").as_double();
+        RCLCPP_INFO(this->get_logger(), "this_base_path_point_end_y: %f", this->base_path_point_end(1));
+        std::cout << "base_path_point_end_y: " << this->base_path_point_end(1) <<std::endl;
+
+        int base_path_point_size = ceil((base_path_point_end-base_path_point_start).norm()/this->sample_interval);
+        std::cout << "base_path_point_size: "<< base_path_point_size << std::endl;
         for (int i=0;i<=base_path_point_size;i++)
         {
             Eigen::Vector3d temp_path_point = (double)(base_path_point_size-i)/(double)base_path_point_size*base_path_point_start
                                                 +(double)i/(double)base_path_point_size*base_path_point_end;
             path_points.push_back(temp_path_point);
         }
+        std::cout << "base_path_points.size(): " << path_points.size() << std::endl;
         double rad_theta = arc_path_theta/180.0*M_PI;
         double rad_alpha = arc_path_alpha/180.0*M_PI;
         int arc_path_point_size = (int)ceil(rad_theta * this->arc_path_radius/this->sample_interval);
+        std::cout << "arc_path_point_size(): " << arc_path_point_size << std::endl;
         for (int i=1;i<=arc_path_point_size;i++)
         {
             double temp_theta = (double)i/(double)arc_path_point_size * rad_theta;
@@ -213,6 +241,7 @@ void CDCR::discretePath()
         {
             path_points.push_back(path_points.back() + vector_arc_end);
         }
+        std::cout << "path_points.size(): " << path_points.size() << std::endl;
         break;
     }
     // case 2 is using the constant curvature change rate path;
@@ -261,11 +290,36 @@ void CDCR::path_follow_exeperience()
 void CDCR::visualizationPath()
 {
     visualization_marker path;
-    path.type = visualization_marker::LINE_LIST;
+    path.type = visualization_marker::SPHERE_LIST;
     path.header.stamp = this->now();
     path.header.frame_id = "world";
     path.action = visualization_marker::ADD;
-    path.
+    path.color.r = path_point_color_r;
+    path.color.b = path_point_color_b;
+    path.color.g = path_point_color_g;
+    path.color.a = path_point_color_a;
+    path.scale.x = path_point_scale;
+    path.scale.y = path_point_scale;
+    path.scale.z = path_point_scale;
+    path.pose.position.x = 0.0;
+    path.pose.position.y = 0.0;
+    path.pose.position.z = 0.0;
+    path.pose.orientation.x = 0.0;
+    path.pose.orientation.y = 0.0;
+    path.pose.orientation.z = 0.0;
+    path.pose.orientation.w = 1.0;
+    int path_points_size = path_points.size();
+    std::cout << "path_points_size: " << path_points_size << std::endl;
+    for (int i=0;i<path_points_size;i++)
+    {
+        geometry_msgs::msg::Point temp_path_point;
+        temp_path_point.x = path_points[i].x();
+        temp_path_point.y = path_points[i].y();
+        temp_path_point.z = path_points[i].z();
+        path.points.push_back(temp_path_point);
+    }
+    path_point_markers_pub->publish(path);
+    std::cout << "path_point_markers_publish success!!!" << std::endl;
     return;
 }
 
@@ -302,6 +356,8 @@ void CDCR::getCorrectTravelPointID()
             return;
         }
         correct_start_path_point_id = i;
+        //debug
+        std::cout << "correct_start_path_point_id: " << correct_start_path_point_id << std::endl;
         for (int j=i;j<path_points.size()-1;j++)
         {
             if (j=path_points.size()-2)

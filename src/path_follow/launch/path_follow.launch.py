@@ -13,12 +13,8 @@ def generate_launch_description():
             package='path_follow',
             executable='path_follow',
             parameters=[load_param_from('/home/weiwei/Desktop/project/path_follow/src/path_follow/cdcr_config.yaml')]
-        ),
-        Node(
-            package='path_generator',
-            executable='path_generator',
-            parameters=[load_param_from('/home/weiwei/Desktop/project/path_follow/src/path_generator/path_config.yaml')]
-        )])
+        )
+])
     
 # if __name__=='__main__':
 #     params = load_param_from('/home/weiwei/Desktop/project/path_follow/src/path_follow/cdcr_config.yaml')
