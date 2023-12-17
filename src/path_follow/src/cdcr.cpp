@@ -33,23 +33,21 @@ CDCR::CDCR():Node("path_follow")
     this->joint_number = this->get_parameter("joint_number").as_int();
     this->declare_parameter<std::int16_t>("experience_type",1);
     this->experience_type=this->get_parameter("experience_type").as_int();
+
     this->declare_parameter<std::double_t>("base_path_point_start_x", 0.0);
     this->base_path_point_start(0)=this->get_parameter("base_path_point_start_x").as_double();
     this->declare_parameter<std::double_t>("base_path_point_start_y", 0.0);
     this->base_path_point_start(1)=this->get_parameter("base_path_point_start_y").as_double();
     this->declare_parameter<std::double_t>("base_path_point_start_z", 0.0);
     this->base_path_point_start(2)=this->get_parameter("base_path_point_start_z").as_double();
+
     this->declare_parameter<std::double_t>("base_path_point_end_x", 0.0);
     this->base_path_point_end(0)=this->get_parameter("base_path_point_end_x").as_double();
     this->declare_parameter<std::double_t>("base_path_point_end_y", 2100.0);
     this->base_path_point_end(1)=this->get_parameter("base_path_point_end_y").as_double();
-
-    //debug
-    std::cout << "base_path_point_end_y"<<this->base_path_point_end(1) << std::endl;
-    RCLCPP_INFO(this->get_logger(), " base_path_point_end_y: %f", this->base_path_point_end(1));
-
     this->declare_parameter<std::double_t>("base_path_point_end_z", 0.0);
     this->base_path_point_end(2)=this->get_parameter("base_path_point_end_z").as_double();
+
     this->declare_parameter<std::int64_t>("start_track_path_point_id", 1);
     this->start_track_path_point_id=this->get_parameter("start_track_path_point_id").as_int();
     this->declare_parameter<std::double_t>("base_start_point_x", 0.004);
@@ -60,7 +58,7 @@ CDCR::CDCR():Node("path_follow")
     this->base_start_point(2)=this->get_parameter("base_start_point_z").as_double();
     this->declare_parameter<std::double_t>("base_end_point_x", -0.004);
     this->base_end_point(0)=this->get_parameter("base_end_point_x").as_double();
-    this->declare_parameter<std::double_t>("base_end_point_y", 1001.0);
+    this->declare_parameter<std::double_t>("base_end_point_y", 2099.0);
     this->base_end_point(1)=this->get_parameter("base_end_point_y").as_double();
     this->declare_parameter<std::double_t>("base_end_point_z", -0.004);
     this->base_end_point(2)=this->get_parameter("base_end_point_z").as_double();
@@ -80,13 +78,13 @@ CDCR::CDCR():Node("path_follow")
     this->post_line_path_length=this->get_parameter("post_line_path_length").as_double();
     this->declare_parameter<std::double_t>("base_z_axis_x", 0.0);
     this->base_z_axis(0)=this->get_parameter("base_z_axis_x").as_double();
-    this->declare_parameter<std::double_t>("base_z_axis_y", 0.0);
+    this->declare_parameter<std::double_t>("base_z_axis_y", 1.0);
     this->base_z_axis(1)=this->get_parameter("base_z_axis_y").as_double();
-    this->declare_parameter<std::double_t>("base_z_axis_z", 1.0);
+    this->declare_parameter<std::double_t>("base_z_axis_z", 0.0);
     this->base_z_axis(2)=this->get_parameter("base_z_axis_z").as_double();
-    this->declare_parameter<std::double_t>("base_y_axis_x", 0.0);
+    this->declare_parameter<std::double_t>("base_y_axis_x", 1.0);
     this->base_y_axis(0)=this->get_parameter("base_y_axis_x").as_double();
-    this->declare_parameter<std::double_t>("base_y_axis_y", 1.0);
+    this->declare_parameter<std::double_t>("base_y_axis_y", 0.0);
     this->base_y_axis(1)=this->get_parameter("base_y_axis_y").as_double();
     this->declare_parameter<std::double_t>("base_y_axis_z", 0.0);
     this->base_y_axis(2)=this->get_parameter("base_y_axis_z").as_double();
@@ -319,6 +317,7 @@ void CDCR::visualizationPath()
         path.points.push_back(temp_path_point);
     }
     path_point_markers_pub->publish(path);
+    //debug
     std::cout << "path_point_markers_publish success!!!" << std::endl;
     return;
 }
@@ -342,7 +341,7 @@ void CDCR::getCorrectTravelPointID()
 
     for (int i=1;i<path_points.size()-1;i++)
     {
-        if (i=path_points.size()-2)
+        if (i>=(path_points.size()-2))
         {
             RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 173");
             this->flag_end_experience=true;
@@ -360,7 +359,7 @@ void CDCR::getCorrectTravelPointID()
         std::cout << "correct_start_path_point_id: " << correct_start_path_point_id << std::endl;
         for (int j=i;j<path_points.size()-1;j++)
         {
-            if (j=path_points.size()-2)
+            if (j==(path_points.size()-2))
             {
                 RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 204");
                 this->flag_end_experience=true;
@@ -574,7 +573,7 @@ void CDCR::visualization()
         cdcr_plat_model.scale.x = this->cdcr_plat_size_x;
         cdcr_plat_model.scale.y = this->cdcr_plat_size_y;
         cdcr_plat_model.scale.z = this->cdcr_plat_size_z;
-        if (i==cdcr_segment_point_id.size()-1)
+        if (i==(cdcr_segment_point_id.size()-1))
         {
             Eigen::Matrix4d tempT = this->transform_joints_to_world[i-1] * this->joints[i-1].transform;
             Eigen::Matrix3d tempR = tempT.block(0,0,3,3);

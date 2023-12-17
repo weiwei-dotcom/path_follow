@@ -69,7 +69,7 @@ base_path_point_start_x: 0.0
 base_path_point_start_y: 0.0
 base_path_point_start_z: 0.0
 base_path_point_end_x: 0.0
-base_path_point_end_y: 2101.0
+base_path_point_end_y: 2100.0
 base_path_point_end_z: 0.0
 arc_path_alpha: 0.0
 arc_path_theta: 180.0
@@ -79,7 +79,7 @@ base_start_point_x: 0.0
 base_start_point_y: 1.0
 base_start_point_z: 0.0
 base_end_point_x: 0.0
-base_end_point_y: 2100.0
+base_end_point_y: 2099.0
 base_end_point_z: 0.0
 base_z_axis_x: 0.0
 base_z_axis_y: 1.0
