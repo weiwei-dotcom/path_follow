@@ -261,13 +261,14 @@ void CDCR::discretePath()
 void CDCR::path_follow_exeperience()
 {
     std::vector<double> experience_deviations;
-    std::vector<int> experience_arc_radiuses;
+    std::vector<double> experience_arc_radiuses;
+    std::vector<double> time_spend;
     for (this->arc_path_radius=this->min_arc_radius; this->arc_path_radius<=this->max_arc_radius+1e-4; this->arc_path_radius+=1.0)
     {
         // discrete the path
         discretePath();
         //debug
-        std::cout << "this->path_points.size(): " << this->path_points.size() <<std::endl;
+        std::cout << "this->path_points.size(): " << this->path_points.size() << std::endl;
         visualizationPath();
         getCorrectTravelPointID();
         if (flag_end_experience)
@@ -276,9 +277,10 @@ void CDCR::path_follow_exeperience()
             return;
         }
         this->start_track_path_point_id;
-        std::vector<double> time_spend;
         double follow_max_deviation = 0.0;
-        path_follow(time_spend, follow_max_deviation);
+        double temp_time_spend = 0.0;
+        path_follow(temp_time_spend, follow_max_deviation);
+        time_spend.push_back(temp_time_spend);
         experience_arc_radiuses.push_back(this->arc_path_radius);
         experience_deviations.push_back(follow_max_deviation);
     }
@@ -356,7 +358,8 @@ void CDCR::getCorrectTravelPointID()
         }
         correct_start_path_point_id = i;
         //debug
-        std::cout << "correct_start_path_point_id: " << correct_start_path_point_id << std::endl;
+        RCLCPP_INFO(this->get_logger(), "correct_start_path_point_id: %f",correct_start_path_point_id);
+
         for (int j=i;j<path_points.size()-1;j++)
         {
             if (j==(path_points.size()-2))
@@ -384,9 +387,8 @@ void CDCR::getCorrectTravelPointID()
     }
 }
 
-void CDCR::path_follow(std::vector<double>& time_spends, double& max_deviation)
+void CDCR::path_follow(double& time_spend, double& max_deviation)
 {
-    double temp_t_spend=0.0;
     int fit_times=0;
     std::vector<int> max_deviation_path_point_ids;
     std::vector<double> max_deviations;
@@ -399,14 +401,10 @@ void CDCR::path_follow(std::vector<double>& time_spends, double& max_deviation)
         fitCDCR();
         rclcpp::Time t_end = this->now();
         double t_spend = t_end.seconds()-t_start.seconds();
-        temp_t_spend += t_spend;
+        time_spend += t_spend;
         fit_times++;
         get_cdcr_sample_points();
         visualization();
-        
-        // calculate the deviation, record the max deviation and it's path point id
-        // TODO:
-        // fit_max_deviations.push_back()
         double temp_max_deviation = 0.0;
         int temp_max_deviation_path_point_id = 0;
         cal_deviation_get_max_deviation_path_point_id(temp_max_deviation,temp_max_deviation_path_point_id);
@@ -414,9 +412,16 @@ void CDCR::path_follow(std::vector<double>& time_spends, double& max_deviation)
         max_deviations.push_back(max_deviation);
         max_deviation_path_point_ids.push_back(temp_max_deviation_path_point_id);
     }
-    show_max_deviations(max_deviations,max_deviation_path_point_ids);
+    if (this->arc_path_radius > 99.5 && this->arc_path_radius<100.5)
+    {
+        show_max_deviations(max_deviations,max_deviation_path_point_ids);    
+        cv::Mat temp_img;
+        temp_img=cv::imread("/home/weiwei/Desktop/project/path_follow/src/path_follow/wait_for_key.png");
+        cv::imshow("wait for key ! ! !", temp_img);
+        cv::waitKey(0);    
+    }
     // follow_max_deviations.push_back();
-    time_spends.push_back(temp_t_spend/(double)fit_times);
+    time_spend = time_spend/(double)fit_times;
     max_deviation = *(std::max_element(max_deviations.begin(),max_deviations.end()));
     return;
 }

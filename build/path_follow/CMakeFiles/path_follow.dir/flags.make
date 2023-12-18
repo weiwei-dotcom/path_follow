@@ -6,5 +6,5 @@ CXX_FLAGS =   -Wall -Wextra -Wpedantic -std=gnu++17
 
 CXX_DEFINES = -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DGFLAGS_IS_A_DLL=0 -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB
 
-CXX_INCLUDES = -I/usr/local/share/sophus/cmake -isystem /usr/local/include/eigen3 -isystem /opt/ros/foxy/include 
+CXX_INCLUDES = -I/usr/local/share/sophus/cmake -isystem /usr/local/include/eigen3 -isystem /opt/ros/foxy/include -isystem /usr/include/opencv4 
 

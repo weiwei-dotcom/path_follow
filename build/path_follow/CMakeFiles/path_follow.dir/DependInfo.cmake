@@ -23,6 +23,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/share/sophus/cmake"
   "/usr/local/include/eigen3"
   "/opt/ros/foxy/include"
+  "/usr/include/opencv4"
   )
 
 # Targets to which this target links.
