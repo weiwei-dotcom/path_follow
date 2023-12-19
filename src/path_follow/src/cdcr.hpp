@@ -11,7 +11,6 @@
 #include <opencv2/opencv.hpp>
 #include <ceres/ceres.h>
 #include <iostream>
-#include <stdlib.h>
 
 
 class CDCR:public rclcpp::Node

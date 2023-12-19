@@ -4,11 +4,11 @@
 CDCR::CDCR():Node("path_follow")
 {
     this->weight_direction=10;
-    this->weight_position=5;
+    this->weight_position=1;
     this->flag_end_path_follow = false;
     this->flag_discretized = false;
     this->flag_end_experience = false;
-    this->declare_parameter<std::double_t>("deviation_marker_zoom_factor", 5.0);
+    this->declare_parameter<std::double_t>("deviation_marker_zoom_factor", 10.0);
     this->deviation_marker_zoom_factor = this->get_parameter("deviation_marker_zoom_factor").as_double();
     this->declare_parameter<std::double_t>("path_point_scale", 1.0);
     this->path_point_scale = this->get_parameter("path_point_scale").as_double();
@@ -29,7 +29,7 @@ CDCR::CDCR():Node("path_follow")
     this->deviation_marker_scale_z = this->get_parameter("deviation_marker_scale_z").as_double();
     this->declare_parameter<std::double_t>("sample_interval", 1.0);
     this->sample_interval = this->get_parameter("sample_interval").as_double();
-    this->declare_parameter<std::int16_t>("joint_number", 8);
+    this->declare_parameter<std::int16_t>("joint_number", 20);
     this->joint_number = this->get_parameter("joint_number").as_int();
     this->declare_parameter<std::int16_t>("experience_type",1);
     this->experience_type=this->get_parameter("experience_type").as_int();
@@ -50,17 +50,17 @@ CDCR::CDCR():Node("path_follow")
 
     this->declare_parameter<std::int64_t>("start_track_path_point_id", 1);
     this->start_track_path_point_id=this->get_parameter("start_track_path_point_id").as_int();
-    this->declare_parameter<std::double_t>("base_start_point_x", 0.004);
+    this->declare_parameter<std::double_t>("base_start_point_x", 0.0);
     this->base_start_point(0)=this->get_parameter("base_start_point_x").as_double();
     this->declare_parameter<std::double_t>("base_start_point_y", 1.0);
     this->base_start_point(1)=this->get_parameter("base_start_point_y").as_double();
-    this->declare_parameter<std::double_t>("base_start_point_z", 0.004);
+    this->declare_parameter<std::double_t>("base_start_point_z", 0.0);
     this->base_start_point(2)=this->get_parameter("base_start_point_z").as_double();
-    this->declare_parameter<std::double_t>("base_end_point_x", -0.004);
+    this->declare_parameter<std::double_t>("base_end_point_x", 0.0);
     this->base_end_point(0)=this->get_parameter("base_end_point_x").as_double();
     this->declare_parameter<std::double_t>("base_end_point_y", 2099.0);
     this->base_end_point(1)=this->get_parameter("base_end_point_y").as_double();
-    this->declare_parameter<std::double_t>("base_end_point_z", -0.004);
+    this->declare_parameter<std::double_t>("base_end_point_z", 0.0);
     this->base_end_point(2)=this->get_parameter("base_end_point_z").as_double();
     this->declare_parameter<std::int64_t>("path_follow_nanotime_interval", this->path_follow_nanotime_interval);
     this->path_follow_nanotime_interval=this->get_parameter("path_follow_nanotime_interval").as_int();
@@ -100,11 +100,11 @@ CDCR::CDCR():Node("path_follow")
     this->weight_direction=this->get_parameter("weight_direction").as_double();
     this->declare_parameter<std::double_t>("weight_position", 1.0);
     this->weight_position=this->get_parameter("weight_position").as_double();
-    this->declare_parameter<std::double_t>("base_box_size_x", 300.0);
+    this->declare_parameter<std::double_t>("base_box_size_x", 100.0);
     this->base_box_size_x=this->get_parameter("base_box_size_x").as_double();
-    this->declare_parameter<std::double_t>("base_box_size_y", 300.0);
+    this->declare_parameter<std::double_t>("base_box_size_y", 100.0);
     this->base_box_size_y=this->get_parameter("base_box_size_y").as_double();
-    this->declare_parameter<std::double_t>("base_box_size_z", 500.0);
+    this->declare_parameter<std::double_t>("base_box_size_z", 300.0);
     this->base_box_size_z=this->get_parameter("base_box_size_z").as_double();   
     this->declare_parameter<std::float_t>("base_box_color_r", 0.1);
     this->base_box_color_r=this->get_parameter("base_box_color_r").as_double();   
@@ -151,9 +151,9 @@ CDCR::CDCR():Node("path_follow")
     }
     for (int i=0;i<20;i++)
     {
-        this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_rigid1_length"), -1.0);
-        this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_rigid2_length"), -1.0);
-        this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_continuum_length"), -1.0);
+        this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_rigid1_length"), 0.0);
+        this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_rigid2_length"), 0.0);
+        this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_continuum_length"), 100.0);
     }
     this->transform_base_to_world = Eigen::Matrix4d::Identity();
     Eigen::Vector3d temp_x = this->base_y_axis.cross(this->base_z_axis);
@@ -187,11 +187,14 @@ CDCR::CDCR():Node("path_follow")
         this->joints.push_back(temp_joint);
         this->length+=temp_joint.length;
     };
-    this->base_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("base_visualization",10);
-    this->cdcr_plat_visualization_pub=this->create_publisher<visualization_msgs::msg::MarkerArray>("cdcr_plat_visualization",10);
-    this->cdcr_point_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("cdcr_point_visualization",10);
-    this->deviation_marker_pub = this->create_publisher<visualization_msgs::msg::MarkerArray>("deviation_markers", 5);
-    this->path_point_markers_pub = this->create_publisher<visualization_marker>("path_point_markers", 5);
+    this->transform_joints_to_world.push_back(this->transform_joints_to_world[joint_number-1]*this->joints[joint_number-1].transform);
+    this->transform_world_to_joints.push_back(this->joints[joint_number-1].transform.inverse()*this->transform_world_to_joints[joint_number-1]);
+
+    this->base_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("base_visualization",2);
+    this->cdcr_plat_visualization_pub=this->create_publisher<visualization_msgs::msg::MarkerArray>("cdcr_plat_visualization",2);
+    this->cdcr_point_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("cdcr_point_visualization",2);
+    this->deviation_marker_pub = this->create_publisher<visualization_msgs::msg::MarkerArray>("deviation_markers", 2);
+    this->path_point_markers_pub = this->create_publisher<visualization_marker>("path_point_markers", 2);
     std::cout << "init finished !!!" << std::endl;
     return;
 }
@@ -199,6 +202,7 @@ CDCR::CDCR():Node("path_follow")
 
 void CDCR::discretePath()
 {
+    path_points.resize(0);
     switch (this->experience_type)
     {
     // case 1 is using the combination of line and circle;
@@ -416,13 +420,13 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
     if (this->arc_path_radius > 119.5 && this->arc_path_radius<120.5)
     {
         show_max_deviations(max_deviations,max_deviation_path_point_ids);    
-        cv::Mat temp_img;
-        temp_img=cv::imread("/home/weiwei/Desktop/project/path_follow/src/path_follow/wait_for_key.png");
-        cv::imshow("wait for key ! ! !", temp_img);
-        cv::waitKey(0);    
+        //TODO: waitkey(0);
     }
     // follow_max_deviations.push_back();
     time_spend = time_spend/(double)fit_times;
+    RCLCPP_INFO(this->get_logger(), "fit_times: %d" , fit_times);
+    RCLCPP_INFO(this->get_logger(), "time_spend: %f" , time_spend);
+    // TODO: waitKey();  
     max_deviation = *(std::max_element(max_deviations.begin(),max_deviations.end()));
     return;
 }
@@ -566,17 +570,19 @@ void CDCR::visualization()
     }
     // visualize the cdcr plat;
     visualization_msgs::msg::MarkerArray cdcr_plats_visual_msg;
-    for (int i=0;i<this->cdcr_segment_point_id.size();i++)
+    for (int i=1;i<this->cdcr_segment_point_id.size();i++)
     {
-        RCLCPP_INFO(this->get_logger(), "cdcr_segment_point_id[i]: %d", cdcr_segment_point_id[i]);
-        RCLCPP_INFO(this->get_logger(), "joints.size(): %d", this->joints.size());
-        RCLCPP_INFO(this->get_logger(), "cdcr_segment_point_id.size(): %d", this->cdcr_segment_point_id.size());
+
         visualization_msgs::msg::Marker cdcr_plat_model;
+        cdcr_plat_model.id = i;
         cdcr_plat_model.header = temp_header;
         cdcr_plat_model.type =visualization_msgs::msg::Marker::CYLINDER;
         cdcr_plat_model.pose.position.x = this->cdcr_points[cdcr_segment_point_id[i]].x();
         cdcr_plat_model.pose.position.y = this->cdcr_points[cdcr_segment_point_id[i]].y();
         cdcr_plat_model.pose.position.z = this->cdcr_points[cdcr_segment_point_id[i]].z();
+        RCLCPP_INFO(this->get_logger(), "cdcr_plat_model[%d].position:[%f, %f, %f]", i, cdcr_plat_model.pose.position.x,
+                                                                                        cdcr_plat_model.pose.position.y,
+                                                                                        cdcr_plat_model.pose.position.z);
         cdcr_plat_model.color.r = this->cdcr_plat_color_r;
         cdcr_plat_model.color.g = this->cdcr_plat_color_g;
         cdcr_plat_model.color.b = this->cdcr_plat_color_b;
@@ -584,26 +590,13 @@ void CDCR::visualization()
         cdcr_plat_model.scale.x = this->cdcr_plat_size_x;
         cdcr_plat_model.scale.y = this->cdcr_plat_size_y;
         cdcr_plat_model.scale.z = this->cdcr_plat_size_z;
-        if (i==(cdcr_segment_point_id.size()-1))
-        {
-            Eigen::Matrix4d tempT = this->transform_joints_to_world[i-1] * this->joints[i-1].transform;
-            Eigen::Matrix3d tempR = tempT.block(0,0,3,3);
-            Eigen::Quaterniond tempQ(tempR);
-            //
-            cdcr_plat_model.pose.orientation.x = tempQ.x();
-            cdcr_plat_model.pose.orientation.y = tempQ.y();
-            cdcr_plat_model.pose.orientation.z = tempQ.z();
-            cdcr_plat_model.pose.orientation.w = tempQ.w();
-        }
-        else
-        {
-            Eigen::Matrix3d tempR = this->transform_joints_to_world[i].block(0,0,3,3);
-            Eigen::Quaterniond tempQ(tempR);
-            cdcr_plat_model.pose.orientation.x = tempQ.x();
-            cdcr_plat_model.pose.orientation.y = tempQ.y();
-            cdcr_plat_model.pose.orientation.z = tempQ.z();
-            cdcr_plat_model.pose.orientation.w = tempQ.w();
-        }
+
+        Eigen::Matrix3d tempR = this->transform_joints_to_world[i].block(0,0,3,3);
+        Eigen::Quaterniond tempQ(tempR);
+        cdcr_plat_model.pose.orientation.x = tempQ.x();
+        cdcr_plat_model.pose.orientation.y = tempQ.y();
+        cdcr_plat_model.pose.orientation.z = tempQ.z();
+        cdcr_plat_model.pose.orientation.w = tempQ.w();
         cdcr_plats_visual_msg.markers.push_back(cdcr_plat_model); 
     }
     this->base_visualization_pub->publish(base_visual_msg);
@@ -618,7 +611,6 @@ Eigen::Vector3d CDCR::get_inter_point(const int& ratio_id, const int& total_id, 
 }
 void CDCR::cal_deviation_get_max_deviation_path_point_id(double& max_deviation, int& max_deviation_path_point_id)
 {
-    RCLCPP_INFO(this->get_logger(), "cal_deviation_get_max_deviation_path_point_id()");
     int temp_last_cdcr_point_id = 0;
     int temp_current_cdcr_point_id = 1;
     for (int i=this->track_path_point_id+1;i < this->fit_end_path_point_id;i++)
@@ -683,20 +675,22 @@ void CDCR::cal_deviation_get_max_deviation_path_point_id(double& max_deviation, 
 }
 void CDCR::fitCDCR()
 {
-    RCLCPP_INFO(this->get_logger(), "fit_CDCR");
     this->transform_joints_to_world[0] = this->transform_base_to_world;
     this->transform_world_to_joints[0] = this->transform_world_to_base;
-    int segment_start_path_point_id = track_path_point_id;
+    int segment_start_path_point_id = this->track_path_point_id;
     for (int joint_id=0; joint_id<joint_number; joint_id++)
     {
-        int target_path_point_id = segment_start_path_point_id+ceil(this->joints[joint_id].length/this->bone_sample_interval);
+        int target_path_point_id = segment_start_path_point_id+ceil(this->joints[joint_id].length/this->sample_interval);
         Eigen::Vector4d target_position;
         target_position << path_points[target_path_point_id],1.0;
+        
         Eigen::Vector3d target_tangent_vec=(path_points[target_path_point_id+1]-path_points[target_path_point_id-1]).normalized();
         // transform the target_postion and tangent_vec to the frame of joint[joint_id]
+        std::cout << "joints[" << joint_id << "]'s" << "target_position: " << target_position << std::endl; 
         target_position = transform_world_to_joints[joint_id]*target_position;
+        std::cout << "joints[" << joint_id << "]'s" << "target_position: " << target_position << std::endl; 
+        //TODO:
         target_tangent_vec = transform_world_to_joints[joint_id].block(0,0,3,3)*target_tangent_vec;
-        RCLCPP_INFO(this->get_logger(), "699");
         ceres::Problem fit_problem;
         fit_problem.AddResidualBlock(
             new ceres::AutoDiffCostFunction<x_residual,1,1,1>(
@@ -735,7 +729,6 @@ void CDCR::fitCDCR()
             NULL,
             &joints[joint_id].theta
         );
-        RCLCPP_INFO(this->get_logger(), "738");
 
         fit_problem.AddResidualBlock(
             new ceres::AutoDiffCostFunction<angle_residual,1,1,1>(
@@ -751,44 +744,33 @@ void CDCR::fitCDCR()
             &joints[joint_id].alpha,&joints[joint_id].theta
         );
         fit_problem.SetParameterLowerBound(&joints[joint_id].alpha, 0, -M_PI_2);
-        fit_problem.SetParameterLowerBound(&joints[joint_id].theta, 0, 1e-4);
+        // fit_problem.SetParameterLowerBound(&joints[joint_id].theta, 0, 1e-4);
         fit_problem.SetParameterUpperBound(&joints[joint_id].alpha, 0, M_PI/2);
-        fit_problem.SetParameterUpperBound(&joints[joint_id].theta, 0, M_PI_2);
-        RCLCPP_INFO(this->get_logger(), "755");
+        // fit_problem.SetParameterUpperBound(&joints[joint_id].theta, 0, M_PI_2);
         ceres::Solver::Options option;
         option.max_num_iterations=50;
         option.minimizer_progress_to_stdout = true;
         option.linear_solver_type=ceres::DENSE_QR;
-        option.trust_region_strategy_type=ceres::DOGLEG;
+        // option.trust_region_strategy_type=ceres::DOGLEG;
         option.logging_type=ceres::PER_MINIMIZER_ITERATION;
         ceres::Solver::Summary summary;
-        RCLCPP_INFO(this->get_logger(), "765");
         ceres::Solve(option, &fit_problem, &summary);
-        if (joint_id<joint_number-1)
-        {
-            transform_joints_to_world[joint_id+1] = transform_joints_to_world[joint_id] * joints[joint_id].getTransform();
-            transform_world_to_joints[joint_id+1] = joints[joint_id].transform.inverse()*transform_world_to_joints[joint_id];            
-        }
-        RCLCPP_INFO(this->get_logger(), "joints[%f].theta: ", this->joints[joint_id].theta);
-        //TODO: here may have make some mistake, the joint_end_position should transform to the world frame.
-        Eigen::Vector3d joint_end_position = transform_joints_to_world[joint_id+1].block(0,3,3,1);
-        RCLCPP_INFO(this->get_logger(), "joint_end_position = [%f, %f, %f]", joint_end_position(0) ,joint_end_position(1) ,joint_end_position(2));
-        RCLCPP_INFO(this->get_logger(), "773");
+        Eigen::Vector3d joint_end_position;
+        transform_joints_to_world[joint_id+1] = transform_joints_to_world[joint_id] * joints[joint_id].getTransform();
+        transform_world_to_joints[joint_id+1] = joints[joint_id].transform.inverse()*transform_world_to_joints[joint_id];            
+        joint_end_position = transform_joints_to_world[joint_id+1].block(0,3,3,1);
         find_closed_path_point(target_path_point_id,joint_end_position,segment_start_path_point_id);
     }
     this->fit_end_path_point_id =segment_start_path_point_id;
     track_path_point_id++;
-    RCLCPP_INFO(this->get_logger(), "fit_CDCR_finished");
     return;
 }
 
 void CDCR::find_closed_path_point(const int& start_path_point_id,const Eigen::Vector3d& joint_end_position, int& segment_start_path_point_id)
 {
-    RCLCPP_INFO(this->get_logger(), "find_closed_path_point");
     int temp_path_point_id = start_path_point_id;
     Eigen::Vector3d temp_path_tangent_vec=this->path_points[temp_path_point_id+1]-this->path_points[temp_path_point_id-1];
     Eigen::Vector3d temp_direction=joint_end_position-path_points[temp_path_point_id];
-    RCLCPP_INFO(this->get_logger(), "788");
     double temp_dot_value = temp_path_tangent_vec.dot(temp_direction);
     if (temp_dot_value > 0)
     {   
@@ -797,7 +779,6 @@ void CDCR::find_closed_path_point(const int& start_path_point_id,const Eigen::Ve
             temp_path_point_id++;
             Eigen::Vector3d temp_path_tangent_vec=this->path_points[temp_path_point_id+1]-this->path_points[temp_path_point_id-1];
             Eigen::Vector3d temp_direction=joint_end_position-path_points[temp_path_point_id];
-            RCLCPP_INFO(this->get_logger(), "797");
             temp_dot_value = temp_path_tangent_vec.dot(temp_direction);
         }while(temp_dot_value>0&&temp_path_point_id<path_points.size()-2);        
     }
@@ -808,19 +789,16 @@ void CDCR::find_closed_path_point(const int& start_path_point_id,const Eigen::Ve
             temp_path_point_id--;
             Eigen::Vector3d temp_path_tangent_vec=this->path_points[temp_path_point_id+1]-this->path_points[temp_path_point_id-1];
             Eigen::Vector3d temp_direction=joint_end_position-path_points[temp_path_point_id];
-            RCLCPP_INFO(this->get_logger(), "808");
             temp_dot_value = temp_path_tangent_vec.dot(temp_direction);
         }while(temp_dot_value<0 && temp_path_point_id>1);     
     }
     segment_start_path_point_id = temp_path_point_id;
-    RCLCPP_INFO(this->get_logger(), "find_closed_path_point_finished");
     return;
 }
 
 
 void CDCR::getBasePose()
 {
-    RCLCPP_INFO(this->get_logger(), "get_base_pose");
     Eigen::Vector3d base_track_travel_point = getMediaInterPoint(path_points[this->track_path_point_id], this->base_end_point, this->base_start_point);
     this->transform_base_to_world.block(0,3,3,1) = base_track_travel_point;
     this->transform_world_to_base = this->transform_base_to_world.inverse();

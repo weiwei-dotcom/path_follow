@@ -1,0 +1,27 @@
+[0.101s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+[0.122s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.138s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.272s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.303s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.306s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.402s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.440s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.441s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.552s] CMake Error at CMakeLists.txt:21 (find_package):
+[0.552s]   Could not find a configuration file for package "Eigen3" that is compatible
+[0.552s]   with requested version "3.7".
+[0.552s] 
+[0.552s]   The following configuration files were considered but not accepted:
+[0.552s] 
+[0.552s]     /usr/local/share/eigen3/cmake/Eigen3Config.cmake, version: 3.3.9
+[0.552s]     /usr/lib/cmake/eigen3/Eigen3Config.cmake, version: 3.3.7
+[0.552s]     /lib/cmake/eigen3/Eigen3Config.cmake, version: 3.3.7
+[0.552s]     /home/weiwei/Desktop/thirdParty/eigen/eigen-3.3.9/build/Eigen3Config.cmake, version: 3.3.9
+[0.552s] 
+[0.552s] 
+[0.552s] 
+[0.553s] -- Configuring incomplete, errors occurred!
+[0.553s] See also "/home/weiwei/Desktop/project/path_follow/build/path_follow/CMakeFiles/CMakeOutput.log".
+[0.553s] See also "/home/weiwei/Desktop/project/path_follow/build/path_follow/CMakeFiles/CMakeError.log".
+[0.557s] make: *** [Makefile:326：cmake_check_build_system] 错误 1
+[0.560s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16

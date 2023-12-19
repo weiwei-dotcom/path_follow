@@ -1,0 +1,20 @@
+[0.105s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+[0.142s] [35m[1mScanning dependencies of target path_follow[0m
+[0.181s] [ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m
+[0.181s] [ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o[0m
+[0.429s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp:1[m[K:
+[0.429s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:14:10:[m[K [01;31m[Kfatal error: [m[Ksignal.hpp: 没有那个文件或目录
+[0.429s]    14 | #include [01;31m[K<signal.hpp>[m[K
+[0.429s]       |          [01;31m[K^~~~~~~~~~~~[m[K
+[0.429s] compilation terminated.
+[0.434s] make[2]: *** [CMakeFiles/path_follow.dir/build.make:63：CMakeFiles/path_follow.dir/src/main.cpp.o] 错误 1
+[0.434s] make[2]: *** 正在等待未完成的任务....
+[0.447s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[0.447s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:14:10:[m[K [01;31m[Kfatal error: [m[Ksignal.hpp: 没有那个文件或目录
+[0.447s]    14 | #include [01;31m[K<signal.hpp>[m[K
+[0.447s]       |          [01;31m[K^~~~~~~~~~~~[m[K
+[0.447s] compilation terminated.
+[0.452s] make[2]: *** [CMakeFiles/path_follow.dir/build.make:76：CMakeFiles/path_follow.dir/src/cdcr.cpp.o] 错误 1
+[0.452s] make[1]: *** [CMakeFiles/Makefile2:78：CMakeFiles/path_follow.dir/all] 错误 2
+[0.453s] make: *** [Makefile:141：all] 错误 2
+[0.455s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
