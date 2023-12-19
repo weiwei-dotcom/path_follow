@@ -13,6 +13,13 @@ def generate_launch_description():
             package='path_follow',
             executable='path_follow',
             parameters=[load_param_from('/home/weiwei/Desktop/project/path_follow/src/path_follow/cdcr_config.yaml')]
+        ),
+        Node(
+        package='rviz2',
+        namespace='',
+        executable='rviz2',
+        name='rviz2',
+        arguments=['-d', '/home/weiwei/Desktop/project/path_follow/src/path_follow/src/path_follow.rviz']
         )
 ])
     

@@ -8,6 +8,16 @@ CDCR::CDCR():Node("path_follow")
     this->flag_end_path_follow = false;
     this->flag_discretized = false;
     this->flag_end_experience = false;
+    this->declare_parameter<std::double_t>("alpha_lower_bound", -180.0);
+    this->alpha_lower_bound = this->get_parameter("alpha_lower_bound").as_double()/180.0 * M_PI;
+    this->declare_parameter<std::double_t>("alpha_upper_bound", 180.0);
+    this->alpha_upper_bound = this->get_parameter("alpha_upper_bound").as_double()/180.0 * M_PI;
+    this->declare_parameter<std::double_t>("theta_lower_bound", -90.0);
+    this->theta_lower_bound = this->get_parameter("theta_lower_bound").as_double()/180.0 * M_PI;
+    this->declare_parameter<std::double_t>("theta_upper_bound", 90.0);
+    this->theta_upper_bound = this->get_parameter("theta_upper_bound").as_double()/180.0 * M_PI;
+    this->declare_parameter<std::int64_t>("sleep_nano_time", 10000000);
+    this->sleep_nano_time = this->get_parameter("sleep_nano_time").as_int();   
     this->declare_parameter<std::double_t>("deviation_marker_zoom_factor", 10.0);
     this->deviation_marker_zoom_factor = this->get_parameter("deviation_marker_zoom_factor").as_double();
     this->declare_parameter<std::double_t>("path_point_scale", 1.0);
@@ -96,7 +106,7 @@ CDCR::CDCR():Node("path_follow")
     this->safe_path_length_redundance=this->get_parameter("safe_path_length_redundance").as_double();
     this->declare_parameter<std::double_t>("bone_sample_interval", 1.0);
     this->bone_sample_interval=this->get_parameter("bone_sample_interval").as_double();
-    this->declare_parameter<std::double_t>("weight_direction", 5.0);
+    this->declare_parameter<std::double_t>("weight_direction", 50.0);
     this->weight_direction=this->get_parameter("weight_direction").as_double();
     this->declare_parameter<std::double_t>("weight_position", 1.0);
     this->weight_position=this->get_parameter("weight_position").as_double();
@@ -114,7 +124,6 @@ CDCR::CDCR():Node("path_follow")
     this->base_box_color_b=this->get_parameter("base_box_color_b").as_double();   
     this->declare_parameter<std::float_t>("base_box_color_a", 1.0);
     this->base_box_color_a=this->get_parameter("base_box_color_a").as_double();  
-
     this->declare_parameter<std::double_t>("cdcr_point_size_x", 8.0);
     this->cdcr_point_size_x = this->get_parameter("cdcr_point_size_x").as_double();
     this->declare_parameter<std::double_t>("cdcr_point_size_y", 8.0);
@@ -130,9 +139,9 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::float_t>("cdcr_point_color_a", 1.0);
     this->cdcr_point_color_a = this->get_parameter("cdcr_point_color_a").as_double();
 
-    this->declare_parameter<std::double_t>("cdcr_plat_size_x", 90.0);
+    this->declare_parameter<std::double_t>("cdcr_plat_size_x", 80.0);
     this->cdcr_plat_size_x = this->get_parameter("cdcr_plat_size_x").as_double();
-    this->declare_parameter<std::double_t>("cdcr_plat_size_y", 90.0);
+    this->declare_parameter<std::double_t>("cdcr_plat_size_y", 80.0);
     this->cdcr_plat_size_y = this->get_parameter("cdcr_plat_size_y").as_double();
     this->declare_parameter<std::double_t>("cdcr_plat_size_z", 8.0);
     this->cdcr_plat_size_z = this->get_parameter("cdcr_plat_size_z").as_double();
@@ -144,11 +153,6 @@ CDCR::CDCR():Node("path_follow")
     this->cdcr_plat_color_b = this->get_parameter("cdcr_plat_color_b").as_double();
     this->declare_parameter<std::double_t>("cdcr_plat_color_a", 1.0);
     this->cdcr_plat_color_a = this->get_parameter("cdcr_plat_color_a").as_double();
-    if (joint_number == -1)
-    {
-        std::cout << "joint_number haven't initialized" <<std::endl;
-        return;
-    }
     for (int i=0;i<20;i++)
     {
         this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_rigid1_length"), 0.0);
@@ -190,11 +194,11 @@ CDCR::CDCR():Node("path_follow")
     this->transform_joints_to_world.push_back(this->transform_joints_to_world[joint_number-1]*this->joints[joint_number-1].transform);
     this->transform_world_to_joints.push_back(this->joints[joint_number-1].transform.inverse()*this->transform_world_to_joints[joint_number-1]);
 
-    this->base_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("base_visualization",2);
-    this->cdcr_plat_visualization_pub=this->create_publisher<visualization_msgs::msg::MarkerArray>("cdcr_plat_visualization",2);
-    this->cdcr_point_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("cdcr_point_visualization",2);
-    this->deviation_marker_pub = this->create_publisher<visualization_msgs::msg::MarkerArray>("deviation_markers", 2);
-    this->path_point_markers_pub = this->create_publisher<visualization_marker>("path_point_markers", 2);
+    this->base_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("base_visualization",1);
+    this->cdcr_plat_visualization_pub=this->create_publisher<visualization_msgs::msg::MarkerArray>("cdcr_plat_visualization",1);
+    this->cdcr_point_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("cdcr_point_visualization",1);
+    this->deviation_marker_pub = this->create_publisher<visualization_msgs::msg::MarkerArray>("deviation_markers", 1);
+    this->path_point_markers_pub = this->create_publisher<visualization_marker>("path_point_markers", 1);
     std::cout << "init finished !!!" << std::endl;
     return;
 }
@@ -208,10 +212,6 @@ void CDCR::discretePath()
     // case 1 is using the combination of line and circle;
     case 1:
     {
-        //debug
-        this->base_path_point_end(1)=this->get_parameter("base_path_point_end_y").as_double();
-        RCLCPP_INFO(this->get_logger(), "this_base_path_point_end_y: %f", this->base_path_point_end(1));
-        std::cout << "base_path_point_end_y: " << this->base_path_point_end(1) <<std::endl;
 
         int base_path_point_size = ceil((base_path_point_end-base_path_point_start).norm()/this->sample_interval);
         std::cout << "base_path_point_size: "<< base_path_point_size << std::endl;
@@ -224,7 +224,7 @@ void CDCR::discretePath()
         std::cout << "base_path_points.size(): " << path_points.size() << std::endl;
         double rad_theta = arc_path_theta/180.0*M_PI;
         double rad_alpha = arc_path_alpha/180.0*M_PI;
-        int arc_path_point_size = (int)ceil(rad_theta * this->arc_path_radius/this->sample_interval);
+        int arc_path_point_size = ceil(std::abs(rad_theta) * this->arc_path_radius/this->sample_interval);
         std::cout << "arc_path_point_size(): " << arc_path_point_size << std::endl;
         for (int i=1;i<=arc_path_point_size;i++)
         {
@@ -267,13 +267,12 @@ void CDCR::path_follow_exeperience()
     std::vector<double> experience_deviations;
     std::vector<double> experience_arc_radiuses;
     std::vector<double> time_spend;
-    for (this->arc_path_radius=this->min_arc_radius; this->arc_path_radius<=this->max_arc_radius+1e-4; this->arc_path_radius+=1.0)
+    for (this->arc_path_radius=this->min_arc_radius; this->arc_path_radius<=this->max_arc_radius+1e-4; this->arc_path_radius+=2.0)
     {
         // discrete the path
         discretePath();
-        //debug
-        std::cout << "this->path_points.size(): " << this->path_points.size() << std::endl;
-        visualizationPath();
+
+        visualPathMarkers();
         getCorrectTravelPointID();
         if (flag_end_experience)
         {
@@ -286,13 +285,19 @@ void CDCR::path_follow_exeperience()
         time_spend.push_back(temp_time_spend);
         experience_arc_radiuses.push_back(this->arc_path_radius);
         experience_deviations.push_back(follow_max_deviation);
+        for (int i=0;i<joints.size();i++)
+        {
+            joints[i].theta = 1e-4;
+            joints[i].alpha = 1e-3;
+        }
     }
     return;
 }
 
-void CDCR::visualizationPath()
+void CDCR::visualPathMarkers()
 {
     visualization_marker path;
+    path.points.resize(0);
     path.type = visualization_marker::SPHERE_LIST;
     path.header.stamp = this->now();
     path.header.frame_id = "world";
@@ -321,15 +326,13 @@ void CDCR::visualizationPath()
         temp_path_point.z = path_points[i].z();
         path.points.push_back(temp_path_point);
     }
-    path_point_markers_pub->publish(path);
-    //debug
-    std::cout << "path_point_markers_publish success!!!" << std::endl;
+    this->path_point_markers_pub->publish(path);
+    RCLCPP_INFO(this->get_logger(), "path points publish success");
     return;
 }
 
 void CDCR::visualizationCDCR()
 {
-
     return;
 }
 
@@ -360,8 +363,6 @@ void CDCR::getCorrectTravelPointID()
             return;
         }
         correct_start_path_point_id = i;
-        //debug
-        RCLCPP_INFO(this->get_logger(), "correct_start_path_point_id: %f",correct_start_path_point_id);
 
         for (int j=i;j<path_points.size()-1;j++)
         {
@@ -406,6 +407,7 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
 
         rclcpp::Time t_end = this->now();
         double t_spend = t_end.seconds()-t_start.seconds();
+        RCLCPP_INFO(this->get_logger(), "fit_time: %f", t_spend);
         time_spend += t_spend;
         fit_times++;
         get_cdcr_sample_points();
@@ -414,37 +416,34 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         int temp_max_deviation_path_point_id = 0;
         cal_deviation_get_max_deviation_path_point_id(temp_max_deviation,temp_max_deviation_path_point_id);
         // it's better to show the max deviation vector at the corrorsponding point.
-        max_deviations.push_back(max_deviation);
+        max_deviations.push_back(temp_max_deviation);
         max_deviation_path_point_ids.push_back(temp_max_deviation_path_point_id);
     }
-    if (this->arc_path_radius > 119.5 && this->arc_path_radius<120.5)
-    {
-        show_max_deviations(max_deviations,max_deviation_path_point_ids);    
-        //TODO: waitkey(0);
-    }
+    show_max_deviations(max_deviations,max_deviation_path_point_ids);    
     // follow_max_deviations.push_back();
     time_spend = time_spend/(double)fit_times;
     RCLCPP_INFO(this->get_logger(), "fit_times: %d" , fit_times);
     RCLCPP_INFO(this->get_logger(), "time_spend: %f" , time_spend);
-    // TODO: waitKey();  
     max_deviation = *(std::max_element(max_deviations.begin(),max_deviations.end()));
     return;
 }
 void CDCR::show_max_deviations(const std::vector<double>& max_deviations, const std::vector<int>& max_deviation_path_point_ids)
 {
+    //debug
+    RCLCPP_INFO (this->get_logger(), "show_max_deviations()");
     int max_deviations_size = max_deviations.size();
     Eigen::Vector3d x_axis = Eigen::Vector3d(1.0,0.0,0.0);
     visualization_msgs::msg::MarkerArray deviation_markers;
     for (int i=0;i<max_deviations_size;i++)
     {
-        Eigen::Vector3d temp_vec = (this->path_points[max_deviation_path_point_ids[i+1]]
-                                    -this->path_points[max_deviation_path_point_ids[i-1]]).normalized();
+        Eigen::Vector3d temp_vec = (this->path_points[max_deviation_path_point_ids[i]+1]
+                                    -this->path_points[max_deviation_path_point_ids[i]-1]).normalized();
         Eigen::Vector3d direct_vec = temp_vec.cross(x_axis);
         Eigen::Vector3d temp_position = this->path_points[max_deviation_path_point_ids[i]];
         visualization_msgs::msg::Marker temp_marker;
         temp_marker.header.frame_id = "world";
+        temp_marker.id = i;
         temp_marker.type = visualization_msgs::msg::Marker::ARROW;
-        temp_marker.action = visualization_msgs::msg::Marker::ADD;
         temp_marker.scale.x = this->deviation_marker_scale_x;
         temp_marker.scale.y = this->deviation_marker_scale_y;
         temp_marker.scale.z = this->deviation_marker_scale_z;
@@ -452,26 +451,36 @@ void CDCR::show_max_deviations(const std::vector<double>& max_deviations, const 
         temp_marker.pose.position.x = temp_position.x();
         temp_marker.pose.position.y = temp_position.y();
         temp_marker.pose.position.z = temp_position.z();
-        temp_marker.pose.orientation.x = 0;
-        temp_marker.pose.orientation.y = 0;
-        temp_marker.pose.orientation.z = 0;
-        temp_marker.pose.orientation.w = 1;
-        temp_marker.color.r = 1;
+        temp_marker.pose.orientation.x = 0.0;
+        temp_marker.pose.orientation.y = 0.0;
+        temp_marker.pose.orientation.z = 0.0;
+        temp_marker.pose.orientation.w = 1.0;
+        temp_marker.color.r = 0.5;
         temp_marker.color.b = 0;
-        temp_marker.color.g = 0;
+        temp_marker.color.g = 1;
         temp_marker.color.a = 1;
         geometry_msgs::msg::Point temp_start_point,temp_end_point;
         temp_start_point.x = 0;
-        temp_start_point.x = 0;
-        temp_start_point.x = 0;
+        temp_start_point.y = 0;
+        temp_start_point.z = 0;
+
         temp_end_point.x = direct_vec.x() * max_deviations[i] * this->deviation_marker_zoom_factor;
         temp_end_point.y = direct_vec.y() * max_deviations[i] * this->deviation_marker_zoom_factor;
         temp_end_point.z = direct_vec.z() * max_deviations[i] * this->deviation_marker_zoom_factor;
+        // //debug
+        // temp_end_point.x = 100.0;
+        // temp_end_point.y = 100.0;
+        // temp_end_point.z = 100.0;
+        
         temp_marker.points.push_back(temp_start_point);
         temp_marker.points.push_back(temp_end_point);
         deviation_markers.markers.push_back(temp_marker);
     }
     deviation_marker_pub->publish(deviation_markers);
+    //debug
+    rclcpp::Rate temp_timer(2);
+    temp_timer.sleep();
+    RCLCPP_INFO (this->get_logger(), "show_max_deviations finished()");
     return;
 }
 void CDCR::get_cdcr_sample_points()
@@ -560,7 +569,7 @@ void CDCR::visualization()
     cdcr_points_visual_msg.pose.orientation.x = 0.0;
     cdcr_points_visual_msg.pose.orientation.y = 0.0;
     cdcr_points_visual_msg.pose.orientation.z = 0.0;
-    for (int i=0;i<this->cdcr_points.size();i++)
+    for (int i=0;i<this->cdcr_points.size();i+=2)
     {
         geometry_msgs::msg::Point temp_point;
         temp_point.x = this->cdcr_points[i].x();
@@ -580,9 +589,6 @@ void CDCR::visualization()
         cdcr_plat_model.pose.position.x = this->cdcr_points[cdcr_segment_point_id[i]].x();
         cdcr_plat_model.pose.position.y = this->cdcr_points[cdcr_segment_point_id[i]].y();
         cdcr_plat_model.pose.position.z = this->cdcr_points[cdcr_segment_point_id[i]].z();
-        RCLCPP_INFO(this->get_logger(), "cdcr_plat_model[%d].position:[%f, %f, %f]", i, cdcr_plat_model.pose.position.x,
-                                                                                        cdcr_plat_model.pose.position.y,
-                                                                                        cdcr_plat_model.pose.position.z);
         cdcr_plat_model.color.r = this->cdcr_plat_color_r;
         cdcr_plat_model.color.g = this->cdcr_plat_color_g;
         cdcr_plat_model.color.b = this->cdcr_plat_color_b;
@@ -602,6 +608,15 @@ void CDCR::visualization()
     this->base_visualization_pub->publish(base_visual_msg);
     this->cdcr_plat_visualization_pub->publish(cdcr_plats_visual_msg);
     this->cdcr_point_visualization_pub->publish(cdcr_points_visual_msg);
+    rclcpp::Time temp_time1 = this->now();
+    this->visualPathMarkers();
+    rclcpp::Time temp_time2 = this->now();
+    RCLCPP_INFO(this->get_logger(), "visualPath spend time: %f", (temp_time2.seconds()-temp_time1.seconds()));
+    //debug
+    this->sleep_nano_time = this->get_parameter("sleep_nano_time").as_int();
+    rclcpp::Rate sleep_time(std::chrono::nanoseconds(this->sleep_nano_time));
+    sleep_time.sleep();
+
     return;
 }
 
@@ -686,49 +701,59 @@ void CDCR::fitCDCR()
         
         Eigen::Vector3d target_tangent_vec=(path_points[target_path_point_id+1]-path_points[target_path_point_id-1]).normalized();
         // transform the target_postion and tangent_vec to the frame of joint[joint_id]
-        std::cout << "joints[" << joint_id << "]'s" << "target_position: " << target_position << std::endl; 
         target_position = transform_world_to_joints[joint_id]*target_position;
-        std::cout << "joints[" << joint_id << "]'s" << "target_position: " << target_position << std::endl; 
-        //TODO:
         target_tangent_vec = transform_world_to_joints[joint_id].block(0,0,3,3)*target_tangent_vec;
         ceres::Problem fit_problem;
         fit_problem.AddResidualBlock(
-            new ceres::AutoDiffCostFunction<x_residual,1,1,1>(
+            new ceres::AutoDiffCostFunction<x_residual,3,1,1>(
                 new x_residual(
                     weight_position,
                     joints[joint_id].length_continuum,
                     joints[joint_id].length_rigid2,
-                    target_position.x()
+                    joints[joint_id].length_rigid1,
+                    target_position.block(0,0,3,1)
                 )
             ),
             NULL,
             &joints[joint_id].alpha,&joints[joint_id].theta
         );
-        fit_problem.AddResidualBlock(
-            new ceres::AutoDiffCostFunction<y_residual,1,1,1>(
-                new y_residual(
-                    weight_position,
-                    joints[joint_id].length_continuum,
-                    joints[joint_id].length_rigid2,
-                    target_position.y()
-                )
-            ),
-            NULL,
-            &joints[joint_id].alpha,&joints[joint_id].theta    
-        );
-        fit_problem.AddResidualBlock(
-            new ceres::AutoDiffCostFunction<z_residual,1,1>(
-                new z_residual(
-                    weight_position,
-                    joints[joint_id].length_continuum,
-                    joints[joint_id].length_rigid1,
-                    joints[joint_id].length_rigid2,
-                    target_position.z()
-                )
-            ),
-            NULL,
-            &joints[joint_id].theta
-        );
+        // fit_problem.AddResidualBlock(
+        //     new ceres::AutoDiffCostFunction<x_residual,1,1,1>(
+        //         new x_residual(
+        //             weight_position,
+        //             joints[joint_id].length_continuum,
+        //             joints[joint_id].length_rigid2,
+        //             target_position.x()
+        //         )
+        //     ),
+        //     NULL,
+        //     &joints[joint_id].alpha,&joints[joint_id].theta
+        // );
+        // fit_problem.AddResidualBlock(
+        //     new ceres::AutoDiffCostFunction<y_residual,1,1,1>(
+        //         new y_residual(
+        //             weight_position,
+        //             joints[joint_id].length_continuum,
+        //             joints[joint_id].length_rigid2,
+        //             target_position.y()
+        //         )
+        //     ),
+        //     NULL,
+        //     &joints[joint_id].alpha,&joints[joint_id].theta    
+        // );
+        // fit_problem.AddResidualBlock(
+        //     new ceres::AutoDiffCostFunction<z_residual,1,1>(
+        //         new z_residual(
+        //             weight_position,
+        //             joints[joint_id].length_continuum,
+        //             joints[joint_id].length_rigid1,
+        //             joints[joint_id].length_rigid2,
+        //             target_position.z()
+        //         )
+        //     ),
+        //     NULL,
+        //     &joints[joint_id].theta
+        // );
 
         fit_problem.AddResidualBlock(
             new ceres::AutoDiffCostFunction<angle_residual,1,1,1>(
@@ -743,18 +768,24 @@ void CDCR::fitCDCR()
             NULL,
             &joints[joint_id].alpha,&joints[joint_id].theta
         );
-        fit_problem.SetParameterLowerBound(&joints[joint_id].alpha, 0, -M_PI_2);
-        // fit_problem.SetParameterLowerBound(&joints[joint_id].theta, 0, 1e-4);
-        fit_problem.SetParameterUpperBound(&joints[joint_id].alpha, 0, M_PI/2);
-        // fit_problem.SetParameterUpperBound(&joints[joint_id].theta, 0, M_PI_2);
+        fit_problem.SetParameterLowerBound(&joints[joint_id].alpha, 0, this->alpha_lower_bound);
+        fit_problem.SetParameterLowerBound(&joints[joint_id].theta, 0, this->theta_lower_bound);
+        fit_problem.SetParameterUpperBound(&joints[joint_id].alpha, 0, this->alpha_upper_bound);
+        fit_problem.SetParameterUpperBound(&joints[joint_id].theta, 0, this->theta_upper_bound);
         ceres::Solver::Options option;
         option.max_num_iterations=50;
-        option.minimizer_progress_to_stdout = true;
+        option.minimizer_progress_to_stdout = false;
         option.linear_solver_type=ceres::DENSE_QR;
         // option.trust_region_strategy_type=ceres::DOGLEG;
-        option.logging_type=ceres::PER_MINIMIZER_ITERATION;
+        option.logging_type=ceres::SILENT;
         ceres::Solver::Summary summary;
         ceres::Solve(option, &fit_problem, &summary);
+        // TODO:
+        // if (joints[joint_id].theta < 0)
+        // {
+        //     joints[joint_id].theta = std::abs(joints[joint_id].theta);
+        //     joints[joint_id].alpha = 
+        // }
         Eigen::Vector3d joint_end_position;
         transform_joints_to_world[joint_id+1] = transform_joints_to_world[joint_id] * joints[joint_id].getTransform();
         transform_world_to_joints[joint_id+1] = joints[joint_id].transform.inverse()*transform_world_to_joints[joint_id];            
@@ -818,7 +849,6 @@ void CDCR::getCDCRPointsAndTangentVector()
     {
         for (int j =0;j<joints[i].joint_points.size();j++)
         {
-            // TODO:
         }
     }
     return;
@@ -830,7 +860,6 @@ void CDCR::getPathDeviationAndNextIndex(const int& path_point_index_start,
                                         const int& cdcr_point_index, 
                                         int& path_point_index_next_start)
 {
-    // TODO:
     return;
 }
 

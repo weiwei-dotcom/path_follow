@@ -40,58 +40,81 @@ struct x_residual{
     x_residual(double weight_position,
                 double length_continuum,
                 double length_rigid2,
-                double x):
-                     length_continuum_(length_continuum),
-                     length_rigid2_(length_rigid2),
-                     x_(x),
-                     weight_position_(weight_position) {}
-    template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
-        residual[0] = weight_position_*(length_continuum_/theta[0]*(1.0-cos(theta[0]))*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);
-        return true;
-    }
-private: 
-    const double weight_position_;
-    const double length_continuum_,length_rigid2_;
-    const double x_; 
-};
-struct y_residual{
-    y_residual(double weight_position,
-                double length_continuum,
-                double length_rigid2,
-                double y):
-                     length_continuum_(length_continuum),
-                     length_rigid2_(length_rigid2),
-                     y_(y),
-                     weight_position_(weight_position) {}
-    template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
-        residual[0] = weight_position_*(length_continuum_/theta[0]*(1.0-cos(theta[0]))*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);
-        return true;
-    }
-private: 
-    const double weight_position_;
-    const double length_continuum_,length_rigid2_;
-    const double y_; 
-};
-struct z_residual{
-    z_residual(double weight_position,
-                double length_continuum,
                 double length_rigid1,
-                double length_rigid2,
-                double z):
+                Eigen::Vector3d position
+                ):
                      length_continuum_(length_continuum),
-                     length_rigid1_(length_rigid1),
                      length_rigid2_(length_rigid2),
-                     z_(z),
+                     length_rigid1_(length_rigid1),
+                     position_(position),
                      weight_position_(weight_position) {}
-    template <typename T> bool operator()(const T* const theta, T* residual) const {
-        residual[0] = weight_position_*(length_continuum_/theta[0]*sin(theta[0])+length_rigid1_+length_rigid2_*cos(theta[0])-z_);
+    template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
+        residual[0] = weight_position_*(length_continuum_/theta[0]*(1.0-cos(theta[0]))*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-position_.x());
+        residual[1] = weight_position_*(length_continuum_/theta[0]*(1.0-cos(theta[0]))*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-position_.y());
+        residual[2] = weight_position_*(length_continuum_/theta[0]*sin(theta[0])+length_rigid1_+length_rigid2_*cos(theta[0])-position_.z());
         return true;
     }
 private: 
     const double weight_position_;
     const double length_continuum_,length_rigid2_,length_rigid1_;
-    const double z_; 
+    const Eigen::Vector3d position_; 
 };
+// struct x_residual{
+//     x_residual(double weight_position,
+//                 double length_continuum,
+//                 double length_rigid2,
+//                 double x):
+//                      length_continuum_(length_continuum),
+//                      length_rigid2_(length_rigid2),
+//                      x_(x),
+//                      weight_position_(weight_position) {}
+//     template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
+//         residual[0] = weight_position_*(length_continuum_/theta[0]*(1.0-cos(theta[0]))*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);
+//         return true;
+//     }
+// private: 
+//     const double weight_position_;
+//     const double length_continuum_,length_rigid2_;
+//     const double x_; 
+// };
+// struct y_residual{
+//     y_residual(double weight_position,
+//                 double length_continuum,
+//                 double length_rigid2,
+//                 double y):
+//                      length_continuum_(length_continuum),
+//                      length_rigid2_(length_rigid2),
+//                      y_(y),
+//                      weight_position_(weight_position) {}
+//     template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
+//         residual[0] = weight_position_*(length_continuum_/theta[0]*(1.0-cos(theta[0]))*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);
+//         return true;
+//     }
+// private: 
+//     const double weight_position_;
+//     const double length_continuum_,length_rigid2_;
+//     const double y_; 
+// };
+// struct z_residual{
+//     z_residual(double weight_position,
+//                 double length_continuum,
+//                 double length_rigid1,
+//                 double length_rigid2,
+//                 double z):
+//                      length_continuum_(length_continuum),
+//                      length_rigid1_(length_rigid1),
+//                      length_rigid2_(length_rigid2),
+//                      z_(z),
+//                      weight_position_(weight_position) {}
+//     template <typename T> bool operator()(const T* const theta, T* residual) const {
+//         residual[0] = weight_position_*(length_continuum_/theta[0]*sin(theta[0])+length_rigid1_+length_rigid2_*cos(theta[0])-z_);
+//         return true;
+//     }
+// private: 
+//     const double weight_position_;
+//     const double length_continuum_,length_rigid2_,length_rigid1_;
+//     const double z_; 
+// };
 struct angle_residual{
     angle_residual(double weight_direction,
                  double length_rigid1,
@@ -118,10 +141,11 @@ Eigen::Vector3d get_inter_point(const int& ratio_id, const int& total_id, const 
 void cal_deviation_get_max_deviation_path_point_id(double& max_deviation, int& max_deviation_path_point_ids);
 void get_cdcr_sample_points();
 void find_closed_path_point(const int& start_path_point_id,const Eigen::Vector3d& joint_end_position, int& segment_start_path_point_id);
-void visualizationPath();
 void visualizationCDCR();
 void visualizationDeviations();
+void visualPathMarkers();
 private:
+int sleep_nano_time;
 rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr deviation_marker_pub;
 double deviation_marker_scale_x,deviation_marker_scale_y,deviation_marker_scale_z;
 double deviation_marker_zoom_factor;
@@ -168,6 +192,8 @@ std::vector<Joint> joints;
 std::vector<Eigen::Matrix4d> transform_joints_to_world, transform_world_to_joints;
 Eigen::Matrix4d transform_base_to_world, transform_world_to_base;
 int experience_type;
+double alpha_lower_bound, alpha_upper_bound;
+double theta_lower_bound, theta_upper_bound;
 
 };
 
