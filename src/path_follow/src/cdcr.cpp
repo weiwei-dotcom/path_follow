@@ -276,7 +276,6 @@ void CDCR::path_follow_exeperience()
             rclcpp::shutdown();
             return;
         }
-        this->start_track_path_point_id;
         double follow_max_deviation = 0.0;
         double temp_time_spend = 0.0;
         path_follow(temp_time_spend, follow_max_deviation);
@@ -389,6 +388,7 @@ void CDCR::getCorrectTravelPointID()
 
 void CDCR::path_follow(double& time_spend, double& max_deviation)
 {
+    RCLCPP_INFO(this->get_logger(), "path_follow: ");
     int fit_times=0;
     std::vector<int> max_deviation_path_point_ids;
     std::vector<double> max_deviations;
@@ -399,6 +399,7 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         getBasePose();
         // start to fit the cdcr robot;
         fitCDCR();
+
         rclcpp::Time t_end = this->now();
         double t_spend = t_end.seconds()-t_start.seconds();
         time_spend += t_spend;
@@ -412,7 +413,7 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         max_deviations.push_back(max_deviation);
         max_deviation_path_point_ids.push_back(temp_max_deviation_path_point_id);
     }
-    if (this->arc_path_radius > 99.5 && this->arc_path_radius<100.5)
+    if (this->arc_path_radius > 119.5 && this->arc_path_radius<120.5)
     {
         show_max_deviations(max_deviations,max_deviation_path_point_ids);    
         cv::Mat temp_img;
@@ -471,6 +472,7 @@ void CDCR::show_max_deviations(const std::vector<double>& max_deviations, const 
 }
 void CDCR::get_cdcr_sample_points()
 {
+    RCLCPP_INFO(this->get_logger(), "get_cdcr_sample_points");
     this->cdcr_points.resize(0);
     this->cdcr_points.push_back(this->transform_base_to_world.block(0,3,3,1));
     this->cdcr_segment_point_id.resize(0);
@@ -512,6 +514,7 @@ void CDCR::get_cdcr_sample_points()
 }
 void CDCR::visualization()
 {
+    RCLCPP_INFO(this->get_logger(), "visualization()");
     // visualize the base box;
     std_msgs::msg::Header temp_header;
     temp_header.frame_id = "world";
@@ -565,6 +568,9 @@ void CDCR::visualization()
     visualization_msgs::msg::MarkerArray cdcr_plats_visual_msg;
     for (int i=0;i<this->cdcr_segment_point_id.size();i++)
     {
+        RCLCPP_INFO(this->get_logger(), "cdcr_segment_point_id[i]: %d", cdcr_segment_point_id[i]);
+        RCLCPP_INFO(this->get_logger(), "joints.size(): %d", this->joints.size());
+        RCLCPP_INFO(this->get_logger(), "cdcr_segment_point_id.size(): %d", this->cdcr_segment_point_id.size());
         visualization_msgs::msg::Marker cdcr_plat_model;
         cdcr_plat_model.header = temp_header;
         cdcr_plat_model.type =visualization_msgs::msg::Marker::CYLINDER;
@@ -612,6 +618,7 @@ Eigen::Vector3d CDCR::get_inter_point(const int& ratio_id, const int& total_id, 
 }
 void CDCR::cal_deviation_get_max_deviation_path_point_id(double& max_deviation, int& max_deviation_path_point_id)
 {
+    RCLCPP_INFO(this->get_logger(), "cal_deviation_get_max_deviation_path_point_id()");
     int temp_last_cdcr_point_id = 0;
     int temp_current_cdcr_point_id = 1;
     for (int i=this->track_path_point_id+1;i < this->fit_end_path_point_id;i++)
@@ -676,11 +683,11 @@ void CDCR::cal_deviation_get_max_deviation_path_point_id(double& max_deviation, 
 }
 void CDCR::fitCDCR()
 {
-    int joint_id = 0;
+    RCLCPP_INFO(this->get_logger(), "fit_CDCR");
     this->transform_joints_to_world[0] = this->transform_base_to_world;
     this->transform_world_to_joints[0] = this->transform_world_to_base;
     int segment_start_path_point_id = track_path_point_id;
-    for (joint_id; joint_id<joint_number; joint_id++)
+    for (int joint_id=0; joint_id<joint_number; joint_id++)
     {
         int target_path_point_id = segment_start_path_point_id+ceil(this->joints[joint_id].length/this->bone_sample_interval);
         Eigen::Vector4d target_position;
@@ -689,6 +696,7 @@ void CDCR::fitCDCR()
         // transform the target_postion and tangent_vec to the frame of joint[joint_id]
         target_position = transform_world_to_joints[joint_id]*target_position;
         target_tangent_vec = transform_world_to_joints[joint_id].block(0,0,3,3)*target_tangent_vec;
+        RCLCPP_INFO(this->get_logger(), "699");
         ceres::Problem fit_problem;
         fit_problem.AddResidualBlock(
             new ceres::AutoDiffCostFunction<x_residual,1,1,1>(
@@ -727,6 +735,8 @@ void CDCR::fitCDCR()
             NULL,
             &joints[joint_id].theta
         );
+        RCLCPP_INFO(this->get_logger(), "738");
+
         fit_problem.AddResidualBlock(
             new ceres::AutoDiffCostFunction<angle_residual,1,1,1>(
                 new angle_residual(
@@ -744,6 +754,7 @@ void CDCR::fitCDCR()
         fit_problem.SetParameterLowerBound(&joints[joint_id].theta, 0, 1e-4);
         fit_problem.SetParameterUpperBound(&joints[joint_id].alpha, 0, M_PI/2);
         fit_problem.SetParameterUpperBound(&joints[joint_id].theta, 0, M_PI_2);
+        RCLCPP_INFO(this->get_logger(), "755");
         ceres::Solver::Options option;
         option.max_num_iterations=50;
         option.minimizer_progress_to_stdout = true;
@@ -751,25 +762,33 @@ void CDCR::fitCDCR()
         option.trust_region_strategy_type=ceres::DOGLEG;
         option.logging_type=ceres::PER_MINIMIZER_ITERATION;
         ceres::Solver::Summary summary;
+        RCLCPP_INFO(this->get_logger(), "765");
         ceres::Solve(option, &fit_problem, &summary);
         if (joint_id<joint_number-1)
         {
             transform_joints_to_world[joint_id+1] = transform_joints_to_world[joint_id] * joints[joint_id].getTransform();
             transform_world_to_joints[joint_id+1] = joints[joint_id].transform.inverse()*transform_world_to_joints[joint_id];            
         }
-        Eigen::Vector3d joint_end_position = joints[joint_id].transform.block(0,3,3,1);
+        RCLCPP_INFO(this->get_logger(), "joints[%f].theta: ", this->joints[joint_id].theta);
+        //TODO: here may have make some mistake, the joint_end_position should transform to the world frame.
+        Eigen::Vector3d joint_end_position = transform_joints_to_world[joint_id+1].block(0,3,3,1);
+        RCLCPP_INFO(this->get_logger(), "joint_end_position = [%f, %f, %f]", joint_end_position(0) ,joint_end_position(1) ,joint_end_position(2));
+        RCLCPP_INFO(this->get_logger(), "773");
         find_closed_path_point(target_path_point_id,joint_end_position,segment_start_path_point_id);
     }
     this->fit_end_path_point_id =segment_start_path_point_id;
     track_path_point_id++;
+    RCLCPP_INFO(this->get_logger(), "fit_CDCR_finished");
     return;
 }
 
 void CDCR::find_closed_path_point(const int& start_path_point_id,const Eigen::Vector3d& joint_end_position, int& segment_start_path_point_id)
 {
+    RCLCPP_INFO(this->get_logger(), "find_closed_path_point");
     int temp_path_point_id = start_path_point_id;
     Eigen::Vector3d temp_path_tangent_vec=this->path_points[temp_path_point_id+1]-this->path_points[temp_path_point_id-1];
     Eigen::Vector3d temp_direction=joint_end_position-path_points[temp_path_point_id];
+    RCLCPP_INFO(this->get_logger(), "788");
     double temp_dot_value = temp_path_tangent_vec.dot(temp_direction);
     if (temp_dot_value > 0)
     {   
@@ -778,8 +797,9 @@ void CDCR::find_closed_path_point(const int& start_path_point_id,const Eigen::Ve
             temp_path_point_id++;
             Eigen::Vector3d temp_path_tangent_vec=this->path_points[temp_path_point_id+1]-this->path_points[temp_path_point_id-1];
             Eigen::Vector3d temp_direction=joint_end_position-path_points[temp_path_point_id];
+            RCLCPP_INFO(this->get_logger(), "797");
             temp_dot_value = temp_path_tangent_vec.dot(temp_direction);
-        }while(temp_dot_value<0||temp_path_point_id<path_points.size()-1);        
+        }while(temp_dot_value>0&&temp_path_point_id<path_points.size()-2);        
     }
     else 
     {
@@ -788,16 +808,19 @@ void CDCR::find_closed_path_point(const int& start_path_point_id,const Eigen::Ve
             temp_path_point_id--;
             Eigen::Vector3d temp_path_tangent_vec=this->path_points[temp_path_point_id+1]-this->path_points[temp_path_point_id-1];
             Eigen::Vector3d temp_direction=joint_end_position-path_points[temp_path_point_id];
+            RCLCPP_INFO(this->get_logger(), "808");
             temp_dot_value = temp_path_tangent_vec.dot(temp_direction);
-        }while(temp_dot_value>0 || temp_path_point_id>0);     
+        }while(temp_dot_value<0 && temp_path_point_id>1);     
     }
     segment_start_path_point_id = temp_path_point_id;
+    RCLCPP_INFO(this->get_logger(), "find_closed_path_point_finished");
     return;
 }
 
 
 void CDCR::getBasePose()
 {
+    RCLCPP_INFO(this->get_logger(), "get_base_pose");
     Eigen::Vector3d base_track_travel_point = getMediaInterPoint(path_points[this->track_path_point_id], this->base_end_point, this->base_start_point);
     this->transform_base_to_world.block(0,3,3,1) = base_track_travel_point;
     this->transform_world_to_base = this->transform_base_to_world.inverse();

@@ -46,10 +46,6 @@ iostream
 Eigen/Eigen
 -
 
-/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp
-cdcr.hpp
-/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp
-
 /home/weiwei/Desktop/project/path_follow/src/path_follow/src/uniform_bspline.hpp
 Eigen/Eigen
 -
