@@ -327,7 +327,6 @@ void CDCR::visualPathMarkers()
         path.points.push_back(temp_path_point);
     }
     this->path_point_markers_pub->publish(path);
-    RCLCPP_INFO(this->get_logger(), "path points publish success");
     return;
 }
 
@@ -399,15 +398,15 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
     std::vector<double> max_deviations;
     for (this->track_path_point_id=this->start_track_path_point_id;this->track_path_point_id < this->correct_end_path_point_id;this->track_path_point_id++)
     {
-        rclcpp::Time t_start = this->now();
         // get base transform of base to world from the path point;
         getBasePose();
         // start to fit the cdcr robot;
+        rclcpp::Time t_start = this->now();
         fitCDCR();
-
         rclcpp::Time t_end = this->now();
         double t_spend = t_end.seconds()-t_start.seconds();
         RCLCPP_INFO(this->get_logger(), "fit_time: %f", t_spend);
+
         time_spend += t_spend;
         fit_times++;
         get_cdcr_sample_points();
@@ -477,15 +476,16 @@ void CDCR::show_max_deviations(const std::vector<double>& max_deviations, const 
         deviation_markers.markers.push_back(temp_marker);
     }
     deviation_marker_pub->publish(deviation_markers);
-    //debug
-    rclcpp::Rate temp_timer(2);
-    temp_timer.sleep();
+
+    // //debug
+    // rclcpp::Rate temp_timer(2);
+    // temp_timer.sleep();
+
     RCLCPP_INFO (this->get_logger(), "show_max_deviations finished()");
     return;
 }
 void CDCR::get_cdcr_sample_points()
 {
-    RCLCPP_INFO(this->get_logger(), "get_cdcr_sample_points");
     this->cdcr_points.resize(0);
     this->cdcr_points.push_back(this->transform_base_to_world.block(0,3,3,1));
     this->cdcr_segment_point_id.resize(0);
@@ -527,7 +527,6 @@ void CDCR::get_cdcr_sample_points()
 }
 void CDCR::visualization()
 {
-    RCLCPP_INFO(this->get_logger(), "visualization()");
     // visualize the base box;
     std_msgs::msg::Header temp_header;
     temp_header.frame_id = "world";
@@ -608,10 +607,7 @@ void CDCR::visualization()
     this->base_visualization_pub->publish(base_visual_msg);
     this->cdcr_plat_visualization_pub->publish(cdcr_plats_visual_msg);
     this->cdcr_point_visualization_pub->publish(cdcr_points_visual_msg);
-    rclcpp::Time temp_time1 = this->now();
     this->visualPathMarkers();
-    rclcpp::Time temp_time2 = this->now();
-    RCLCPP_INFO(this->get_logger(), "visualPath spend time: %f", (temp_time2.seconds()-temp_time1.seconds()));
     //debug
     this->sleep_nano_time = this->get_parameter("sleep_nano_time").as_int();
     rclcpp::Rate sleep_time(std::chrono::nanoseconds(this->sleep_nano_time));
@@ -779,21 +775,36 @@ void CDCR::fitCDCR()
         // option.trust_region_strategy_type=ceres::DOGLEG;
         option.logging_type=ceres::SILENT;
         ceres::Solver::Summary summary;
-        ceres::Solve(option, &fit_problem, &summary);
-        // TODO:
-        // if (joints[joint_id].theta < 0)
-        // {
-        //     joints[joint_id].theta = std::abs(joints[joint_id].theta);
-        //     joints[joint_id].alpha = 
-        // }
+        ceres::Solve(option,&fit_problem,&summary);
+
+        if (joints[joint_id].theta < 0)
+        {
+            joints[joint_id].theta = std::abs(joints[joint_id].theta);
+            joints[joint_id].alpha = (joints[joint_id].alpha + M_PI) > M_PI ?  (joints[joint_id].alpha-M_PI) : (joints[joint_id].alpha+M_PI);
+        }
         Eigen::Vector3d joint_end_position;
         transform_joints_to_world[joint_id+1] = transform_joints_to_world[joint_id] * joints[joint_id].getTransform();
         transform_world_to_joints[joint_id+1] = joints[joint_id].transform.inverse()*transform_world_to_joints[joint_id];            
         joint_end_position = transform_joints_to_world[joint_id+1].block(0,3,3,1);
         find_closed_path_point(target_path_point_id,joint_end_position,segment_start_path_point_id);
     }
+    // //debug
+    // if (track_path_point_id >= 1000)
+    // {
+    //     for (int i=0;i<joint_number;i++)
+    //     {
+    //         RCLCPP_INFO(this->get_logger(),"joint[%d].theta: %f", i, joints[i].theta);
+    //         RCLCPP_INFO(this->get_logger(),"joint[%d].alpha: %f", i, joints[i].alpha);
+    //     }
+    //     rclcpp::Rate temp_timer(std::chrono::nanoseconds(300000000));
+    //     if(!temp_timer.sleep())
+    //     {
+    //         RCLCPP_ERROR(this->get_logger(), "can't sleep");
+    //         rclcpp::shutdown();
+            
+    //     } 
+    // }
     this->fit_end_path_point_id =segment_start_path_point_id;
-    track_path_point_id++;
     return;
 }
 
