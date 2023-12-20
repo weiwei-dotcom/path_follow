@@ -87,17 +87,17 @@ base_z_axis_z: 0.0
 base_y_axis_x: 1.0
 base_y_axis_y: 0.0
 base_y_axis_z: 0.0
-start_track_path_point_id: 1
+start_track_path_point_id: 1500
 base_tolerance_deviation: 1.0
 base_tolerance_angle_deviation: 4.0
 # this is the minimum value of remaining length over the length of the robot
 safe_path_length_redundance: 200.0
-min_arc_radius: 60.0
-max_arc_radius: 500.0
+min_arc_radius: 200.0
+max_arc_radius: 260.0
 # 位置误差权重
 weight_position: 1.0
 # 方向误差权重
-weight_direction: 30.0
+weight_direction: 33.0
 # the size of base box model for visualization
 base_box_size_x: 100.0
 base_box_size_y: 100.0
@@ -121,10 +121,10 @@ cdcr_plat_color_g: 0.2
 cdcr_plat_color_b: 0.0
 cdcr_plat_color_a: 1.0
 
-path_point_scale: 1.0
-path_point_color_r: 1.0
-path_point_color_g: 0.0
-path_point_color_b: 0.0
+path_point_scale: 3.0
+path_point_color_r: 0.11
+path_point_color_g: 1.0
+path_point_color_b: 0.11
 path_point_color_a: 1.0
 
 deviation_marker_scale_x: 1.0
@@ -137,6 +137,8 @@ alpha_lower_bound: -180.0
 alpha_upper_bound: 180.0
 theta_lower_bound: -90.0
 theta_upper_bound: 90.0
+
+arc_path_radius_step: 4.0
 
 # the end index at the path point list
 

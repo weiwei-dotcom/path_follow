@@ -7,6 +7,7 @@
 #include "visualization_msgs/msg/marker_array.hpp"
 #include <cmath>
 #include <visualization_msgs/msg/marker.hpp>
+#include <std_msgs/msg/float64.hpp>
 #include "cv_bridge/cv_bridge.h"
 #include <opencv2/opencv.hpp>
 #include <ceres/ceres.h>
@@ -145,7 +146,10 @@ void visualizationCDCR();
 void visualizationDeviations();
 void visualPathMarkers();
 private:
+double arc_path_radius_step;
 int sleep_nano_time;
+rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr fit_time_pub;
+rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr max_deviation_pub;
 rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr deviation_marker_pub;
 double deviation_marker_scale_x,deviation_marker_scale_y,deviation_marker_scale_z;
 double deviation_marker_zoom_factor;

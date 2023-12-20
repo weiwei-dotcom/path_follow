@@ -1,0 +1,2 @@
+Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '2': /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
