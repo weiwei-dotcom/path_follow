@@ -273,8 +273,34 @@ void CDCR::path_follow_exeperience()
     std::vector<double> experience_deviations;
     std::vector<double> experience_arc_radiuses;
     std::vector<double> time_spend;
+    if (experience_type == 1)
+    {
+        for (this->arc_path_radius=this->min_arc_radius;this->arc_path_radius<=this->max_arc_radius+1e-4; this->arc_path_radius+=this->arc_path_radius_step)
+        {
+            // discrete the path
+            discretePath();
 
-    for (this->arc_path_radius=this->min_arc_radius; this->arc_path_radius<=this->max_arc_radius+1e-4; this->arc_path_radius+=this->arc_path_radius_step)
+            visualPathMarkers();
+            getCorrectTravelPointID();
+            if (flag_end_experience)
+            {
+                rclcpp::shutdown();
+                return;
+            }
+            double follow_max_deviation = 0.0;
+            double temp_time_spend = 0.0;
+            path_follow(temp_time_spend, follow_max_deviation);
+            time_spend.push_back(temp_time_spend);
+            experience_arc_radiuses.push_back(this->arc_path_radius);
+            experience_deviations.push_back(follow_max_deviation);
+            for (int i=0;i<joints.size();i++)
+            {
+                joints[i].theta = 1e-4;
+                joints[i].alpha = 1e-3;
+            }
+        }
+    }
+    else
     {
         // discrete the path
         discretePath();
