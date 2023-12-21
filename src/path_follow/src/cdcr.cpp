@@ -8,6 +8,15 @@ CDCR::CDCR():Node("path_follow")
     this->flag_end_path_follow = false;
     this->flag_discretized = false;
     this->flag_end_experience = false;
+    // per_radius_fit_time_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_fit_time");
+    // per_radius_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_max_deviation");
+    // per_fitperiod_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_max_deviation");
+    // per_fitperiod_theta_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_theta_value");
+    // per_fitperiod_alpha_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_alpha_value");
+
+    this->declare_parameter<std::int16_t>("visualization_flag", 1);
+    this->visualization_flag = this->get_parameter("visualization_flag").as_int();
+
     this->declare_parameter<std::double_t>("arc_path_radius_step", 4.0);
     this->arc_path_radius_step = this->get_parameter("arc_path_radius_step").as_double();
 
@@ -279,8 +288,6 @@ void CDCR::path_follow_exeperience()
         {
             // discrete the path
             discretePath();
-
-            visualPathMarkers();
             getCorrectTravelPointID();
             if (flag_end_experience)
             {
@@ -299,13 +306,14 @@ void CDCR::path_follow_exeperience()
                 joints[i].alpha = 1e-3;
             }
         }
+        // // TODO:
+        // saveData();
     }
     else
     {
         // discrete the path
         discretePath();
 
-        visualPathMarkers();
         getCorrectTravelPointID();
         if (flag_end_experience)
         {
@@ -316,13 +324,7 @@ void CDCR::path_follow_exeperience()
         double temp_time_spend = 0.0;
         path_follow(temp_time_spend, follow_max_deviation);
         time_spend.push_back(temp_time_spend);
-        experience_arc_radiuses.push_back(this->arc_path_radius);
         experience_deviations.push_back(follow_max_deviation);
-        for (int i=0;i<joints.size();i++)
-        {
-            joints[i].theta = 1e-4;
-            joints[i].alpha = 1e-3;
-        }
     }
     return;
 }
@@ -450,16 +452,28 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         time_spend += t_spend;
         fit_times++;
         get_cdcr_sample_points();
-        visualization();
+
+        if (visualization_flag != 0)
+        {
+            rclcpp::Time visual_t_start = this->now();
+            visualization();
+            rclcpp::Time visual_t_end = this->now();
+        }
+
+        // //debug
+        // double visual_spend = visual_t_end.seconds()-visual_t_start.seconds();
+        // RCLCPP_INFO(this->get_logger(), "visual_time: %f", visual_spend);
+        // rclcpp::sleep_for(std::chrono::nanoseconds(10000000000));
+
         double temp_max_deviation = 0.0;
         int temp_max_deviation_path_point_id = 0;
         cal_deviation_get_max_deviation_path_point_id(temp_max_deviation,temp_max_deviation_path_point_id);
         // it's better to show the max deviation vector at the corrorsponding point.
 
-        // //debug
-        // std_msgs::msg::Float64 max_deviation_msg;
-        // max_deviation_msg.data =temp_max_deviation;
-        // this->max_deviation_pub->publish(max_deviation_msg);
+        //debug
+        std_msgs::msg::Float64 max_deviation_msg;
+        max_deviation_msg.data =temp_max_deviation;
+        this->max_deviation_pub->publish(max_deviation_msg);
         
         max_deviations.push_back(temp_max_deviation);
         max_deviation_path_point_ids.push_back(temp_max_deviation_path_point_id);
@@ -467,7 +481,7 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
     if (this->experience_type == 1)
     {
         //debug
-        if (arc_path_radius >= 63.0 || arc_path_radius <= 70.0)
+        if (arc_path_radius >= 66.0 && arc_path_radius <= 70.0)
         {
             show_max_deviations(max_deviations,max_deviation_path_point_ids); 
             //todo

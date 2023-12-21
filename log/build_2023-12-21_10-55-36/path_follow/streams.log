@@ -1,0 +1,123 @@
+[0.104s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+[0.140s] [35m[1mScanning dependencies of target path_follow[0m
+[0.178s] [ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m
+[0.178s] [ 50%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o[0m
+[2.721s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp:1[m[K:
+[2.721s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::x_residual::x_residual(double, double, double, double, Eigen::Vector3d)[m[K’:
+[2.721s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:62:27:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::x_residual::position_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[2.721s]    62 |     const Eigen::Vector3d [01;35m[Kposition_[m[K;
+[2.721s]       |                           [01;35m[K^~~~~~~~~[m[K
+[2.721s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:60:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::x_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[2.721s]    60 |     const double [01;35m[Kweight_position_[m[K;
+[2.721s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[2.721s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:42:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[2.721s]    42 |     [01;35m[Kx_residual[m[K(double weight_position,
+[2.721s]       |     [01;35m[K^~~~~~~~~~[m[K
+[2.721s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::angle_residual::angle_residual(double, double, double, double, Eigen::Vector3d)[m[K’:
+[2.721s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:140:27:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::angle_residual::tangent_vector_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[2.721s]   140 |     const Eigen::Vector3d [01;35m[Ktangent_vector_[m[K;
+[2.722s]       |                           [01;35m[K^~~~~~~~~~~~~~~[m[K
+[2.722s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:138:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::angle_residual::weight_direction_[m[K’ [[01;35m[K-Wreorder[m[K]
+[2.722s]   138 |     const double [01;35m[Kweight_direction_[m[K;
+[2.722s]       |                  [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[2.722s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:121:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[2.722s]   121 |     [01;35m[Kangle_residual[m[K(double weight_direction,
+[2.722s]       |     [01;35m[K^~~~~~~~~~~~~~[m[K
+[2.868s] In file included from [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1[m[K:
+[2.868s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::x_residual::x_residual(double, double, double, double, Eigen::Vector3d)[m[K’:
+[2.868s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:62:27:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::x_residual::position_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[2.868s]    62 |     const Eigen::Vector3d [01;35m[Kposition_[m[K;
+[2.868s]       |                           [01;35m[K^~~~~~~~~[m[K
+[2.868s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:60:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::x_residual::weight_position_[m[K’ [[01;35m[K-Wreorder[m[K]
+[2.868s]    60 |     const double [01;35m[Kweight_position_[m[K;
+[2.868s]       |                  [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[2.868s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:42:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[2.868s]    42 |     [01;35m[Kx_residual[m[K(double weight_position,
+[2.868s]       |     [01;35m[K^~~~~~~~~~[m[K
+[2.868s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:[m[K In constructor ‘[01m[KCDCR::angle_residual::angle_residual(double, double, double, double, Eigen::Vector3d)[m[K’:
+[2.869s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:140:27:[m[K [01;35m[Kwarning: [m[K‘[01m[KCDCR::angle_residual::tangent_vector_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[2.869s]   140 |     const Eigen::Vector3d [01;35m[Ktangent_vector_[m[K;
+[2.869s]       |                           [01;35m[K^~~~~~~~~~~~~~~[m[K
+[2.869s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:138:18:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kconst double CDCR::angle_residual::weight_direction_[m[K’ [[01;35m[K-Wreorder[m[K]
+[2.869s]   138 |     const double [01;35m[Kweight_direction_[m[K;
+[2.869s]       |                  [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[2.869s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:121:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[2.869s]   121 |     [01;35m[Kangle_residual[m[K(double weight_direction,
+[2.869s]       |     [01;35m[K^~~~~~~~~~~~~~[m[K
+[2.919s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In constructor ‘[01m[KCDCR::CDCR()[m[K’:
+[2.919s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:111:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbase_tolerance_deviation[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[2.920s]   111 |     double [01;35m[Kbase_tolerance_deviation[m[K = this->get_parameter("base_tolerance_deviation").as_double();
+[2.920s]       |            [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.961s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::path_follow_exeperience()[m[K’:
+[2.961s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:302:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Joint>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.961s]   302 |             for (int i=0;[01;35m[Ki<joints.size()[m[K;i++)
+[2.962s]       |                          [01;35m[K~^~~~~~~~~~~~~~[m[K
+[2.962s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:327:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Joint>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.962s]   327 |         for (int i=0;[01;35m[Ki<joints.size()[m[K;i++)
+[2.962s]       |                      [01;35m[K~^~~~~~~~~~~~~~[m[K
+[2.968s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::getCorrectTravelPointID()[m[K’:
+[2.968s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:388:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.968s]   388 |     for (int i=1;[01;35m[Ki<path_points.size()-1[m[K;i++)
+[2.968s]       |                  [01;35m[K~^~~~~~~~~~~~~~~~~~~~~[m[K
+[2.968s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:390:14:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.968s]   390 |         if ([01;35m[Ki>=(path_points.size()-2)[m[K)
+[2.968s]       |             [01;35m[K~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.968s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:405:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.968s]   405 |         for (int j=i;[01;35m[Kj<path_points.size()-1[m[K;j++)
+[2.968s]       |                      [01;35m[K~^~~~~~~~~~~~~~~~~~~~~[m[K
+[2.968s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:407:18:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.968s]   407 |             if ([01;35m[Kj==(path_points.size()-2)[m[K)
+[2.968s]       |                 [01;35m[K~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.969s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:386:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kpath_deviation[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[2.969s]   386 |     double [01;35m[Kpath_deviation[m[K;
+[2.969s]       |            [01;35m[K^~~~~~~~~~~~~~[m[K
+[3.090s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::visualization()[m[K’:
+[3.090s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:646:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[3.090s]   646 |     for (int i=0;[01;35m[Ki<this->cdcr_points.size()[m[K;i+=2)
+[3.091s]       |                  [01;35m[K~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.091s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:656:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[3.091s]   656 |     for (int i=1;[01;35m[Ki<this->cdcr_segment_point_id.size()[m[K;i++)
+[3.091s]       |                  [01;35m[K~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.112s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::cal_deviation_get_max_deviation_path_point_id(double&, int&)[m[K’:
+[3.112s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:739:52:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[3.112s]   739 |                     if ([01;35m[Ktemp_current_cdcr_point_id >= this->cdcr_points.size()[m[K)
+[3.112s]       |                         [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.152s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::find_closed_path_point(const int&, const Vector3d&, int&)[m[K’:
+[3.152s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:906:54:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[3.152s]   906 |         }while(temp_dot_value>0 && [01;35m[Ktemp_path_point_id<path_points.size()-2[m[K);
+[3.152s]       |                                    [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~[m[K
+[3.152s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:[m[K In member function ‘[01m[Kvoid CDCR::getPathDeviationAndNextIndex(const int&, const int&, int&)[m[K’:
+[3.152s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:951:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpath_point_index_start[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.152s]   951 | void CDCR::getPathDeviationAndNextIndex([01;35m[Kconst int& path_point_index_start[m[K,
+[3.152s]       |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.152s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:952:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcdcr_point_index[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.152s]   952 |                                         [01;35m[Kconst int& cdcr_point_index[m[K,
+[3.152s]       |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~[m[K
+[3.153s] [01m[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:953:46:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpath_point_index_next_start[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.153s]   953 |                                         [01;35m[Kint& path_point_index_next_start[m[K)
+[3.153s]       |                                         [01;35m[K~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[7.290s] [ 75%] [32m[1mLinking CXX executable path_follow[0m
+[7.708s] [100%] Built target path_follow
+[7.718s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+[7.744s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/weiwei/Desktop/project/path_follow/build/path_follow
+[7.749s] -- Install configuration: ""
+[7.749s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/lib/path_follow/path_follow
+[7.755s] -- Set runtime path of "/home/weiwei/Desktop/project/path_follow/install/path_follow/lib/path_follow/path_follow" to ""
+[7.755s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/launch
+[7.755s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/launch/path_follow.launch.py
+[7.755s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/package_run_dependencies/path_follow
+[7.755s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/parent_prefix_path/path_follow
+[7.755s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/ament_prefix_path.sh
+[7.755s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/ament_prefix_path.dsv
+[7.755s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/path.sh
+[7.755s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/path.dsv
+[7.755s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.bash
+[7.755s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.sh
+[7.756s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.zsh
+[7.756s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.dsv
+[7.756s] -- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/package.dsv
+[7.756s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/packages/path_follow
+[7.756s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/cmake/path_followConfig.cmake
+[7.756s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/cmake/path_followConfig-version.cmake
+[7.756s] -- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/package.xml
+[7.756s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/weiwei/Desktop/project/path_follow/build/path_follow

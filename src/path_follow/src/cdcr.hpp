@@ -12,6 +12,7 @@
 #include <opencv2/opencv.hpp>
 #include <ceres/ceres.h>
 #include <iostream>
+#include <fstream>
 
 
 class CDCR:public rclcpp::Node
@@ -146,6 +147,8 @@ void visualizationCDCR();
 void visualizationDeviations();
 void visualPathMarkers();
 private:
+// std::ofstream per_radius_max_deviation_ofs, per_radius_fit_time_ofs, per_fitperiod_max_deviation_ofs, per_fitperiod_theta_value_ofs, per_fitperiod_alpha_value_ofs;
+int visualization_flag;
 double arc_path_radius_step;
 int sleep_nano_time;
 rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr fit_time_pub;
