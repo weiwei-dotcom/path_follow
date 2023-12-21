@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Grid1
         - /Marker1
         - /MarkerArray1
         - /MarkerArray2
@@ -29,7 +30,7 @@ Visualization Manager:
   Class: ""
   Displays:
     - Alpha: 0.5
-      Cell Size: 1
+      Cell Size: 10
       Class: rviz_default_plugins/Grid
       Color: 160; 160; 164
       Enabled: true
@@ -43,14 +44,14 @@ Visualization Manager:
         Y: 0
         Z: 0
       Plane: XY
-      Plane Cell Count: 10
+      Plane Cell Count: 420
       Reference Frame: <Fixed Frame>
       Value: true
     - Class: rviz_default_plugins/Marker
       Enabled: true
       Name: Marker
       Namespaces:
-        "": true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -62,7 +63,7 @@ Visualization Manager:
       Enabled: true
       Name: MarkerArray
       Namespaces:
-        "": true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -74,7 +75,7 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        "": true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -86,7 +87,7 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        {}
+        "": true
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -105,6 +106,18 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /deviation_markers
+      Value: true
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: Marker
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /b_spline_interval_points
       Value: true
   Enabled: true
   Global Options:
@@ -149,25 +162,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 227.58645629882812
+      Distance: 552.3807983398438
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 37.15359878540039
-        Y: 2113.093505859375
-        Z: 66.25391387939453
+        X: 22.01789093017578
+        Y: 2225.537841796875
+        Z: 61.73621368408203
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.09520311653614044
+      Pitch: 0.18479685485363007
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.13000118732452393
+      Yaw: 6.033181190490723
     Saved: ~
 Window Geometry:
   Displays:

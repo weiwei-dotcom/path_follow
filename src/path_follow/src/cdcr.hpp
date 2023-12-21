@@ -34,7 +34,7 @@ bool baseDirectCorrectCheck(const int& path_point_id);
 bool remainPathLengthCheck(const int& path_point_id);
 double calVecProjValue(const Eigen::Vector3d& first_point, const Eigen::Vector3d& media_point, const Eigen::Vector3d& second_point);
 Eigen::Vector3d getMediaInterPoint(const Eigen::Vector3d& inter_point,const Eigen::Vector3d& line_end1,const Eigen::Vector3d& line_end2);
-void fitCDCR();
+void fitCDCR(std::vector<int>& segment_path_point_ids, std::vector<int>& last_segment_path_point_ids);
 void path_follow(double& time_spend, double& max_deviation);
 void visualization();
 void show_max_deviations(const std::vector<double>& max_deviations, const std::vector<int>& max_deviation_path_point_ids);
@@ -143,8 +143,6 @@ Eigen::Vector3d get_inter_point(const int& ratio_id, const int& total_id, const 
 void cal_deviation_get_max_deviation_path_point_id(double& max_deviation, int& max_deviation_path_point_ids);
 void get_cdcr_sample_points();
 void find_closed_path_point(const int& start_path_point_id,const Eigen::Vector3d& joint_end_position, int& segment_start_path_point_id);
-void visualizationCDCR();
-void visualizationDeviations();
 void visualPathMarkers();
 private:
 // std::ofstream per_radius_max_deviation_ofs, per_radius_fit_time_ofs, per_fitperiod_max_deviation_ofs, per_fitperiod_theta_value_ofs, per_fitperiod_alpha_value_ofs;
@@ -208,6 +206,10 @@ std::vector<Eigen::Vector3d> b_spline_path_interval_points, b_spline_start_end_d
 
 //debug
 rclcpp::Publisher<visualization_marker>::SharedPtr temp_b_spline_interval_points_pub;
+
+//debug: find why the fit result change so extremelly
+bool flag_first_fit;
+double theta_change_thresh;
 
 };
 

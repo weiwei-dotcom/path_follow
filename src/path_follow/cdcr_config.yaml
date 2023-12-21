@@ -1,4 +1,4 @@
-joint_number: 20
+joint_number: 10
 joint0_rigid1_length: 0.0
 joint0_rigid2_length: 0.0
 joint1_rigid1_length: 0.0
@@ -63,46 +63,46 @@ joint19_continuum_length: 100.0
 
 bspline_interval_point1_x: 0.0
 bspline_interval_point1_y: 70.0
-bspline_interval_point1_z: 55.0
+bspline_interval_point1_z: 40.0
 bspline_interval_point2_x: 0.0
 bspline_interval_point2_y: 130.0
-bspline_interval_point2_z: 125.0  
-bspline_interval_point3_x: 30.0
-bspline_interval_point3_y: 200.0
+bspline_interval_point2_z: 110.0  
+bspline_interval_point3_x: 27.0
+bspline_interval_point3_y: 230.0
 bspline_interval_point3_z: 185.0
-bspline_interval_point4_x: 85.0
-bspline_interval_point4_y: 270.0
+bspline_interval_point4_x: 90.0
+bspline_interval_point4_y: 350.0
 bspline_interval_point4_z: 205.0
+# bspline_interval_point5_x: 155.0
+# bspline_interval_point5_y: 400.0
+# bspline_interval_point5_z: 205.0
+# bspline_interval_point6_x: 190.0
+# bspline_interval_point6_y: 430.0
+# bspline_interval_point6_z: 190.0
 bspline_interval_point5_x: 150.0
-bspline_interval_point5_y: 330.0
-bspline_interval_point5_z: 205.0
-bspline_interval_point6_x: 205.0
-bspline_interval_point6_y: 400.0
-bspline_interval_point6_z: 190.0
-bspline_interval_point7_x: 180.0
-bspline_interval_point7_y: 500.0
-bspline_interval_point7_z: 170.0
-bspline_interval_point8_x: 150.0
-bspline_interval_point8_y: 600.0
-bspline_interval_point8_z: 150.0
-bspline_interval_point9_x: 140.0
-bspline_interval_point9_y: 700.0
-bspline_interval_point9_z: 140.0
-bspline_interval_point10_x: 110.0
-bspline_interval_point10_y: 900.0
-bspline_interval_point10_z: 110.0
-bspline_interval_point11_x: 100.0
-bspline_interval_point11_y: 1100.0
-bspline_interval_point11_z: 100.0
+bspline_interval_point5_y: 500.0
+bspline_interval_point5_z: 170.0
+bspline_interval_point6_x: 150.0
+bspline_interval_point6_y: 630.0
+bspline_interval_point6_z: 150.0
+bspline_interval_point7_x: 130.0
+bspline_interval_point7_y: 770.0
+bspline_interval_point7_z: 130.0
+bspline_interval_point8_x: 110.0
+bspline_interval_point8_y: 940.0
+bspline_interval_point8_z: 110.0
+bspline_interval_point9_x: 100.0
+bspline_interval_point9_y: 1100.0
+bspline_interval_point9_z: 100.0
 
 bspline_start_vel_x: 0.0
-bspline_start_vel_y: 300.0
+bspline_start_vel_y: 4.0
 bspline_start_vel_z: 0.0
 bspline_end_vel_x: 0.0
-bspline_end_vel_y: 300.0
+bspline_end_vel_y: 3.0
 bspline_end_vel_z: 0.0
 bspline_start_acc_x: 0.0
-bspline_start_acc_y: 10.0
+bspline_start_acc_y: 0.0
 bspline_start_acc_z: 0.0
 bspline_end_acc_x: 0.0
 bspline_end_acc_y: 0.0
@@ -134,7 +134,7 @@ base_z_axis_z: 0.0
 base_y_axis_x: 1.0
 base_y_axis_y: 0.0
 base_y_axis_z: 0.0
-start_track_path_point_id: 1
+start_track_path_point_id: 1000
 base_tolerance_deviation: 1.0
 base_tolerance_angle_deviation: 4.0
 # this is the minimum value of remaining length over the length of the robot
@@ -142,8 +142,10 @@ safe_path_length_redundance: 200.0
 min_arc_radius: 60.0
 max_arc_radius: 260.0
 # 位置误差权重
+# weight_position: 0.029412
 weight_position: 0.029412
 # 方向误差权重
+# weight_direction: 0.970588
 weight_direction: 0.970588
 # the size of base box model for visualization
 base_box_size_x: 100.0
@@ -178,16 +180,20 @@ deviation_marker_scale_x: 1.0
 deviation_marker_scale_y: 0.0
 deviation_marker_scale_z: 0.0
 deviation_marker_zoom_factor: 1.0
-sleep_nano_time: 0
+sleep_nano_time: 50000000
 
 alpha_lower_bound: -180.0
 alpha_upper_bound: 180.0
-theta_lower_bound: -90.0
-theta_upper_bound: 90.0
+theta_lower_bound: -120.0
+theta_upper_bound: 120.0
 
 arc_path_radius_step: 4.0
 
 visualization_flag: 1
+
+time_interval: 30.0
+
+theta_change_thresh: 4.0
 
 # the end index at the path point list
 

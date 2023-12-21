@@ -3,6 +3,12 @@
 
 CDCR::CDCR():Node("path_follow")
 {
+
+    //debug: find why the fit result change so extremelly
+    flag_first_fit = true;
+    this->declare_parameter<std::double_t>("theta_change_thresh", 10.0);
+    this->theta_change_thresh = this->get_parameter("theta_change_thresh").as_double();
+
     this->flag_end_path_follow = false;
     this->flag_discretized = false;
     this->flag_end_experience = false;
@@ -264,25 +270,25 @@ CDCR::CDCR():Node("path_follow")
     temp_interval_point9 << bspline_interval_point9_x, bspline_interval_point9_y, bspline_interval_point9_z;
     this->temp_b_spline_path_interval_poins.push_back(temp_interval_point9); 
     
-    Eigen::Vector3d temp_interval_point10;
-    this->declare_parameter<std::double_t>("bspline_interval_point10_x", 110.0);
-    double bspline_interval_point10_x = this->get_parameter("bspline_interval_point10_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point10_y", 900.0);
-    double bspline_interval_point10_y = this->get_parameter("bspline_interval_point10_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point10_z", 110.0);
-    double bspline_interval_point10_z = this->get_parameter("bspline_interval_point10_z").as_double();
-    temp_interval_point10 << bspline_interval_point10_x, bspline_interval_point10_y, bspline_interval_point10_z;
-    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point10); 
+    // Eigen::Vector3d temp_interval_point10;
+    // this->declare_parameter<std::double_t>("bspline_interval_point10_x", 110.0);
+    // double bspline_interval_point10_x = this->get_parameter("bspline_interval_point10_x").as_double();
+    // this->declare_parameter<std::double_t>("bspline_interval_point10_y", 900.0);
+    // double bspline_interval_point10_y = this->get_parameter("bspline_interval_point10_y").as_double();
+    // this->declare_parameter<std::double_t>("bspline_interval_point10_z", 110.0);
+    // double bspline_interval_point10_z = this->get_parameter("bspline_interval_point10_z").as_double();
+    // temp_interval_point10 << bspline_interval_point10_x, bspline_interval_point10_y, bspline_interval_point10_z;
+    // this->temp_b_spline_path_interval_poins.push_back(temp_interval_point10); 
     
-    Eigen::Vector3d temp_interval_point11;
-    this->declare_parameter<std::double_t>("bspline_interval_point11_x", 100.0);
-    double bspline_interval_point11_x = this->get_parameter("bspline_interval_point11_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point11_y", 1100.0);
-    double bspline_interval_point11_y = this->get_parameter("bspline_interval_point11_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point11_z", 100.0);
-    double bspline_interval_point11_z = this->get_parameter("bspline_interval_point11_z").as_double();
-    temp_interval_point11 << bspline_interval_point11_x, bspline_interval_point11_y, bspline_interval_point11_z;
-    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point11);
+    // Eigen::Vector3d temp_interval_point11;
+    // this->declare_parameter<std::double_t>("bspline_interval_point11_x", 100.0);
+    // double bspline_interval_point11_x = this->get_parameter("bspline_interval_point11_x").as_double();
+    // this->declare_parameter<std::double_t>("bspline_interval_point11_y", 1100.0);
+    // double bspline_interval_point11_y = this->get_parameter("bspline_interval_point11_y").as_double();
+    // this->declare_parameter<std::double_t>("bspline_interval_point11_z", 100.0);
+    // double bspline_interval_point11_z = this->get_parameter("bspline_interval_point11_z").as_double();
+    // temp_interval_point11 << bspline_interval_point11_x, bspline_interval_point11_y, bspline_interval_point11_z;
+    // this->temp_b_spline_path_interval_poins.push_back(temp_interval_point11);
 
     // declare and get start_end_point_derivatives and time_interval_value;
     Eigen::Vector3d temp_start_vel;
@@ -374,7 +380,7 @@ CDCR::CDCR():Node("path_follow")
     this->fit_time_pub = this->create_publisher<std_msgs::msg::Float64>("fit_time", 3);
 
     //debug
-    temp_b_spline_interval_points_pub = this->create_publisher<visualization_marker>("b_spline_interval_points", 10);
+    temp_b_spline_interval_points_pub = this->create_publisher<visualization_marker>("b_spline_interval_points", 1);
     std::cout << "init finished !!!" << std::endl;
 
     return;
@@ -435,41 +441,12 @@ void CDCR::discretePath()
                         b_spline_path_interval_points.back().z());
                         
         }
-
-        //debug
-        visualization_marker temp_b_spline_interval_points_msg;
-        temp_b_spline_interval_points_msg.type = visualization_marker::SPHERE_LIST;
-        temp_b_spline_interval_points_msg.header.frame_id = "world";
-        temp_b_spline_interval_points_msg.header.stamp = this->now();
-        temp_b_spline_interval_points_msg.action = visualization_marker::ADD;
-        temp_b_spline_interval_points_msg.scale.x = 12.0;
-        temp_b_spline_interval_points_msg.scale.y = 12.0;
-        temp_b_spline_interval_points_msg.scale.z = 12.0;
-        temp_b_spline_interval_points_msg.color.r = 0.3;
-        temp_b_spline_interval_points_msg.color.g = 0.4;
-        temp_b_spline_interval_points_msg.color.b = 0.9;
-        temp_b_spline_interval_points_msg.color.a = 1.0;
-        temp_b_spline_interval_points_msg.pose.position.x = 0.0;
-        temp_b_spline_interval_points_msg.pose.position.y = 0.0;
-        temp_b_spline_interval_points_msg.pose.position.z = 0.0;
-        temp_b_spline_interval_points_msg.pose.orientation.z = 0.0;
-        temp_b_spline_interval_points_msg.pose.orientation.y = 0.0;
-        temp_b_spline_interval_points_msg.pose.orientation.x = 0.0;
-        temp_b_spline_interval_points_msg.pose.orientation.w = 1.0;
-        for (int i=0;i<this->b_spline_path_interval_points.size();i++)
-        {
-            geometry_msgs::msg::Point temp_point;
-            temp_point.x = this->b_spline_path_interval_points[i](0);
-            temp_point.y = this->b_spline_path_interval_points[i](1);
-            temp_point.z = this->b_spline_path_interval_points[i](2);
-            temp_b_spline_interval_points_msg.points.push_back(temp_point);
-        }
-        temp_b_spline_interval_points_pub->publish(temp_b_spline_interval_points_msg);
-        
+    
         b_spline_path.parameterizeToBspline(this->time_interval, this->b_spline_path_interval_points, this->b_spline_start_end_derivatives, ctrl_points);
 
         // TODO: here get the ctrl_points of b-spline, but still need to discrete to get the path_points;
-        this->b_spline_path.setUniformBspline(ctrl_points, 3, this->time_interval);
+        int orders = 3;
+        this->b_spline_path.setUniformBspline(ctrl_points, orders, this->time_interval);
         double b_spline_length = 0.0;
         double temp_t=0.005;
         Eigen::Vector3d temp_last_path_point = path_points.back();
@@ -485,13 +462,12 @@ void CDCR::discretePath()
             }
             temp_last_path_point = temp_path_point;
             temp_t += 0.005;
-            
         }while((temp_path_point-b_spline_path_interval_points.back()).norm() > 1.0 && temp_t < time_span);
 
-        // debug
-        visualPathMarkers();
-        rclcpp::sleep_for(std::chrono::nanoseconds(1000000000000));
-        rclcpp::shutdown();
+        // // debug
+        // visualPathMarkers();
+        // rclcpp::sleep_for(std::chrono::nanoseconds(1000000000000));
+        // rclcpp::shutdown();
 
         break;
     }
@@ -594,17 +570,6 @@ void CDCR::visualPathMarkers()
     return;
 }
 
-void CDCR::visualizationCDCR()
-{
-    return;
-}
-
-void CDCR::visualizationDeviations() 
-{
-
-    return;
-}
-
 void CDCR::getCorrectTravelPointID()
 {
     Eigen::Vector3d path_tangent_vec;
@@ -661,13 +626,19 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
     std::vector<int> max_deviation_path_point_ids;
     std::vector<double> max_deviations;
     std::vector<double> theta_per_fit;
+
+    //debug: find why the fit result change so extremelly
+    std::vector<int> seg_point_ids;
+    std::vector<int> last_seg_point_ids;
+
     for (this->track_path_point_id=this->start_track_path_point_id;this->track_path_point_id < this->correct_end_path_point_id;this->track_path_point_id++)
     {
         // get base transform of base to world from the path point;
         getBasePose();
         // start to fit the cdcr robot;
         rclcpp::Time t_start = this->now();
-        fitCDCR();
+        seg_point_ids.clear();
+        fitCDCR(seg_point_ids, last_seg_point_ids);
         rclcpp::Time t_end = this->now();
         double t_spend = t_end.seconds()-t_start.seconds();
         if (experience_type == 2)
@@ -710,6 +681,28 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         
         max_deviations.push_back(temp_max_deviation);
         max_deviation_path_point_ids.push_back(temp_max_deviation_path_point_id);
+
+        // //debug: initialize all joint value;
+        // for (int j=0; j<joint_number;j++)
+        // {
+        //     joints[j].theta = 1e-4;
+        //     joints[j].alpha = 1e-3;
+        // }
+
+        //debug: find why the fit result change so extremelly
+        if (temp_max_deviation>20)
+        {
+            for (int j=0;j<seg_point_ids.size();j++)
+            {
+                RCLCPP_INFO(this->get_logger(), "seg_point_ids[%d]: %d", j, seg_point_ids[j]);
+                RCLCPP_INFO(this->get_logger(), "last_seg_point_ids[%d]: %d", j, last_seg_point_ids[j]);
+            }
+            rclcpp::sleep_for(std::chrono::seconds(100));
+        }
+        last_seg_point_ids = seg_point_ids;
+
+        //debug: find why the fit result change so extremelly
+        this->flag_first_fit = false;
     }
     if (this->experience_type == 1)
     {
@@ -917,6 +910,35 @@ void CDCR::visualization()
     this->cdcr_plat_visualization_pub->publish(cdcr_plats_visual_msg);
     this->cdcr_point_visualization_pub->publish(cdcr_points_visual_msg);
     this->visualPathMarkers();
+
+    if (experience_type == 2)
+    {
+        // visualize the every cdcr point;
+        visualization_msgs::msg::Marker b_spline_interval_points_msg;
+        b_spline_interval_points_msg.header = temp_header;
+        b_spline_interval_points_msg.type = visualization_msgs::msg::Marker::SPHERE_LIST;
+        b_spline_interval_points_msg.color.r = 0.2;
+        b_spline_interval_points_msg.color.g = 0.8;
+        b_spline_interval_points_msg.color.b = 0.2;
+        b_spline_interval_points_msg.color.a = 1.0;
+        b_spline_interval_points_msg.scale.x = 20.0;
+        b_spline_interval_points_msg.scale.y = 20.0;
+        b_spline_interval_points_msg.scale.z = 20.0;
+        b_spline_interval_points_msg.pose.orientation.w = 1.0;
+        b_spline_interval_points_msg.pose.orientation.x = 0.0;
+        b_spline_interval_points_msg.pose.orientation.y = 0.0;
+        b_spline_interval_points_msg.pose.orientation.z = 0.0;
+        for (int i=0; i<this->b_spline_path_interval_points.size();i++)
+        {
+            geometry_msgs::msg::Point temp_point;
+            temp_point.x = this->b_spline_path_interval_points[i].x();
+            temp_point.y = this->b_spline_path_interval_points[i].y();
+            temp_point.z = this->b_spline_path_interval_points[i].z();
+            b_spline_interval_points_msg.points.push_back(temp_point);
+        }   
+        this->temp_b_spline_interval_points_pub->publish(b_spline_interval_points_msg); 
+    }
+
     //debug
     this->sleep_nano_time = this->get_parameter("sleep_nano_time").as_int();
     rclcpp::Rate sleep_time(std::chrono::nanoseconds(this->sleep_nano_time));
@@ -1000,13 +1022,25 @@ void CDCR::cal_deviation_get_max_deviation_path_point_id(double& max_deviation, 
     }
     return;
 }
-void CDCR::fitCDCR()
+
+//debug: find why the fit result change so extremelly
+void CDCR::fitCDCR(std::vector<int>& segment_path_point_ids, std::vector<int>& last_segment_path_point_ids)
 {
+    
     this->transform_joints_to_world[0] = this->transform_base_to_world;
     this->transform_world_to_joints[0] = this->transform_world_to_base;
     int segment_start_path_point_id = this->track_path_point_id;
+
+    //debug: find why the fit result change so extremelly
+    double temp_theta = 0.0, temp_alpha = 0.0;
+    int error_time = 0;
+    
     for (int joint_id=0; joint_id<joint_number; joint_id++)
     {
+        //debug: find why the fit result change so extremelly
+        temp_theta = this->joints[joint_id].theta;
+        temp_alpha = this->joints[joint_id].alpha;
+
         int target_path_point_id = segment_start_path_point_id+ceil(this->joints[joint_id].length/this->sample_interval);
         Eigen::Vector4d target_position;
         target_position << path_points[target_path_point_id],1.0;
@@ -1092,17 +1126,56 @@ void CDCR::fitCDCR()
         option.logging_type=ceres::SILENT;
         ceres::Solver::Summary summary;
         ceres::Solve(option,&fit_problem,&summary);
+
+        //debug: find why the fit result change so extremelly
         if (joints[joint_id].theta < 0)
         {
             joints[joint_id].theta = std::abs(joints[joint_id].theta);
             joints[joint_id].alpha = (joints[joint_id].alpha + M_PI) > M_PI ?  (joints[joint_id].alpha-M_PI) : (joints[joint_id].alpha+M_PI);
         }
+
+        //debug: find why the fit result change so extremelly
+        if (!flag_first_fit)
+        {
+            if (abs(joints[joint_id].theta-temp_theta) > this->theta_change_thresh/180.0*M_PI)
+            {
+                if (error_time < 10)
+                {
+                    //debug: why can't fix this problem
+                    RCLCPP_INFO(this->get_logger(),"segment_start_path_point_id: %d",segment_start_path_point_id);
+                    RCLCPP_INFO(this->get_logger(),"last_segment_path_point_ids[joint_id]+1: %d",last_segment_path_point_ids[joint_id]+1);
+                    // rclcpp::sleep_for(std::chrono::seconds(1000));
+
+                    if (joint_id > 0)
+                        segment_start_path_point_id = last_segment_path_point_ids[joint_id-1]+1;
+                    joint_id-=1;
+                    error_time++;
+                    continue;
+                }
+
+                //debug: why can't fix this problem
+                rclcpp::sleep_for(std::chrono::seconds(1000));
+
+                joints[joint_id].theta = temp_theta;
+                joints[joint_id].alpha = temp_alpha; 
+            } 
+            error_time = 0;
+        }
+
         Eigen::Vector3d joint_end_position;
         transform_joints_to_world[joint_id+1] = transform_joints_to_world[joint_id] * joints[joint_id].getTransform();
         transform_world_to_joints[joint_id+1] = joints[joint_id].transform.inverse()*transform_world_to_joints[joint_id];            
         joint_end_position = transform_joints_to_world[joint_id+1].block(0,3,3,1);
         find_closed_path_point(target_path_point_id,joint_end_position,segment_start_path_point_id);
+
+        //debug: find why the fit result change so extremelly
+        segment_path_point_ids.push_back(segment_start_path_point_id);
     }
+
+    //debug: find why the fit result change so extremelly
+    last_segment_path_point_ids.resize(0);
+    last_segment_path_point_ids = segment_path_point_ids;
+
     // //debug
     // if (track_path_point_id >= 1000)
     // {
