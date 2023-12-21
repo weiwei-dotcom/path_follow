@@ -41,7 +41,7 @@ endif()
 
 include_directories(${EIGEN3_INCLUDE_DIR} ${Sophus_DIR} ${CERES_INCLUDE_DIRS})
 
-add_executable(path_follow src/main.cpp src/cdcr.cpp src/joint.cpp)
+add_executable(path_follow src/main.cpp src/cdcr.cpp src/joint.cpp src/uniform_bspline.cpp)
 
 ament_target_dependencies(path_follow rclcpp nav_msgs rclcpp_components geometry_msgs std_msgs visualization_msgs cv_bridge)
 

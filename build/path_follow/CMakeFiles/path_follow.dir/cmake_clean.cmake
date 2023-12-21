@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/path_follow.dir/src/cdcr.cpp.o"
   "CMakeFiles/path_follow.dir/src/joint.cpp.o"
   "CMakeFiles/path_follow.dir/src/main.cpp.o"
+  "CMakeFiles/path_follow.dir/src/uniform_bspline.cpp.o"
   "path_follow"
   "path_follow.pdb"
 )

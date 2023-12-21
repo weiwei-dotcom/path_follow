@@ -201,6 +201,13 @@ Eigen::Matrix4d transform_base_to_world, transform_world_to_base;
 int experience_type;
 double alpha_lower_bound, alpha_upper_bound;
 double theta_lower_bound, theta_upper_bound;
+UniformBspline b_spline_path;
+double time_interval;
+std::vector<Eigen::Vector3d> temp_b_spline_path_interval_poins;
+std::vector<Eigen::Vector3d> b_spline_path_interval_points, b_spline_start_end_derivatives;
+
+//debug
+rclcpp::Publisher<visualization_marker>::SharedPtr temp_b_spline_interval_points_pub;
 
 };
 

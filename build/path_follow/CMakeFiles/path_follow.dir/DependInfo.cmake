@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp" "/home/weiwei/Desktop/project/path_follow/build/path_follow/CMakeFiles/path_follow.dir/src/cdcr.cpp.o"
   "/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.cpp" "/home/weiwei/Desktop/project/path_follow/build/path_follow/CMakeFiles/path_follow.dir/src/joint.cpp.o"
   "/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp" "/home/weiwei/Desktop/project/path_follow/build/path_follow/CMakeFiles/path_follow.dir/src/main.cpp.o"
+  "/home/weiwei/Desktop/project/path_follow/src/path_follow/src/uniform_bspline.cpp" "/home/weiwei/Desktop/project/path_follow/build/path_follow/CMakeFiles/path_follow.dir/src/uniform_bspline.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

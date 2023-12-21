@@ -287,6 +287,33 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/path_follow.dir/build.make CMakeFiles/path_follow.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/uniform_bspline.o: src/uniform_bspline.cpp.o
+
+.PHONY : src/uniform_bspline.o
+
+# target to build an object file
+src/uniform_bspline.cpp.o:
+	$(MAKE) -f CMakeFiles/path_follow.dir/build.make CMakeFiles/path_follow.dir/src/uniform_bspline.cpp.o
+.PHONY : src/uniform_bspline.cpp.o
+
+src/uniform_bspline.i: src/uniform_bspline.cpp.i
+
+.PHONY : src/uniform_bspline.i
+
+# target to preprocess a source file
+src/uniform_bspline.cpp.i:
+	$(MAKE) -f CMakeFiles/path_follow.dir/build.make CMakeFiles/path_follow.dir/src/uniform_bspline.cpp.i
+.PHONY : src/uniform_bspline.cpp.i
+
+src/uniform_bspline.s: src/uniform_bspline.cpp.s
+
+.PHONY : src/uniform_bspline.s
+
+# target to generate assembly for a file
+src/uniform_bspline.cpp.s:
+	$(MAKE) -f CMakeFiles/path_follow.dir/build.make CMakeFiles/path_follow.dir/src/uniform_bspline.cpp.s
+.PHONY : src/uniform_bspline.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -312,6 +339,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/uniform_bspline.o"
+	@echo "... src/uniform_bspline.i"
+	@echo "... src/uniform_bspline.s"
 .PHONY : help
 
 
