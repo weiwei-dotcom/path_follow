@@ -1,0 +1,3 @@
+[35m[1mScanning dependencies of target path_follow[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m

@@ -31,9 +31,9 @@ CDCR::CDCR():Node("path_follow")
     this->theta_lower_bound = this->get_parameter("theta_lower_bound").as_double()/180.0 * M_PI;
     this->declare_parameter<std::double_t>("theta_upper_bound", 90.0);
     this->theta_upper_bound = this->get_parameter("theta_upper_bound").as_double()/180.0 * M_PI;
-    this->declare_parameter<std::int64_t>("sleep_nano_time", 10000000);
+    this->declare_parameter<std::int64_t>("sleep_nano_time", 0);
     this->sleep_nano_time = this->get_parameter("sleep_nano_time").as_int();   
-    this->declare_parameter<std::double_t>("deviation_marker_zoom_factor", 10.0);
+    this->declare_parameter<std::double_t>("deviation_marker_zoom_factor", 2.0);
     this->deviation_marker_zoom_factor = this->get_parameter("deviation_marker_zoom_factor").as_double();
     this->declare_parameter<std::double_t>("path_point_scale", 1.0);
     this->path_point_scale = this->get_parameter("path_point_scale").as_double();
@@ -46,15 +46,15 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::double_t>("path_point_color_a", 1.0);
     this->path_point_color_a = this->get_parameter("path_point_color_a").as_double();
     
-    this->declare_parameter<std::double_t>("deviation_marker_scale_x", 4.0);
+    this->declare_parameter<std::double_t>("deviation_marker_scale_x", 1.0);
     this->deviation_marker_scale_x = this->get_parameter("deviation_marker_scale_x").as_double();
-    this->declare_parameter<std::double_t>("deviation_marker_scale_y", 8.0);
+    this->declare_parameter<std::double_t>("deviation_marker_scale_y", 0.0);
     this->deviation_marker_scale_y = this->get_parameter("deviation_marker_scale_y").as_double();
-    this->declare_parameter<std::double_t>("deviation_marker_scale_z", 8.0);
+    this->declare_parameter<std::double_t>("deviation_marker_scale_z", 0.0);
     this->deviation_marker_scale_z = this->get_parameter("deviation_marker_scale_z").as_double();
     this->declare_parameter<std::double_t>("sample_interval", 1.0);
     this->sample_interval = this->get_parameter("sample_interval").as_double();
-    this->declare_parameter<std::int16_t>("joint_number", 20);
+    this->declare_parameter<std::int16_t>("joint_number", 15);
     this->joint_number = this->get_parameter("joint_number").as_int();
     this->declare_parameter<std::int16_t>("experience_type",1);
     this->experience_type=this->get_parameter("experience_type").as_int();
@@ -87,7 +87,7 @@ CDCR::CDCR():Node("path_follow")
     this->base_end_point(1)=this->get_parameter("base_end_point_y").as_double();
     this->declare_parameter<std::double_t>("base_end_point_z", 0.0);
     this->base_end_point(2)=this->get_parameter("base_end_point_z").as_double();
-    this->declare_parameter<std::int64_t>("path_follow_nanotime_interval", this->path_follow_nanotime_interval);
+    this->declare_parameter<std::int64_t>("path_follow_nanotime_interval", 500000000);
     this->path_follow_nanotime_interval=this->get_parameter("path_follow_nanotime_interval").as_int();
     this->declare_parameter<std::double_t>("arc_path_alpha", 0.0);
     this->arc_path_alpha=this->get_parameter("arc_path_alpha").as_double();
@@ -95,10 +95,9 @@ CDCR::CDCR():Node("path_follow")
     this->arc_path_theta=this->get_parameter("arc_path_theta").as_double();
     this->declare_parameter<std::double_t>("min_arc_radius", 60.0);
     this->min_arc_radius=this->get_parameter("min_arc_radius").as_double();
-    this->declare_parameter<std::double_t>("max_arc_radius", 500.0);
+    this->declare_parameter<std::double_t>("max_arc_radius", 240.0);
     this->max_arc_radius=this->get_parameter("max_arc_radius").as_double();
-    this->declare_parameter<std::double_t>("arc_path_radius", 60.0);
-    this->arc_path_radius=this->get_parameter("arc_path_radius").as_double();
+
     this->declare_parameter<std::double_t>("post_line_path_length", 2100.0);
     this->post_line_path_length=this->get_parameter("post_line_path_length").as_double();
     this->declare_parameter<std::double_t>("base_z_axis_x", 0.0);
@@ -113,11 +112,11 @@ CDCR::CDCR():Node("path_follow")
     this->base_y_axis(1)=this->get_parameter("base_y_axis_y").as_double();
     this->declare_parameter<std::double_t>("base_y_axis_z", 0.0);
     this->base_y_axis(2)=this->get_parameter("base_y_axis_z").as_double();
-    this->declare_parameter<std::double_t>("base_tolerance_deviation", 1);
+    this->declare_parameter<std::double_t>("base_tolerance_deviation", 1.0);
     double base_tolerance_deviation = this->get_parameter("base_tolerance_deviation").as_double();
-    this->declare_parameter<std::double_t>("base_tolerance_angle_deviation", 10);
+    this->declare_parameter<std::double_t>("base_tolerance_angle_deviation", 2.0);
     this->base_tolerance_angle_deviation=this->get_parameter("base_tolerance_angle_deviation").as_double();  
-    this->declare_parameter<std::double_t>("safe_path_length_redundance", 80);
+    this->declare_parameter<std::double_t>("safe_path_length_redundance", 200.0);
     this->safe_path_length_redundance=this->get_parameter("safe_path_length_redundance").as_double();
     this->declare_parameter<std::double_t>("bone_sample_interval", 1.0);
     this->bone_sample_interval=this->get_parameter("bone_sample_interval").as_double();
@@ -133,7 +132,8 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::double_t>("base_box_size_y", 100.0);
     this->base_box_size_y=this->get_parameter("base_box_size_y").as_double();
     this->declare_parameter<std::double_t>("base_box_size_z", 300.0);
-    this->base_box_size_z=this->get_parameter("base_box_size_z").as_double();   
+    this->base_box_size_z=this->get_parameter("base_box_size_z").as_double();  
+
     this->declare_parameter<std::float_t>("base_box_color_r", 0.1);
     this->base_box_color_r=this->get_parameter("base_box_color_r").as_double();   
     this->declare_parameter<std::float_t>("base_box_color_g", 0.05);
@@ -142,12 +142,14 @@ CDCR::CDCR():Node("path_follow")
     this->base_box_color_b=this->get_parameter("base_box_color_b").as_double();   
     this->declare_parameter<std::float_t>("base_box_color_a", 1.0);
     this->base_box_color_a=this->get_parameter("base_box_color_a").as_double();  
+
     this->declare_parameter<std::double_t>("cdcr_point_size_x", 8.0);
     this->cdcr_point_size_x = this->get_parameter("cdcr_point_size_x").as_double();
     this->declare_parameter<std::double_t>("cdcr_point_size_y", 8.0);
     this->cdcr_point_size_y = this->get_parameter("cdcr_point_size_y").as_double();
     this->declare_parameter<std::double_t>("cdcr_point_size_z", 8.0);
     this->cdcr_point_size_z = this->get_parameter("cdcr_point_size_z").as_double();
+
     this->declare_parameter<std::float_t>("cdcr_point_color_r", 0.0);
     this->cdcr_point_color_r = this->get_parameter("cdcr_point_color_r").as_double();
     this->declare_parameter<std::float_t>("cdcr_point_color_g", 0.0);
@@ -163,11 +165,12 @@ CDCR::CDCR():Node("path_follow")
     this->cdcr_plat_size_y = this->get_parameter("cdcr_plat_size_y").as_double();
     this->declare_parameter<std::double_t>("cdcr_plat_size_z", 8.0);
     this->cdcr_plat_size_z = this->get_parameter("cdcr_plat_size_z").as_double();
+
     this->declare_parameter<std::double_t>("cdcr_plat_color_r", 0.9);
     this->cdcr_plat_color_r= this->get_parameter("cdcr_plat_color_r").as_double();
-    this->declare_parameter<std::double_t>("cdcr_plat_color_g", 0.2);
+    this->declare_parameter<std::double_t>("cdcr_plat_color_g", 0.1);
     this->cdcr_plat_color_g = this->get_parameter("cdcr_plat_color_g").as_double();
-    this->declare_parameter<std::double_t>("cdcr_plat_color_b", 0.0);
+    this->declare_parameter<std::double_t>("cdcr_plat_color_b", 0.4);
     this->cdcr_plat_color_b = this->get_parameter("cdcr_plat_color_b").as_double();
     this->declare_parameter<std::double_t>("cdcr_plat_color_a", 1.0);
     this->cdcr_plat_color_a = this->get_parameter("cdcr_plat_color_a").as_double();
@@ -176,9 +179,9 @@ CDCR::CDCR():Node("path_follow")
     Eigen::Vector3d temp_interval_point1;
     this->declare_parameter<std::double_t>("bspline_interval_point1_x", 0.0);
     double bspline_interval_point1_x = this->get_parameter("bspline_interval_point1_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point1_y", 70.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point1_y", 75.0);
     double bspline_interval_point1_y = this->get_parameter("bspline_interval_point1_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point1_z", 55.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point1_z", 40.0);
     double bspline_interval_point1_z = this->get_parameter("bspline_interval_point1_z").as_double();
     temp_interval_point1 << bspline_interval_point1_x, bspline_interval_point1_y, bspline_interval_point1_z;
     this->temp_b_spline_path_interval_poins.push_back(temp_interval_point1);
@@ -186,33 +189,27 @@ CDCR::CDCR():Node("path_follow")
     Eigen::Vector3d temp_interval_point2;
     this->declare_parameter<std::double_t>("bspline_interval_point2_x", 0.0);
     double bspline_interval_point2_x = this->get_parameter("bspline_interval_point2_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point2_y", 130.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point2_y", 135.0);
     double bspline_interval_point2_y = this->get_parameter("bspline_interval_point2_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point2_z", 125.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point2_z", 110.0);
     double bspline_interval_point2_z = this->get_parameter("bspline_interval_point2_z").as_double();
     temp_interval_point2 << bspline_interval_point2_x, bspline_interval_point2_y, bspline_interval_point2_z;
     this->temp_b_spline_path_interval_poins.push_back(temp_interval_point2);
     
     Eigen::Vector3d temp_interval_point3;
-    this->declare_parameter<std::double_t>("bspline_interval_point3_x", 30.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point3_x", 27.0);
     double bspline_interval_point3_x = this->get_parameter("bspline_interval_point3_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point3_y", 200.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point3_y", 235.0);
     double bspline_interval_point3_y = this->get_parameter("bspline_interval_point3_y").as_double();
     this->declare_parameter<std::double_t>("bspline_interval_point3_z", 185.0);
     double bspline_interval_point3_z = this->get_parameter("bspline_interval_point3_z").as_double();
     temp_interval_point3 << bspline_interval_point3_x, bspline_interval_point3_y, bspline_interval_point3_z;
     this->temp_b_spline_path_interval_poins.push_back(temp_interval_point3);
-
-    //debug
-    RCLCPP_INFO(this->get_logger(), "this->temp_b_spline_path_interval_poins.back(): [%f, %f, %f]", 
-                this->temp_b_spline_path_interval_poins.back().x(),
-                this->temp_b_spline_path_interval_poins.back().y(),
-                this->temp_b_spline_path_interval_poins.back().z());
     
     Eigen::Vector3d temp_interval_point4;
-    this->declare_parameter<std::double_t>("bspline_interval_point4_x", 85.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point4_x", 90.0);
     double bspline_interval_point4_x = this->get_parameter("bspline_interval_point4_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point4_y", 270.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point4_y", 355.0);
     double bspline_interval_point4_y = this->get_parameter("bspline_interval_point4_y").as_double();
     this->declare_parameter<std::double_t>("bspline_interval_point4_z", 205.0);
     double bspline_interval_point4_z = this->get_parameter("bspline_interval_point4_z").as_double();
@@ -222,49 +219,49 @@ CDCR::CDCR():Node("path_follow")
     Eigen::Vector3d temp_interval_point5;
     this->declare_parameter<std::double_t>("bspline_interval_point5_x", 150.0);
     double bspline_interval_point5_x = this->get_parameter("bspline_interval_point5_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point5_y", 330.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point5_y", 500.0);
     double bspline_interval_point5_y = this->get_parameter("bspline_interval_point5_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point5_z", 205.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point5_z", 170.0);
     double bspline_interval_point5_z = this->get_parameter("bspline_interval_point5_z").as_double();
     temp_interval_point5 << bspline_interval_point5_x, bspline_interval_point5_y, bspline_interval_point5_z;
     this->temp_b_spline_path_interval_poins.push_back(temp_interval_point5); 
     
     Eigen::Vector3d temp_interval_point6;
-    this->declare_parameter<std::double_t>("bspline_interval_point6_x", 205.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point6_x", 150.0);
     double bspline_interval_point6_x = this->get_parameter("bspline_interval_point6_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point6_y", 400.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point6_y", 630.0);
     double bspline_interval_point6_y = this->get_parameter("bspline_interval_point6_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point6_z", 190.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point6_z", 150.0);
     double bspline_interval_point6_z = this->get_parameter("bspline_interval_point6_z").as_double();
     temp_interval_point6 << bspline_interval_point6_x, bspline_interval_point6_y, bspline_interval_point6_z;
     this->temp_b_spline_path_interval_poins.push_back(temp_interval_point6); 
     
     Eigen::Vector3d temp_interval_point7;
-    this->declare_parameter<std::double_t>("bspline_interval_point7_x", 180.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point7_x", 130.0);
     double bspline_interval_point7_x = this->get_parameter("bspline_interval_point7_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point7_y", 500.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point7_y", 770.0);
     double bspline_interval_point7_y = this->get_parameter("bspline_interval_point7_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point7_z", 170.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point7_z", 130.0);
     double bspline_interval_point7_z = this->get_parameter("bspline_interval_point7_z").as_double();
     temp_interval_point7 << bspline_interval_point7_x, bspline_interval_point7_y, bspline_interval_point7_z;
     this->temp_b_spline_path_interval_poins.push_back(temp_interval_point7); 
     
     Eigen::Vector3d temp_interval_point8;
-    this->declare_parameter<std::double_t>("bspline_interval_point8_x", 150.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point8_x", 110.0);
     double bspline_interval_point8_x = this->get_parameter("bspline_interval_point8_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point8_y", 600.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point8_y", 940.0);
     double bspline_interval_point8_y = this->get_parameter("bspline_interval_point8_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point8_z", 150.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point8_z", 110.0);
     double bspline_interval_point8_z = this->get_parameter("bspline_interval_point8_z").as_double();
     temp_interval_point8 << bspline_interval_point8_x, bspline_interval_point8_y, bspline_interval_point8_z;
     this->temp_b_spline_path_interval_poins.push_back(temp_interval_point8); 
     
     Eigen::Vector3d temp_interval_point9;
-    this->declare_parameter<std::double_t>("bspline_interval_point9_x", 140.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point9_x", 100.0);
     double bspline_interval_point9_x = this->get_parameter("bspline_interval_point9_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point9_y", 700.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point9_y", 1100.0);
     double bspline_interval_point9_y = this->get_parameter("bspline_interval_point9_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point9_z", 140.0);
+    this->declare_parameter<std::double_t>("bspline_interval_point9_z", 100.0);
     double bspline_interval_point9_z = this->get_parameter("bspline_interval_point9_z").as_double();
     temp_interval_point9 << bspline_interval_point9_x, bspline_interval_point9_y, bspline_interval_point9_z;
     this->temp_b_spline_path_interval_poins.push_back(temp_interval_point9); 
@@ -293,7 +290,7 @@ CDCR::CDCR():Node("path_follow")
     Eigen::Vector3d temp_start_vel;
     this->declare_parameter<std::double_t>("bspline_start_vel_x", 0.0);
     temp_start_vel.x() = this->get_parameter("bspline_start_vel_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_start_vel_y", 10.0);
+    this->declare_parameter<std::double_t>("bspline_start_vel_y", 4.0);
     temp_start_vel.y() = this->get_parameter("bspline_start_vel_y").as_double();
     this->declare_parameter<std::double_t>("bspline_start_vel_z", 0.0);
     temp_start_vel.z() = this->get_parameter("bspline_start_vel_z").as_double();
@@ -302,7 +299,7 @@ CDCR::CDCR():Node("path_follow")
     Eigen::Vector3d temp_end_vel;
     this->declare_parameter<std::double_t>("bspline_end_vel_x", 0.0);
     temp_end_vel.x() = this->get_parameter("bspline_end_vel_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_end_vel_y", 10.0);
+    this->declare_parameter<std::double_t>("bspline_end_vel_y", 3.0);
     temp_end_vel.y() = this->get_parameter("bspline_end_vel_y").as_double();
     this->declare_parameter<std::double_t>("bspline_end_vel_z", 0.0);
     temp_end_vel.z() = this->get_parameter("bspline_end_vel_z").as_double();
@@ -311,7 +308,7 @@ CDCR::CDCR():Node("path_follow")
     Eigen::Vector3d temp_start_acc;
     this->declare_parameter<std::double_t>("bspline_start_acc_x", 0.0);
     temp_start_acc.x() = this->get_parameter("bspline_start_acc_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_start_acc_y", 10.0);
+    this->declare_parameter<std::double_t>("bspline_start_acc_y", 0.0);
     temp_start_acc.y() = this->get_parameter("bspline_start_acc_y").as_double();
     this->declare_parameter<std::double_t>("bspline_start_acc_z", 0.0);
     temp_start_acc.z() = this->get_parameter("bspline_start_acc_z").as_double();
@@ -326,6 +323,7 @@ CDCR::CDCR():Node("path_follow")
     temp_end_acc.z() = this->get_parameter("bspline_end_acc_z").as_double();
     this->b_spline_start_end_derivatives.push_back(temp_end_acc);
 
+    // TODO: still need to change the param to use the running way of not launch...
     this->declare_parameter<std::double_t>("time_interval", 30.0);
     this->time_interval = this->get_parameter("time_interval").as_double();
 
@@ -470,7 +468,6 @@ void CDCR::discretePath()
     
         b_spline_path.parameterizeToBspline(this->time_interval, this->b_spline_path_interval_points, this->b_spline_start_end_derivatives, ctrl_points);
 
-        // TODO: here get the ctrl_points of b-spline, but still need to discrete to get the path_points;
         int orders = 3;
         this->b_spline_path.setUniformBspline(ctrl_points, orders, this->time_interval);
         double b_spline_length = 0.0;
@@ -670,10 +667,10 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         // //debug
         // RCLCPP_INFO(this->get_logger(), "fit_time: %f", t_spend);
 
-        // // debug
-        // std_msgs::msg::Float64 t_spend_msg;
-        // t_spend_msg.data = t_spend;
-        // this->fit_time_pub->publish(t_spend_msg);
+        // debug
+        std_msgs::msg::Float64 t_spend_msg;
+        t_spend_msg.data = t_spend;
+        this->fit_time_pub->publish(t_spend_msg);
         
         time_spend += t_spend;
         fit_times++;
@@ -692,24 +689,31 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
 
         //debug
         std_msgs::msg::Float64 max_deviation_msg;
-        max_deviation_msg.data =temp_max_deviation;
+        max_deviation_msg.data = temp_max_deviation;
         this->max_deviation_pub->publish(max_deviation_msg);
+
+        //debug: why change so extremlly
+        if (temp_max_deviation > 30.0)
+        {
+            RCLCPP_INFO(this->get_logger(), "arc_path_radius: %f", this->arc_path_radius);
+            rclcpp::sleep_for(std::chrono::seconds(5));
+        }
         
         max_deviations.push_back(temp_max_deviation);
         max_deviation_path_point_ids.push_back(temp_max_deviation_path_point_id);
 
         this->flag_first_fit = false;
     }
-    if (this->experience_type == 1)
-    {
-        //debug
-        if (arc_path_radius >= 66.0 && arc_path_radius <= 70.0)
-        {
-            show_max_deviations(max_deviations,max_deviation_path_point_ids); 
+    // if (this->experience_type == 1)
+    // {
+    //     //debug
+    //     if (arc_path_radius >= 66.0 && arc_path_radius <= 70.0)
+    //     {
+    //         show_max_deviations(max_deviations,max_deviation_path_point_ids); 
             
-            rclcpp::sleep_for(std::chrono::nanoseconds(10000000000));
-        }
-    }
+    //         rclcpp::sleep_for(std::chrono::nanoseconds(10000000000));
+    //     }
+    // }
 
     time_spend = time_spend/(double)fit_times;
     RCLCPP_INFO(this->get_logger(), "fit_times: %d" , fit_times);
@@ -717,8 +721,7 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
     max_deviation = *(std::max_element(max_deviations.begin(),max_deviations.end()));
     if(this->experience_type == 2)
     {
-        //TODO: from the max_deviations vector and the theta_per_fit vector to get the data file
-        
+        //TODO: from the max_deviations vector and the theta_per_fit vector to get the data file    
     }
     RCLCPP_INFO(this->get_logger(), "max_deviation: %f", max_deviation);
     
@@ -1130,23 +1133,12 @@ void CDCR::fitCDCR()
             }
         }while(joints[joint_id].alpha < this->alpha_lower_bound || joints[joint_id].alpha > this->alpha_upper_bound);
 
-        //debug: find why the fit result change so extremelly
-        if (!flag_first_fit)
-        {
-            if (abs(joints[joint_id].theta-temp_theta) > this->theta_change_thresh/180.0*M_PI)
-            {
-                joints[joint_id].theta = temp_theta;
-                joints[joint_id].alpha = temp_alpha; 
-            } 
-        }
-
         Eigen::Vector3d joint_end_position;
         transform_joints_to_world[joint_id+1] = transform_joints_to_world[joint_id] * joints[joint_id].getTransform();
         transform_world_to_joints[joint_id+1] = joints[joint_id].transform.inverse()*transform_world_to_joints[joint_id];            
         joint_end_position = transform_joints_to_world[joint_id+1].block(0,3,3,1);
         find_closed_path_point(target_path_point_id,joint_end_position,segment_start_path_point_id);
     }
-
     this->fit_end_path_point_id =segment_start_path_point_id;
     return;
 }
