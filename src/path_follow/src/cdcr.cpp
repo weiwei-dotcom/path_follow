@@ -4,7 +4,6 @@
 CDCR::CDCR():Node("path_follow")
 {
 
-    //debug: find why the fit result change so extremelly
     flag_first_fit = true;
     this->declare_parameter<std::double_t>("theta_change_thresh", 2.0);
     this->theta_change_thresh = this->get_parameter("theta_change_thresh").as_double();
@@ -330,6 +329,32 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::double_t>("time_interval", 30.0);
     this->time_interval = this->get_parameter("time_interval").as_double();
 
+    //cylinder obstacle's config param
+    this->declare_parameter<std::double_t> ("cylinder_scale_x", 300.0);
+    this->declare_parameter<std::double_t> ("cylinder_scale_y", 300.0);
+    this->declare_parameter<std::double_t> ("cylinder_scale_z", 600.0);
+    this->declare_parameter<std::double_t> ("cylinder_color_r", 1.0);
+    this->declare_parameter<std::double_t> ("cylinder_color_g", 0.0);
+    this->declare_parameter<std::double_t> ("cylinder_color_b", 0.5);
+    this->declare_parameter<std::double_t> ("cylinder_position_x", 0.0);
+    this->declare_parameter<std::double_t> ("cylinder_position_y", 2400.0);
+    this->declare_parameter<std::double_t> ("cylinder_position_z", 0.0);
+    this->declare_parameter<std::double_t> ("cylinder_axis_x", -5.0);
+    this->declare_parameter<std::double_t> ("cylinder_axis_y", 4.0);
+    this->declare_parameter<std::double_t> ("cylinder_axis_z", 3.0);
+    this->cylinder_axis_x = this->get_parameter("cylinder_axis_x").as_double();
+    this->cylinder_axis_y = this->get_parameter("cylinder_axis_y").as_double();
+    this->cylinder_axis_z = this->get_parameter("cylinder_axis_z").as_double();
+    this->cylinder_position_z = this->get_parameter("cylinder_position_z").as_double();
+    this->cylinder_position_y = this->get_parameter("cylinder_position_y").as_double();
+    this->cylinder_position_x = this->get_parameter("cylinder_position_x").as_double();
+    this->cylinder_color_b = this->get_parameter("cylinder_color_b").as_double();
+    this->cylinder_color_g = this->get_parameter("cylinder_color_g").as_double();
+    this->cylinder_color_r = this->get_parameter("cylinder_color_r").as_double();
+    this->cylinder_scale_z = this->get_parameter("cylinder_scale_z").as_double();
+    this->cylinder_scale_y = this->get_parameter("cylinder_scale_y").as_double();
+    this->cylinder_scale_x = this->get_parameter("cylinder_scale_x").as_double();
+
     for (int i=0;i<20;i++)
     {
         this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_rigid1_length"), 0.0);
@@ -376,9 +401,10 @@ CDCR::CDCR():Node("path_follow")
     this->cdcr_point_visualization_pub=this->create_publisher<visualization_msgs::msg::Marker>("cdcr_point_visualization",1);
     this->deviation_marker_pub = this->create_publisher<visualization_msgs::msg::MarkerArray>("deviation_markers", 1);
     this->path_point_markers_pub = this->create_publisher<visualization_marker>("path_point_markers", 1);
-    this->max_deviation_pub = this->create_publisher<std_msgs::msg::Float64>("max_deviation", 3);
-    this->fit_time_pub = this->create_publisher<std_msgs::msg::Float64>("fit_time", 3);
-
+    this->max_deviation_pub = this->create_publisher<std_msgs::msg::Float64>("max_deviation", 1);
+    this->fit_time_pub = this->create_publisher<std_msgs::msg::Float64>("fit_time", 1);
+    this->cylinder_obstacle_visualization_pub = this->create_publisher<visualization_marker>("cylinder_obstacle_marker", 1);
+    
     //debug
     temp_b_spline_interval_points_pub = this->create_publisher<visualization_marker>("b_spline_interval_points", 1);
     std::cout << "init finished !!!" << std::endl;
@@ -660,15 +686,9 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
             rclcpp::Time visual_t_end = this->now();
         }
 
-        // //debug
-        // double visual_spend = visual_t_end.seconds()-visual_t_start.seconds();
-        // RCLCPP_INFO(this->get_logger(), "visual_time: %f", visual_spend);
-        // rclcpp::sleep_for(std::chrono::nanoseconds(10000000000));
-
         double temp_max_deviation = 0.0;
         int temp_max_deviation_path_point_id = 0;
         cal_deviation_get_max_deviation_path_point_id(temp_max_deviation,temp_max_deviation_path_point_id);
-        // it's better to show the max deviation vector at the corrorsponding point.
 
         //debug
         std_msgs::msg::Float64 max_deviation_msg;
@@ -678,14 +698,6 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         max_deviations.push_back(temp_max_deviation);
         max_deviation_path_point_ids.push_back(temp_max_deviation_path_point_id);
 
-        // //debug: initialize all joint value;
-        // for (int j=0; j<joint_number;j++)
-        // {
-        //     joints[j].theta = 1e-4;
-        //     joints[j].alpha = 1e-3;
-        // }
-
-        //debug: find why the fit result change so extremelly
         this->flag_first_fit = false;
     }
     if (this->experience_type == 1)
@@ -709,6 +721,7 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         
     }
     RCLCPP_INFO(this->get_logger(), "max_deviation: %f", max_deviation);
+    
     return;
 }
 
@@ -890,14 +903,10 @@ void CDCR::visualization()
         cdcr_plat_model.pose.orientation.w = tempQ.w();
         cdcr_plats_visual_msg.markers.push_back(cdcr_plat_model); 
     }
-    this->base_visualization_pub->publish(base_visual_msg);
-    this->cdcr_plat_visualization_pub->publish(cdcr_plats_visual_msg);
-    this->cdcr_point_visualization_pub->publish(cdcr_points_visual_msg);
-    this->visualPathMarkers();
 
     if (experience_type == 2)
     {
-        // visualize the every cdcr point;
+        // visualize the b-spline path points;
         visualization_msgs::msg::Marker b_spline_interval_points_msg;
         b_spline_interval_points_msg.header = temp_header;
         b_spline_interval_points_msg.type = visualization_msgs::msg::Marker::SPHERE_LIST;
@@ -921,7 +930,38 @@ void CDCR::visualization()
             b_spline_interval_points_msg.points.push_back(temp_point);
         }   
         this->temp_b_spline_interval_points_pub->publish(b_spline_interval_points_msg); 
+
+        //visualize the cylinder obstacle
+        visualization_marker obstacle_cylinder;
+        obstacle_cylinder.type = visualization_marker::CYLINDER;
+        obstacle_cylinder.action = visualization_marker::ADD;
+        obstacle_cylinder.header = temp_header;
+        obstacle_cylinder.color.r = this->cylinder_color_r;
+        obstacle_cylinder.color.b = this->cylinder_color_b;
+        obstacle_cylinder.color.g = this->cylinder_color_g;
+        obstacle_cylinder.color.a = 1.0;
+        obstacle_cylinder.scale.x = this->cylinder_scale_x;
+        obstacle_cylinder.scale.y = this->cylinder_scale_y;
+        obstacle_cylinder.scale.z = this->cylinder_scale_z;
+        obstacle_cylinder.pose.position.x = this->cylinder_position_x;
+        obstacle_cylinder.pose.position.y = this->cylinder_position_y;
+        obstacle_cylinder.pose.position.z = this->cylinder_position_z;
+        Eigen::Vector3d temp_axis, rotation_axis;
+        temp_axis << cylinder_axis_x, cylinder_axis_y, cylinder_axis_z;
+        rotation_axis = Eigen::Vector3d(0,0,1.0).cross(temp_axis.normalized()).normalized();
+        double rotation_angle = acos(temp_axis.normalized().dot(Eigen::Vector3d(0.0,0.0,1.0)));
+        Eigen::Matrix3d rotation = Eigen::AngleAxisd(rotation_angle, rotation_axis).toRotationMatrix();
+        Eigen::Quaterniond temp_q(rotation);
+        obstacle_cylinder.pose.orientation.x = temp_q.x();
+        obstacle_cylinder.pose.orientation.y = temp_q.y();
+        obstacle_cylinder.pose.orientation.z = temp_q.z();
+        obstacle_cylinder.pose.orientation.w = temp_q.w();
+        this->cylinder_obstacle_visualization_pub->publish(obstacle_cylinder);
     }
+    this->base_visualization_pub->publish(base_visual_msg);
+    this->cdcr_plat_visualization_pub->publish(cdcr_plats_visual_msg);
+    this->cdcr_point_visualization_pub->publish(cdcr_points_visual_msg);
+    this->visualPathMarkers();
 
     //debug
     this->sleep_nano_time = this->get_parameter("sleep_nano_time").as_int();
@@ -1009,7 +1049,6 @@ void CDCR::cal_deviation_get_max_deviation_path_point_id(double& max_deviation, 
 
 void CDCR::fitCDCR()
 {
-    
     this->transform_joints_to_world[0] = this->transform_base_to_world;
     this->transform_world_to_joints[0] = this->transform_world_to_base;
     int segment_start_path_point_id = this->track_path_point_id;
@@ -1033,8 +1072,8 @@ void CDCR::fitCDCR()
         target_tangent_vec = transform_world_to_joints[joint_id].block(0,0,3,3)*target_tangent_vec;
         ceres::Problem fit_problem;
         fit_problem.AddResidualBlock(
-            new ceres::AutoDiffCostFunction<x_residual,3,1,1>(
-                new x_residual(
+            new ceres::AutoDiffCostFunction<position_residual,3,1,1>(
+                new position_residual(
                     weight_position,
                     joints[joint_id].length_continuum,
                     joints[joint_id].length_rigid2,
@@ -1045,43 +1084,6 @@ void CDCR::fitCDCR()
             NULL,
             &joints[joint_id].alpha,&joints[joint_id].theta
         );
-        // fit_problem.AddResidualBlock(
-        //     new ceres::AutoDiffCostFunction<x_residual,1,1,1>(
-        //         new x_residual(
-        //             weight_position,
-        //             joints[joint_id].length_continuum,
-        //             joints[joint_id].length_rigid2,
-        //             target_position.x()
-        //         )
-        //     ),
-        //     NULL,
-        //     &joints[joint_id].alpha,&joints[joint_id].theta
-        // );
-        // fit_problem.AddResidualBlock(
-        //     new ceres::AutoDiffCostFunction<y_residual,1,1,1>(
-        //         new y_residual(
-        //             weight_position,
-        //             joints[joint_id].length_continuum,
-        //             joints[joint_id].length_rigid2,
-        //             target_position.y()
-        //         )
-        //     ),
-        //     NULL,
-        //     &joints[joint_id].alpha,&joints[joint_id].theta    
-        // );
-        // fit_problem.AddResidualBlock(
-        //     new ceres::AutoDiffCostFunction<z_residual,1,1>(
-        //         new z_residual(
-        //             weight_position,
-        //             joints[joint_id].length_continuum,
-        //             joints[joint_id].length_rigid1,
-        //             joints[joint_id].length_rigid2,
-        //             target_position.z()
-        //         )
-        //     ),
-        //     NULL,
-        //     &joints[joint_id].theta
-        // );
 
         fit_problem.AddResidualBlock(
             new ceres::AutoDiffCostFunction<angle_residual,1,1,1>(
@@ -1096,6 +1098,7 @@ void CDCR::fitCDCR()
             NULL,
             &joints[joint_id].alpha,&joints[joint_id].theta
         );
+        // // here give the range straint of alpha variate will cause the optimal space of alpha is't discontinuous.
         // fit_problem.SetParameterLowerBound(&joints[joint_id].alpha, 0, this->alpha_lower_bound);
         fit_problem.SetParameterLowerBound(&joints[joint_id].theta, 0, this->theta_lower_bound);
         // fit_problem.SetParameterUpperBound(&joints[joint_id].alpha, 0, this->alpha_upper_bound);
@@ -1109,14 +1112,13 @@ void CDCR::fitCDCR()
         ceres::Solver::Summary summary;
         ceres::Solve(option,&fit_problem,&summary);
 
-        //debug: find why the fit result change so extremelly
+        // if theta out range, need changing the theta value to the correct range.
         if (joints[joint_id].theta < 0)
         {
             joints[joint_id].theta = std::abs(joints[joint_id].theta);
             joints[joint_id].alpha = (joints[joint_id].alpha + M_PI) > M_PI ?  (joints[joint_id].alpha-M_PI) : (joints[joint_id].alpha+M_PI);
         }
-
-        // TODO: if alpha out range, need changing the alpha value to the correct range.
+        // if alpha out range, need changing the alpha value to the correct range.
         do{
             if (joints[joint_id].alpha < this->alpha_lower_bound)
             {
@@ -1143,25 +1145,8 @@ void CDCR::fitCDCR()
         transform_world_to_joints[joint_id+1] = joints[joint_id].transform.inverse()*transform_world_to_joints[joint_id];            
         joint_end_position = transform_joints_to_world[joint_id+1].block(0,3,3,1);
         find_closed_path_point(target_path_point_id,joint_end_position,segment_start_path_point_id);
-
     }
 
-    // //debug
-    // if (track_path_point_id >= 1000)
-    // {
-    //     for (int i=0;i<joint_number;i++)
-    //     {
-    //         RCLCPP_INFO(this->get_logger(),"joint[%d].theta: %f", i, joints[i].theta);
-    //         RCLCPP_INFO(this->get_logger(),"joint[%d].alpha: %f", i, joints[i].alpha);
-    //     }
-    //     rclcpp::Rate temp_timer(std::chrono::nanoseconds(300000000));
-    //     if(!temp_timer.sleep())
-    //     {
-    //         RCLCPP_ERROR(this->get_logger(), "can't sleep");
-    //         rclcpp::shutdown();
-            
-    //     } 
-    // }
     this->fit_end_path_point_id =segment_start_path_point_id;
     return;
 }

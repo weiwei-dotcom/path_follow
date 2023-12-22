@@ -19,6 +19,8 @@ Eigen/Eigen
 /home/weiwei/Desktop/project/path_follow/src/path_follow/src/Eigen/Eigen
 sophus/se3.hpp
 /home/weiwei/Desktop/project/path_follow/src/path_follow/src/sophus/se3.hpp
+sophus/so3.hpp
+/home/weiwei/Desktop/project/path_follow/src/path_follow/src/sophus/so3.hpp
 nav_msgs/msg/path.hpp
 /home/weiwei/Desktop/project/path_follow/src/path_follow/src/nav_msgs/msg/path.hpp
 uniform_bspline.hpp

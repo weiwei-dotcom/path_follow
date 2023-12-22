@@ -2,6 +2,7 @@
 #include "joint.hpp"
 #include "Eigen/Eigen"
 #include "sophus/se3.hpp"
+#include "sophus/so3.hpp"
 #include "nav_msgs/msg/path.hpp"
 #include "uniform_bspline.hpp"
 #include "visualization_msgs/msg/marker_array.hpp"
@@ -21,10 +22,6 @@ public:
 typedef visualization_msgs::msg::Marker visualization_marker;
 typedef visualization_msgs::msg::MarkerArray visualization_marker_array;
 CDCR();
-void getPathDeviationAndNextIndex(const int& path_point_index_start, 
-                                  const int& cdcr_point_index, 
-                                  int& path_point_index_next_start);
-void getCDCRPointsAndTangentVector();
 void discretePath();
 void path_follow_exeperience();
 void getCorrectTravelPointID();
@@ -38,8 +35,8 @@ void fitCDCR();
 void path_follow(double& time_spend, double& max_deviation);
 void visualization();
 void show_max_deviations(const std::vector<double>& max_deviations, const std::vector<int>& max_deviation_path_point_ids);
-struct x_residual{
-    x_residual(double weight_position,
+struct position_residual{
+    position_residual(double weight_position,
                 double length_continuum,
                 double length_rigid2,
                 double length_rigid1,
@@ -61,62 +58,7 @@ private:
     const double length_continuum_,length_rigid2_,length_rigid1_;
     const Eigen::Vector3d position_; 
 };
-// struct x_residual{
-//     x_residual(double weight_position,
-//                 double length_continuum,
-//                 double length_rigid2,
-//                 double x):
-//                      length_continuum_(length_continuum),
-//                      length_rigid2_(length_rigid2),
-//                      x_(x),
-//                      weight_position_(weight_position) {}
-//     template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
-//         residual[0] = weight_position_*(length_continuum_/theta[0]*(1.0-cos(theta[0]))*cos(alpha[0])+length_rigid2_*sin(theta[0])*cos(alpha[0])-x_);
-//         return true;
-//     }
-// private: 
-//     const double weight_position_;
-//     const double length_continuum_,length_rigid2_;
-//     const double x_; 
-// };
-// struct y_residual{
-//     y_residual(double weight_position,
-//                 double length_continuum,
-//                 double length_rigid2,
-//                 double y):
-//                      length_continuum_(length_continuum),
-//                      length_rigid2_(length_rigid2),
-//                      y_(y),
-//                      weight_position_(weight_position) {}
-//     template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
-//         residual[0] = weight_position_*(length_continuum_/theta[0]*(1.0-cos(theta[0]))*sin(alpha[0])+length_rigid2_*sin(theta[0])*sin(alpha[0])-y_);
-//         return true;
-//     }
-// private: 
-//     const double weight_position_;
-//     const double length_continuum_,length_rigid2_;
-//     const double y_; 
-// };
-// struct z_residual{
-//     z_residual(double weight_position,
-//                 double length_continuum,
-//                 double length_rigid1,
-//                 double length_rigid2,
-//                 double z):
-//                      length_continuum_(length_continuum),
-//                      length_rigid1_(length_rigid1),
-//                      length_rigid2_(length_rigid2),
-//                      z_(z),
-//                      weight_position_(weight_position) {}
-//     template <typename T> bool operator()(const T* const theta, T* residual) const {
-//         residual[0] = weight_position_*(length_continuum_/theta[0]*sin(theta[0])+length_rigid1_+length_rigid2_*cos(theta[0])-z_);
-//         return true;
-//     }
-// private: 
-//     const double weight_position_;
-//     const double length_continuum_,length_rigid2_,length_rigid1_;
-//     const double z_; 
-// };
+
 struct angle_residual{
     angle_residual(double weight_direction,
                  double length_rigid1,
@@ -152,6 +94,7 @@ int sleep_nano_time;
 rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr fit_time_pub;
 rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr max_deviation_pub;
 rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr deviation_marker_pub;
+rclcpp::Publisher<visualization_marker>::SharedPtr cylinder_obstacle_visualization_pub;
 double deviation_marker_scale_x,deviation_marker_scale_y,deviation_marker_scale_z;
 double deviation_marker_zoom_factor;
 float base_box_color_r,base_box_color_g,base_box_color_b,base_box_color_a;
@@ -210,6 +153,11 @@ rclcpp::Publisher<visualization_marker>::SharedPtr temp_b_spline_interval_points
 //debug: find why the fit result change so extremelly
 bool flag_first_fit;
 double theta_change_thresh;
+
+double cylinder_scale_x, cylinder_scale_y, cylinder_scale_z;
+double cylinder_color_r, cylinder_color_g, cylinder_color_b;
+double cylinder_position_x, cylinder_position_y, cylinder_position_z;
+double cylinder_axis_x, cylinder_axis_y, cylinder_axis_z;
 
 };
 

@@ -62,16 +62,16 @@ joint18_continuum_length: 100.0
 joint19_continuum_length: 100.0
 
 bspline_interval_point1_x: 0.0
-bspline_interval_point1_y: 70.0
+bspline_interval_point1_y: 75.0
 bspline_interval_point1_z: 40.0
 bspline_interval_point2_x: 0.0
-bspline_interval_point2_y: 130.0
+bspline_interval_point2_y: 135.0
 bspline_interval_point2_z: 110.0  
 bspline_interval_point3_x: 27.0
-bspline_interval_point3_y: 230.0
+bspline_interval_point3_y: 235.0
 bspline_interval_point3_z: 185.0
 bspline_interval_point4_x: 90.0
-bspline_interval_point4_y: 350.0
+bspline_interval_point4_y: 355.0
 bspline_interval_point4_z: 205.0
 # bspline_interval_point5_x: 155.0
 # bspline_interval_point5_y: 400.0
@@ -111,7 +111,7 @@ bspline_end_acc_z: 0.0
 path_follow_nanotime_interval: 500000000
 sample_interval: 1.0
 bone_sample_interval: 1.0
-experience_type: 2
+experience_type: 1
 base_path_point_start_x: 0.0
 base_path_point_start_y: 0.0
 base_path_point_start_z: 0.0
@@ -194,6 +194,22 @@ visualization_flag: 1
 time_interval: 30.0
 
 theta_change_thresh: 4.0
+
+cylinder_scale_x: 300.0
+cylinder_scale_y: 300.0
+cylinder_scale_z: 600.0
+
+cylinder_color_r: 1.0
+cylinder_color_g: 0.0
+cylinder_color_b: 0.5
+
+cylinder_position_x: 0.0
+cylinder_position_y: 2430.0
+cylinder_position_z: 5.0
+
+cylinder_axis_x: -5.0
+cylinder_axis_y: 4.0
+cylinder_axis_z: 3.0
 
 # the end index at the path point list
 
