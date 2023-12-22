@@ -1,0 +1,9 @@
+[0.109s] Invoking command in '/home/weiwei/Desktop/project/path_follow/build/path_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16
+[0.146s] [35m[1mScanning dependencies of target path_follow[0m
+[0.187s] [ 40%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m
+[0.187s] [ 40%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o[0m
+[2.616s] make[2]: *** [CMakeFiles/path_follow.dir/build.make:63: CMakeFiles/path_follow.dir/src/main.cpp.o] 中断
+[2.616s] make[2]: *** [CMakeFiles/path_follow.dir/build.make:76: CMakeFiles/path_follow.dir/src/cdcr.cpp.o] 中断
+[2.616s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/path_follow.dir/all] 中断
+[2.616s] make: *** [Makefile:141: all] 中断
+[2.634s] Invoked command in '/home/weiwei/Desktop/project/path_follow/build/path_follow' returned '-2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/weiwei/Desktop/project/path_follow/build/path_follow -- -j16 -l16

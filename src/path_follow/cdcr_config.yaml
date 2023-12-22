@@ -171,7 +171,7 @@ cdcr_plat_color_b: 0.0
 cdcr_plat_color_a: 1.0
 
 path_point_scale: 3.0
-path_point_color_r: 1.0
+path_point_color_r: 0.3
 path_point_color_g: 0.4
 path_point_color_b: 0.41
 path_point_color_a: 1.0

@@ -5,18 +5,17 @@ CDCR::CDCR():Node("path_follow")
 {
 
     flag_first_fit = true;
-    this->declare_parameter<std::double_t>("theta_change_thresh", 2.0);
-    this->theta_change_thresh = this->get_parameter("theta_change_thresh").as_double();
 
     // this->flag_end_path_follow = false;
     // this->flag_discretized = false;
     this->flag_end_experience = false;
-    // per_radius_fit_time_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_fit_time");
-    // per_radius_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_max_deviation");
-    // per_fitperiod_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_max_deviation");
-    // per_fitperiod_theta_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_theta_value");
-    // per_fitperiod_alpha_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_alpha_value");
-
+    per_radius_fit_time_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_fit_time.xlsx");
+    per_radius_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_max_deviation.xlsx");
+    arc_radius_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/arc_radius.xlsx");
+    per_fitperiod_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_max_deviation.xlsx");
+    per_fitperiod_theta_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_theta_value.xlsx");
+    per_fitperiod_alpha_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_alpha_value.xlsx");
+    
     this->declare_parameter<std::int16_t>("visualization_flag", 1);
     this->visualization_flag = this->get_parameter("visualization_flag").as_int();
 
@@ -37,11 +36,11 @@ CDCR::CDCR():Node("path_follow")
     this->deviation_marker_zoom_factor = this->get_parameter("deviation_marker_zoom_factor").as_double();
     this->declare_parameter<std::double_t>("path_point_scale", 1.0);
     this->path_point_scale = this->get_parameter("path_point_scale").as_double();
-    this->declare_parameter<std::double_t>("path_point_color_r", 1.0);
+    this->declare_parameter<std::double_t>("path_point_color_r", 0.1);
     this->path_point_color_r = this->get_parameter("path_point_color_r").as_double();
-    this->declare_parameter<std::double_t>("path_point_color_g", 0.0);
+    this->declare_parameter<std::double_t>("path_point_color_g", 0.8);
     this->path_point_color_g = this->get_parameter("path_point_color_g").as_double();
-    this->declare_parameter<std::double_t>("path_point_color_b", 0.0);
+    this->declare_parameter<std::double_t>("path_point_color_b", 0.2);
     this->path_point_color_b = this->get_parameter("path_point_color_b").as_double();
     this->declare_parameter<std::double_t>("path_point_color_a", 1.0);
     this->path_point_color_a = this->get_parameter("path_point_color_a").as_double();
@@ -73,7 +72,7 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::double_t>("base_path_point_end_z", 0.0);
     this->base_path_point_end(2)=this->get_parameter("base_path_point_end_z").as_double();
 
-    this->declare_parameter<std::int64_t>("start_track_path_point_id", 1);
+    this->declare_parameter<std::int64_t>("start_track_path_point_id", 500);
     this->start_track_path_point_id=this->get_parameter("start_track_path_point_id").as_int();
     this->declare_parameter<std::double_t>("base_start_point_x", 0.0);
     this->base_start_point(0)=this->get_parameter("base_start_point_x").as_double();
@@ -323,7 +322,6 @@ CDCR::CDCR():Node("path_follow")
     temp_end_acc.z() = this->get_parameter("bspline_end_acc_z").as_double();
     this->b_spline_start_end_derivatives.push_back(temp_end_acc);
 
-    // TODO: still need to change the param to use the running way of not launch...
     this->declare_parameter<std::double_t>("time_interval", 30.0);
     this->time_interval = this->get_parameter("time_interval").as_double();
 
@@ -335,8 +333,8 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::double_t> ("cylinder_color_g", 0.0);
     this->declare_parameter<std::double_t> ("cylinder_color_b", 0.5);
     this->declare_parameter<std::double_t> ("cylinder_position_x", 0.0);
-    this->declare_parameter<std::double_t> ("cylinder_position_y", 2400.0);
-    this->declare_parameter<std::double_t> ("cylinder_position_z", 0.0);
+    this->declare_parameter<std::double_t> ("cylinder_position_y", 2430.0);
+    this->declare_parameter<std::double_t> ("cylinder_position_z", 5.0);
     this->declare_parameter<std::double_t> ("cylinder_axis_x", -5.0);
     this->declare_parameter<std::double_t> ("cylinder_axis_y", 4.0);
     this->declare_parameter<std::double_t> ("cylinder_axis_z", 3.0);
@@ -536,6 +534,12 @@ void CDCR::path_follow_exeperience()
             }
         }
         // todo: to save the experience data;
+        for (int i=0;i<experience_arc_radiuses.size();i++)
+        {
+            per_radius_fit_time_ofs << time_spend[i] << "\n";
+            per_radius_max_deviation_ofs << experience_deviations[i] << "\n";
+            arc_radius_ofs << experience_arc_radiuses[i] << "\n";
+        }
     }
     else
     {
@@ -580,7 +584,7 @@ void CDCR::visualPathMarkers()
     path.pose.orientation.z = 0.0;
     path.pose.orientation.w = 1.0;
     int path_points_size = path_points.size();
-    std::cout << "path_points_size: " << path_points_size << std::endl;
+
     for (int i=0;i<path_points_size;i++)
     {
         geometry_msgs::msg::Point temp_path_point;
@@ -662,7 +666,7 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         double t_spend = t_end.seconds()-t_start.seconds();
         if (experience_type == 2)
         {
-            theta_per_fit.push_back(this->joints[2].theta);
+            theta_per_fit.push_back(this->joints[4].theta);
         }
         // //debug
         // RCLCPP_INFO(this->get_logger(), "fit_time: %f", t_spend);
@@ -691,37 +695,35 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         std_msgs::msg::Float64 max_deviation_msg;
         max_deviation_msg.data = temp_max_deviation;
         this->max_deviation_pub->publish(max_deviation_msg);
-
-        //debug: why change so extremlly
-        if (temp_max_deviation > 30.0)
-        {
-            RCLCPP_INFO(this->get_logger(), "arc_path_radius: %f", this->arc_path_radius);
-            rclcpp::sleep_for(std::chrono::seconds(5));
-        }
         
         max_deviations.push_back(temp_max_deviation);
         max_deviation_path_point_ids.push_back(temp_max_deviation_path_point_id);
 
         this->flag_first_fit = false;
     }
-    // if (this->experience_type == 1)
-    // {
-    //     //debug
-    //     if (arc_path_radius >= 66.0 && arc_path_radius <= 70.0)
-    //     {
-    //         show_max_deviations(max_deviations,max_deviation_path_point_ids); 
+
+    //debug: see the max_deviations
+    if (this->experience_type == 1)
+    {
+        if (arc_path_radius >= 66.0 && arc_path_radius <= 70.0)
+        {
+            show_max_deviations(max_deviations,max_deviation_path_point_ids); 
             
-    //         rclcpp::sleep_for(std::chrono::nanoseconds(10000000000));
-    //     }
-    // }
+            rclcpp::sleep_for(std::chrono::nanoseconds(10000000000));
+        }
+    }
 
     time_spend = time_spend/(double)fit_times;
     RCLCPP_INFO(this->get_logger(), "fit_times: %d" , fit_times);
     RCLCPP_INFO(this->get_logger(), "time_spend: %f" , time_spend);
     max_deviation = *(std::max_element(max_deviations.begin(),max_deviations.end()));
     if(this->experience_type == 2)
-    {
-        //TODO: from the max_deviations vector and the theta_per_fit vector to get the data file    
+    {   
+        for (int i=0;i<max_deviations.size();i++)
+        {
+            per_fitperiod_theta_value_ofs << theta_per_fit[i] << "\n";
+            per_fitperiod_max_deviation_ofs << max_deviations[i] << "\n";
+        }
     }
     RCLCPP_INFO(this->get_logger(), "max_deviation: %f", max_deviation);
     
@@ -768,6 +770,7 @@ void CDCR::show_max_deviations(const std::vector<double>& max_deviations, const 
         temp_end_point.x = direct_vec.x() * max_deviations[i] * this->deviation_marker_zoom_factor;
         temp_end_point.y = direct_vec.y() * max_deviations[i] * this->deviation_marker_zoom_factor;
         temp_end_point.z = direct_vec.z() * max_deviations[i] * this->deviation_marker_zoom_factor;
+
         // //debug
         // temp_end_point.x = 100.0;
         // temp_end_point.y = 100.0;

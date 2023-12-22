@@ -1,0 +1,7 @@
+[35m[1mScanning dependencies of target path_follow[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o[0m
+make[2]: *** [CMakeFiles/path_follow.dir/build.make:63: CMakeFiles/path_follow.dir/src/main.cpp.o] 中断
+make[2]: *** [CMakeFiles/path_follow.dir/build.make:76: CMakeFiles/path_follow.dir/src/cdcr.cpp.o] 中断
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/path_follow.dir/all] 中断
+make: *** [Makefile:141: all] 中断
