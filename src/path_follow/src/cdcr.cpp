@@ -6,11 +6,11 @@ CDCR::CDCR():Node("path_follow")
 
     //debug: find why the fit result change so extremelly
     flag_first_fit = true;
-    this->declare_parameter<std::double_t>("theta_change_thresh", 10.0);
+    this->declare_parameter<std::double_t>("theta_change_thresh", 2.0);
     this->theta_change_thresh = this->get_parameter("theta_change_thresh").as_double();
 
-    this->flag_end_path_follow = false;
-    this->flag_discretized = false;
+    // this->flag_end_path_follow = false;
+    // this->flag_discretized = false;
     this->flag_end_experience = false;
     // per_radius_fit_time_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_fit_time");
     // per_radius_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_max_deviation");
@@ -389,7 +389,7 @@ CDCR::CDCR():Node("path_follow")
 
 void CDCR::discretePath()
 {
-    path_points.resize(0);
+    path_points.clear();
     // Generate the base travel part path;
     int base_path_point_size = ceil((base_path_point_end-base_path_point_start).norm()/this->sample_interval);
     for (int i=0;i<=base_path_point_size;i++)
@@ -477,7 +477,7 @@ void CDCR::discretePath()
         break;        
     }
     }
-    flag_discretized=true;
+    // flag_discretized=true;
     return;
 }
 
@@ -537,7 +537,7 @@ void CDCR::path_follow_exeperience()
 void CDCR::visualPathMarkers()
 {
     visualization_marker path;
-    path.points.resize(0);
+    path.points.clear();
     path.type = visualization_marker::SPHERE_LIST;
     path.header.stamp = this->now();
     path.header.frame_id = "world";
@@ -627,18 +627,14 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
     std::vector<double> max_deviations;
     std::vector<double> theta_per_fit;
 
-    //debug: find why the fit result change so extremelly
-    std::vector<int> seg_point_ids;
-    std::vector<int> last_seg_point_ids;
-
     for (this->track_path_point_id=this->start_track_path_point_id;this->track_path_point_id < this->correct_end_path_point_id;this->track_path_point_id++)
     {
         // get base transform of base to world from the path point;
         getBasePose();
+
         // start to fit the cdcr robot;
         rclcpp::Time t_start = this->now();
-        seg_point_ids.clear();
-        fitCDCR(seg_point_ids, last_seg_point_ids);
+        fitCDCR();
         rclcpp::Time t_end = this->now();
         double t_spend = t_end.seconds()-t_start.seconds();
         if (experience_type == 2)
@@ -688,18 +684,6 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         //     joints[j].theta = 1e-4;
         //     joints[j].alpha = 1e-3;
         // }
-
-        //debug: find why the fit result change so extremelly
-        if (temp_max_deviation>20)
-        {
-            for (int j=0;j<seg_point_ids.size();j++)
-            {
-                RCLCPP_INFO(this->get_logger(), "seg_point_ids[%d]: %d", j, seg_point_ids[j]);
-                RCLCPP_INFO(this->get_logger(), "last_seg_point_ids[%d]: %d", j, last_seg_point_ids[j]);
-            }
-            rclcpp::sleep_for(std::chrono::seconds(100));
-        }
-        last_seg_point_ids = seg_point_ids;
 
         //debug: find why the fit result change so extremelly
         this->flag_first_fit = false;
@@ -788,9 +772,9 @@ void CDCR::show_max_deviations(const std::vector<double>& max_deviations, const 
 }
 void CDCR::get_cdcr_sample_points()
 {
-    this->cdcr_points.resize(0);
+    this->cdcr_points.clear();
     this->cdcr_points.push_back(this->transform_base_to_world.block(0,3,3,1));
-    this->cdcr_segment_point_id.resize(0);
+    this->cdcr_segment_point_id.clear();
     this->cdcr_segment_point_id.push_back(0);
     for (int i=0;i<joint_number;i++)
     {
@@ -1023,17 +1007,15 @@ void CDCR::cal_deviation_get_max_deviation_path_point_id(double& max_deviation, 
     return;
 }
 
-//debug: find why the fit result change so extremelly
-void CDCR::fitCDCR(std::vector<int>& segment_path_point_ids, std::vector<int>& last_segment_path_point_ids)
+void CDCR::fitCDCR()
 {
     
     this->transform_joints_to_world[0] = this->transform_base_to_world;
     this->transform_world_to_joints[0] = this->transform_world_to_base;
     int segment_start_path_point_id = this->track_path_point_id;
 
-    //debug: find why the fit result change so extremelly
+    // in case the joint variate change extremelly, we use the last fit result as the wrong value.
     double temp_theta = 0.0, temp_alpha = 0.0;
-    int error_time = 0;
     
     for (int joint_id=0; joint_id<joint_number; joint_id++)
     {
@@ -1114,9 +1096,9 @@ void CDCR::fitCDCR(std::vector<int>& segment_path_point_ids, std::vector<int>& l
             NULL,
             &joints[joint_id].alpha,&joints[joint_id].theta
         );
-        fit_problem.SetParameterLowerBound(&joints[joint_id].alpha, 0, this->alpha_lower_bound);
+        // fit_problem.SetParameterLowerBound(&joints[joint_id].alpha, 0, this->alpha_lower_bound);
         fit_problem.SetParameterLowerBound(&joints[joint_id].theta, 0, this->theta_lower_bound);
-        fit_problem.SetParameterUpperBound(&joints[joint_id].alpha, 0, this->alpha_upper_bound);
+        // fit_problem.SetParameterUpperBound(&joints[joint_id].alpha, 0, this->alpha_upper_bound);
         fit_problem.SetParameterUpperBound(&joints[joint_id].theta, 0, this->theta_upper_bound);
         ceres::Solver::Options option;
         option.max_num_iterations=50;
@@ -1134,32 +1116,26 @@ void CDCR::fitCDCR(std::vector<int>& segment_path_point_ids, std::vector<int>& l
             joints[joint_id].alpha = (joints[joint_id].alpha + M_PI) > M_PI ?  (joints[joint_id].alpha-M_PI) : (joints[joint_id].alpha+M_PI);
         }
 
+        // TODO: if alpha out range, need changing the alpha value to the correct range.
+        do{
+            if (joints[joint_id].alpha < this->alpha_lower_bound)
+            {
+                joints[joint_id].alpha += 2*M_PI;
+            }
+            if (joints[joint_id].alpha > this->alpha_upper_bound)
+            {
+                joints[joint_id].alpha -= 2*M_PI;
+            }
+        }while(joints[joint_id].alpha < this->alpha_lower_bound || joints[joint_id].alpha > this->alpha_upper_bound);
+
         //debug: find why the fit result change so extremelly
         if (!flag_first_fit)
         {
             if (abs(joints[joint_id].theta-temp_theta) > this->theta_change_thresh/180.0*M_PI)
             {
-                if (error_time < 10)
-                {
-                    //debug: why can't fix this problem
-                    RCLCPP_INFO(this->get_logger(),"segment_start_path_point_id: %d",segment_start_path_point_id);
-                    RCLCPP_INFO(this->get_logger(),"last_segment_path_point_ids[joint_id]+1: %d",last_segment_path_point_ids[joint_id]+1);
-                    // rclcpp::sleep_for(std::chrono::seconds(1000));
-
-                    if (joint_id > 0)
-                        segment_start_path_point_id = last_segment_path_point_ids[joint_id-1]+1;
-                    joint_id-=1;
-                    error_time++;
-                    continue;
-                }
-
-                //debug: why can't fix this problem
-                rclcpp::sleep_for(std::chrono::seconds(1000));
-
                 joints[joint_id].theta = temp_theta;
                 joints[joint_id].alpha = temp_alpha; 
             } 
-            error_time = 0;
         }
 
         Eigen::Vector3d joint_end_position;
@@ -1168,13 +1144,7 @@ void CDCR::fitCDCR(std::vector<int>& segment_path_point_ids, std::vector<int>& l
         joint_end_position = transform_joints_to_world[joint_id+1].block(0,3,3,1);
         find_closed_path_point(target_path_point_id,joint_end_position,segment_start_path_point_id);
 
-        //debug: find why the fit result change so extremelly
-        segment_path_point_ids.push_back(segment_start_path_point_id);
     }
-
-    //debug: find why the fit result change so extremelly
-    last_segment_path_point_ids.resize(0);
-    last_segment_path_point_ids = segment_path_point_ids;
 
     // //debug
     // if (track_path_point_id >= 1000)

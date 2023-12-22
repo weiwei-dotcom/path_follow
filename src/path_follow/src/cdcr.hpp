@@ -34,7 +34,7 @@ bool baseDirectCorrectCheck(const int& path_point_id);
 bool remainPathLengthCheck(const int& path_point_id);
 double calVecProjValue(const Eigen::Vector3d& first_point, const Eigen::Vector3d& media_point, const Eigen::Vector3d& second_point);
 Eigen::Vector3d getMediaInterPoint(const Eigen::Vector3d& inter_point,const Eigen::Vector3d& line_end1,const Eigen::Vector3d& line_end2);
-void fitCDCR(std::vector<int>& segment_path_point_ids, std::vector<int>& last_segment_path_point_ids);
+void fitCDCR();
 void path_follow(double& time_spend, double& max_deviation);
 void visualization();
 void show_max_deviations(const std::vector<double>& max_deviations, const std::vector<int>& max_deviation_path_point_ids);

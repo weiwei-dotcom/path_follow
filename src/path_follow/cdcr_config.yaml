@@ -180,12 +180,12 @@ deviation_marker_scale_x: 1.0
 deviation_marker_scale_y: 0.0
 deviation_marker_scale_z: 0.0
 deviation_marker_zoom_factor: 1.0
-sleep_nano_time: 50000000
+sleep_nano_time: 0
 
 alpha_lower_bound: -180.0
 alpha_upper_bound: 180.0
-theta_lower_bound: -120.0
-theta_upper_bound: 120.0
+theta_lower_bound: -90.0
+theta_upper_bound: 90.0
 
 arc_path_radius_step: 4.0
 
