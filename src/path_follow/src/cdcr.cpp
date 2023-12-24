@@ -130,7 +130,7 @@ CDCR::CDCR():Node("path_follow")
     this->base_box_size_x=this->get_parameter("base_box_size_x").as_double();
     this->declare_parameter<std::double_t>("base_box_size_y", 100.0);
     this->base_box_size_y=this->get_parameter("base_box_size_y").as_double();
-    this->declare_parameter<std::double_t>("base_box_size_z", 300.0);
+    this->declare_parameter<std::double_t>("base_box_size_z", 280.0);
     this->base_box_size_z=this->get_parameter("base_box_size_z").as_double();  
 
     this->declare_parameter<std::float_t>("base_box_color_r", 0.1);
@@ -848,12 +848,11 @@ void CDCR::visualization()
     base_visual_msg.scale.z = base_box_size_z;
     Eigen::Vector3d base_box_center_position=cdcr_points[0] - this->transform_base_to_world.block(0,2,3,1)*base_box_size_z/2;
     base_visual_msg.pose.position.x = base_box_center_position.x();
-    base_visual_msg.pose.position.y = base_box_center_position.y();
+    base_visual_msg.pose.position.y = base_box_center_position.y()-cdcr_plat_size_z/2.0-2;
     base_visual_msg.pose.position.z = base_box_center_position.z();
-    //
+
     Eigen::Matrix3d rotate_base_to_world(this->transform_base_to_world.block(0,0,3,3));
     Eigen::Quaterniond base_box_quaternion(rotate_base_to_world);
-    //
     base_visual_msg.pose.orientation.x = base_box_quaternion.x();
     base_visual_msg.pose.orientation.y = base_box_quaternion.y();
     base_visual_msg.pose.orientation.z = base_box_quaternion.z();
@@ -883,7 +882,7 @@ void CDCR::visualization()
     }
     // visualize the cdcr plat;
     visualization_msgs::msg::MarkerArray cdcr_plats_visual_msg;
-    for (int i=1;i<this->cdcr_segment_point_id.size();i++)
+    for (int i=0;i<this->cdcr_segment_point_id.size();i++)
     {
 
         visualization_msgs::msg::Marker cdcr_plat_model;
