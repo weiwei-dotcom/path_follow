@@ -53,7 +53,7 @@ CDCR::CDCR():Node("path_follow")
     this->deviation_marker_scale_z = this->get_parameter("deviation_marker_scale_z").as_double();
     this->declare_parameter<std::double_t>("sample_interval", 1.0);
     this->sample_interval = this->get_parameter("sample_interval").as_double();
-    this->declare_parameter<std::int16_t>("joint_number", 15);
+    this->declare_parameter<std::int16_t>("joint_number", 8);
     this->joint_number = this->get_parameter("joint_number").as_int();
     this->declare_parameter<std::int16_t>("experience_type",1);
     this->experience_type=this->get_parameter("experience_type").as_int();
@@ -120,10 +120,12 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::double_t>("bone_sample_interval", 1.0);
     this->bone_sample_interval=this->get_parameter("bone_sample_interval").as_double();
     
-    this->declare_parameter<std::double_t>("weight_direction", 0.970588);
+    // this->declare_parameter<std::double_t>("weight_direction", 0.970588);
+    this->declare_parameter<std::double_t>("weight_direction", 0.0);
     this->weight_direction=this->get_parameter("weight_direction").as_double();
 
-    this->declare_parameter<std::double_t>("weight_position", 0.029412);
+    // this->declare_parameter<std::double_t>("weight_position", 0.029412);
+    this->declare_parameter<std::double_t>("weight_position", 1.0);
     this->weight_position=this->get_parameter("weight_position").as_double();
     
     this->declare_parameter<std::double_t>("base_box_size_x", 100.0);
@@ -702,21 +704,26 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         this->flag_first_fit = false;
     }
 
-    //debug: see the max_deviations
-    if (this->experience_type == 1)
-    {
-        if (arc_path_radius >= 66.0 && arc_path_radius <= 70.0)
-        {
-            show_max_deviations(max_deviations,max_deviation_path_point_ids); 
+    // //debug: see the max_deviations
+    // if (this->experience_type == 1)
+    // {
+    //     if (arc_path_radius >= 66.0 && arc_path_radius <= 70.0)
+    //     {
+    //         show_max_deviations(max_deviations,max_deviation_path_point_ids); 
             
-            rclcpp::sleep_for(std::chrono::nanoseconds(10000000000));
-        }
-    }
+    //         rclcpp::sleep_for(std::chrono::nanoseconds(10000000000));
+    //     }
+    // }
 
     time_spend = time_spend/(double)fit_times;
     RCLCPP_INFO(this->get_logger(), "fit_times: %d" , fit_times);
     RCLCPP_INFO(this->get_logger(), "time_spend: %f" , time_spend);
     max_deviation = *(std::max_element(max_deviations.begin(),max_deviations.end()));
+
+    // //debug: show max_deviation of direction model and no direction model
+    // RCLCPP_INFO(this->get_logger(), "max_deviation: %f", max_deviation);
+    // rclcpp::sleep_for(std::chrono::seconds(1));
+
     if(this->experience_type == 2)
     {   
         for (int i=0;i<max_deviations.size();i++)
