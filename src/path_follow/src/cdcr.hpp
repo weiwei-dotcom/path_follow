@@ -87,12 +87,12 @@ void get_cdcr_sample_points();
 void find_closed_path_point(const int& start_path_point_id,const Eigen::Vector3d& joint_end_position, int& segment_start_path_point_id);
 void visualPathMarkers();
 private:
-std::ofstream per_radius_max_deviation_ofs;
-std::ofstream per_radius_fit_time_ofs;
-std::ofstream arc_radius_ofs;
-std::ofstream per_fitperiod_max_deviation_ofs;
-std::ofstream per_fitperiod_theta_value_ofs;
-std::ofstream per_fitperiod_alpha_value_ofs;
+// std::ofstream per_radius_max_deviation_ofs;
+// std::ofstream per_radius_fit_time_ofs;
+// std::ofstream arc_radius_ofs;
+// std::ofstream per_fitperiod_max_deviation_ofs;
+// std::ofstream per_fitperiod_theta_value_ofs;
+// std::ofstream per_fitperiod_alpha_value_ofs;
 int visualization_flag;
 double arc_path_radius_step;
 int sleep_nano_time;
@@ -157,6 +157,7 @@ rclcpp::Publisher<visualization_marker>::SharedPtr temp_b_spline_interval_points
 
 //debug: find why the fit result change so extremelly
 bool flag_first_fit;
+int flag_visualize_b_spline_marker;
 double theta_change_thresh;
 
 double cylinder_scale_x, cylinder_scale_y, cylinder_scale_z;

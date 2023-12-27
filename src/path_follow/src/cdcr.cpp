@@ -9,13 +9,14 @@ CDCR::CDCR():Node("path_follow")
     // this->flag_end_path_follow = false;
     // this->flag_discretized = false;
     this->flag_end_experience = false;
-    per_radius_fit_time_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_fit_time.xlsx");
-    per_radius_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_max_deviation.xlsx");
-    arc_radius_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/arc_radius.xlsx");
-    per_fitperiod_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_max_deviation.xlsx");
-    per_fitperiod_theta_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_theta_value.xlsx");
-    per_fitperiod_alpha_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_alpha_value.xlsx");
-    
+    // per_radius_fit_time_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_fit_time.xlsx");
+    // per_radius_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_max_deviation.xlsx");
+    // arc_radius_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/arc_radius.xlsx");
+    // per_fitperiod_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_max_deviation.xlsx");
+    // per_fitperiod_theta_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_theta_value.xlsx");
+    // per_fitperiod_alpha_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_alpha_value.xlsx");
+    this->declare_parameter<std::int16_t>("flag_visualize_b_spline_marker",1);
+    this->flag_visualize_b_spline_marker = this->get_parameter("flag_visualize_b_spline_marker").as_int();
     this->declare_parameter<std::int16_t>("visualization_flag", 1);
     this->visualization_flag = this->get_parameter("visualization_flag").as_int();
 
@@ -535,13 +536,13 @@ void CDCR::path_follow_exeperience()
                 joints[i].alpha = 1e-3;
             }
         }
-        // todo: to save the experience data;
-        for (int i=0;i<experience_arc_radiuses.size();i++)
-        {
-            per_radius_fit_time_ofs << time_spend[i] << "\n";
-            per_radius_max_deviation_ofs << experience_deviations[i] << "\n";
-            arc_radius_ofs << experience_arc_radiuses[i] << "\n";
-        }
+        // //debug: to save the experience data;
+        // for (int i=0;i<experience_arc_radiuses.size();i++)
+        // {
+        //     per_radius_fit_time_ofs << time_spend[i] << "\n";
+        //     per_radius_max_deviation_ofs << experience_deviations[i] << "\n";
+        //     arc_radius_ofs << experience_arc_radiuses[i] << "\n";
+        // }
     }
     else
     {
@@ -720,19 +721,20 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
     RCLCPP_INFO(this->get_logger(), "time_spend: %f" , time_spend);
     max_deviation = *(std::max_element(max_deviations.begin(),max_deviations.end()));
 
-    // //debug: show max_deviation of direction model and no direction model
-    // RCLCPP_INFO(this->get_logger(), "max_deviation: %f", max_deviation);
-    // rclcpp::sleep_for(std::chrono::seconds(1));
-
-    if(this->experience_type == 2)
-    {   
-        for (int i=0;i<max_deviations.size();i++)
-        {
-            per_fitperiod_theta_value_ofs << theta_per_fit[i] << "\n";
-            per_fitperiod_max_deviation_ofs << max_deviations[i] << "\n";
-        }
-    }
+    //debug: show max_deviation of direction model and no direction model
     RCLCPP_INFO(this->get_logger(), "max_deviation: %f", max_deviation);
+    rclcpp::sleep_for(std::chrono::seconds(1));
+
+    // //debug: save the max_deviations
+    // if(this->experience_type == 2)
+    // {   
+    //     for (int i=0;i<max_deviations.size();i++)
+    //     {
+    //         per_fitperiod_theta_value_ofs << theta_per_fit[i] << "\n";
+    //         per_fitperiod_max_deviation_ofs << max_deviations[i] << "\n";
+    //     }
+    // }
+    // RCLCPP_INFO(this->get_logger(), "max_deviation: %f", max_deviation);
     
     return;
 }
@@ -926,9 +928,9 @@ void CDCR::visualization()
         b_spline_interval_points_msg.color.g = 0.8;
         b_spline_interval_points_msg.color.b = 0.2;
         b_spline_interval_points_msg.color.a = 1.0;
-        b_spline_interval_points_msg.scale.x = 20.0;
-        b_spline_interval_points_msg.scale.y = 20.0;
-        b_spline_interval_points_msg.scale.z = 20.0;
+        b_spline_interval_points_msg.scale.x = 10.0;
+        b_spline_interval_points_msg.scale.y = 10.0;
+        b_spline_interval_points_msg.scale.z = 10.0;
         b_spline_interval_points_msg.pose.orientation.w = 1.0;
         b_spline_interval_points_msg.pose.orientation.x = 0.0;
         b_spline_interval_points_msg.pose.orientation.y = 0.0;
@@ -941,7 +943,8 @@ void CDCR::visualization()
             temp_point.z = this->b_spline_path_interval_points[i].z();
             b_spline_interval_points_msg.points.push_back(temp_point);
         }   
-        this->temp_b_spline_interval_points_pub->publish(b_spline_interval_points_msg); 
+        if (flag_visualize_b_spline_marker!=0)
+            this->temp_b_spline_interval_points_pub->publish(b_spline_interval_points_msg); 
 
         //visualize the cylinder obstacle
         visualization_marker obstacle_cylinder;
