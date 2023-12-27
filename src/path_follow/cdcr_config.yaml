@@ -111,7 +111,7 @@ bspline_end_acc_z: 0.0
 path_follow_nanotime_interval: 500000000
 sample_interval: 1.0
 bone_sample_interval: 1.0
-experience_type: 1
+experience_type: 2
 base_path_point_start_x: 0.0
 base_path_point_start_y: 0.0
 base_path_point_start_z: 0.0
@@ -139,8 +139,8 @@ base_tolerance_deviation: 1.0
 base_tolerance_angle_deviation: 4.0
 # this is the minimum value of remaining length over the length of the robot
 safe_path_length_redundance: 200.0
-min_arc_radius: 450.0
-max_arc_radius: 450.0
+min_arc_radius: 120.0
+max_arc_radius: 120.0
 # 位置误差权重
 weight_position: 0.029412
 # weight_position: 1.0

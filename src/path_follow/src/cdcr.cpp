@@ -671,8 +671,8 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
         {
             theta_per_fit.push_back(this->joints[4].theta);
         }
-        // //debug
-        // RCLCPP_INFO(this->get_logger(), "fit_time: %f", t_spend);
+        //debug
+        RCLCPP_INFO(this->get_logger(), "fit_time: %f", t_spend);
 
         // debug
         std_msgs::msg::Float64 t_spend_msg;
@@ -1121,7 +1121,11 @@ void CDCR::fitCDCR()
         ceres::Solver::Options option;
         option.max_num_iterations=50;
         option.minimizer_progress_to_stdout = false;
-        option.linear_solver_type=ceres::DENSE_QR;
+        option.linear_solver_type=ceres::CGNR;
+        // option.linear_solver_type=ceres::DENSE_QR;
+        // option.linear_solver_type=ceres::DENSE_NORMAL_CHOLESKY;
+        // option.linear_solver_type=ceres::ITERATIVE_SCHUR;
+        // option.linear_solver_type=ceres::DENSE_SCHUR;
         // option.trust_region_strategy_type=ceres::DOGLEG;
         option.logging_type=ceres::SILENT;
         ceres::Solver::Summary summary;
