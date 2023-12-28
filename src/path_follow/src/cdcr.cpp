@@ -15,6 +15,7 @@ CDCR::CDCR():Node("path_follow")
     // per_fitperiod_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_max_deviation.xlsx");
     // per_fitperiod_theta_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_theta_value.xlsx");
     // per_fitperiod_alpha_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_alpha_value.xlsx");
+    
     this->declare_parameter<std::int16_t>("flag_visualize_b_spline_marker",1);
     this->flag_visualize_b_spline_marker = this->get_parameter("flag_visualize_b_spline_marker").as_int();
     this->declare_parameter<std::int16_t>("visualization_flag", 1);
@@ -178,115 +179,119 @@ CDCR::CDCR():Node("path_follow")
     this->cdcr_plat_color_a = this->get_parameter("cdcr_plat_color_a").as_double();
 
     // declare and get the b-spline interval points, start_end_point_derivatives and time_interval_value;
-    Eigen::Vector3d temp_interval_point1;
-    this->declare_parameter<std::double_t>("bspline_interval_point1_x", 0.0);
-    double bspline_interval_point1_x = this->get_parameter("bspline_interval_point1_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point1_y", 75.0);
-    double bspline_interval_point1_y = this->get_parameter("bspline_interval_point1_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point1_z", 40.0);
-    double bspline_interval_point1_z = this->get_parameter("bspline_interval_point1_z").as_double();
-    temp_interval_point1 << bspline_interval_point1_x, bspline_interval_point1_y, bspline_interval_point1_z;
-    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point1);
+    this->declare_parameter<std::int16_t>("number_ctrl_points", 12);
+    number_ctrl_points=this->get_parameter("number_ctrl_points").as_int();
+    this->ctrl_points = Eigen::MatrixXd(3, number_ctrl_points);
 
-    Eigen::Vector3d temp_interval_point2;
-    this->declare_parameter<std::double_t>("bspline_interval_point2_x", 0.0);
-    double bspline_interval_point2_x = this->get_parameter("bspline_interval_point2_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point2_y", 135.0);
-    double bspline_interval_point2_y = this->get_parameter("bspline_interval_point2_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point2_z", 110.0);
-    double bspline_interval_point2_z = this->get_parameter("bspline_interval_point2_z").as_double();
-    temp_interval_point2 << bspline_interval_point2_x, bspline_interval_point2_y, bspline_interval_point2_z;
-    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point2);
+    Eigen::Vector3d temp_control_point1;
+    this->declare_parameter<std::double_t>("bspline_control_point1_x", 0.0);
+    double bspline_control_point1_x = this->get_parameter("bspline_control_point1_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point1_y", 120.0);
+    double bspline_control_point1_y = this->get_parameter("bspline_control_point1_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point1_z", 0.0);
+    double bspline_control_point1_z = this->get_parameter("bspline_control_point1_z").as_double();
+    temp_control_point1 << bspline_control_point1_x, bspline_control_point1_y, bspline_control_point1_z;
+    this->ctrl_points.col(1) = temp_control_point1;
+
+    Eigen::Vector3d temp_control_point2;
+    this->declare_parameter<std::double_t>("bspline_control_point2_x", 0.0);
+    double bspline_control_point2_x = this->get_parameter("bspline_control_point2_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point2_y", 135.0);
+    double bspline_control_point2_y = this->get_parameter("bspline_control_point2_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point2_z", 110.0);
+    double bspline_control_point2_z = this->get_parameter("bspline_control_point2_z").as_double();
+    temp_control_point2 << bspline_control_point2_x, bspline_control_point2_y, bspline_control_point2_z;
+    this->ctrl_points.col(2) = temp_control_point2;
     
-    Eigen::Vector3d temp_interval_point3;
-    this->declare_parameter<std::double_t>("bspline_interval_point3_x", 27.0);
-    double bspline_interval_point3_x = this->get_parameter("bspline_interval_point3_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point3_y", 235.0);
-    double bspline_interval_point3_y = this->get_parameter("bspline_interval_point3_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point3_z", 185.0);
-    double bspline_interval_point3_z = this->get_parameter("bspline_interval_point3_z").as_double();
-    temp_interval_point3 << bspline_interval_point3_x, bspline_interval_point3_y, bspline_interval_point3_z;
-    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point3);
+    Eigen::Vector3d temp_control_point3;
+    this->declare_parameter<std::double_t>("bspline_control_point3_x", 27.0);
+    double bspline_control_point3_x = this->get_parameter("bspline_control_point3_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point3_y", 235.0);
+    double bspline_control_point3_y = this->get_parameter("bspline_control_point3_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point3_z", 185.0);
+    double bspline_control_point3_z = this->get_parameter("bspline_control_point3_z").as_double();
+    temp_control_point3 << bspline_control_point3_x, bspline_control_point3_y, bspline_control_point3_z;
+    this->ctrl_points.col(3) = temp_control_point3;
     
-    Eigen::Vector3d temp_interval_point4;
-    this->declare_parameter<std::double_t>("bspline_interval_point4_x", 90.0);
-    double bspline_interval_point4_x = this->get_parameter("bspline_interval_point4_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point4_y", 355.0);
-    double bspline_interval_point4_y = this->get_parameter("bspline_interval_point4_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point4_z", 205.0);
-    double bspline_interval_point4_z = this->get_parameter("bspline_interval_point4_z").as_double();
-    temp_interval_point4 << bspline_interval_point4_x, bspline_interval_point4_y, bspline_interval_point4_z;
-    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point4);   
+    Eigen::Vector3d temp_control_point4;
+    this->declare_parameter<std::double_t>("bspline_control_point4_x", 90.0);
+    double bspline_control_point4_x = this->get_parameter("bspline_control_point4_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point4_y", 355.0);
+    double bspline_control_point4_y = this->get_parameter("bspline_control_point4_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point4_z", 205.0);
+    double bspline_control_point4_z = this->get_parameter("bspline_control_point4_z").as_double();
+    temp_control_point4 << bspline_control_point4_x, bspline_control_point4_y, bspline_control_point4_z;
+    this->ctrl_points.col(4) = temp_control_point4; 
     
-    Eigen::Vector3d temp_interval_point5;
-    this->declare_parameter<std::double_t>("bspline_interval_point5_x", 150.0);
-    double bspline_interval_point5_x = this->get_parameter("bspline_interval_point5_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point5_y", 500.0);
-    double bspline_interval_point5_y = this->get_parameter("bspline_interval_point5_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point5_z", 170.0);
-    double bspline_interval_point5_z = this->get_parameter("bspline_interval_point5_z").as_double();
-    temp_interval_point5 << bspline_interval_point5_x, bspline_interval_point5_y, bspline_interval_point5_z;
-    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point5); 
+    Eigen::Vector3d temp_control_point5;
+    this->declare_parameter<std::double_t>("bspline_control_point5_x", 150.0);
+    double bspline_control_point5_x = this->get_parameter("bspline_control_point5_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point5_y", 500.0);
+    double bspline_control_point5_y = this->get_parameter("bspline_control_point5_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point5_z", 170.0);
+    double bspline_control_point5_z = this->get_parameter("bspline_control_point5_z").as_double();
+    temp_control_point5 << bspline_control_point5_x, bspline_control_point5_y, bspline_control_point5_z;
+    this->ctrl_points.col(5) = temp_control_point5; 
     
-    Eigen::Vector3d temp_interval_point6;
-    this->declare_parameter<std::double_t>("bspline_interval_point6_x", 150.0);
-    double bspline_interval_point6_x = this->get_parameter("bspline_interval_point6_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point6_y", 630.0);
-    double bspline_interval_point6_y = this->get_parameter("bspline_interval_point6_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point6_z", 150.0);
-    double bspline_interval_point6_z = this->get_parameter("bspline_interval_point6_z").as_double();
-    temp_interval_point6 << bspline_interval_point6_x, bspline_interval_point6_y, bspline_interval_point6_z;
-    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point6); 
+    Eigen::Vector3d temp_control_point6;
+    this->declare_parameter<std::double_t>("bspline_control_point6_x", 150.0);
+    double bspline_control_point6_x = this->get_parameter("bspline_control_point6_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point6_y", 630.0);
+    double bspline_control_point6_y = this->get_parameter("bspline_control_point6_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point6_z", 150.0);
+    double bspline_control_point6_z = this->get_parameter("bspline_control_point6_z").as_double();
+    temp_control_point6 << bspline_control_point6_x, bspline_control_point6_y, bspline_control_point6_z;
+    this->ctrl_points.col(6) = temp_control_point6; 
+   
+    Eigen::Vector3d temp_control_point7;
+    this->declare_parameter<std::double_t>("bspline_control_point7_x", 130.0);
+    double bspline_control_point7_x = this->get_parameter("bspline_control_point7_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point7_y", 770.0);
+    double bspline_control_point7_y = this->get_parameter("bspline_control_point7_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point7_z", 130.0);
+    double bspline_control_point7_z = this->get_parameter("bspline_control_point7_z").as_double();
+    temp_control_point7 << bspline_control_point7_x, bspline_control_point7_y, bspline_control_point7_z;
+    this->ctrl_points.col(7) = temp_control_point7; 
     
-    Eigen::Vector3d temp_interval_point7;
-    this->declare_parameter<std::double_t>("bspline_interval_point7_x", 130.0);
-    double bspline_interval_point7_x = this->get_parameter("bspline_interval_point7_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point7_y", 770.0);
-    double bspline_interval_point7_y = this->get_parameter("bspline_interval_point7_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point7_z", 130.0);
-    double bspline_interval_point7_z = this->get_parameter("bspline_interval_point7_z").as_double();
-    temp_interval_point7 << bspline_interval_point7_x, bspline_interval_point7_y, bspline_interval_point7_z;
-    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point7); 
+    Eigen::Vector3d temp_control_point8;
+    this->declare_parameter<std::double_t>("bspline_control_point8_x", 110.0);
+    double bspline_control_point8_x = this->get_parameter("bspline_control_point8_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point8_y", 940.0);
+    double bspline_control_point8_y = this->get_parameter("bspline_control_point8_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point8_z", 110.0);
+    double bspline_control_point8_z = this->get_parameter("bspline_control_point8_z").as_double();
+    temp_control_point8 << bspline_control_point8_x, bspline_control_point8_y, bspline_control_point8_z;
+    this->ctrl_points.col(8) = temp_control_point8; 
     
-    Eigen::Vector3d temp_interval_point8;
-    this->declare_parameter<std::double_t>("bspline_interval_point8_x", 110.0);
-    double bspline_interval_point8_x = this->get_parameter("bspline_interval_point8_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point8_y", 940.0);
-    double bspline_interval_point8_y = this->get_parameter("bspline_interval_point8_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point8_z", 110.0);
-    double bspline_interval_point8_z = this->get_parameter("bspline_interval_point8_z").as_double();
-    temp_interval_point8 << bspline_interval_point8_x, bspline_interval_point8_y, bspline_interval_point8_z;
-    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point8); 
+    Eigen::Vector3d temp_control_point9;
+    this->declare_parameter<std::double_t>("bspline_control_point9_x", 100.0);
+    double bspline_control_point9_x = this->get_parameter("bspline_control_point9_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point9_y", 1100.0);
+    double bspline_control_point9_y = this->get_parameter("bspline_control_point9_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point9_z", 100.0);
+    double bspline_control_point9_z = this->get_parameter("bspline_control_point9_z").as_double();
+    temp_control_point9 << bspline_control_point9_x, bspline_control_point9_y, bspline_control_point9_z;
+    this->ctrl_points.col(9) = temp_control_point9; 
     
-    Eigen::Vector3d temp_interval_point9;
-    this->declare_parameter<std::double_t>("bspline_interval_point9_x", 100.0);
-    double bspline_interval_point9_x = this->get_parameter("bspline_interval_point9_x").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point9_y", 1100.0);
-    double bspline_interval_point9_y = this->get_parameter("bspline_interval_point9_y").as_double();
-    this->declare_parameter<std::double_t>("bspline_interval_point9_z", 100.0);
-    double bspline_interval_point9_z = this->get_parameter("bspline_interval_point9_z").as_double();
-    temp_interval_point9 << bspline_interval_point9_x, bspline_interval_point9_y, bspline_interval_point9_z;
-    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point9); 
-    
-    // Eigen::Vector3d temp_interval_point10;
-    // this->declare_parameter<std::double_t>("bspline_interval_point10_x", 110.0);
-    // double bspline_interval_point10_x = this->get_parameter("bspline_interval_point10_x").as_double();
-    // this->declare_parameter<std::double_t>("bspline_interval_point10_y", 900.0);
-    // double bspline_interval_point10_y = this->get_parameter("bspline_interval_point10_y").as_double();
-    // this->declare_parameter<std::double_t>("bspline_interval_point10_z", 110.0);
-    // double bspline_interval_point10_z = this->get_parameter("bspline_interval_point10_z").as_double();
-    // temp_interval_point10 << bspline_interval_point10_x, bspline_interval_point10_y, bspline_interval_point10_z;
-    // this->temp_b_spline_path_interval_poins.push_back(temp_interval_point10); 
-    
-    // Eigen::Vector3d temp_interval_point11;
-    // this->declare_parameter<std::double_t>("bspline_interval_point11_x", 100.0);
-    // double bspline_interval_point11_x = this->get_parameter("bspline_interval_point11_x").as_double();
-    // this->declare_parameter<std::double_t>("bspline_interval_point11_y", 1100.0);
-    // double bspline_interval_point11_y = this->get_parameter("bspline_interval_point11_y").as_double();
-    // this->declare_parameter<std::double_t>("bspline_interval_point11_z", 100.0);
-    // double bspline_interval_point11_z = this->get_parameter("bspline_interval_point11_z").as_double();
-    // temp_interval_point11 << bspline_interval_point11_x, bspline_interval_point11_y, bspline_interval_point11_z;
-    // this->temp_b_spline_path_interval_poins.push_back(temp_interval_point11);
+    Eigen::Vector3d temp_control_point10;
+    this->declare_parameter<std::double_t>("bspline_control_point10_x", 110.0);
+    double bspline_control_point10_x = this->get_parameter("bspline_control_point10_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point10_y", 900.0);
+    double bspline_control_point10_y = this->get_parameter("bspline_control_point10_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point10_z", 110.0);
+    double bspline_control_point10_z = this->get_parameter("bspline_control_point10_z").as_double();
+    temp_control_point10 << bspline_control_point10_x, bspline_control_point10_y, bspline_control_point10_z;
+    this->ctrl_points.col(10) = temp_control_point10; 
+  
+    Eigen::Vector3d temp_control_point11;
+    this->declare_parameter<std::double_t>("bspline_control_point11_x", 100.0);
+    double bspline_control_point11_x = this->get_parameter("bspline_control_point11_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point11_y", 1100.0);
+    double bspline_control_point11_y = this->get_parameter("bspline_control_point11_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_control_point11_z", 100.0);
+    double bspline_control_point11_z = this->get_parameter("bspline_control_point11_z").as_double();
+    temp_control_point11 << bspline_control_point11_x, bspline_control_point11_y, bspline_control_point11_z;
+    this->ctrl_points.col(11) = temp_control_point11; 
 
     // declare and get start_end_point_derivatives and time_interval_value;
     Eigen::Vector3d temp_start_vel;
@@ -453,22 +458,14 @@ void CDCR::discretePath()
     // case 2 is using the B-spline;
     case 2:
     {
-        Eigen::MatrixXd ctrl_points;
-        b_spline_path_interval_points.push_back(path_points.back());
-        for (int i=0;i<this->temp_b_spline_path_interval_poins.size();i++)
-        {
-            b_spline_path_interval_points.push_back(this->temp_b_spline_path_interval_poins[i]+this->path_points.back());
-
-            //debug
-            RCLCPP_INFO(this->get_logger(), "b_spline_path_interval_points: [%f, %f, %f]",
-                        b_spline_path_interval_points.back().x(),
-                        b_spline_path_interval_points.back().y(),
-                        b_spline_path_interval_points.back().z());
-                        
-        }
-    
-        b_spline_path.parameterizeToBspline(this->time_interval, this->b_spline_path_interval_points, this->b_spline_start_end_derivatives, ctrl_points);
-
+        //debug
+        RCLCPP_INFO(this->get_logger(), "here: 461");
+        
+        this->ctrl_points.col(0) = this->path_points.back();
+        
+        //debug
+        RCLCPP_INFO(this->get_logger(), "here: 467");
+        
         int orders = 3;
         this->b_spline_path.setUniformBspline(ctrl_points, orders, this->time_interval);
         double b_spline_length = 0.0;
@@ -476,8 +473,17 @@ void CDCR::discretePath()
         Eigen::Vector3d temp_last_path_point = path_points.back();
         Eigen::Vector3d temp_path_point;
         double time_span = b_spline_path.getTimeSum();
+        Eigen::Vector3d temp_last_b_spline_point = this->ctrl_points.col(this->number_ctrl_points-1);
+        //debug
+        RCLCPP_INFO(this->get_logger(), "here: 478");
+        
         do{
             temp_path_point = b_spline_path.evaluateDeBoorT(temp_t);
+
+            //debug
+            RCLCPP_INFO(this->get_logger(), "time_span: %f", time_span);
+            RCLCPP_INFO(this->get_logger(), "temp_path_point:[%f, %f, %f]", temp_path_point.x(),temp_path_point.y(),temp_path_point.z());
+
             b_spline_length += (temp_path_point-temp_last_path_point).norm();
             if (b_spline_length >= 1.0)
             {
@@ -486,7 +492,15 @@ void CDCR::discretePath()
             }
             temp_last_path_point = temp_path_point;
             temp_t += 0.005;
-        }while((temp_path_point-b_spline_path_interval_points.back()).norm() > 1.0 && temp_t < time_span);
+
+            //debug
+            RCLCPP_INFO(this->get_logger(), "here: 492");
+            RCLCPP_INFO(this->get_logger(), " here: count: %d", (temp_t+0.0001)/0.005);
+            
+        }while((temp_path_point-temp_last_b_spline_point).norm() > 1.0 && temp_t < time_span);
+
+        //debug
+        RCLCPP_INFO(this->get_logger(), "here: 483");
 
         // // debug
         // visualPathMarkers();

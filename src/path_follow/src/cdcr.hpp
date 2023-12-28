@@ -165,5 +165,7 @@ double cylinder_color_r, cylinder_color_g, cylinder_color_b;
 double cylinder_position_x, cylinder_position_y, cylinder_position_z;
 double cylinder_axis_x, cylinder_axis_y, cylinder_axis_z;
 
+Eigen::MatrixXd ctrl_points;
+int number_ctrl_points；
 };
 
