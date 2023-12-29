@@ -99,7 +99,10 @@ int sleep_nano_time;
 rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr fit_time_pub;
 rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr max_deviation_pub;
 rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr deviation_marker_pub;
-rclcpp::Publisher<visualization_marker>::SharedPtr cylinder_obstacle_visualization_pub;
+
+rclcpp::Publisher<visualization_marker>::SharedPtr cylinder1_obstacle_visualization_pub;
+rclcpp::Publisher<visualization_marker>::SharedPtr cylinder2_obstacle_visualization_pub;
+
 double deviation_marker_scale_x,deviation_marker_scale_y,deviation_marker_scale_z;
 double deviation_marker_zoom_factor;
 float base_box_color_r,base_box_color_g,base_box_color_b,base_box_color_a;
@@ -160,10 +163,14 @@ bool flag_first_fit;
 int flag_visualize_b_spline_marker;
 double theta_change_thresh;
 
-double cylinder_scale_x, cylinder_scale_y, cylinder_scale_z;
-double cylinder_color_r, cylinder_color_g, cylinder_color_b;
-double cylinder_position_x, cylinder_position_y, cylinder_position_z;
-double cylinder_axis_x, cylinder_axis_y, cylinder_axis_z;
+double cylinder1_scale_x, cylinder1_scale_y, cylinder1_scale_z;
+double cylinder2_scale_x, cylinder2_scale_y, cylinder2_scale_z;
+double cylinder1_color_r, cylinder1_color_g, cylinder1_color_b;
+double cylinder2_color_r, cylinder2_color_g, cylinder2_color_b;
+double cylinder1_position_x, cylinder1_position_y, cylinder1_position_z;
+double cylinder2_position_x, cylinder2_position_y, cylinder2_position_z;
+double cylinder1_axis_x, cylinder1_axis_y, cylinder1_axis_z;
+double cylinder2_axis_x, cylinder2_axis_y, cylinder2_axis_z;
 
 Eigen::MatrixXd ctrl_points;
 int number_ctrl_points;
