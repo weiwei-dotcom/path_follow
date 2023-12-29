@@ -90,8 +90,9 @@ private:
 // std::ofstream per_radius_max_deviation_ofs;
 // std::ofstream per_radius_fit_time_ofs;
 // std::ofstream arc_radius_ofs;
-// std::ofstream per_fitperiod_max_deviation_ofs;
-// std::ofstream per_fitperiod_theta_value_ofs;
+std::ofstream per_fitperiod_max_deviation_ofs;
+std::ofstream per_fitperiod_theta_value_ofs;
+std::ofstream track_path_displacement_ofs;
 // std::ofstream per_fitperiod_alpha_value_ofs;
 int visualization_flag;
 double arc_path_radius_step;

@@ -1,4 +1,4 @@
-joint_number: 20
+joint_number: 15
 joint0_rigid1_length: 0.0
 joint0_rigid2_length: 0.0
 joint1_rigid1_length: 0.0
@@ -64,27 +64,27 @@ joint19_continuum_length: 100.0
 bspline_interval_point1_x: -7.5
 bspline_interval_point1_y: 190.5
 bspline_interval_point1_z: 46.6
-bspline_interval_point2_x: -12.4
-bspline_interval_point2_y: 299.4
+bspline_interval_point2_x: -6.4
+bspline_interval_point2_y: 305.4
 bspline_interval_point2_z: 95.5 
-bspline_interval_point3_x: 40.6
+bspline_interval_point3_x: 50.6
 bspline_interval_point3_y: 438.4
 bspline_interval_point3_z: 154.1
-bspline_interval_point4_x: 120.4
-bspline_interval_point4_y: 592.1
+bspline_interval_point4_x: 143.4
+bspline_interval_point4_y: 595.1
 bspline_interval_point4_z: 206.0
-bspline_interval_point5_x: 119.7
+bspline_interval_point5_x: 120.7
 bspline_interval_point5_y: 772.6
 bspline_interval_point5_z: 274.5
-bspline_interval_point6_x: 84.6
+bspline_interval_point6_x: 50.6
 bspline_interval_point6_y: 905.0
 bspline_interval_point6_z: 295.3
-bspline_interval_point7_x: 55.1
-bspline_interval_point7_y: 1009.2
+bspline_interval_point7_x: 45.1
+bspline_interval_point7_y: 1014.2
 bspline_interval_point7_z: 262.7
 bspline_interval_point8_x: 43.2
-bspline_interval_point8_y: 1101.8
-bspline_interval_point8_z: 156.6
+bspline_interval_point8_y: 1105.8
+bspline_interval_point8_z: 160.6
 bspline_interval_point9_x: 29.6
 bspline_interval_point9_y: 1314.5
 bspline_interval_point9_z: 77.9
@@ -195,19 +195,19 @@ time_interval: 30.0
 
 theta_change_thresh: 4.0
 
-cylinder1_scale_x: 150.0
-cylinder1_scale_y: 150.0
+cylinder1_scale_x: 200.0
+cylinder1_scale_y: 200.0
 cylinder1_scale_z: 600.0
-cylinder2_scale_x: 200.0
-cylinder2_scale_y: 200.0
+cylinder2_scale_x: 220.0
+cylinder2_scale_y: 220.0
 cylinder2_scale_z: 600.0
 
 cylinder1_color_r: 0.6
-cylinder1_color_g: 0.6
-cylinder1_color_b: 0.6
+cylinder1_color_g: 0.2
+cylinder1_color_b: 0.1
 cylinder2_color_r: 0.6
-cylinder2_color_g: 0.6
-cylinder2_color_b: 0.6
+cylinder2_color_g: 0.2
+cylinder2_color_b: 0.1
 
 cylinder1_position_x: 0.0
 cylinder1_position_y: 2730.0
@@ -231,22 +231,22 @@ hole1_position_y: 2468.0
 hole1_position_z: 128.0
 
 hole2_position_x: 37.0
-hole2_position_y: 3307.0
+hole2_position_y: 3257.0
 hole2_position_z: 117.0
 
 board_left_right_scale_x: 600.0
 board_left_right_scale_y: 5.0
 board_left_right_scale_z: 600.0
-board_left_right_color_r: 0.6
-board_left_right_color_g: 0.6
-board_left_right_color_b: 0.6
+board_left_right_color_r: 0.1
+board_left_right_color_g: 0.2
+board_left_right_color_b: 0.8
 
 board_up_down_scale_x: 600.0
 board_up_down_scale_y: 5.0
 board_up_down_scale_z: 600.0
-board_up_down_color_r: 0.6
-board_up_down_color_g: 0.6
-board_up_down_color_b: 0.6
+board_up_down_color_r: 0.1
+board_up_down_color_g: 0.2
+board_up_down_color_b: 0.8
 
 flag_visualize_b_spline_marker: 1
 
