@@ -181,7 +181,7 @@ deviation_marker_scale_y: 0.0
 deviation_marker_scale_z: 0.0
 deviation_marker_zoom_factor: 1.0
 sleep_nano_time: 0
-
+  
 alpha_lower_bound: -180.0
 alpha_upper_bound: 180.0
 theta_lower_bound: -90.0
