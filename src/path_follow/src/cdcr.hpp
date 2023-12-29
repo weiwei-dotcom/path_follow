@@ -172,7 +172,5 @@ double cylinder2_position_x, cylinder2_position_y, cylinder2_position_z;
 double cylinder1_axis_x, cylinder1_axis_y, cylinder1_axis_z;
 double cylinder2_axis_x, cylinder2_axis_y, cylinder2_axis_z;
 
-Eigen::MatrixXd ctrl_points;
-int number_ctrl_points;
 };
 

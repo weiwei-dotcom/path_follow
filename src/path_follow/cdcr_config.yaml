@@ -139,8 +139,8 @@ base_tolerance_deviation: 1.0
 base_tolerance_angle_deviation: 4.0
 # this is the minimum value of remaining length over the length of the robot
 safe_path_length_redundance: 200.0
-min_arc_radius: 120.0
-max_arc_radius: 120.0
+min_arc_radius: 450.0
+max_arc_radius: 450.0
 # 位置误差权重
 weight_position: 0.029412
 # weight_position: 1.0
@@ -224,8 +224,6 @@ cylinder2_axis_y: 0.0
 cylinder2_axis_z: 0.0
 
 flag_visualize_b_spline_marker: 1
-
-number_ctrl_points: 12
 
 # the end index at the path point list
 
