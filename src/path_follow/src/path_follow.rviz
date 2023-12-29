@@ -12,6 +12,8 @@ Panels:
         - /MarkerArray2
         - /MarkerArray2/Topic1
         - /Marker5
+        - /Marker8
+        - /Marker9
       Splitter Ratio: 0.5
     Tree Height: 484
   - Class: rviz_common/Selection
@@ -43,7 +45,7 @@ Visualization Manager:
       Offset:
         X: 0
         Y: 0
-        Z: -100
+        Z: -250
       Plane: XY
       Plane Cell Count: 1000
       Reference Frame: <Fixed Frame>
@@ -148,13 +150,37 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        {}
+        "": true
       Topic:
         Depth: 5
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /cylinder2_obstacle_marker
+      Value: true
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: Marker
+      Namespaces:
+        "": true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /board_left_right
+      Value: true
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: Marker
+      Namespaces:
+        "": true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /board_up_down
       Value: true
   Enabled: true
   Global Options:
@@ -199,25 +225,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 3082.7099609375
+      Distance: 2141.77587890625
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -781.681396484375
-        Y: 2660.085693359375
-        Z: -369.75140380859375
+        X: 22.746768951416016
+        Y: 2819.86083984375
+        Z: 35.12136459350586
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6897963881492615
+      Pitch: 0.4197964668273926
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.5599950551986694
+      Yaw: 0.6449954509735107
     Saved: ~
 Window Geometry:
   Displays:
@@ -233,5 +259,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1200
-  X: 324
-  Y: 212
+  X: 241
+  Y: 207

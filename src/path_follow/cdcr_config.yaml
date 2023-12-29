@@ -202,12 +202,12 @@ cylinder2_scale_x: 200.0
 cylinder2_scale_y: 200.0
 cylinder2_scale_z: 600.0
 
-cylinder1_color_r: 0.1
-cylinder1_color_g: 0.2
-cylinder1_color_b: 0.1
-cylinder2_color_r: 0.1
-cylinder2_color_g: 0.2
-cylinder2_color_b: 0.1
+cylinder1_color_r: 0.6
+cylinder1_color_g: 0.6
+cylinder1_color_b: 0.6
+cylinder2_color_r: 0.6
+cylinder2_color_g: 0.6
+cylinder2_color_b: 0.6
 
 cylinder1_position_x: 0.0
 cylinder1_position_y: 2730.0
@@ -222,6 +222,31 @@ cylinder1_axis_z: 1.0
 cylinder2_axis_x: 1.0
 cylinder2_axis_y: 0.0
 cylinder2_axis_z: 0.0
+
+hole_scale_x: 120.0
+hole_scale_z: 120.0
+
+hole1_position_x: 15.0
+hole1_position_y: 2468.0
+hole1_position_z: 128.0
+
+hole2_position_x: 37.0
+hole2_position_y: 3307.0
+hole2_position_z: 117.0
+
+board_left_right_scale_x: 600.0
+board_left_right_scale_y: 5.0
+board_left_right_scale_z: 600.0
+board_left_right_color_r: 0.6
+board_left_right_color_g: 0.6
+board_left_right_color_b: 0.6
+
+board_up_down_scale_x: 600.0
+board_up_down_scale_y: 5.0
+board_up_down_scale_z: 600.0
+board_up_down_color_r: 0.6
+board_up_down_color_g: 0.6
+board_up_down_color_b: 0.6
 
 flag_visualize_b_spline_marker: 1
 

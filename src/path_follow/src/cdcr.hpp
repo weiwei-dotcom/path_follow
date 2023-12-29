@@ -172,5 +172,19 @@ double cylinder2_position_x, cylinder2_position_y, cylinder2_position_z;
 double cylinder1_axis_x, cylinder1_axis_y, cylinder1_axis_z;
 double cylinder2_axis_x, cylinder2_axis_y, cylinder2_axis_z;
 
+double hole_scale_x,hole_scale_z;
+
+double hole1_position_x,hole1_position_y,hole1_position_z;
+
+double hole2_position_x,hole2_position_y,hole2_position_z;
+
+double board_up_down_color_r,board_up_down_color_g,board_up_down_color_b;
+double board_left_right_color_r,board_left_right_color_g,board_left_right_color_b;
+
+double board_up_down_scale_x,board_up_down_scale_y,board_up_down_scale_z;
+double board_left_right_scale_x,board_left_right_scale_y,board_left_right_scale_z;
+
+rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr board_left_right_pub;
+rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr board_up_down_pub;
 };
 

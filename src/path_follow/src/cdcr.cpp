@@ -380,6 +380,48 @@ CDCR::CDCR():Node("path_follow")
     this->cylinder2_scale_y = this->get_parameter("cylinder2_scale_y").as_double();
     this->cylinder2_scale_x = this->get_parameter("cylinder2_scale_x").as_double();
 
+    //board obstacle's config param
+    this->declare_parameter<std::double_t> ("hole_scale_x", 120.0);
+    this->declare_parameter<std::double_t> ("hole_scale_z", 120.0);
+    this->declare_parameter<std::double_t> ("hole1_position_x", 15.0);
+    this->declare_parameter<std::double_t> ("hole1_position_y", 2468.0);
+    this->declare_parameter<std::double_t> ("hole1_position_z", 128.0);
+    this->declare_parameter<std::double_t> ("hole2_position_x", 37.0);
+    this->declare_parameter<std::double_t> ("hole2_position_y", 3307.0);
+    this->declare_parameter<std::double_t> ("hole2_position_z", 117.0);
+    this->declare_parameter<std::double_t> ("board_left_right_scale_x", 600.0);
+    this->declare_parameter<std::double_t> ("board_left_right_scale_y", 5.0);
+    this->declare_parameter<std::double_t> ("board_left_right_scale_z", 600.0);
+    this->declare_parameter<std::double_t> ("board_left_right_color_r", 0.6);
+    this->declare_parameter<std::double_t> ("board_left_right_color_g", 0.6);
+    this->declare_parameter<std::double_t> ("board_left_right_color_b", 0.6);
+    this->declare_parameter<std::double_t> ("board_up_down_scale_x", 600.0);
+    this->declare_parameter<std::double_t> ("board_up_down_scale_y", 5.0);
+    this->declare_parameter<std::double_t> ("board_up_down_scale_z", 600.0);
+    this->declare_parameter<std::double_t> ("board_up_down_color_r", 0.6);
+    this->declare_parameter<std::double_t> ("board_up_down_color_g", 0.6);
+    this->declare_parameter<std::double_t> ("board_up_down_color_b", 0.6);
+    this-> hole_scale_x = this->get_parameter("hole_scale_x").as_double();
+    this-> hole_scale_z = this->get_parameter("hole_scale_z").as_double();
+    this->hole1_position_x = this->get_parameter("hole1_position_x").as_double();
+    this->hole1_position_y = this->get_parameter("hole1_position_y").as_double();
+    this->hole1_position_z = this->get_parameter("hole1_position_z").as_double();
+    this->hole2_position_x = this->get_parameter("hole2_position_x").as_double();
+    this->hole2_position_y = this->get_parameter("hole2_position_y").as_double();
+    this->hole2_position_z = this->get_parameter("hole2_position_z").as_double();
+    this-> board_left_right_scale_x = this->get_parameter("board_left_right_scale_x").as_double();
+    this-> board_left_right_scale_y = this->get_parameter("board_left_right_scale_y").as_double();
+    this-> board_left_right_scale_z = this->get_parameter("board_left_right_scale_z").as_double();
+    this->board_left_right_color_r = this->get_parameter("board_left_right_color_r").as_double();
+    this->board_left_right_color_g = this->get_parameter("board_left_right_color_g").as_double();
+    this->board_left_right_color_b = this->get_parameter("board_left_right_color_b").as_double();
+    this-> board_up_down_scale_x = this->get_parameter("board_up_down_scale_x").as_double();
+    this-> board_up_down_scale_y = this->get_parameter("board_up_down_scale_y").as_double();
+    this-> board_up_down_scale_z = this->get_parameter("board_up_down_scale_z").as_double();
+    this->board_up_down_color_r = this->get_parameter("board_up_down_color_r").as_double();
+    this->board_up_down_color_g = this->get_parameter("board_up_down_color_g").as_double();
+    this->board_up_down_color_b = this->get_parameter("board_up_down_color_b").as_double();
+
     for (int i=0;i<20;i++)
     {
         this->declare_parameter<std::double_t>(std::string("joint") + std::to_string(i)+std::string("_rigid1_length"), 0.0);
@@ -443,6 +485,8 @@ CDCR::CDCR():Node("path_follow")
     this->fit_time_pub = this->create_publisher<std_msgs::msg::Float64>("fit_time", 1);
     this->cylinder1_obstacle_visualization_pub = this->create_publisher<visualization_marker>("cylinder1_obstacle_marker", 1);
     this->cylinder2_obstacle_visualization_pub = this->create_publisher<visualization_marker>("cylinder2_obstacle_marker", 1);
+    this->board_left_right_pub = this->create_publisher<visualization_marker>("board_left_right", 1);
+    this->board_up_down_pub = this->create_publisher<visualization_marker>("board_up_down", 1);
     
     //debug
     temp_b_spline_interval_points_pub = this->create_publisher<visualization_marker>("b_spline_interval_points", 1);
@@ -1067,8 +1111,92 @@ void CDCR::visualization()
         //debug
         RCLCPP_INFO(this->get_logger(), "1034:");
 
+        // visualize the obstacle board
+        double board_left_right_width,board_left_right_height,board_left_right_thick;
+        board_left_right_width = (this->board_left_right_scale_x-this->hole_scale_x)/2.0;
+        board_left_right_height = this->board_left_right_scale_z;
+        board_left_right_thick = this->board_left_right_scale_y;
+        double board_up_down_width,board_up_down_height,board_up_down_thick;
+        board_up_down_width = this->board_up_down_scale_x;
+        board_up_down_height = (this->board_up_down_scale_z-this->hole_scale_z)/2.0;
+        board_up_down_thick = this->board_up_down_scale_y;
 
+        visualization_marker board_right_left_marker;
+        board_right_left_marker.type = visualization_marker::CUBE_LIST;
+        board_right_left_marker.action = visualization_marker::ADD;
+        board_right_left_marker.header = temp_header;
+        board_right_left_marker.scale.x = board_left_right_width;
+        board_right_left_marker.scale.y = board_left_right_thick;
+        board_right_left_marker.scale.z = board_left_right_height;
+        board_right_left_marker.pose.position.x = 0.0;
+        board_right_left_marker.pose.position.y = 0.0;
+        board_right_left_marker.pose.position.z = 0.0;
+        board_right_left_marker.pose.orientation.x = 0.0;
+        board_right_left_marker.pose.orientation.y = 0.0;
+        board_right_left_marker.pose.orientation.z = 0.0;
+        board_right_left_marker.pose.orientation.w = 1.0;
+        board_right_left_marker.color.r = this->board_left_right_color_r;
+        board_right_left_marker.color.g = this->board_left_right_color_g;
+        board_right_left_marker.color.b = this->board_left_right_color_b;
+        board_right_left_marker.color.a = 1.0;
+        geometry_msgs::msg::Point board1_right_position,board1_left_position,board2_right_position,board2_left_position;
+        board1_right_position.x = this->hole1_position_x+this->hole_scale_x/2.0+board_left_right_width/2.0;
+        board1_right_position.y = this->hole1_position_y+board_left_right_thick/2.0+0.5;
+        board1_right_position.z = this->hole1_position_z;
+        board1_left_position.x = this->hole1_position_x-this->hole_scale_x/2.0-board_left_right_width/2.0;
+        board1_left_position.y = this->hole1_position_y+board_left_right_thick/2.0+0.5;
+        board1_left_position.z = this->hole1_position_z;  
+        board2_left_position.x = this->hole2_position_x-this->hole_scale_x/2.0-board_left_right_width/2.0;
+        board2_left_position.y = this->hole2_position_y+board_left_right_thick/2.0+0.5;
+        board2_left_position.z = this->hole2_position_z;  
+        board2_right_position.x = this->hole2_position_x+this->hole_scale_x/2.0+board_left_right_width/2.0;
+        board2_right_position.y = this->hole2_position_y+board_left_right_thick/2.0+0.5;
+        board2_right_position.z = this->hole2_position_z;
+        board_right_left_marker.points.push_back(board1_right_position);
+        board_right_left_marker.points.push_back(board1_left_position);
+        board_right_left_marker.points.push_back(board2_left_position);
+        board_right_left_marker.points.push_back(board2_right_position);
+
+        visualization_marker board_up_down_marker;
+        board_up_down_marker.type = visualization_marker::CUBE_LIST;
+        board_up_down_marker.action = visualization_marker::ADD;
+        board_up_down_marker.header = temp_header;
+        board_up_down_marker.scale.x = board_up_down_width;
+        board_up_down_marker.scale.y = board_up_down_thick;
+        board_up_down_marker.scale.z = board_up_down_height;
+        board_up_down_marker.pose.position.x = 0.0;
+        board_up_down_marker.pose.position.y = 0.0;
+        board_up_down_marker.pose.position.z = 0.0;
+        board_up_down_marker.pose.orientation.x = 0.0;
+        board_up_down_marker.pose.orientation.y = 0.0;
+        board_up_down_marker.pose.orientation.z = 0.0;
+        board_up_down_marker.pose.orientation.w = 1.0;
+        board_up_down_marker.color.r = this->board_left_right_color_r;
+        board_up_down_marker.color.g = this->board_left_right_color_g;
+        board_up_down_marker.color.b = this->board_left_right_color_b;
+        board_up_down_marker.color.a = 1.0;
+        geometry_msgs::msg::Point board1_up_position,board1_down_position,board2_up_position,board2_down_position;
+        board1_up_position.x = this->hole1_position_x;
+        board1_up_position.y = this->hole1_position_y-board_up_down_thick/2.0-0.5;
+        board1_up_position.z = this->hole1_position_z+this->hole_scale_z/2.0+board_up_down_height/2.0;
+        board1_down_position.x = this->hole1_position_x;
+        board1_down_position.y = this->hole1_position_y-board_up_down_thick/2.0-0.5;
+        board1_down_position.z = this->hole1_position_z-this->hole_scale_z/2.0-board_up_down_height/2.0; 
+        board2_up_position.x = this->hole2_position_x;
+        board2_up_position.y = this->hole2_position_y-board_up_down_thick/2.0-0.5;
+        board2_up_position.z = this->hole2_position_z+this->hole_scale_z/2.0+board_up_down_height/2.0;  
+        board2_down_position.x = this->hole2_position_x;
+        board2_down_position.y = this->hole2_position_y-board_up_down_thick/2.0-0.5;
+        board2_down_position.z = this->hole2_position_z-this->hole_scale_z/2.0-board_up_down_height/2.0;
+        board_up_down_marker.points.push_back(board1_up_position);
+        board_up_down_marker.points.push_back(board1_down_position);
+        board_up_down_marker.points.push_back(board2_up_position);
+        board_up_down_marker.points.push_back(board2_down_position);
+
+        this->board_left_right_pub->publish(board_right_left_marker);
+        this->board_up_down_pub->publish(board_up_down_marker);
     }
+
     this->base_visualization_pub->publish(base_visual_msg);
     this->cdcr_plat_visualization_pub->publish(cdcr_plats_visual_msg);
     this->cdcr_point_visualization_pub->publish(cdcr_points_visual_msg);
