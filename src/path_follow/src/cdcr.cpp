@@ -524,9 +524,9 @@ void CDCR::discretePath()
             {
                 path_points.push_back(temp_path_point);
 
-                //debug
-                visualPathMarkers();
-                rclcpp::sleep_for(std::chrono::nanoseconds(100000000));
+                // //debug
+                // visualPathMarkers();
+                // rclcpp::sleep_for(std::chrono::nanoseconds(100000000));
 
                 b_spline_length = 0.0;
                 
