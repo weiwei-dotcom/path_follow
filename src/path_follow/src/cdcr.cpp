@@ -474,6 +474,7 @@ void CDCR::discretePath()
         Eigen::Vector3d temp_path_point;
         double time_span = b_spline_path.getTimeSum();
         Eigen::Vector3d temp_last_b_spline_point = this->ctrl_points.col(this->number_ctrl_points-1);
+        
         //debug
         RCLCPP_INFO(this->get_logger(), "here: 478");
         
@@ -485,9 +486,18 @@ void CDCR::discretePath()
             RCLCPP_INFO(this->get_logger(), "temp_path_point:[%f, %f, %f]", temp_path_point.x(),temp_path_point.y(),temp_path_point.z());
 
             b_spline_length += (temp_path_point-temp_last_path_point).norm();
+
+            //debug 
+            RCLCPP_INFO(this->get_logger(), "b_spline_length: %f", b_spline_length);
+
             if (b_spline_length >= 1.0)
             {
                 path_points.push_back(temp_path_point);
+
+                //debug
+                visualPathMarkers();
+                rclcpp::sleep_for(std::chrono::nanoseconds(100000000));
+
                 b_spline_length = 0.0;
             }
             temp_last_path_point = temp_path_point;
@@ -495,11 +505,15 @@ void CDCR::discretePath()
 
             //debug
             RCLCPP_INFO(this->get_logger(), "here: 492");
-            RCLCPP_INFO(this->get_logger(), " here: count: %d", (temp_t+0.0001)/0.005);
-            
+            RCLCPP_INFO(this->get_logger(), " count: %f", (temp_t+0.0001)/0.005);
+            RCLCPP_INFO(this->get_logger(), " temp_t: %f", temp_t);
+
         }while((temp_path_point-temp_last_b_spline_point).norm() > 1.0 && temp_t < time_span);
 
         //debug
+        RCLCPP_INFO(this->get_logger(), "temp_last_b_spline_point: [%f, %f, %f]",temp_last_b_spline_point.x(),
+                                                                                temp_last_b_spline_point.y(),
+                                                                                temp_last_b_spline_point.z());
         RCLCPP_INFO(this->get_logger(), "here: 483");
 
         // // debug
@@ -616,11 +630,17 @@ void CDCR::visualPathMarkers()
 
 void CDCR::getCorrectTravelPointID()
 {
+    
+    //debug
+    int temp_count = 0;
+    RCLCPP_INFO(this->get_logger(), "getCorrectTravelPointID");
+
     Eigen::Vector3d path_tangent_vec;
     double path_deviation;
 
     for (int i=1;i<path_points.size()-1;i++)
     {
+        temp_count++;
         if (i>=(path_points.size()-2))
         {
             RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 173");
@@ -632,7 +652,13 @@ void CDCR::getCorrectTravelPointID()
         if (!remainPathLengthCheck(i))
         {
             this->flag_end_experience=true;
+
+            //debug
+            RCLCPP_INFO(this->get_logger(), "count: %d", temp_count);
+            RCLCPP_INFO(this->get_logger(), "getCorrectTravelPointID");
+
             return;
+
         }
         correct_start_path_point_id = i;
 
@@ -659,6 +685,10 @@ void CDCR::getCorrectTravelPointID()
             RCLCPP_ERROR(this->get_logger(), "Track Path Error, track point wasn't in the travel range!!!");
             this->flag_end_experience = true;
         }
+
+        //debug
+        RCLCPP_INFO(this->get_logger(), "getCorrectTravelPointID");
+
         return;
     }
 }
@@ -1247,6 +1277,12 @@ bool CDCR::baseDirectCorrectCheck(const int& path_point_id)
 bool CDCR::remainPathLengthCheck(const int& path_point_id)
 {
     if (this->length + this->safe_path_length_redundance > (path_points.size()-path_point_id)*sample_interval)
+    {
+    
+        //debug
+        RCLCPP_INFO(this->get_logger(), "getCorrectTravelPointID");
+
         return false;
+    }
     return true;
 }
