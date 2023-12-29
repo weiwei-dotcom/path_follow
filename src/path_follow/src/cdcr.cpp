@@ -268,25 +268,25 @@ CDCR::CDCR():Node("path_follow")
     temp_interval_point9 << bspline_interval_point9_x, bspline_interval_point9_y, bspline_interval_point9_z;
     this->temp_b_spline_path_interval_poins.push_back(temp_interval_point9); 
     
-    // Eigen::Vector3d temp_interval_point10;
-    // this->declare_parameter<std::double_t>("bspline_interval_point10_x", 110.0);
-    // double bspline_interval_point10_x = this->get_parameter("bspline_interval_point10_x").as_double();
-    // this->declare_parameter<std::double_t>("bspline_interval_point10_y", 900.0);
-    // double bspline_interval_point10_y = this->get_parameter("bspline_interval_point10_y").as_double();
-    // this->declare_parameter<std::double_t>("bspline_interval_point10_z", 110.0);
-    // double bspline_interval_point10_z = this->get_parameter("bspline_interval_point10_z").as_double();
-    // temp_interval_point10 << bspline_interval_point10_x, bspline_interval_point10_y, bspline_interval_point10_z;
-    // this->temp_b_spline_path_interval_poins.push_back(temp_interval_point10); 
+    Eigen::Vector3d temp_interval_point10;
+    this->declare_parameter<std::double_t>("bspline_interval_point10_x", 110.0);
+    double bspline_interval_point10_x = this->get_parameter("bspline_interval_point10_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_interval_point10_y", 900.0);
+    double bspline_interval_point10_y = this->get_parameter("bspline_interval_point10_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_interval_point10_z", 110.0);
+    double bspline_interval_point10_z = this->get_parameter("bspline_interval_point10_z").as_double();
+    temp_interval_point10 << bspline_interval_point10_x, bspline_interval_point10_y, bspline_interval_point10_z;
+    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point10); 
     
-    // Eigen::Vector3d temp_interval_point11;
-    // this->declare_parameter<std::double_t>("bspline_interval_point11_x", 100.0);
-    // double bspline_interval_point11_x = this->get_parameter("bspline_interval_point11_x").as_double();
-    // this->declare_parameter<std::double_t>("bspline_interval_point11_y", 1100.0);
-    // double bspline_interval_point11_y = this->get_parameter("bspline_interval_point11_y").as_double();
-    // this->declare_parameter<std::double_t>("bspline_interval_point11_z", 100.0);
-    // double bspline_interval_point11_z = this->get_parameter("bspline_interval_point11_z").as_double();
-    // temp_interval_point11 << bspline_interval_point11_x, bspline_interval_point11_y, bspline_interval_point11_z;
-    // this->temp_b_spline_path_interval_poins.push_back(temp_interval_point11);
+    Eigen::Vector3d temp_interval_point11;
+    this->declare_parameter<std::double_t>("bspline_interval_point11_x", 100.0);
+    double bspline_interval_point11_x = this->get_parameter("bspline_interval_point11_x").as_double();
+    this->declare_parameter<std::double_t>("bspline_interval_point11_y", 1100.0);
+    double bspline_interval_point11_y = this->get_parameter("bspline_interval_point11_y").as_double();
+    this->declare_parameter<std::double_t>("bspline_interval_point11_z", 100.0);
+    double bspline_interval_point11_z = this->get_parameter("bspline_interval_point11_z").as_double();
+    temp_interval_point11 << bspline_interval_point11_x, bspline_interval_point11_y, bspline_interval_point11_z;
+    this->temp_b_spline_path_interval_poins.push_back(temp_interval_point11);
 
     // declare and get start_end_point_derivatives and time_interval_value;
     Eigen::Vector3d temp_start_vel;
@@ -328,31 +328,57 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::double_t>("time_interval", 30.0);
     this->time_interval = this->get_parameter("time_interval").as_double();
 
-    //cylinder obstacle's config param
-    this->declare_parameter<std::double_t> ("cylinder_scale_x", 300.0);
-    this->declare_parameter<std::double_t> ("cylinder_scale_y", 300.0);
-    this->declare_parameter<std::double_t> ("cylinder_scale_z", 600.0);
-    this->declare_parameter<std::double_t> ("cylinder_color_r", 1.0);
-    this->declare_parameter<std::double_t> ("cylinder_color_g", 0.0);
-    this->declare_parameter<std::double_t> ("cylinder_color_b", 0.5);
-    this->declare_parameter<std::double_t> ("cylinder_position_x", 0.0);
-    this->declare_parameter<std::double_t> ("cylinder_position_y", 2430.0);
-    this->declare_parameter<std::double_t> ("cylinder_position_z", 5.0);
-    this->declare_parameter<std::double_t> ("cylinder_axis_x", -5.0);
-    this->declare_parameter<std::double_t> ("cylinder_axis_y", 4.0);
-    this->declare_parameter<std::double_t> ("cylinder_axis_z", 3.0);
-    this->cylinder_axis_x = this->get_parameter("cylinder_axis_x").as_double();
-    this->cylinder_axis_y = this->get_parameter("cylinder_axis_y").as_double();
-    this->cylinder_axis_z = this->get_parameter("cylinder_axis_z").as_double();
-    this->cylinder_position_z = this->get_parameter("cylinder_position_z").as_double();
-    this->cylinder_position_y = this->get_parameter("cylinder_position_y").as_double();
-    this->cylinder_position_x = this->get_parameter("cylinder_position_x").as_double();
-    this->cylinder_color_b = this->get_parameter("cylinder_color_b").as_double();
-    this->cylinder_color_g = this->get_parameter("cylinder_color_g").as_double();
-    this->cylinder_color_r = this->get_parameter("cylinder_color_r").as_double();
-    this->cylinder_scale_z = this->get_parameter("cylinder_scale_z").as_double();
-    this->cylinder_scale_y = this->get_parameter("cylinder_scale_y").as_double();
-    this->cylinder_scale_x = this->get_parameter("cylinder_scale_x").as_double();
+    //cylinder1 obstacle's config param
+    this->declare_parameter<std::double_t> ("cylinder1_scale_x", 300.0);
+    this->declare_parameter<std::double_t> ("cylinder1_scale_y", 300.0);
+    this->declare_parameter<std::double_t> ("cylinder1_scale_z", 600.0);
+    this->declare_parameter<std::double_t> ("cylinder1_color_r", 1.0);
+    this->declare_parameter<std::double_t> ("cylinder1_color_g", 0.0);
+    this->declare_parameter<std::double_t> ("cylinder1_color_b", 0.5);
+    this->declare_parameter<std::double_t> ("cylinder1_position_x", 0.0);
+    this->declare_parameter<std::double_t> ("cylinder1_position_y", 2430.0);
+    this->declare_parameter<std::double_t> ("cylinder1_position_z", 5.0);
+    this->declare_parameter<std::double_t> ("cylinder1_axis_x", -5.0);
+    this->declare_parameter<std::double_t> ("cylinder1_axis_y", 4.0);
+    this->declare_parameter<std::double_t> ("cylinder1_axis_z", 3.0);
+    this->cylinder1_axis_x = this->get_parameter("cylinder1_axis_x").as_double();
+    this->cylinder1_axis_y = this->get_parameter("cylinder1_axis_y").as_double();
+    this->cylinder1_axis_z = this->get_parameter("cylinder1_axis_z").as_double();
+    this->cylinder1_position_z = this->get_parameter("cylinder1_position_z").as_double();
+    this->cylinder1_position_y = this->get_parameter("cylinder1_position_y").as_double();
+    this->cylinder1_position_x = this->get_parameter("cylinder1_position_x").as_double();
+    this->cylinder1_color_b = this->get_parameter("cylinder1_color_b").as_double();
+    this->cylinder1_color_g = this->get_parameter("cylinder1_color_g").as_double();
+    this->cylinder1_color_r = this->get_parameter("cylinder1_color_r").as_double();
+    this->cylinder1_scale_z = this->get_parameter("cylinder1_scale_z").as_double();
+    this->cylinder1_scale_y = this->get_parameter("cylinder1_scale_y").as_double();
+    this->cylinder1_scale_x = this->get_parameter("cylinder1_scale_x").as_double();
+
+    //cylinder2 obstacle's config param
+    this->declare_parameter<std::double_t> ("cylinder2_scale_x", 300.0);
+    this->declare_parameter<std::double_t> ("cylinder2_scale_y", 300.0);
+    this->declare_parameter<std::double_t> ("cylinder2_scale_z", 600.0);
+    this->declare_parameter<std::double_t> ("cylinder2_color_r", 1.0);
+    this->declare_parameter<std::double_t> ("cylinder2_color_g", 0.0);
+    this->declare_parameter<std::double_t> ("cylinder2_color_b", 0.5);
+    this->declare_parameter<std::double_t> ("cylinder2_position_x", 0.0);
+    this->declare_parameter<std::double_t> ("cylinder2_position_y", 2430.0);
+    this->declare_parameter<std::double_t> ("cylinder2_position_z", 5.0);
+    this->declare_parameter<std::double_t> ("cylinder2_axis_x", -5.0);
+    this->declare_parameter<std::double_t> ("cylinder2_axis_y", 4.0);
+    this->declare_parameter<std::double_t> ("cylinder2_axis_z", 3.0);
+    this->cylinder2_axis_x = this->get_parameter("cylinder2_axis_x").as_double();
+    this->cylinder2_axis_y = this->get_parameter("cylinder2_axis_y").as_double();
+    this->cylinder2_axis_z = this->get_parameter("cylinder2_axis_z").as_double();
+    this->cylinder2_position_z = this->get_parameter("cylinder2_position_z").as_double();
+    this->cylinder2_position_y = this->get_parameter("cylinder2_position_y").as_double();
+    this->cylinder2_position_x = this->get_parameter("cylinder2_position_x").as_double();
+    this->cylinder2_color_b = this->get_parameter("cylinder2_color_b").as_double();
+    this->cylinder2_color_g = this->get_parameter("cylinder2_color_g").as_double();
+    this->cylinder2_color_r = this->get_parameter("cylinder2_color_r").as_double();
+    this->cylinder2_scale_z = this->get_parameter("cylinder2_scale_z").as_double();
+    this->cylinder2_scale_y = this->get_parameter("cylinder2_scale_y").as_double();
+    this->cylinder2_scale_x = this->get_parameter("cylinder2_scale_x").as_double();
 
     for (int i=0;i<20;i++)
     {
@@ -365,6 +391,10 @@ CDCR::CDCR():Node("path_follow")
     this->transform_base_to_world.block(0,0,3,3) << temp_x,this->base_y_axis,this->base_z_axis;
     this->transform_world_to_base = this->transform_base_to_world.inverse();
     int cdcr_point_size =0;
+
+    //debug
+    this->length = 0.0;
+
     for (int i=0;i<this->joint_number;i++)
     {
         Joint temp_joint(this->get_parameter(std::string("joint")+std::to_string(i)+std::string("_rigid1_length")).as_double(),
@@ -391,7 +421,16 @@ CDCR::CDCR():Node("path_follow")
         }
         this->joints.push_back(temp_joint);
         this->length+=temp_joint.length;
+
+        //debug 
+        RCLCPP_INFO(this->get_logger(), "length: %f", this->length);
+        RCLCPP_INFO(this->get_logger(), "temp_joint.length: %f", temp_joint.length);
+
     };
+
+    //debug 
+    RCLCPP_INFO(this->get_logger(), "length: %f", length);
+
     this->transform_joints_to_world.push_back(this->transform_joints_to_world[joint_number-1]*this->joints[joint_number-1].transform);
     this->transform_world_to_joints.push_back(this->joints[joint_number-1].transform.inverse()*this->transform_world_to_joints[joint_number-1]);
 
@@ -402,7 +441,8 @@ CDCR::CDCR():Node("path_follow")
     this->path_point_markers_pub = this->create_publisher<visualization_marker>("path_point_markers", 1);
     this->max_deviation_pub = this->create_publisher<std_msgs::msg::Float64>("max_deviation", 1);
     this->fit_time_pub = this->create_publisher<std_msgs::msg::Float64>("fit_time", 1);
-    this->cylinder_obstacle_visualization_pub = this->create_publisher<visualization_marker>("cylinder_obstacle_marker", 1);
+    this->cylinder1_obstacle_visualization_pub = this->create_publisher<visualization_marker>("cylinder1_obstacle_marker", 1);
+    this->cylinder2_obstacle_visualization_pub = this->create_publisher<visualization_marker>("cylinder2_obstacle_marker", 1);
     
     //debug
     temp_b_spline_interval_points_pub = this->create_publisher<visualization_marker>("b_spline_interval_points", 1);
@@ -483,10 +523,18 @@ void CDCR::discretePath()
             {
                 path_points.push_back(temp_path_point);
                 b_spline_length = 0.0;
+                
+                // //debug
+                // visualPathMarkers();
+                // rclcpp::sleep_for(std::chrono::nanoseconds(10000000));
+                
             }
             temp_last_path_point = temp_path_point;
             temp_t += 0.005;
         }while((temp_path_point-b_spline_path_interval_points.back()).norm() > 1.0 && temp_t < time_span);
+
+        //debug
+        RCLCPP_INFO(this->get_logger(), "519:");
 
         // // debug
         // visualPathMarkers();
@@ -602,11 +650,19 @@ void CDCR::visualPathMarkers()
 
 void CDCR::getCorrectTravelPointID()
 {
+
+    //debug
+    int temp_count = 0;
+    RCLCPP_INFO(this->get_logger(), "637:");
+
     Eigen::Vector3d path_tangent_vec;
     double path_deviation;
 
     for (int i=1;i<path_points.size()-1;i++)
     {
+        //debug
+        temp_count++;
+
         if (i>=(path_points.size()-2))
         {
             RCLCPP_ERROR(this->get_logger(), "UNKNOWN ERROR!, 173");
@@ -618,6 +674,11 @@ void CDCR::getCorrectTravelPointID()
         if (!remainPathLengthCheck(i))
         {
             this->flag_end_experience=true;
+
+            //debug
+            RCLCPP_INFO(this->get_logger(), "658:");
+            RCLCPP_INFO(this->get_logger(), "count: %d", temp_count);
+
             return;
         }
         correct_start_path_point_id = i;
@@ -946,32 +1007,67 @@ void CDCR::visualization()
         if (flag_visualize_b_spline_marker!=0)
             this->temp_b_spline_interval_points_pub->publish(b_spline_interval_points_msg); 
 
-        //visualize the cylinder obstacle
-        visualization_marker obstacle_cylinder;
-        obstacle_cylinder.type = visualization_marker::CYLINDER;
-        obstacle_cylinder.action = visualization_marker::ADD;
-        obstacle_cylinder.header = temp_header;
-        obstacle_cylinder.color.r = this->cylinder_color_r;
-        obstacle_cylinder.color.b = this->cylinder_color_b;
-        obstacle_cylinder.color.g = this->cylinder_color_g;
-        obstacle_cylinder.color.a = 1.0;
-        obstacle_cylinder.scale.x = this->cylinder_scale_x;
-        obstacle_cylinder.scale.y = this->cylinder_scale_y;
-        obstacle_cylinder.scale.z = this->cylinder_scale_z;
-        obstacle_cylinder.pose.position.x = this->cylinder_position_x;
-        obstacle_cylinder.pose.position.y = this->cylinder_position_y;
-        obstacle_cylinder.pose.position.z = this->cylinder_position_z;
-        Eigen::Vector3d temp_axis, rotation_axis;
-        temp_axis << cylinder_axis_x, cylinder_axis_y, cylinder_axis_z;
-        rotation_axis = Eigen::Vector3d(0,0,1.0).cross(temp_axis.normalized()).normalized();
-        double rotation_angle = acos(temp_axis.normalized().dot(Eigen::Vector3d(0.0,0.0,1.0)));
-        Eigen::Matrix3d rotation = Eigen::AngleAxisd(rotation_angle, rotation_axis).toRotationMatrix();
-        Eigen::Quaterniond temp_q(rotation);
-        obstacle_cylinder.pose.orientation.x = temp_q.x();
-        obstacle_cylinder.pose.orientation.y = temp_q.y();
-        obstacle_cylinder.pose.orientation.z = temp_q.z();
-        obstacle_cylinder.pose.orientation.w = temp_q.w();
-        this->cylinder_obstacle_visualization_pub->publish(obstacle_cylinder);
+        //visualize the cylinder1 obstacle
+        visualization_marker obstacle_cylinder1;
+        obstacle_cylinder1.type = visualization_marker::CYLINDER;
+        obstacle_cylinder1.action = visualization_marker::ADD;
+        obstacle_cylinder1.header = temp_header;
+        obstacle_cylinder1.color.r = this->cylinder1_color_r;
+        obstacle_cylinder1.color.b = this->cylinder1_color_b;
+        obstacle_cylinder1.color.g = this->cylinder1_color_g;
+        obstacle_cylinder1.color.a = 1.0;
+        obstacle_cylinder1.scale.x = this->cylinder1_scale_x;
+        obstacle_cylinder1.scale.y = this->cylinder1_scale_y;
+        obstacle_cylinder1.scale.z = this->cylinder1_scale_z;
+        obstacle_cylinder1.pose.position.x = this->cylinder1_position_x;
+        obstacle_cylinder1.pose.position.y = this->cylinder1_position_y;
+        obstacle_cylinder1.pose.position.z = this->cylinder1_position_z;
+        Eigen::Vector3d temp_axis1, rotation_axis1;
+        temp_axis1 << cylinder1_axis_x, cylinder1_axis_y, cylinder1_axis_z;
+        rotation_axis1 = Eigen::Vector3d(0,0,1.0).cross(temp_axis1.normalized()).normalized();
+        double rotation_angle1 = acos(temp_axis1.normalized().dot(Eigen::Vector3d(0.0,0.0,1.0)));
+        Eigen::Matrix3d rotation1 = Eigen::AngleAxisd(rotation_angle1, rotation_axis1).toRotationMatrix();
+        Eigen::Quaterniond temp_q1(rotation1);
+        obstacle_cylinder1.pose.orientation.x = temp_q1.x();
+        obstacle_cylinder1.pose.orientation.y = temp_q1.y();
+        obstacle_cylinder1.pose.orientation.z = temp_q1.z();
+        obstacle_cylinder1.pose.orientation.w = temp_q1.w();
+        this->cylinder1_obstacle_visualization_pub->publish(obstacle_cylinder1);
+
+        //debug
+        RCLCPP_INFO(this->get_logger(), "1004:");
+
+        //visualize the cylinder2 obstacle
+        visualization_marker obstacle_cylinder2;
+        obstacle_cylinder2.type = visualization_marker::CYLINDER;
+        obstacle_cylinder2.action = visualization_marker::ADD;
+        obstacle_cylinder2.header = temp_header;
+        obstacle_cylinder2.color.r = this->cylinder2_color_r;
+        obstacle_cylinder2.color.b = this->cylinder2_color_b;
+        obstacle_cylinder2.color.g = this->cylinder2_color_g;
+        obstacle_cylinder2.color.a = 1.0;
+        obstacle_cylinder2.scale.x = this->cylinder2_scale_x;
+        obstacle_cylinder2.scale.y = this->cylinder2_scale_y;
+        obstacle_cylinder2.scale.z = this->cylinder2_scale_z;
+        obstacle_cylinder2.pose.position.x = this->cylinder2_position_x;
+        obstacle_cylinder2.pose.position.y = this->cylinder2_position_y;
+        obstacle_cylinder2.pose.position.z = this->cylinder2_position_z;
+        Eigen::Vector3d temp_axis2, rotation_axis2;
+        temp_axis2 << cylinder2_axis_x, cylinder2_axis_y, cylinder2_axis_z;
+        rotation_axis2 = Eigen::Vector3d(0,0,1.0).cross(temp_axis2.normalized()).normalized();
+        double rotation_angle2 = acos(temp_axis2.normalized().dot(Eigen::Vector3d(0.0,0.0,1.0)));
+        Eigen::Matrix3d rotation2 = Eigen::AngleAxisd(rotation_angle2, rotation_axis2).toRotationMatrix();
+        Eigen::Quaterniond temp_q2(rotation2);
+        obstacle_cylinder2.pose.orientation.x = temp_q2.x();
+        obstacle_cylinder2.pose.orientation.y = temp_q2.y();
+        obstacle_cylinder2.pose.orientation.z = temp_q2.z();
+        obstacle_cylinder2.pose.orientation.w = temp_q2.w();
+        this->cylinder2_obstacle_visualization_pub->publish(obstacle_cylinder2);
+
+        //debug
+        RCLCPP_INFO(this->get_logger(), "1034:");
+
+
     }
     this->base_visualization_pub->publish(base_visual_msg);
     this->cdcr_plat_visualization_pub->publish(cdcr_plats_visual_msg);
@@ -1228,7 +1324,16 @@ bool CDCR::baseDirectCorrectCheck(const int& path_point_id)
 
 bool CDCR::remainPathLengthCheck(const int& path_point_id)
 {
-    if (this->length + this->safe_path_length_redundance > (path_points.size()-path_point_id)*sample_interval)
+    if (this->length + this->safe_path_length_redundance > (double)(path_points.size()-path_point_id)*sample_interval)
+    {
+
+        //debug
+        RCLCPP_INFO(this->get_logger(), "length: %f", this->length);
+        RCLCPP_INFO(this->get_logger(), "safe_path_length_redundance: %f", this->safe_path_length_redundance);
+        RCLCPP_INFO(this->get_logger(), "path_points.size(): %d", path_points.size());
+        RCLCPP_INFO(this->get_logger(), "path_point_id: %d", path_point_id);
+
         return false;
+    }
     return true;
 }

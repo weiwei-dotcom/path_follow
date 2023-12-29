@@ -112,7 +112,7 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        {}
+        "": true
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -131,6 +131,30 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /cylinder_obstacle_marker
+      Value: true
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: Marker
+      Namespaces:
+        "": true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /cylinder1_obstacle_marker
+      Value: true
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: Marker
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /cylinder2_obstacle_marker
       Value: true
   Enabled: true
   Global Options:
@@ -175,25 +199,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 2359.25634765625
+      Distance: 3082.7099609375
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -352.56634521484375
-        Y: 1461.7593994140625
-        Z: 161.2689971923828
+        X: -781.681396484375
+        Y: 2660.085693359375
+        Z: -369.75140380859375
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5947964787483215
+      Pitch: 0.6897963881492615
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.6299949884414673
+      Yaw: 0.5599950551986694
     Saved: ~
 Window Geometry:
   Displays:

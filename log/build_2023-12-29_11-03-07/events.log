@@ -1,0 +1,211 @@
+[0.000000] (-) TimerEvent: {}
+[0.000116] (path_follow) JobQueued: {'identifier': 'path_follow', 'dependencies': OrderedDict()}
+[0.000138] (path_follow) JobStarted: {'identifier': 'path_follow'}
+[0.075189] (path_follow) JobProgress: {'identifier': 'path_follow', 'progress': 'cmake'}
+[0.076065] (path_follow) JobProgress: {'identifier': 'path_follow', 'progress': 'build'}
+[0.076098] (path_follow) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/weiwei/Desktop/project/path_follow/build/path_follow', '--', '-j16', '-l16'], 'cwd': '/home/weiwei/Desktop/project/path_follow/build/path_follow', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'zh_CN:en_US:en'), ('USER', 'weiwei'), ('LC_TIME', 'zh_CN.UTF-8'), ('SSH_AGENT_PID', '1579'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('QT4_IM_MODULE', 'fcitx'), ('HOME', '/home/weiwei'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('CONDA_SHLVL', '0'), ('TERM_PROGRAM_VERSION', '1.85.1'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('MANAGERPID', '1372'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2946'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('GTK_IM_MODULE', 'fcitx'), ('LOGNAME', 'weiwei'), ('JOURNAL_STREAM', '8:49654'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'weiwei'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/home/weiwei/.local/bin:/opt/ros/foxy/bin:/home/weiwei/Desktop/thirdParty/anaconda3/condabin:/home/weiwei/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/bin:/home/weiwei/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/hello-world:@/tmp/.ICE-unix/1625,unix/hello-world:/tmp/.ICE-unix/1625'), ('INVOCATION_ID', '8ef88aae549646408247fcd0ce9f7f1d'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'zh_CN.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=fcitx'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-94a09a19c3.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/weiwei/Desktop/thirdParty/anaconda3/bin/python'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('CLASSPATH', '.:/home/weiwei/Desktop/application/jdk1.8.0_381/lib:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/lib'), ('QT_IM_MODULE', 'fcitx'), ('JAVA_HOME', '/home/weiwei/Desktop/application/jdk1.8.0_381'), ('PWD', '/home/weiwei/Desktop/project/path_follow/build/path_follow'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/weiwei/Desktop/thirdParty/anaconda3/bin/conda'), ('CLUTTER_IM_MODULE', 'fcitx'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.099358] (-) TimerEvent: {}
+[0.107651] (path_follow) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target path_follow\x1b[0m\n'}
+[0.142004] (path_follow) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/path_follow.dir/src/cdcr.cpp.o\x1b[0m\n'}
+[0.142171] (path_follow) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/path_follow.dir/src/main.cpp.o\x1b[0m\n'}
+[0.199512] (-) TimerEvent: {}
+[0.299779] (-) TimerEvent: {}
+[0.400178] (-) TimerEvent: {}
+[0.500504] (-) TimerEvent: {}
+[0.600765] (-) TimerEvent: {}
+[0.701039] (-) TimerEvent: {}
+[0.801355] (-) TimerEvent: {}
+[0.901596] (-) TimerEvent: {}
+[1.001853] (-) TimerEvent: {}
+[1.102156] (-) TimerEvent: {}
+[1.202423] (-) TimerEvent: {}
+[1.302695] (-) TimerEvent: {}
+[1.403004] (-) TimerEvent: {}
+[1.503280] (-) TimerEvent: {}
+[1.603535] (-) TimerEvent: {}
+[1.703855] (-) TimerEvent: {}
+[1.804187] (-) TimerEvent: {}
+[1.904503] (-) TimerEvent: {}
+[2.004812] (-) TimerEvent: {}
+[2.105128] (-) TimerEvent: {}
+[2.205443] (-) TimerEvent: {}
+[2.305715] (-) TimerEvent: {}
+[2.406067] (-) TimerEvent: {}
+[2.506381] (-) TimerEvent: {}
+[2.606716] (-) TimerEvent: {}
+[2.707074] (-) TimerEvent: {}
+[2.789696] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1\x1b[m\x1b[K:\n'}
+[2.789975] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::position_residual::position_residual(double, double, double, double, Eigen::Vector3d)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.790030] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:59:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::position_residual::position_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.790073] (path_follow) StderrLine: {'line': b'   59 |     const Eigen::Vector3d \x1b[01;35m\x1b[Kposition_\x1b[m\x1b[K;\n'}
+[2.790108] (path_follow) StderrLine: {'line': b'      |                           \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[2.790142] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:57:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::position_residual::weight_position_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.790178] (path_follow) StderrLine: {'line': b'   57 |     const double \x1b[01;35m\x1b[Kweight_position_\x1b[m\x1b[K;\n'}
+[2.790211] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.790244] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:39:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.790279] (path_follow) StderrLine: {'line': b'   39 |     \x1b[01;35m\x1b[Kposition_residual\x1b[m\x1b[K(double weight_position,\n'}
+[2.790312] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.790345] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::angle_residual::angle_residual(double, double, double, double, Eigen::Vector3d)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.790379] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::angle_residual::tangent_vector_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.790413] (path_follow) StderrLine: {'line': b'   82 |     const Eigen::Vector3d \x1b[01;35m\x1b[Ktangent_vector_\x1b[m\x1b[K;\n'}
+[2.790445] (path_follow) StderrLine: {'line': b'      |                           \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.790478] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:80:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::angle_residual::weight_direction_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.790511] (path_follow) StderrLine: {'line': b'   80 |     const double \x1b[01;35m\x1b[Kweight_direction_\x1b[m\x1b[K;\n'}
+[2.790545] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.790577] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.790609] (path_follow) StderrLine: {'line': b'   63 |     \x1b[01;35m\x1b[Kangle_residual\x1b[m\x1b[K(double weight_direction,\n'}
+[2.790642] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.807163] (-) TimerEvent: {}
+[2.814672] (path_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp:1\x1b[m\x1b[K:\n'}
+[2.814840] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::position_residual::position_residual(double, double, double, double, Eigen::Vector3d)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.814902] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:59:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::position_residual::position_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.815126] (path_follow) StderrLine: {'line': b'   59 |     const Eigen::Vector3d \x1b[01;35m\x1b[Kposition_\x1b[m\x1b[K;\n'}
+[2.815173] (path_follow) StderrLine: {'line': b'      |                           \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[2.815209] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:57:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::position_residual::weight_position_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.815246] (path_follow) StderrLine: {'line': b'   57 |     const double \x1b[01;35m\x1b[Kweight_position_\x1b[m\x1b[K;\n'}
+[2.815285] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.815319] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:39:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.815353] (path_follow) StderrLine: {'line': b'   39 |     \x1b[01;35m\x1b[Kposition_residual\x1b[m\x1b[K(double weight_position,\n'}
+[2.815407] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.815441] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::angle_residual::angle_residual(double, double, double, double, Eigen::Vector3d)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.815484] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:82:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KCDCR::angle_residual::tangent_vector_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.815530] (path_follow) StderrLine: {'line': b'   82 |     const Eigen::Vector3d \x1b[01;35m\x1b[Ktangent_vector_\x1b[m\x1b[K;\n'}
+[2.815581] (path_follow) StderrLine: {'line': b'      |                           \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.815616] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:80:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kconst double CDCR::angle_residual::weight_direction_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.815654] (path_follow) StderrLine: {'line': b'   80 |     const double \x1b[01;35m\x1b[Kweight_direction_\x1b[m\x1b[K;\n'}
+[2.815688] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.815722] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp:63:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[2.815764] (path_follow) StderrLine: {'line': b'   63 |     \x1b[01;35m\x1b[Kangle_residual\x1b[m\x1b[K(double weight_direction,\n'}
+[2.815810] (path_follow) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.845770] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KCDCR::CDCR()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.845930] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:116:12:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kbase_tolerance_deviation\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[2.845978] (path_follow) StderrLine: {'line': b'  116 |     double \x1b[01;35m\x1b[Kbase_tolerance_deviation\x1b[m\x1b[K = this->get_parameter("base_tolerance_deviation").as_double();\n'}
+[2.846014] (path_follow) StderrLine: {'line': b'      |            \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.884622] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::discretePath()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.884783] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:485:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[2.884827] (path_follow) StderrLine: {'line': b'  485 |         for (int i=0;\x1b[01;35m\x1b[Ki<this->temp_b_spline_path_interval_poins.size()\x1b[m\x1b[K;i++)\n'}
+[2.884864] (path_follow) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.886043] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::path_follow_exeperience()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.886123] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:560:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Joint>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[2.886165] (path_follow) StderrLine: {'line': b'  560 |             for (int i=0;\x1b[01;35m\x1b[Ki<joints.size()\x1b[m\x1b[K;i++)\n'}
+[2.886200] (path_follow) StderrLine: {'line': b'      |                          \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.890988] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::getCorrectTravelPointID()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.891070] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:635:19:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[2.891123] (path_follow) StderrLine: {'line': b'  635 |     for (int i=1;\x1b[01;35m\x1b[Ki<path_points.size()-1\x1b[m\x1b[K;i++)\n'}
+[2.891160] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.891193] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:637:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[2.891229] (path_follow) StderrLine: {'line': b'  637 |         if (\x1b[01;35m\x1b[Ki>=(path_points.size()-2)\x1b[m\x1b[K)\n'}
+[2.891264] (path_follow) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.891389] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:652:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[2.891463] (path_follow) StderrLine: {'line': b'  652 |         for (int j=i;\x1b[01;35m\x1b[Kj<path_points.size()-1\x1b[m\x1b[K;j++)\n'}
+[2.891502] (path_follow) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.891535] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:654:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[2.891573] (path_follow) StderrLine: {'line': b'  654 |             if (\x1b[01;35m\x1b[Kj==(path_points.size()-2)\x1b[m\x1b[K)\n'}
+[2.891606] (path_follow) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.892100] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:633:12:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kpath_deviation\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[2.892169] (path_follow) StderrLine: {'line': b'  633 |     double \x1b[01;35m\x1b[Kpath_deviation\x1b[m\x1b[K;\n'}
+[2.892209] (path_follow) StderrLine: {'line': b'      |            \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.907307] (-) TimerEvent: {}
+[3.000478] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::visualization()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.000630] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:911:19:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[3.000674] (path_follow) StderrLine: {'line': b'  911 |     for (int i=0;\x1b[01;35m\x1b[Ki<this->cdcr_points.size()\x1b[m\x1b[K;i+=2)\n'}
+[3.000711] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.000745] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:921:19:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[3.000786] (path_follow) StderrLine: {'line': b'  921 |     for (int i=0;\x1b[01;35m\x1b[Ki<this->cdcr_segment_point_id.size()\x1b[m\x1b[K;i++)\n'}
+[3.000826] (path_follow) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.000985] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:965:24:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[3.001040] (path_follow) StderrLine: {'line': b'  965 |         for (int i=0; \x1b[01;35m\x1b[Ki<this->b_spline_path_interval_points.size()\x1b[m\x1b[K;i++)\n'}
+[3.001078] (path_follow) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.007390] (-) TimerEvent: {}
+[3.023060] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::cal_deviation_get_max_deviation_path_point_id(double&, int&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.023222] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1088:52:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[3.023270] (path_follow) StderrLine: {'line': b' 1088 |                     if (\x1b[01;35m\x1b[Ktemp_current_cdcr_point_id >= this->cdcr_points.size()\x1b[m\x1b[K)\n'}
+[3.023308] (path_follow) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.058060] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::fitCDCR()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.058244] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1126:12:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kvariable \xe2\x80\x98\x1b[01m\x1b[Ktemp_theta\x1b[m\x1b[K\xe2\x80\x99 set but not used [\x1b[01;35m\x1b[K-Wunused-but-set-variable\x1b[m\x1b[K]\n'}
+[3.058296] (path_follow) StderrLine: {'line': b' 1126 |     double \x1b[01;35m\x1b[Ktemp_theta\x1b[m\x1b[K = 0.0, temp_alpha = 0.0;\n'}
+[3.058332] (path_follow) StderrLine: {'line': b'      |            \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.058366] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1126:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kvariable \xe2\x80\x98\x1b[01m\x1b[Ktemp_alpha\x1b[m\x1b[K\xe2\x80\x99 set but not used [\x1b[01;35m\x1b[K-Wunused-but-set-variable\x1b[m\x1b[K]\n'}
+[3.058405] (path_follow) StderrLine: {'line': b' 1126 |     double temp_theta = 0.0, \x1b[01;35m\x1b[Ktemp_alpha\x1b[m\x1b[K = 0.0;\n'}
+[3.058438] (path_follow) StderrLine: {'line': b'      |                              \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.058637] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CDCR::find_closed_path_point(const int&, const Vector3d&, int&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.058707] (path_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.cpp:1226:54:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[3.058758] (path_follow) StderrLine: {'line': b' 1226 |         }while(temp_dot_value>0 && \x1b[01;35m\x1b[Ktemp_path_point_id<path_points.size()-2\x1b[m\x1b[K);\n'}
+[3.058795] (path_follow) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.107554] (-) TimerEvent: {}
+[3.207865] (-) TimerEvent: {}
+[3.308186] (-) TimerEvent: {}
+[3.408501] (-) TimerEvent: {}
+[3.508819] (-) TimerEvent: {}
+[3.609140] (-) TimerEvent: {}
+[3.709462] (-) TimerEvent: {}
+[3.809726] (-) TimerEvent: {}
+[3.910078] (-) TimerEvent: {}
+[4.010428] (-) TimerEvent: {}
+[4.110759] (-) TimerEvent: {}
+[4.211025] (-) TimerEvent: {}
+[4.311357] (-) TimerEvent: {}
+[4.411614] (-) TimerEvent: {}
+[4.511932] (-) TimerEvent: {}
+[4.612212] (-) TimerEvent: {}
+[4.712558] (-) TimerEvent: {}
+[4.812882] (-) TimerEvent: {}
+[4.913199] (-) TimerEvent: {}
+[5.013515] (-) TimerEvent: {}
+[5.113824] (-) TimerEvent: {}
+[5.214081] (-) TimerEvent: {}
+[5.314431] (-) TimerEvent: {}
+[5.414690] (-) TimerEvent: {}
+[5.515052] (-) TimerEvent: {}
+[5.615307] (-) TimerEvent: {}
+[5.715614] (-) TimerEvent: {}
+[5.815867] (-) TimerEvent: {}
+[5.916176] (-) TimerEvent: {}
+[6.016442] (-) TimerEvent: {}
+[6.116757] (-) TimerEvent: {}
+[6.217068] (-) TimerEvent: {}
+[6.317379] (-) TimerEvent: {}
+[6.417691] (-) TimerEvent: {}
+[6.518005] (-) TimerEvent: {}
+[6.618314] (-) TimerEvent: {}
+[6.718639] (-) TimerEvent: {}
+[6.818999] (-) TimerEvent: {}
+[6.919254] (-) TimerEvent: {}
+[7.019519] (-) TimerEvent: {}
+[7.119847] (-) TimerEvent: {}
+[7.161444] (path_follow) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX executable path_follow\x1b[0m\n'}
+[7.219956] (-) TimerEvent: {}
+[7.320215] (-) TimerEvent: {}
+[7.420528] (-) TimerEvent: {}
+[7.520870] (-) TimerEvent: {}
+[7.621136] (-) TimerEvent: {}
+[7.721448] (-) TimerEvent: {}
+[7.737208] (path_follow) StdoutLine: {'line': b'[100%] Built target path_follow\n'}
+[7.746807] (path_follow) CommandEnded: {'returncode': 0}
+[7.762948] (path_follow) JobProgress: {'identifier': 'path_follow', 'progress': 'install'}
+[7.768788] (path_follow) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/weiwei/Desktop/project/path_follow/build/path_follow'], 'cwd': '/home/weiwei/Desktop/project/path_follow/build/path_follow', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'zh_CN:en_US:en'), ('USER', 'weiwei'), ('LC_TIME', 'zh_CN.UTF-8'), ('SSH_AGENT_PID', '1579'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('QT4_IM_MODULE', 'fcitx'), ('HOME', '/home/weiwei'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('CONDA_SHLVL', '0'), ('TERM_PROGRAM_VERSION', '1.85.1'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('MANAGERPID', '1372'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2946'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('GTK_IM_MODULE', 'fcitx'), ('LOGNAME', 'weiwei'), ('JOURNAL_STREAM', '8:49654'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'weiwei'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/home/weiwei/.local/bin:/opt/ros/foxy/bin:/home/weiwei/Desktop/thirdParty/anaconda3/condabin:/home/weiwei/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/bin:/home/weiwei/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/bin:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/hello-world:@/tmp/.ICE-unix/1625,unix/hello-world:/tmp/.ICE-unix/1625'), ('INVOCATION_ID', '8ef88aae549646408247fcd0ce9f7f1d'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'zh_CN.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=fcitx'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-94a09a19c3.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/weiwei/Desktop/thirdParty/anaconda3/bin/python'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('CLASSPATH', '.:/home/weiwei/Desktop/application/jdk1.8.0_381/lib:/home/weiwei/Desktop/application/jdk1.8.0_381/jre/lib'), ('QT_IM_MODULE', 'fcitx'), ('JAVA_HOME', '/home/weiwei/Desktop/application/jdk1.8.0_381'), ('PWD', '/home/weiwei/Desktop/project/path_follow/build/path_follow'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/weiwei/Desktop/thirdParty/anaconda3/bin/conda'), ('CLUTTER_IM_MODULE', 'fcitx'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[7.774253] (path_follow) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[7.774354] (path_follow) StdoutLine: {'line': b'-- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/lib/path_follow/path_follow\n'}
+[7.780495] (path_follow) StdoutLine: {'line': b'-- Set runtime path of "/home/weiwei/Desktop/project/path_follow/install/path_follow/lib/path_follow/path_follow" to ""\n'}
+[7.780630] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/launch\n'}
+[7.780673] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/launch/path_follow.launch.py\n'}
+[7.780710] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/package_run_dependencies/path_follow\n'}
+[7.780747] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/parent_prefix_path/path_follow\n'}
+[7.780783] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/ament_prefix_path.sh\n'}
+[7.780818] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/ament_prefix_path.dsv\n'}
+[7.780952] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/path.sh\n'}
+[7.781025] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/environment/path.dsv\n'}
+[7.781066] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.bash\n'}
+[7.781101] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.sh\n'}
+[7.781135] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.zsh\n'}
+[7.781168] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/local_setup.dsv\n'}
+[7.781200] (path_follow) StdoutLine: {'line': b'-- Installing: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/package.dsv\n'}
+[7.781232] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/ament_index/resource_index/packages/path_follow\n'}
+[7.781265] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/cmake/path_followConfig.cmake\n'}
+[7.781298] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/cmake/path_followConfig-version.cmake\n'}
+[7.781329] (path_follow) StdoutLine: {'line': b'-- Up-to-date: /home/weiwei/Desktop/project/path_follow/install/path_follow/share/path_follow/package.xml\n'}
+[7.781948] (path_follow) CommandEnded: {'returncode': 0}
+[7.821593] (-) TimerEvent: {}
+[7.922013] (-) TimerEvent: {}
+[7.961343] (path_follow) JobEnded: {'identifier': 'path_follow', 'rc': 0}
+[7.962066] (-) EventReactorShutdown: {}
