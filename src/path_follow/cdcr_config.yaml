@@ -139,13 +139,15 @@ base_tolerance_deviation: 1.0
 base_tolerance_angle_deviation: 4.0
 # this is the minimum value of remaining length over the length of the robot
 safe_path_length_redundance: 200.0
-min_arc_radius: 450.0
-max_arc_radius: 450.0
+min_arc_radius: 85.0
+max_arc_radius: 240.0
 # 位置误差权重
-weight_position: 0.029412
+weight_position: 0.6345
+# weight_position: 0.8345
 # weight_position: 1.0
 # 方向误差权重
-weight_direction: 0.970588
+weight_direction: 0.3655
+# weight_direction: 0.1655
 # weight_direction: 0.0
 # the size of base box model for visualization
 base_box_size_x: 100.0
@@ -232,7 +234,7 @@ hole1_position_z: 128.0
 
 hole2_position_x: 37.0
 hole2_position_y: 3257.0
-hole2_position_z: 117.0
+hole2_position_z: 125.0
 
 board_left_right_scale_x: 600.0
 board_left_right_scale_y: 5.0

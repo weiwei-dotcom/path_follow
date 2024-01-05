@@ -71,9 +71,9 @@ struct angle_residual{
                      tangent_vector_(tangent_vector),
                      weight_direction_(weight_direction){}
     template <typename T> bool operator()(const T* const alpha, const T* const theta, T* residual) const {
-        residual[0] = weight_direction_*acos(sin(theta[0])*cos(alpha[0])*tangent_vector_(0)
-                                                +sin(theta[0])*sin(alpha[0])*tangent_vector_(1)
-                                                +cos(theta[0])*tangent_vector_(2));
+        residual[0] = weight_direction_*180.0/M_PI*acos(sin(theta[0])*cos(alpha[0])*tangent_vector_(0)
+                                                        +sin(theta[0])*sin(alpha[0])*tangent_vector_(1)
+                                                        +cos(theta[0])*tangent_vector_(2));
         return true;
     }
 private: 
@@ -87,9 +87,9 @@ void get_cdcr_sample_points();
 void find_closed_path_point(const int& start_path_point_id,const Eigen::Vector3d& joint_end_position, int& segment_start_path_point_id);
 void visualPathMarkers();
 private:
-// std::ofstream per_radius_max_deviation_ofs;
-// std::ofstream per_radius_fit_time_ofs;
-// std::ofstream arc_radius_ofs;
+std::ofstream per_radius_max_deviation_ofs;
+std::ofstream per_radius_fit_time_ofs;
+std::ofstream arc_radius_ofs;
 std::ofstream per_fitperiod_max_deviation_ofs;
 std::ofstream per_fitperiod_theta_value_ofs;
 std::ofstream track_path_displacement_ofs;

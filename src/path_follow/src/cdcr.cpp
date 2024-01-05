@@ -9,13 +9,16 @@ CDCR::CDCR():Node("path_follow")
     // this->flag_end_path_follow = false;
     // this->flag_discretized = false;
     this->flag_end_experience = false;
-    // per_radius_fit_time_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_fit_time.xlsx");
-    // per_radius_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_max_deviation.xlsx");
-    // arc_radius_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/arc_radius.xlsx");
+
+    per_radius_fit_time_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_fit_time.xlsx");
+    per_radius_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_radius_max_deviation.xlsx");
+    arc_radius_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/arc_radius.xlsx");
+
     per_fitperiod_max_deviation_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_max_deviation.xlsx");
     per_fitperiod_theta_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_theta_value.xlsx");
     track_path_displacement_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/track_path_displacement.xlsx");
     
+    this->declare_parameter<std::int16_t>("joint_number", 15);
     // per_fitperiod_alpha_value_ofs.open("/home/weiwei/Desktop/project/path_follow/src/path_follow/data/per_fitperiod_alpha_value.xlsx");
     this->declare_parameter<std::int16_t>("flag_visualize_b_spline_marker",1);
     this->flag_visualize_b_spline_marker = this->get_parameter("flag_visualize_b_spline_marker").as_int();
@@ -56,7 +59,6 @@ CDCR::CDCR():Node("path_follow")
     this->deviation_marker_scale_z = this->get_parameter("deviation_marker_scale_z").as_double();
     this->declare_parameter<std::double_t>("sample_interval", 1.0);
     this->sample_interval = this->get_parameter("sample_interval").as_double();
-    this->declare_parameter<std::int16_t>("joint_number", 15);
     this->joint_number = this->get_parameter("joint_number").as_int();
     this->declare_parameter<std::int16_t>("experience_type",2);
     this->experience_type=this->get_parameter("experience_type").as_int();
@@ -95,7 +97,7 @@ CDCR::CDCR():Node("path_follow")
     this->arc_path_alpha=this->get_parameter("arc_path_alpha").as_double();
     this->declare_parameter<std::double_t>("arc_path_theta", 180.0);
     this->arc_path_theta=this->get_parameter("arc_path_theta").as_double();
-    this->declare_parameter<std::double_t>("min_arc_radius", 60.0);
+    this->declare_parameter<std::double_t>("min_arc_radius", 80.0);
     this->min_arc_radius=this->get_parameter("min_arc_radius").as_double();
     this->declare_parameter<std::double_t>("max_arc_radius", 240.0);
     this->max_arc_radius=this->get_parameter("max_arc_radius").as_double();
@@ -123,11 +125,11 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::double_t>("bone_sample_interval", 1.0);
     this->bone_sample_interval=this->get_parameter("bone_sample_interval").as_double();
     
-    this->declare_parameter<std::double_t>("weight_direction", 0.970588);
+    this->declare_parameter<std::double_t>("weight_direction", 0.60588);
     // this->declare_parameter<std::double_t>("weight_direction", 0.0);
     this->weight_direction=this->get_parameter("weight_direction").as_double();
 
-    this->declare_parameter<std::double_t>("weight_position", 0.029412);
+    this->declare_parameter<std::double_t>("weight_position", 0.39412);
     // this->declare_parameter<std::double_t>("weight_position", 1.0);
     this->weight_position=this->get_parameter("weight_position").as_double();
     
@@ -389,8 +391,8 @@ CDCR::CDCR():Node("path_follow")
     this->declare_parameter<std::double_t> ("hole1_position_y", 2468.0);
     this->declare_parameter<std::double_t> ("hole1_position_z", 128.0);
     this->declare_parameter<std::double_t> ("hole2_position_x", 37.0);
-    this->declare_parameter<std::double_t> ("hole2_position_y", 3207.0);
-    this->declare_parameter<std::double_t> ("hole2_position_z", 117.0);
+    this->declare_parameter<std::double_t> ("hole2_position_y", 3257.0);
+    this->declare_parameter<std::double_t> ("hole2_position_z", 125.0);
     this->declare_parameter<std::double_t> ("board_left_right_scale_x", 600.0);
     this->declare_parameter<std::double_t> ("board_left_right_scale_y", 5.0);
     this->declare_parameter<std::double_t> ("board_left_right_scale_z", 600.0);
@@ -835,9 +837,10 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
     RCLCPP_INFO(this->get_logger(), "fit_times: %d" , fit_times);
     RCLCPP_INFO(this->get_logger(), "time_spend: %f" , time_spend);
     max_deviation = *(std::max_element(max_deviations.begin(),max_deviations.end()));
-
     //debug: show max_deviation of direction model and no direction model
     RCLCPP_INFO(this->get_logger(), "max_deviation: %f", max_deviation);
+    //debug: test the max deviation at different max theta and different bone length;
+    // rclcpp::sleep_for(std::chrono::seconds(5));
     RCLCPP_INFO(this->get_logger(),"max_deviations.size(): %d",max_deviations.size());
     RCLCPP_INFO(this->get_logger(),"theta_per_fit.size(): %d",theta_per_fit.size());
     RCLCPP_INFO(this->get_logger(),"track_path_point_ids.size(): %d",track_path_point_ids.size());
