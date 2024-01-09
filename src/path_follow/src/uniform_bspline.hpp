@@ -14,6 +14,7 @@ private:
   // The dimension is determined by column number
   // e.g. B-spline with N points in 3D space -> Nx3 matrix
   Eigen::MatrixXd control_points_;
+  vector<double> control_points_1d_;
 
   int p_, n_, m_;     // p degree, n+1 control points, m = n+p+1
   Eigen::VectorXd u_; // knots vector
@@ -32,6 +33,7 @@ public:
 
   // initialize as an uniform B-spline
   void setUniformBspline(const Eigen::MatrixXd &points, const int &order, const double &interval);
+  void setUniformBspline1d(const vector<double> &points, const int &order, const double &interval);
 
   // get / set basic bspline info
 
@@ -43,8 +45,10 @@ public:
 
   // compute position / derivative
 
-  Eigen::VectorXd evaluateDeBoor(const double &u);                                               // use u \in [up, u_mp]
+  Eigen::VectorXd evaluateDeBoor(const double &u);        
+  double evaluateDeBoor_1d(const double &u);                                   // use u \in [up, u_mp]
   inline Eigen::VectorXd evaluateDeBoorT(const double &t) { return evaluateDeBoor(t + u_(p_)); } // use t \in [0, duration]
+  inline double evaluateDeBoorT_1d(const double &t) { return evaluateDeBoor_1d(t + u_(p_)); } // use t \in [0, duration]
   UniformBspline getDerivative();
 
   // 3D B-spline interpolation of points in point_set, with boundary vel&acc

@@ -114,7 +114,7 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        "": true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -138,7 +138,7 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        "": true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -150,7 +150,7 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        "": true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -162,7 +162,7 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        "": true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -174,7 +174,7 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        "": true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -225,25 +225,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1986.5572509765625
+      Distance: 714.4345092773438
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 84.71802520751953
-        Y: 1808.5118408203125
-        Z: 157.99859619140625
+        X: 64.49016571044922
+        Y: 1949.9122314453125
+        Z: 148.39151000976562
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4697973132133484
+      Pitch: 0.10979755967855453
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.8600099086761475
+      Yaw: 0.4300103485584259
     Saved: ~
 Window Geometry:
   Displays:
@@ -259,5 +259,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1200
-  X: 241
-  Y: 207
+  X: 262
+  Y: 67

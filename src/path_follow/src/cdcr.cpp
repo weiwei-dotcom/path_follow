@@ -844,13 +844,31 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
     RCLCPP_INFO(this->get_logger(),"max_deviations.size(): %d",max_deviations.size());
     RCLCPP_INFO(this->get_logger(),"theta_per_fit.size(): %d",theta_per_fit.size());
     RCLCPP_INFO(this->get_logger(),"track_path_point_ids.size(): %d",track_path_point_ids.size());
+    
+    //debug
+    UniformBspline temp_theta_spline;
+    temp_theta_spline.setUniformBspline1d(theta_per_fit,11,0.1);
+    std::vector<double> theta_3_degree_spline;
+    for (double t_step = 0.1;t_step<=209.0;t_step+=0.1)
+    {
+        theta_3_degree_spline.push_back(temp_theta_spline.evaluateDeBoorT_1d(t_step));
+    RCLCPP_INFO(this->get_logger(),"theta_3_degree_spline.size():%d",theta_3_degree_spline.size());
+    }
+    // //debug
+    // rclcpp::sleep_for(std::chrono::seconds(2));
 
     //debug: save the max_deviations
     if(this->experience_type == 2)
     {   
+        double time_point = 0.1;
         for (int i=0;i<max_deviations.size();i++)
         {
-            per_fitperiod_theta_value_ofs << theta_per_fit[i] << "\n";
+            //debug: use 3degree b-spline to interval theta value.
+            if (time_point <= 209)
+                per_fitperiod_theta_value_ofs << time_point << "\t" << theta_3_degree_spline[i] << "\n";
+
+            // per_fitperiod_theta_value_ofs << time_point << "\t" << theta_per_fit[i] << "\n";
+            time_point += 0.1;
             per_fitperiod_max_deviation_ofs << max_deviations[i] << "\n";
             track_path_displacement_ofs << track_path_point_ids[i] << "\n";
         }

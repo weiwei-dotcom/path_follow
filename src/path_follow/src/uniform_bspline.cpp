@@ -38,6 +38,35 @@ void UniformBspline::setUniformBspline(const Eigen::MatrixXd &points, const int 
   }
 }
 
+void UniformBspline::setUniformBspline1d(const vector<double> &points, const int &order,
+                                        const double &interval)
+{
+  control_points_1d_ = points;
+  p_ = order;
+  interval_ = interval;
+
+  n_ = points.size() - 1;
+  m_ = n_ + p_ + 1;
+
+  u_ = Eigen::VectorXd::Zero(m_ + 1);
+  for (int i = 0; i <= m_; ++i)
+  {
+
+    if (i <= p_)
+    {
+      u_(i) = double(-p_ + i) * interval_;
+    }
+    else if (i > p_ && i <= m_ - p_)
+    {
+      u_(i) = u_(i - 1) + interval_;
+    }
+    else if (i > m_ - p_)
+    {
+      u_(i) = u_(i - 1) + interval_;
+    }
+  }
+}
+
 void UniformBspline::setKnot(const Eigen::VectorXd &knot) { this->u_ = knot; }
 
 Eigen::VectorXd UniformBspline::getKnot() { return this->u_; }
@@ -74,6 +103,41 @@ Eigen::VectorXd UniformBspline::evaluateDeBoor(const double &u)
   for (int i = 0; i <= p_; ++i)
   {
     d.push_back(control_points_.col(k - p_ + i));
+    // cout << d[i].transpose() << endl;
+  }
+
+  for (int r = 1; r <= p_; ++r)
+  {
+    for (int i = p_; i >= r; --i)
+    {
+      double alpha = (ub - u_[i + k - p_]) / (u_[i + 1 + k - r] - u_[i + k - p_]);
+      // cout << "alpha: " << alpha << endl;
+      d[i] = (1 - alpha) * d[i - 1] + alpha * d[i];
+    }
+  }
+
+  return d[p_];
+}
+
+double UniformBspline::evaluateDeBoor_1d(const double &u)
+{
+
+  double ub = min(max(u_(p_), u), u_(m_ - p_));
+
+  // determine which [ui,ui+1] lay in
+  int k = p_;
+  while (true)
+  {
+    if (u_(k + 1) >= ub)
+      break;
+    ++k;
+  }
+
+  /* deBoor's alg */
+  vector<double> d;
+  for (int i = 0; i <= p_; ++i)
+  {
+    d.push_back(control_points_1d_[k - p_ + i]);
     // cout << d[i].transpose() << endl;
   }
 
