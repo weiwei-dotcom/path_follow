@@ -436,7 +436,7 @@ CDCR::CDCR():Node("path_follow")
     Eigen::Vector3d temp_x = this->base_y_axis.cross(this->base_z_axis);
     this->transform_base_to_world.block(0,0,3,3) << temp_x,this->base_y_axis,this->base_z_axis;
     this->transform_world_to_base = this->transform_base_to_world.inverse();
-    int cdcr_point_size =0;
+    int cdcr_point_size = 0;
 
     //debug
     this->length = 0.0;
@@ -468,14 +468,11 @@ CDCR::CDCR():Node("path_follow")
         this->joints.push_back(temp_joint);
         this->length+=temp_joint.length;
 
-        //debug 
-        RCLCPP_INFO(this->get_logger(), "length: %f", this->length);
-        RCLCPP_INFO(this->get_logger(), "temp_joint.length: %f", temp_joint.length);
+        // //debug 
+        // RCLCPP_INFO(this->get_logger(), "length: %f", this->length);
+        // RCLCPP_INFO(this->get_logger(), "temp_joint.length: %f", temp_joint.length);
 
     };
-
-    //debug 
-    RCLCPP_INFO(this->get_logger(), "length: %f", length);
 
     this->transform_joints_to_world.push_back(this->transform_joints_to_world[joint_number-1]*this->joints[joint_number-1].transform);
     this->transform_world_to_joints.push_back(this->joints[joint_number-1].transform.inverse()*this->transform_world_to_joints[joint_number-1]);
@@ -498,7 +495,6 @@ CDCR::CDCR():Node("path_follow")
 
     return;
 }
-
 
 void CDCR::discretePath()
 {
@@ -547,11 +543,11 @@ void CDCR::discretePath()
         {
             b_spline_path_interval_points.push_back(this->temp_b_spline_path_interval_poins[i]+this->path_points.back());
 
-            //debug
-            RCLCPP_INFO(this->get_logger(), "b_spline_path_interval_points: [%f, %f, %f]",
-                        b_spline_path_interval_points.back().x(),
-                        b_spline_path_interval_points.back().y(),
-                        b_spline_path_interval_points.back().z());
+            // //debug
+            // RCLCPP_INFO(this->get_logger(), "b_spline_path_interval_points: [%f, %f, %f]",
+            //             b_spline_path_interval_points.back().x(),
+            //             b_spline_path_interval_points.back().y(),
+            //             b_spline_path_interval_points.back().z());
                         
         }
     
@@ -559,6 +555,16 @@ void CDCR::discretePath()
 
         int orders = 3;
         this->b_spline_path.setUniformBspline(ctrl_points, orders, this->time_interval);
+    
+        //debug
+        RCLCPP_INFO(this->get_logger(),"ctrl_points(0): [%f, %f, %f]", ctrl_points.col(0)(0), ctrl_points.col(0)(1), ctrl_points.col(0)(2));
+        RCLCPP_INFO(this->get_logger(),"ctrl_points(1): [%f, %f, %f]", ctrl_points.col(1)(0), ctrl_points.col(1)(1), ctrl_points.col(1)(2));
+        RCLCPP_INFO(this->get_logger(),"ctrl_points(2): [%f, %f, %f]", ctrl_points.col(2)(0), ctrl_points.col(2)(1), ctrl_points.col(2)(2));
+        RCLCPP_INFO(this->get_logger(),"ctrl_points(end): [%f, %f, %f]", ctrl_points.col(ctrl_points.cols()-1)(0), ctrl_points.col(ctrl_points.cols()-1)(1), ctrl_points.col(ctrl_points.cols()-1)(2));
+        RCLCPP_INFO(this->get_logger(),"b_spline_path_interval_points(0): [%f, %f, %f]", b_spline_path_interval_points[0](0), b_spline_path_interval_points[0](1), b_spline_path_interval_points[0](2));
+        RCLCPP_INFO(this->get_logger(),"ctrl_points.size(): %d",ctrl_points.cols());
+        RCLCPP_INFO(this->get_logger(),"interval_points.size(): %d", b_spline_path_interval_points.size());
+
         double b_spline_length = 0.0;
         double temp_t=0.005;
         Eigen::Vector3d temp_last_path_point = path_points.back();
@@ -566,6 +572,11 @@ void CDCR::discretePath()
         double time_span = b_spline_path.getTimeSum();
         do{
             temp_path_point = b_spline_path.evaluateDeBoorT(temp_t);
+
+            // //debug
+            // RCLCPP_INFO(this->get_logger(), "temp_path_point:[%f,%f,%f]",temp_path_point.x(),temp_path_point.y(),temp_path_point.z());
+            // rclcpp::sleep_for(std::chrono::nanoseconds(10000000000));
+
             b_spline_length += (temp_path_point-temp_last_path_point).norm();
             if (b_spline_length >= 1.0)
             {
@@ -580,9 +591,6 @@ void CDCR::discretePath()
             temp_last_path_point = temp_path_point;
             temp_t += 0.005;
         }while((temp_path_point-b_spline_path_interval_points.back()).norm() > 1.0 && temp_t < time_span);
-
-        //debug
-        RCLCPP_INFO(this->get_logger(), "519:");
 
         // // debug
         // visualPathMarkers();
@@ -698,18 +706,11 @@ void CDCR::visualPathMarkers()
 
 void CDCR::getCorrectTravelPointID()
 {
-    //debug
-    int temp_count = 0;
-    RCLCPP_INFO(this->get_logger(), "637:");
-
     Eigen::Vector3d path_tangent_vec;
     double path_deviation;
 
     for (int i=1;i<path_points.size()-1;i++)
     {
-        //debug
-        temp_count++;
-        RCLCPP_INFO(this->get_logger(), "count: %d", temp_count);
 
         if (i>=(path_points.size()-2))
         {
@@ -723,16 +724,9 @@ void CDCR::getCorrectTravelPointID()
         {
             this->flag_end_experience=true;
 
-            //debug
-            RCLCPP_INFO(this->get_logger(), "658:");
-            RCLCPP_INFO(this->get_logger(), "count: %d", temp_count);
-
             return;
         }
         correct_start_path_point_id = i;
-
-        //debug
-        RCLCPP_INFO(this->get_logger(), "correct_start_path_point_id: %d", correct_start_path_point_id);
 
         for (int j=i+1;j<path_points.size()-1;j++)
         {
@@ -747,9 +741,6 @@ void CDCR::getCorrectTravelPointID()
                 || !remainPathLengthCheck(j))
             {
                 correct_end_path_point_id = j;
-
-                //debug
-                RCLCPP_INFO(this->get_logger(), "correct_end_path_point_id: %d", correct_end_path_point_id);
 
                 break;
             }
@@ -852,10 +843,7 @@ void CDCR::path_follow(double& time_spend, double& max_deviation)
     for (double t_step = 0.1;t_step<=209.0;t_step+=0.1)
     {
         theta_3_degree_spline.push_back(temp_theta_spline.evaluateDeBoorT_1d(t_step));
-    RCLCPP_INFO(this->get_logger(),"theta_3_degree_spline.size():%d",theta_3_degree_spline.size());
     }
-    // //debug
-    // rclcpp::sleep_for(std::chrono::seconds(2));
 
     //debug: save the max_deviations
     if(this->experience_type == 2)
@@ -1114,9 +1102,6 @@ void CDCR::visualization()
         obstacle_cylinder1.pose.orientation.w = temp_q1.w();
         this->cylinder1_obstacle_visualization_pub->publish(obstacle_cylinder1);
 
-        //debug
-        RCLCPP_INFO(this->get_logger(), "1004:");
-
         //visualize the cylinder2 obstacle
         visualization_marker obstacle_cylinder2;
         obstacle_cylinder2.type = visualization_marker::CYLINDER;
@@ -1143,9 +1128,6 @@ void CDCR::visualization()
         obstacle_cylinder2.pose.orientation.z = temp_q2.z();
         obstacle_cylinder2.pose.orientation.w = temp_q2.w();
         this->cylinder2_obstacle_visualization_pub->publish(obstacle_cylinder2);
-
-        //debug
-        RCLCPP_INFO(this->get_logger(), "1034:");
 
         // visualize the obstacle board
         double board_left_right_width,board_left_right_height,board_left_right_thick;
@@ -1384,6 +1366,8 @@ void CDCR::fitCDCR()
         option.linear_solver_type=ceres::DENSE_QR;
         // option.trust_region_strategy_type=ceres::DOGLEG;
         option.logging_type=ceres::SILENT;
+
+        option.minimizer_progress_to_stdout=false;
         ceres::Solver::Summary summary;
         ceres::Solve(option,&fit_problem,&summary);
 
@@ -1490,12 +1474,6 @@ bool CDCR::remainPathLengthCheck(const int& path_point_id)
 {
     if (this->length + this->safe_path_length_redundance > (double)(path_points.size()-path_point_id)*sample_interval)
     {
-
-        //debug
-        RCLCPP_INFO(this->get_logger(), "length: %f", this->length);
-        RCLCPP_INFO(this->get_logger(), "safe_path_length_redundance: %f", this->safe_path_length_redundance);
-        RCLCPP_INFO(this->get_logger(), "path_points.size(): %d", path_points.size());
-        RCLCPP_INFO(this->get_logger(), "path_point_id: %d", path_point_id);
         return false;
     }
     return true;

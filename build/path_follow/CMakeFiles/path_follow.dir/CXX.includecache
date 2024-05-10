@@ -44,11 +44,23 @@ iostream
 fstream
 -
 
+/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.cpp
+joint.hpp
+/home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp
+
 /home/weiwei/Desktop/project/path_follow/src/path_follow/src/joint.hpp
 iostream
 -
 Eigen/Eigen
 -
+
+/home/weiwei/Desktop/project/path_follow/src/path_follow/src/main.cpp
+cdcr.hpp
+/home/weiwei/Desktop/project/path_follow/src/path_follow/src/cdcr.hpp
+
+/home/weiwei/Desktop/project/path_follow/src/path_follow/src/uniform_bspline.cpp
+uniform_bspline.hpp
+/home/weiwei/Desktop/project/path_follow/src/path_follow/src/uniform_bspline.hpp
 
 /home/weiwei/Desktop/project/path_follow/src/path_follow/src/uniform_bspline.hpp
 Eigen/Eigen
