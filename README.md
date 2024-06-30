@@ -2,7 +2,7 @@
 Compiling tests passed on ubuntu 20.04** with ros2 installed.
 You can just execute the following commands one by one.
 ```
-git clone https://github.com/weiwei-dotcom/path_planner.git
+git clone https://github.com/weiwei-dotcom/path_follow.git
 cd path_follow
 colcon build
 source install/setup.bash
