@@ -14,7 +14,7 @@ If you find this work useful or interesting, please kindly give us a star :star:
 - The Ceres solver we use is from [Ceres Solver](http://ceres-solver.org/installation.html), which is lightweight and easy to use. We use Ceres to solver the fit problem between CDCR(Cable-Driven Continuum Robot) and planner path.
 
 # Related Paper
-周健伟, 方灶军, 张驰, 杨桂林. 连续体机器人路径跟随拟合算法[J].[机械制造](https://book.yunzhan365.com/wcllr/eijy/mobile/index.html).
+周健伟, 方灶军, 张驰, 杨桂林. [连续体机器人路径跟随拟合算法[J]](https://book.yunzhan365.com/wcllr/eijy/mobile/index.html).
 
 # This is an Motion Planner for CDCR Path Follow Motion.
 ![连续体机器人跟随等曲率半圆圆弧路径](https://github.com/weiwei-dotcom/path_follow/assets/62756096/4741e273-21a1-4c4a-a7b6-80b8523ae1a5)
