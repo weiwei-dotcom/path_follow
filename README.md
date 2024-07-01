@@ -16,6 +16,8 @@ If you find this work useful or interesting, please kindly give us a star :star:
 # Related Paper
 [连续体机器人路径跟随拟合算法[J]](https://easylink.cc/zkjba1).
 
-# This is an Motion Planner for CDCR Path Follow Motion.
+# Simulation picture
+This is an motion planner for CDCR path follow motion.
+
 ![连续体机器人跟随等曲率半圆圆弧路径](https://github.com/weiwei-dotcom/path_follow/assets/62756096/4741e273-21a1-4c4a-a7b6-80b8523ae1a5)
 ![连续体跟随避障路径](https://github.com/weiwei-dotcom/path_follow/assets/62756096/9742c10e-cb60-4d73-92d2-ffa9404b346a)
